@@ -1,0 +1,142 @@
+aid: hyperbrowser
+name: Hyperbrowser
+description: >-
+  Hyperbrowser provides cloud browser infrastructure tailored for AI agents,
+  bundling managed Chromium sessions with web scraping, crawling, and
+  data-extraction APIs. The platform ships an open-source HyperAgent framework
+  and first-class integrations for Browser-Use, Claude Computer Use, Gemini
+  Computer Use, and OpenAI's CUA, so teams can deploy general-purpose web
+  agents quickly. Customers include AI startups, data teams, and enterprises
+  needing stealthy, multi-region browsers with CAPTCHA solving, proxies, and
+  session profiles. Python and Node SDKs cover sessions, scrape/crawl jobs,
+  extraction, and agent task management, with an MCP server for use inside
+  Claude, Cursor, and other MCP clients. Pricing is usage-based via the
+  hyperbrowser.ai pricing page.
+type: Index
+position: Provider
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Headless Browser
+  - Browser Infrastructure
+  - Web Scraping
+  - Web Crawling
+  - Data Extraction
+  - AI Agents
+  - Browser Automation
+  - Computer Use
+  - Stealth
+  - Proxies
+  - CAPTCHA Solving
+  - MCP
+  - HyperAgent
+url: https://raw.githubusercontent.com/api-evangelist/hyperbrowser/refs/heads/main/apis.yml
+created: '2026-05-23'
+modified: '2026-05-23'
+specificationVersion: '0.20'
+apis:
+  - aid: hyperbrowser:browser-api
+    name: Hyperbrowser API
+    description: >-
+      Hyperbrowser's REST API manages cloud browser sessions, profiles,
+      extensions, scrape and crawl jobs, structured extraction jobs, and
+      agentic task runs across Browser-Use, HyperAgent, Claude Computer Use,
+      Gemini Computer Use, and OpenAI CUA. Returns content in HTML, Markdown,
+      JSON, and screenshot formats.
+    humanURL: https://hyperbrowser.ai/docs
+    baseURL: https://api.hyperbrowser.ai
+    tags:
+      - Sessions
+      - Scrape
+      - Crawl
+      - Extract
+      - Agents
+      - Profiles
+      - Extensions
+      - Computer Use
+    properties:
+      - type: Documentation
+        url: https://hyperbrowser.ai/docs
+      - type: APIReference
+        url: https://hyperbrowser.ai/docs/api-reference
+      - type: GettingStarted
+        url: https://hyperbrowser.ai/docs/quickstart
+      - type: SignUp
+        url: https://app.hyperbrowser.ai/signup
+      - type: SDK
+        url: https://github.com/hyperbrowserai/python-sdk
+      - type: SDK
+        url: https://github.com/hyperbrowserai/node-sdk
+      - type: GitHubRepository
+        url: https://github.com/hyperbrowserai/HyperAgent
+      - type: Pricing
+        url: https://hyperbrowser.ai/pricing
+      - type: LLMsTxt
+        url: https://hyperbrowser.ai/docs/llms.txt
+    features:
+      - name: Cloud Browser Sessions
+        description: Managed Chromium sessions with lifecycle, recording, and download retrieval.
+      - name: Scrape and Crawl
+        description: Single-page scrape, batch scrape, and recursive crawl jobs with status polling.
+      - name: Structured Extraction
+        description: Extract typed data from pages using prompts and schemas.
+      - name: Agent Task APIs
+        description: Start, stop, and monitor agentic tasks across HyperAgent, Browser-Use, Claude CUA, Gemini CUA, and OpenAI CUA.
+      - name: Stealth and Proxies
+        description: Anti-detection features, residential/datacenter proxies, static IPs, and multi-region routing.
+      - name: Browser Profiles
+        description: Persist authenticated state and cookies across sessions.
+      - name: CAPTCHA Solving
+        description: Built-in CAPTCHA handling for protected sites.
+      - name: Extensions and Uploads
+        description: Add custom Chrome extensions and handle file uploads/downloads.
+      - name: Sandbox Snapshots
+        description: Save and restore sandbox state and shared volumes for long-running agent work.
+      - name: MCP Server
+        description: Model Context Protocol server for use inside Claude Desktop, Cursor, and other MCP clients.
+    useCases:
+      - name: Production Web Agents
+        description: Power agents that browse, click, and complete real workflows on third-party sites.
+      - name: Large-Scale Data Extraction
+        description: Run scrape and crawl jobs across millions of pages with proxy rotation.
+      - name: Computer Use Agents
+        description: Provide a stealthy browser for Claude, Gemini, and OpenAI computer-use models.
+      - name: Lead and Market Research
+        description: Crawl sites and extract structured records into CRMs and data warehouses.
+      - name: RL and Eval Environments
+        description: Use sandbox snapshots to train and evaluate web-using agents.
+    integrations:
+      - name: HyperAgent
+      - name: Browser-Use
+      - name: Playwright
+      - name: Puppeteer
+      - name: Stagehand
+      - name: OpenAI Function Calling
+      - name: Anthropic Tool Use
+      - name: LangChain
+      - name: LlamaIndex
+      - name: MCP
+      - name: X402 Payment Protocol
+    authentication:
+      - type: API Key
+        description: Account API keys passed via an HTTP header authenticate all REST and SDK calls.
+common:
+  - type: Website
+    url: https://hyperbrowser.ai
+  - type: Documentation
+    url: https://hyperbrowser.ai/docs
+  - type: Blog
+    url: https://hyperbrowser.ai/blog
+  - type: GitHubOrganization
+    url: https://github.com/hyperbrowserai
+  - type: Pricing
+    url: https://hyperbrowser.ai/pricing
+  - type: SignUp
+    url: https://app.hyperbrowser.ai/signup
+  - type: TermsOfService
+    url: https://hyperbrowser.ai/terms
+  - type: PrivacyPolicy
+    url: https://hyperbrowser.ai/privacy
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
