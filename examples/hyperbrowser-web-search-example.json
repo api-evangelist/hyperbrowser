@@ -1,0 +1,19 @@
+{
+  "operation": "POST /api/web/search",
+  "request": {
+    "query": "site:hyperbrowser.ai computer use",
+    "numResults": 5
+  },
+  "response": {
+    "status": "completed",
+    "data": {
+      "results": [
+        {
+          "title": "Claude Computer Use on Hyperbrowser",
+          "url": "https://hyperbrowser.ai/blog/claude-computer-use",
+          "snippet": "Run Claude computer-use agents in stealth browsers..."
+        }
+      ]
+    }
+  }
+}

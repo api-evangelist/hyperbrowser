@@ -1,0 +1,186 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/hyperbrowser/main/json-schema/hyperbrowser-session-schema.json",
+  "title": "Hyperbrowser Session",
+  "description": "JSON Schema for the Hyperbrowser Hyperbrowser Session resource extracted from the official OpenAPI spec.",
+  "allOf": [
+    {
+      "$ref": "#/$defs/Session"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "sessionUrl": {
+          "type": "string"
+        },
+        "liveUrl": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "wsEndpoint": {
+          "type": "string"
+        },
+        "webdriverEndpoint": {
+          "type": "string"
+        },
+        "computerActionEndpoint": {
+          "type": "string"
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "CreateSessionProfile": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "persistChanges": {
+          "type": "boolean"
+        },
+        "persistNetworkCache": {
+          "type": "boolean",
+          "description": "When persisting profile changes, also persist the browser's network cache (HTTP cache)."
+        }
+      }
+    },
+    "ScreenConfig": {
+      "type": "object",
+      "properties": {
+        "width": {
+          "type": "number",
+          "default": 1280
+        },
+        "height": {
+          "type": "number",
+          "default": 720
+        }
+      }
+    },
+    "Session": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "teamId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "active",
+            "closed",
+            "error"
+          ]
+        },
+        "startTime": {
+          "type": "string",
+          "format": "timestamp-milliseconds",
+          "nullable": true
+        },
+        "endTime": {
+          "type": "string",
+          "format": "timestamp-milliseconds",
+          "nullable": true
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "iso8601"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "iso8601"
+        },
+        "launchState": {
+          "$ref": "#/$defs/SessionLaunchState"
+        },
+        "creditsUsed": {
+          "type": "number",
+          "nullable": true
+        }
+      }
+    },
+    "SessionLaunchState": {
+      "type": "object",
+      "properties": {
+        "useUltraStealth": {
+          "type": "boolean"
+        },
+        "useStealth": {
+          "type": "boolean"
+        },
+        "useProxy": {
+          "type": "boolean"
+        },
+        "solveCaptchas": {
+          "type": "boolean"
+        },
+        "solverType": {
+          "type": "string",
+          "enum": [
+            "visual"
+          ],
+          "description": "Optional CAPTCHA solver mode. Set to visual to use the visual reCAPTCHA solver."
+        },
+        "adblock": {
+          "type": "boolean"
+        },
+        "trackers": {
+          "type": "boolean"
+        },
+        "annoyances": {
+          "type": "boolean"
+        },
+        "screen": {
+          "$ref": "#/$defs/ScreenConfig"
+        },
+        "enableWebRecording": {
+          "type": "boolean"
+        },
+        "enableVideoWebRecording": {
+          "type": "boolean"
+        },
+        "enableLogCapture": {
+          "type": "boolean"
+        },
+        "acceptCookies": {
+          "type": "boolean"
+        },
+        "profile": {
+          "$ref": "#/$defs/CreateSessionProfile"
+        },
+        "staticIpId": {
+          "type": "string"
+        },
+        "saveDownloads": {
+          "type": "boolean"
+        },
+        "enableWindowManager": {
+          "type": "boolean"
+        },
+        "enableWindowManagerTaskbar": {
+          "type": "boolean"
+        },
+        "viewOnlyLiveView": {
+          "type": "boolean"
+        },
+        "disablePasswordManager": {
+          "type": "boolean"
+        },
+        "enableAlwaysOpenPdfExternally": {
+          "type": "boolean"
+        },
+        "disablePostQuantumKeyAgreement": {
+          "type": "boolean"
+        }
+      },
+      "nullable": true
+    }
+  }
+}

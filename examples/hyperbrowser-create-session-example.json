@@ -1,0 +1,19 @@
+{
+  "operation": "POST /api/session",
+  "request": {
+    "useStealth": true,
+    "useProxy": true,
+    "solveCaptchas": true,
+    "screen": {
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "response": {
+    "id": "sess_01HZ8YQK4F9V0PEXAMPLE",
+    "status": "active",
+    "wsEndpoint": "wss://api.hyperbrowser.ai/cdp/sess_01HZ8YQK4F9V0PEXAMPLE",
+    "liveUrl": "https://app.hyperbrowser.ai/live/sess_01HZ8YQK4F9V0PEXAMPLE",
+    "createdAt": "2026-05-25T18:00:00.000Z"
+  }
+}

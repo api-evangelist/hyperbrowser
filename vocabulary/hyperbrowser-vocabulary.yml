@@ -1,0 +1,93 @@
+vocabulary: '0.1'
+info:
+  name: Hyperbrowser Vocabulary
+  description: Domain vocabulary for the Hyperbrowser API surface — sessions, profiles, scraping, crawling, structured extraction,
+    and computer-use agents.
+  provider: hyperbrowser
+  version: 0.1.0
+  created: '2026-05-25'
+  modified: '2026-05-25'
+concepts:
+- term: Session
+  definition: A cloud-hosted Chromium browser instance that an agent or client controls via CDP/WebSocket.
+  aliases:
+  - BrowserSession
+  - CloudBrowser
+- term: Profile
+  definition: Persistent browser state (cookies, local storage, auth) that can be reused across sessions.
+  aliases:
+  - BrowserProfile
+- term: Extension
+  definition: A custom Chrome extension uploaded to the account and attachable to sessions.
+- term: Scrape
+  definition: A single-page scrape job that returns Markdown, HTML, links, and screenshots.
+- term: BatchScrape
+  definition: A multi-URL scrape job that fans out to many pages in parallel.
+- term: Crawl
+  definition: A recursive site-walk that follows links and accumulates structured page data.
+- term: Extract
+  definition: A structured data extraction job that pulls typed records from pages using a prompt and JSON schema.
+- term: HyperAgent
+  definition: Hyperbrowser's first-party browser-use agent framework, run as a managed task or as an open-source SDK.
+- term: BrowserUseTask
+  definition: An agentic task driven by the Browser-Use framework executing inside a Hyperbrowser session.
+- term: ClaudeComputerUseTask
+  definition: An agentic task driven by Anthropic's Claude computer-use model inside a Hyperbrowser session.
+- term: GeminiComputerUseTask
+  definition: An agentic task driven by Google's Gemini computer-use model inside a Hyperbrowser session.
+- term: CUATask
+  definition: An agentic task driven by OpenAI's computer-use (CUA) model inside a Hyperbrowser session.
+- term: Stealth
+  definition: A mode that disguises automation fingerprints to bypass bot detection.
+- term: UltraStealth
+  definition: Premium anti-detection mode for the toughest bot-protection targets.
+- term: Proxy
+  definition: Residential, datacenter, or ISP IP routing applied to a session.
+- term: StaticIP
+  definition: A reserved IP address pinned to an account for stable outbound identity.
+- term: CAPTCHA Solving
+  definition: Built-in handling for image, reCAPTCHA, and Cloudflare challenges.
+- term: X402
+  definition: The HTTP 402 micropayment protocol — Hyperbrowser exposes /x402 fetch and search variants.
+- term: MCP
+  definition: Model Context Protocol — Hyperbrowser ships an MCP server so any MCP client can drive its browser tools.
+relationships:
+- subject: Session
+  predicate: uses
+  object: Profile
+- subject: Session
+  predicate: loads
+  object: Extension
+- subject: Scrape
+  predicate: runs-on
+  object: Session
+- subject: Crawl
+  predicate: runs-on
+  object: Session
+- subject: Extract
+  predicate: runs-on
+  object: Session
+- subject: HyperAgent
+  predicate: runs-on
+  object: Session
+- subject: BrowserUseTask
+  predicate: runs-on
+  object: Session
+- subject: ClaudeComputerUseTask
+  predicate: runs-on
+  object: Session
+- subject: GeminiComputerUseTask
+  predicate: runs-on
+  object: Session
+- subject: CUATask
+  predicate: runs-on
+  object: Session
+- subject: Session
+  predicate: supports
+  object: Stealth
+- subject: Session
+  predicate: supports
+  object: Proxy
+- subject: Session
+  predicate: supports
+  object: CAPTCHA Solving

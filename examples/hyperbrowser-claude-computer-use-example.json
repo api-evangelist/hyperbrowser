@@ -1,0 +1,18 @@
+{
+  "operation": "POST /api/task/claude-computer-use",
+  "request": {
+    "task": "Sign in to https://example.com using the saved profile and download the latest invoice.",
+    "llm": "claude-opus-4-5",
+    "sessionOptions": {
+      "useStealth": true,
+      "profile": {
+        "id": "prof_01HZEXAMPLE"
+      }
+    }
+  },
+  "response": {
+    "jobId": "claude_01HZ8YR8KEXAMPLE",
+    "status": "pending",
+    "liveUrl": "https://app.hyperbrowser.ai/live/claude_01HZ8YR8KEXAMPLE"
+  }
+}

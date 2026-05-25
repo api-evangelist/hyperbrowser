@@ -1,0 +1,160 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Hyperbrowser Extract — Extract
+  description: Hyperbrowser Extract — Extract. 3 operations. Self-contained Naftiko capability covering one Hyperbrowser business
+    surface.
+  tags:
+  - Hyperbrowser
+  - Extract
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    HYPERBROWSER_API_KEY: HYPERBROWSER_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: extract-extract
+    baseUri: https://api.hyperbrowser.ai
+    description: Hyperbrowser Extract — Extract business capability. Self-contained, no shared references.
+    resources:
+    - name: api-extract
+      path: /api/extract
+      operations:
+      - name: post-api-extract
+        method: POST
+        description: Start an Extract Job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-extract-id
+      path: /api/extract/{id}
+      operations:
+      - name: get-api-extract-id
+        method: GET
+        description: Get Extract Job Status and Results
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id
+          required: true
+    - name: api-extract-id-status
+      path: /api/extract/{id}/status
+      operations:
+      - name: get-api-extract-id-status
+        method: GET
+        description: Get Extract Job Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id
+          required: true
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.HYPERBROWSER_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: extract-extract-rest
+    port: 8080
+    description: REST adapter for Hyperbrowser Extract — Extract.
+    resources:
+    - path: /v1/api/extract
+      name: api-extract
+      description: REST surface for api-extract.
+      operations:
+      - method: POST
+        name: post-api-extract
+        description: Start an Extract Job
+        call: extract-extract.post-api-extract
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/extract/{id}
+      name: api-extract-id
+      description: REST surface for api-extract-id.
+      operations:
+      - method: GET
+        name: get-api-extract-id
+        description: Get Extract Job Status and Results
+        call: extract-extract.get-api-extract-id
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/extract/{id}/status
+      name: api-extract-id-status
+      description: REST surface for api-extract-id-status.
+      operations:
+      - method: GET
+        name: get-api-extract-id-status
+        description: Get Extract Job Status
+        call: extract-extract.get-api-extract-id-status
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: extract-extract-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Hyperbrowser Extract — Extract.
+    tools:
+    - name: hyperbrowser-post-api-extract
+      description: Start an Extract Job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: extract-extract.post-api-extract
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hyperbrowser-get-api-extract-id
+      description: Get Extract Job Status and Results
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: extract-extract.get-api-extract-id
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hyperbrowser-get-api-extract-id-status
+      description: Get Extract Job Status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: extract-extract.get-api-extract-id-status
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.

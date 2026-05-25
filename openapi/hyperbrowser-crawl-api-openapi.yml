@@ -1,0 +1,1094 @@
+openapi: 3.0.1
+info:
+  title: Hyperbrowser Crawl API
+  version: 1.0.0
+  description: Recursive crawl jobs across many pages with structured page-by-page results and status polling.
+  contact:
+    name: Hyperbrowser
+    url: https://hyperbrowser.ai
+  license:
+    name: Hyperbrowser Terms
+    url: https://hyperbrowser.ai/terms
+servers:
+- url: https://api.hyperbrowser.ai
+  description: Production server
+security:
+- ApiKeyAuth: []
+paths:
+  /api/crawl:
+    post:
+      operationId: post-api-crawl
+      summary: Start a Crawl Job
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - url
+              properties:
+                url:
+                  type: string
+                maxPages:
+                  type: integer
+                  minimum: 1
+                followLinks:
+                  type: boolean
+                  default: true
+                ignoreSitemap:
+                  type: boolean
+                  default: false
+                excludePatterns:
+                  type: array
+                  items:
+                    type: string
+                includePatterns:
+                  type: array
+                  items:
+                    type: string
+                sessionOptions:
+                  $ref: '#/components/schemas/CreateSessionParams'
+                scrapeOptions:
+                  $ref: '#/components/schemas/ScrapeOptions'
+      responses:
+        '200':
+          description: Crawl job started successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - jobId
+                properties:
+                  jobId:
+                    type: string
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Crawl
+  /api/crawl/{id}:
+    get:
+      operationId: get-api-crawl-id
+      summary: Get Crawl Job Status and Results
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+      - name: batchSize
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+      responses:
+        '200':
+          description: Crawl job details retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jobId:
+                    type: string
+                    format: uuid
+                  status:
+                    $ref: '#/components/schemas/JobStatus'
+                  error:
+                    type: string
+                    nullable: true
+                  totalCrawledPages:
+                    type: integer
+                    minimum: 0
+                  totalPageBatches:
+                    type: integer
+                    minimum: 0
+                  currentPageBatch:
+                    type: integer
+                    minimum: 0
+                  batchSize:
+                    type: integer
+                    minimum: 1
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CrawledPage'
+                required:
+                - status
+                - jobId
+        '404':
+          description: Crawl job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Crawl
+  /api/crawl/{id}/status:
+    get:
+      operationId: get-api-crawl-id-status
+      summary: Get Crawl Job Status
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Crawl job status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+        '404':
+          description: Crawl job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Crawl
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Account API key from app.hyperbrowser.ai
+  schemas:
+    CrawledPage:
+      type: object
+      properties:
+        url:
+          type: string
+        status:
+          type: string
+          enum:
+          - completed
+          - failed
+        error:
+          type: string
+          nullable: true
+        metadata:
+          type: object
+          additionalProperties:
+            oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+        markdown:
+          type: string
+        html:
+          type: string
+        links:
+          type: array
+          items:
+            type: string
+        screenshot:
+          type: string
+      required:
+      - url
+      - status
+    CreateSessionParams:
+      type: object
+      properties:
+        useUltraStealth:
+          type: boolean
+          default: false
+        useStealth:
+          type: boolean
+          default: false
+        useProxy:
+          type: boolean
+          default: false
+        proxyServer:
+          type: string
+        proxyServerPassword:
+          type: string
+        proxyServerUsername:
+          type: string
+        proxyCountry:
+          $ref: '#/components/schemas/ProxyCountry'
+        proxyState:
+          $ref: '#/components/schemas/ProxyState'
+        proxyCity:
+          type: string
+          example: new york
+          nullable: true
+          description: Desired Country. Is mutually exclusive with proxyState. Some cities might not be supported, so before
+            using a new city, we recommend trying it out
+        region:
+          $ref: '#/components/schemas/SessionRegion'
+        operatingSystems:
+          type: array
+          items:
+            $ref: '#/components/schemas/OperatingSystem'
+        device:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device'
+        platform:
+          type: array
+          items:
+            $ref: '#/components/schemas/Platform'
+        locales:
+          type: array
+          items:
+            $ref: '#/components/schemas/ISO639_1'
+          default:
+          - en
+        screen:
+          $ref: '#/components/schemas/ScreenConfig'
+        solveCaptchas:
+          type: boolean
+          default: false
+        solverType:
+          type: string
+          enum:
+          - visual
+          description: Optional CAPTCHA solver mode. Set to visual to use the visual reCAPTCHA solver.
+        adblock:
+          type: boolean
+          default: false
+        trackers:
+          type: boolean
+          default: false
+        annoyances:
+          type: boolean
+          default: false
+        enableWebRecording:
+          type: boolean
+        enableVideoWebRecording:
+          type: boolean
+          default: false
+          description: enableWebRecording must also be true for this to work
+        profile:
+          $ref: '#/components/schemas/CreateSessionProfile'
+        acceptCookies:
+          type: boolean
+        staticIpId:
+          type: string
+          format: uuid
+        saveDownloads:
+          type: boolean
+          default: false
+        extensionIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+            nullable: false
+          default: []
+        urlBlocklist:
+          type: array
+          items:
+            type: string
+            nullable: false
+          default: []
+        browserArgs:
+          type: array
+          items:
+            type: string
+            nullable: false
+          default: []
+        imageCaptchaParams:
+          type: array
+          items:
+            type: object
+            properties:
+              imageSelector:
+                type: string
+              inputSelector:
+                type: string
+          nullable: true
+        timeoutMinutes:
+          type: number
+          minimum: 1
+          maximum: 720
+        enableWindowManager:
+          type: boolean
+          default: false
+        enableWindowManagerTaskbar:
+          type: boolean
+          default: false
+        viewOnlyLiveView:
+          type: boolean
+          default: false
+        disablePasswordManager:
+          type: boolean
+          default: false
+        enableAlwaysOpenPdfExternally:
+          type: boolean
+          default: false
+        disablePostQuantumKeyAgreement:
+          type: boolean
+          default: false
+      default:
+        useStealth: false
+        useProxy: false
+        acceptCookies: false
+    CreateSessionProfile:
+      type: object
+      properties:
+        id:
+          type: string
+        persistChanges:
+          type: boolean
+        persistNetworkCache:
+          type: boolean
+          description: When persisting profile changes, also persist the browser's network cache (HTTP cache).
+    Device:
+      type: string
+      enum:
+      - desktop
+      - mobile
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    ISO639_1:
+      type: string
+      enum:
+      - aa
+      - ab
+      - ae
+      - af
+      - ak
+      - am
+      - an
+      - ar
+      - as
+      - av
+      - ay
+      - az
+      - ba
+      - be
+      - bg
+      - bh
+      - bi
+      - bm
+      - bn
+      - bo
+      - br
+      - bs
+      - ca
+      - ce
+      - ch
+      - co
+      - cr
+      - cs
+      - cu
+      - cv
+      - cy
+      - da
+      - de
+      - dv
+      - dz
+      - ee
+      - el
+      - en
+      - eo
+      - es
+      - et
+      - eu
+      - fa
+      - ff
+      - fi
+      - fj
+      - fo
+      - fr
+      - fy
+      - ga
+      - gd
+      - gl
+      - gn
+      - gu
+      - gv
+      - ha
+      - he
+      - hi
+      - ho
+      - hr
+      - ht
+      - hu
+      - hy
+      - hz
+      - ia
+      - id
+      - ie
+      - ig
+      - ii
+      - ik
+      - io
+      - is
+      - it
+      - iu
+      - ja
+      - jv
+      - ka
+      - kg
+      - ki
+      - kj
+      - kk
+      - kl
+      - km
+      - kn
+      - ko
+      - kr
+      - ks
+      - ku
+      - kv
+      - kw
+      - ky
+      - la
+      - lb
+      - lg
+      - li
+      - ln
+      - lo
+      - lt
+      - lu
+      - lv
+      - mg
+      - mh
+      - mi
+      - mk
+      - ml
+      - mn
+      - mo
+      - mr
+      - ms
+      - mt
+      - my
+      - na
+      - nb
+      - nd
+      - ne
+      - ng
+      - nl
+      - nn
+      - 'no'
+      - nr
+      - nv
+      - ny
+      - oc
+      - oj
+      - om
+      - or
+      - os
+      - pa
+      - pi
+      - pl
+      - ps
+      - pt
+      - qu
+      - rm
+      - rn
+      - ro
+      - ru
+      - rw
+      - sa
+      - sc
+      - sd
+      - se
+      - sg
+      - si
+      - sk
+      - sl
+      - sm
+      - sn
+      - so
+      - sq
+      - sr
+      - ss
+      - st
+      - su
+      - sv
+      - sw
+      - ta
+      - te
+      - tg
+      - th
+      - ti
+      - tk
+      - tl
+      - tn
+      - to
+      - tr
+      - ts
+      - tt
+      - tw
+      - ty
+      - ug
+      - uk
+      - ur
+      - uz
+      - ve
+      - vi
+      - vo
+      - wa
+      - wo
+      - xh
+      - yi
+      - yo
+      - za
+      - zh
+      - zu
+    JobStatus:
+      type: string
+      enum:
+      - pending
+      - running
+      - completed
+      - failed
+      - stopped
+    JobStatusResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/JobStatus'
+      required:
+      - status
+    OperatingSystem:
+      type: string
+      enum:
+      - windows
+      - android
+      - macos
+      - linux
+      - ios
+    Platform:
+      type: string
+      enum:
+      - chrome
+      - firefox
+      - safari
+      - edge
+    ProxyCountry:
+      type: string
+      enum:
+      - AD
+      - AE
+      - AF
+      - AL
+      - AM
+      - AO
+      - AR
+      - AT
+      - AU
+      - AW
+      - AZ
+      - BA
+      - BD
+      - BE
+      - BG
+      - BH
+      - BJ
+      - BO
+      - BR
+      - BS
+      - BT
+      - BY
+      - BZ
+      - CA
+      - CF
+      - CH
+      - CI
+      - CL
+      - CM
+      - CN
+      - CO
+      - CR
+      - CU
+      - CY
+      - CZ
+      - DE
+      - DJ
+      - DK
+      - DM
+      - EC
+      - EE
+      - EG
+      - ES
+      - ET
+      - EU
+      - FI
+      - FJ
+      - FR
+      - GB
+      - GE
+      - GH
+      - GM
+      - GR
+      - HK
+      - HN
+      - HR
+      - HT
+      - HU
+      - ID
+      - IE
+      - IL
+      - IN
+      - IQ
+      - IR
+      - IS
+      - IT
+      - JM
+      - JO
+      - JP
+      - KE
+      - KH
+      - KR
+      - KW
+      - KZ
+      - LB
+      - LI
+      - LR
+      - LT
+      - LU
+      - LV
+      - MA
+      - MC
+      - MD
+      - ME
+      - MG
+      - MK
+      - ML
+      - MM
+      - MN
+      - MR
+      - MT
+      - MU
+      - MV
+      - MX
+      - MY
+      - MZ
+      - NG
+      - NL
+      - 'NO'
+      - NZ
+      - OM
+      - PA
+      - PE
+      - PH
+      - PK
+      - PL
+      - PR
+      - PT
+      - PY
+      - QA
+      - RANDOM_COUNTRY
+      - RO
+      - RS
+      - RU
+      - SA
+      - SC
+      - SD
+      - SE
+      - SG
+      - SI
+      - SK
+      - SN
+      - SS
+      - TD
+      - TG
+      - TH
+      - TM
+      - TN
+      - TR
+      - TT
+      - TW
+      - UA
+      - UG
+      - US
+      - UY
+      - UZ
+      - VE
+      - VG
+      - VN
+      - YE
+      - ZA
+      - ZM
+      - ZW
+      - ad
+      - ae
+      - af
+      - al
+      - am
+      - ao
+      - ar
+      - at
+      - au
+      - aw
+      - az
+      - ba
+      - bd
+      - be
+      - bg
+      - bh
+      - bj
+      - bo
+      - br
+      - bs
+      - bt
+      - by
+      - bz
+      - ca
+      - cf
+      - ch
+      - ci
+      - cl
+      - cm
+      - cn
+      - co
+      - cr
+      - cu
+      - cy
+      - cz
+      - de
+      - dj
+      - dk
+      - dm
+      - ec
+      - ee
+      - eg
+      - es
+      - et
+      - eu
+      - fi
+      - fj
+      - fr
+      - gb
+      - ge
+      - gh
+      - gm
+      - gr
+      - hk
+      - hn
+      - hr
+      - ht
+      - hu
+      - id
+      - ie
+      - il
+      - in
+      - iq
+      - ir
+      - is
+      - it
+      - jm
+      - jo
+      - jp
+      - ke
+      - kh
+      - kr
+      - kw
+      - kz
+      - lb
+      - li
+      - lr
+      - lt
+      - lu
+      - lv
+      - ma
+      - mc
+      - md
+      - me
+      - mg
+      - mk
+      - ml
+      - mm
+      - mn
+      - mr
+      - mt
+      - mu
+      - mv
+      - mx
+      - my
+      - mz
+      - ng
+      - nl
+      - 'no'
+      - nz
+      - om
+      - pa
+      - pe
+      - ph
+      - pk
+      - pl
+      - pr
+      - pt
+      - py
+      - qa
+      - ro
+      - rs
+      - ru
+      - sa
+      - sc
+      - sd
+      - se
+      - sg
+      - si
+      - sk
+      - sn
+      - ss
+      - td
+      - tg
+      - th
+      - tm
+      - tn
+      - tr
+      - tt
+      - tw
+      - ua
+      - ug
+      - us
+      - uy
+      - uz
+      - ve
+      - vg
+      - vn
+      - ye
+      - za
+      - zm
+      - zw
+    ProxyState:
+      type: string
+      enum:
+      - AL
+      - AK
+      - AZ
+      - AR
+      - CA
+      - CO
+      - CT
+      - DE
+      - FL
+      - GA
+      - HI
+      - ID
+      - IL
+      - IN
+      - IA
+      - KS
+      - KY
+      - LA
+      - ME
+      - MD
+      - MA
+      - MI
+      - MN
+      - MS
+      - MO
+      - MT
+      - NE
+      - NV
+      - NH
+      - NJ
+      - NM
+      - NY
+      - NC
+      - ND
+      - OH
+      - OK
+      - OR
+      - PA
+      - RI
+      - SC
+      - SD
+      - TN
+      - TX
+      - UT
+      - VT
+      - VA
+      - WA
+      - WV
+      - WI
+      - WY
+      - al
+      - ak
+      - az
+      - ar
+      - ca
+      - co
+      - ct
+      - de
+      - fl
+      - ga
+      - hi
+      - id
+      - il
+      - in
+      - ia
+      - ks
+      - ky
+      - la
+      - me
+      - md
+      - ma
+      - mi
+      - mn
+      - ms
+      - mo
+      - mt
+      - ne
+      - nv
+      - nh
+      - nj
+      - nm
+      - ny
+      - nc
+      - nd
+      - oh
+      - ok
+      - or
+      - pa
+      - ri
+      - sc
+      - sd
+      - tn
+      - tx
+      - ut
+      - vt
+      - va
+      - wa
+      - wv
+      - wi
+      - wy
+      nullable: true
+      description: Optional state code for proxies to US states. Is mutually exclusive with proxyCity. Takes in two letter
+        state code.
+    ScrapeOptions:
+      type: object
+      properties:
+        formats:
+          type: array
+          items:
+            type: string
+            enum:
+            - html
+            - links
+            - markdown
+            - screenshot
+          default:
+          - markdown
+        includeTags:
+          type: array
+          items:
+            type: string
+        excludeTags:
+          type: array
+          items:
+            type: string
+        onlyMainContent:
+          type: boolean
+          default: true
+        waitFor:
+          type: number
+          default: 0
+        timeout:
+          type: number
+          default: 30000
+        waitUntil:
+          type: string
+          enum:
+          - load
+          - domcontentloaded
+          - networkidle
+          default: load
+        screenshotOptions:
+          type: object
+          description: Options for the screenshot. Both `fullPage` and `cropToContent` cannot be true at the same time.
+          properties:
+            fullPage:
+              type: boolean
+              default: false
+            format:
+              type: string
+              enum:
+              - jpeg
+              - png
+              - webp
+              default: webp
+            cropToContent:
+              type: boolean
+              default: false
+              description: Automatically adjusts the screenshot height to match the page's actual content. If the page is
+                shorter than the viewport, the screenshot is trimmed to remove any empty space below the content. If the page
+                is taller than the viewport, the screenshot is cropped to the height of the viewport.
+            cropToContentMaxHeight:
+              type: number
+              description: The maximum height of the screenshot when `cropToContent` is true. Overrides the height set in
+                the `screen` configuration.
+            cropToContentMinHeight:
+              type: number
+              description: The minimum height of the screenshot when `cropToContent` is true. Overrides the height set in
+                the `screen` configuration.
+        storageState:
+          type: object
+          properties:
+            localStorage:
+              type: object
+              additionalProperties:
+                type: string
+            sessionStorage:
+              type: object
+              additionalProperties:
+                type: string
+    ScreenConfig:
+      type: object
+      properties:
+        width:
+          type: number
+          default: 1280
+        height:
+          type: number
+          default: 720
+    SessionRegion:
+      type: string
+      enum:
+      - us-central
+      - us-west
+      - us-east
+      - asia-south
+      - europe-west

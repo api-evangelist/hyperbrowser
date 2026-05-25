@@ -1,0 +1,236 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://schema.org/",
+    "hyperbrowser": "https://api.hyperbrowser.ai/api/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "Session": {
+      "@id": "hyperbrowser:Session",
+      "@context": {
+        "id": {
+          "@id": "hyperbrowser:Session/id",
+          "@type": "xsd:string"
+        },
+        "status": {
+          "@id": "hyperbrowser:Session/status",
+          "@type": "xsd:string"
+        },
+        "wsEndpoint": {
+          "@id": "hyperbrowser:Session/wsEndpoint",
+          "@type": "xsd:string"
+        },
+        "liveUrl": {
+          "@id": "hyperbrowser:Session/liveUrl",
+          "@type": "xsd:string"
+        },
+        "createdAt": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "updatedAt": {
+          "@id": "schema:dateModified",
+          "@type": "xsd:dateTime"
+        },
+        "endedAt": {
+          "@id": "hyperbrowser:Session/endedAt",
+          "@type": "xsd:dateTime"
+        },
+        "sessionUrl": {
+          "@id": "hyperbrowser:Session/sessionUrl",
+          "@type": "xsd:string"
+        },
+        "token": {
+          "@id": "hyperbrowser:Session/token",
+          "@type": "xsd:string"
+        }
+      }
+    },
+    "Profile": {
+      "@id": "hyperbrowser:Profile",
+      "@context": {
+        "id": {
+          "@id": "hyperbrowser:Profile/id",
+          "@type": "xsd:string"
+        },
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "createdAt": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+    "ScrapeJob": {
+      "@id": "hyperbrowser:ScrapeJob",
+      "@context": {
+        "id": {
+          "@id": "hyperbrowser:ScrapeJob/id",
+          "@type": "xsd:string"
+        },
+        "status": {
+          "@id": "hyperbrowser:ScrapeJob/status",
+          "@type": "xsd:string"
+        },
+        "url": {
+          "@id": "schema:url",
+          "@type": "xsd:anyURI"
+        },
+        "data": {
+          "@id": "hyperbrowser:ScrapeJob/data"
+        },
+        "error": {
+          "@id": "hyperbrowser:ScrapeJob/error",
+          "@type": "xsd:string"
+        }
+      }
+    },
+    "CrawlJob": {
+      "@id": "hyperbrowser:CrawlJob",
+      "@context": {
+        "jobId": {
+          "@id": "hyperbrowser:CrawlJob/jobId",
+          "@type": "xsd:string"
+        },
+        "status": {
+          "@id": "hyperbrowser:CrawlJob/status",
+          "@type": "xsd:string"
+        },
+        "totalCrawledPages": {
+          "@id": "hyperbrowser:CrawlJob/totalCrawledPages",
+          "@type": "xsd:integer"
+        },
+        "totalPageBatches": {
+          "@id": "hyperbrowser:CrawlJob/totalPageBatches",
+          "@type": "xsd:integer"
+        },
+        "currentPageBatch": {
+          "@id": "hyperbrowser:CrawlJob/currentPageBatch",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+    "ExtractJob": {
+      "@id": "hyperbrowser:ExtractJob",
+      "@context": {
+        "jobId": {
+          "@id": "hyperbrowser:ExtractJob/jobId",
+          "@type": "xsd:string"
+        },
+        "status": {
+          "@id": "hyperbrowser:ExtractJob/status",
+          "@type": "xsd:string"
+        },
+        "data": {
+          "@id": "hyperbrowser:ExtractJob/data"
+        },
+        "error": {
+          "@id": "hyperbrowser:ExtractJob/error",
+          "@type": "xsd:string"
+        }
+      }
+    },
+    "AgentTask": {
+      "@id": "hyperbrowser:AgentTask",
+      "@context": {
+        "jobId": {
+          "@id": "hyperbrowser:AgentTask/jobId",
+          "@type": "xsd:string"
+        },
+        "status": {
+          "@id": "hyperbrowser:AgentTask/status",
+          "@type": "xsd:string"
+        },
+        "data": {
+          "@id": "hyperbrowser:AgentTask/data"
+        },
+        "error": {
+          "@id": "hyperbrowser:AgentTask/error",
+          "@type": "xsd:string"
+        },
+        "liveUrl": {
+          "@id": "hyperbrowser:AgentTask/liveUrl",
+          "@type": "xsd:string"
+        }
+      }
+    },
+    "ScrapedPage": {
+      "@id": "hyperbrowser:ScrapedPage",
+      "@context": {
+        "url": {
+          "@id": "schema:url",
+          "@type": "xsd:anyURI"
+        },
+        "markdown": {
+          "@id": "hyperbrowser:ScrapedPage/markdown",
+          "@type": "xsd:string"
+        },
+        "html": {
+          "@id": "hyperbrowser:ScrapedPage/html",
+          "@type": "xsd:string"
+        },
+        "links": {
+          "@id": "hyperbrowser:ScrapedPage/links",
+          "@container": "@list"
+        },
+        "screenshot": {
+          "@id": "hyperbrowser:ScrapedPage/screenshot",
+          "@type": "xsd:string"
+        },
+        "metadata": {
+          "@id": "schema:additionalProperty"
+        }
+      }
+    },
+    "WebSearchResult": {
+      "@id": "hyperbrowser:WebSearchResult",
+      "@context": {
+        "title": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "url": {
+          "@id": "schema:url",
+          "@type": "xsd:anyURI"
+        },
+        "snippet": {
+          "@id": "hyperbrowser:WebSearchResult/snippet",
+          "@type": "xsd:string"
+        }
+      }
+    },
+    "Extension": {
+      "@id": "hyperbrowser:Extension",
+      "@context": {
+        "id": {
+          "@id": "hyperbrowser:Extension/id",
+          "@type": "xsd:string"
+        },
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "createdAt": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+    "Error": {
+      "@id": "hyperbrowser:Error",
+      "@context": {
+        "message": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "statusCode": {
+          "@id": "hyperbrowser:Error/statusCode",
+          "@type": "xsd:integer"
+        }
+      }
+    }
+  }
+}

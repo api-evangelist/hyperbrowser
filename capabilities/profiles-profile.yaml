@@ -1,0 +1,153 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Hyperbrowser Profiles — Profile
+  description: Hyperbrowser Profiles — Profile. 3 operations. Self-contained Naftiko capability covering one Hyperbrowser
+    business surface.
+  tags:
+  - Hyperbrowser
+  - Profiles
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    HYPERBROWSER_API_KEY: HYPERBROWSER_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: profiles-profile
+    baseUri: https://api.hyperbrowser.ai
+    description: Hyperbrowser Profiles — Profile business capability. Self-contained, no shared references.
+    resources:
+    - name: api-profile
+      path: /api/profile
+      operations:
+      - name: post-api-profile
+        method: POST
+        description: Creates a New Profile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-profile-id
+      path: /api/profile/{id}
+      operations:
+      - name: get-api-profile-id
+        method: GET
+        description: Get Profile by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id
+          required: true
+      - name: delete-api-profile-id
+        method: DELETE
+        description: Delete Profile by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id
+          required: true
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.HYPERBROWSER_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: profiles-profile-rest
+    port: 8080
+    description: REST adapter for Hyperbrowser Profiles — Profile.
+    resources:
+    - path: /v1/api/profile
+      name: api-profile
+      description: REST surface for api-profile.
+      operations:
+      - method: POST
+        name: post-api-profile
+        description: Creates a New Profile
+        call: profiles-profile.post-api-profile
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/profile/{id}
+      name: api-profile-id
+      description: REST surface for api-profile-id.
+      operations:
+      - method: GET
+        name: get-api-profile-id
+        description: Get Profile by ID
+        call: profiles-profile.get-api-profile-id
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete-api-profile-id
+        description: Delete Profile by ID
+        call: profiles-profile.delete-api-profile-id
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: profiles-profile-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Hyperbrowser Profiles — Profile.
+    tools:
+    - name: hyperbrowser-post-api-profile
+      description: Creates a New Profile
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: profiles-profile.post-api-profile
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hyperbrowser-get-api-profile-id
+      description: Get Profile by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: profiles-profile.get-api-profile-id
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hyperbrowser-delete-api-profile-id
+      description: Delete Profile by ID
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: false
+      call: profiles-profile.delete-api-profile-id
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.

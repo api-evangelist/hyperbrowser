@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/hyperbrowser/main/json-schema/hyperbrowser-extract-job-schema.json",
+  "title": "Hyperbrowser Extract Job",
+  "description": "JSON Schema for the Hyperbrowser Hyperbrowser Extract Job resource extracted from the official OpenAPI spec.",
+  "type": "object",
+  "properties": {
+    "jobId": {
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/$defs/JobStatus"
+    },
+    "data": {
+      "type": "object"
+    },
+    "error": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "jobId",
+    "status"
+  ],
+  "$defs": {
+    "JobStatus": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "running",
+        "completed",
+        "failed",
+        "stopped"
+      ]
+    }
+  }
+}

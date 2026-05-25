@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/hyperbrowser/main/json-schema/hyperbrowser-scrape-job-schema.json",
+  "title": "Hyperbrowser Scrape Job",
+  "description": "JSON Schema for the Hyperbrowser Hyperbrowser Scrape Job resource extracted from the official OpenAPI spec.",
+  "type": "object",
+  "properties": {
+    "jobId": {
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/$defs/JobStatus"
+    },
+    "data": {
+      "$ref": "#/$defs/ScrapeJobData"
+    },
+    "error": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "jobId",
+    "status"
+  ],
+  "$defs": {
+    "JobStatus": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "running",
+        "completed",
+        "failed",
+        "stopped"
+      ]
+    },
+    "ScrapeJobData": {
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "type": "object",
+          "additionalProperties": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          }
+        },
+        "markdown": {
+          "type": "string"
+        },
+        "html": {
+          "type": "string"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "screenshot": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

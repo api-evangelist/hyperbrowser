@@ -3,15 +3,16 @@ name: Hyperbrowser
 description: >-
   Hyperbrowser provides cloud browser infrastructure tailored for AI agents,
   bundling managed Chromium sessions with web scraping, crawling, and
-  data-extraction APIs. The platform ships an open-source HyperAgent framework
-  and first-class integrations for Browser-Use, Claude Computer Use, Gemini
-  Computer Use, and OpenAI's CUA, so teams can deploy general-purpose web
-  agents quickly. Customers include AI startups, data teams, and enterprises
-  needing stealthy, multi-region browsers with CAPTCHA solving, proxies, and
-  session profiles. Python and Node SDKs cover sessions, scrape/crawl jobs,
-  extraction, and agent task management, with an MCP server for use inside
-  Claude, Cursor, and other MCP clients. Pricing is usage-based via the
-  hyperbrowser.ai pricing page.
+  data-extraction APIs. The platform ships the open-source HyperAgent
+  framework and first-class integrations for Browser-Use, Claude Computer Use,
+  Gemini Computer Use, and OpenAI's CUA, so teams can deploy general-purpose
+  web agents quickly. Customers include AI startups, data teams, and
+  enterprises that need stealthy, multi-region browsers with CAPTCHA solving,
+  proxies, and session profiles. Python and Node SDKs cover sessions,
+  scrape/crawl/extract jobs, agent task management, and an MCP server lets
+  any Model Context Protocol client (Claude Desktop, Cursor, Windsurf, etc.)
+  drive Hyperbrowser tools. Pricing is usage-based via the hyperbrowser.ai
+  pricing page.
 type: Index
 position: Provider
 access: 3rd-Party
@@ -30,101 +31,281 @@ tags:
   - CAPTCHA Solving
   - MCP
   - HyperAgent
+  - X402
 url: https://raw.githubusercontent.com/api-evangelist/hyperbrowser/refs/heads/main/apis.yml
 created: '2026-05-23'
-modified: '2026-05-23'
+modified: '2026-05-25'
 specificationVersion: '0.20'
 apis:
-  - aid: hyperbrowser:browser-api
-    name: Hyperbrowser API
+  - aid: hyperbrowser:sessions-api
+    name: Hyperbrowser Sessions API
     description: >-
-      Hyperbrowser's REST API manages cloud browser sessions, profiles,
-      extensions, scrape and crawl jobs, structured extraction jobs, and
-      agentic task runs across Browser-Use, HyperAgent, Claude Computer Use,
-      Gemini Computer Use, and OpenAI CUA. Returns content in HTML, Markdown,
-      JSON, and screenshot formats.
-    humanURL: https://hyperbrowser.ai/docs
+      Manage cloud Chromium browser sessions: create, list, inspect, update, and
+      stop sessions; retrieve recording, video, and downloads URLs; and run
+      manual CAPTCHA evaluation. Sessions expose a WebSocket CDP endpoint and an
+      optional live-view URL.
+    humanURL: https://docs.hyperbrowser.ai/sessions/overview
     baseURL: https://api.hyperbrowser.ai
     tags:
       - Sessions
-      - Scrape
-      - Crawl
-      - Extract
-      - Agents
-      - Profiles
-      - Extensions
-      - Computer Use
+      - Browser Infrastructure
+      - Stealth
+      - Proxies
     properties:
       - type: Documentation
-        url: https://hyperbrowser.ai/docs
+        url: https://docs.hyperbrowser.ai/sessions/overview
       - type: APIReference
-        url: https://hyperbrowser.ai/docs/api-reference
-      - type: GettingStarted
-        url: https://hyperbrowser.ai/docs/quickstart
-      - type: SignUp
-        url: https://app.hyperbrowser.ai/signup
-      - type: SDK
-        url: https://github.com/hyperbrowserai/python-sdk
-      - type: SDK
-        url: https://github.com/hyperbrowserai/node-sdk
-      - type: GitHubRepository
-        url: https://github.com/hyperbrowserai/HyperAgent
-      - type: Pricing
-        url: https://hyperbrowser.ai/pricing
-      - type: LLMsTxt
-        url: https://hyperbrowser.ai/docs/llms.txt
-    features:
-      - name: Cloud Browser Sessions
-        description: Managed Chromium sessions with lifecycle, recording, and download retrieval.
-      - name: Scrape and Crawl
-        description: Single-page scrape, batch scrape, and recursive crawl jobs with status polling.
-      - name: Structured Extraction
-        description: Extract typed data from pages using prompts and schemas.
-      - name: Agent Task APIs
-        description: Start, stop, and monitor agentic tasks across HyperAgent, Browser-Use, Claude CUA, Gemini CUA, and OpenAI CUA.
-      - name: Stealth and Proxies
-        description: Anti-detection features, residential/datacenter proxies, static IPs, and multi-region routing.
-      - name: Browser Profiles
-        description: Persist authenticated state and cookies across sessions.
-      - name: CAPTCHA Solving
-        description: Built-in CAPTCHA handling for protected sites.
-      - name: Extensions and Uploads
-        description: Add custom Chrome extensions and handle file uploads/downloads.
-      - name: Sandbox Snapshots
-        description: Save and restore sandbox state and shared volumes for long-running agent work.
-      - name: MCP Server
-        description: Model Context Protocol server for use inside Claude Desktop, Cursor, and other MCP clients.
-    useCases:
-      - name: Production Web Agents
-        description: Power agents that browse, click, and complete real workflows on third-party sites.
-      - name: Large-Scale Data Extraction
-        description: Run scrape and crawl jobs across millions of pages with proxy rotation.
-      - name: Computer Use Agents
-        description: Provide a stealthy browser for Claude, Gemini, and OpenAI computer-use models.
-      - name: Lead and Market Research
-        description: Crawl sites and extract structured records into CRMs and data warehouses.
-      - name: RL and Eval Environments
-        description: Use sandbox snapshots to train and evaluate web-using agents.
-    integrations:
-      - name: HyperAgent
-      - name: Browser-Use
-      - name: Playwright
-      - name: Puppeteer
-      - name: Stagehand
-      - name: OpenAI Function Calling
-      - name: Anthropic Tool Use
-      - name: LangChain
-      - name: LlamaIndex
-      - name: MCP
-      - name: X402 Payment Protocol
+        url: https://docs.hyperbrowser.ai/api-reference/sessions
+      - type: OpenAPI
+        url: openapi/hyperbrowser-sessions-api-openapi.yml
+      - type: JSONSchema
+        url: json-schema/hyperbrowser-session-schema.json
+      - type: JSONStructure
+        url: json-structure/hyperbrowser-session-structure.json
+      - type: NaftikoCapability
+        url: capabilities/sessions-session.yaml
+      - type: NaftikoCapability
+        url: capabilities/sessions-sessions.yaml
+      - type: Example
+        url: examples/hyperbrowser-create-session-example.json
     authentication:
       - type: API Key
-        description: Account API keys passed via an HTTP header authenticate all REST and SDK calls.
+        description: Account API key passed via the `x-api-key` HTTP header.
+  - aid: hyperbrowser:profiles-api
+    name: Hyperbrowser Profiles API
+    description: >-
+      Create, list, fetch, and delete persistent browser profiles that retain
+      cookies, local storage, and authenticated state across sessions.
+    humanURL: https://docs.hyperbrowser.ai/sessions/advanced-privacy-and-anti-detection/profiles
+    baseURL: https://api.hyperbrowser.ai
+    tags:
+      - Profiles
+      - Sessions
+    properties:
+      - type: Documentation
+        url: https://docs.hyperbrowser.ai/sessions/advanced-privacy-and-anti-detection/profiles
+      - type: OpenAPI
+        url: openapi/hyperbrowser-profiles-api-openapi.yml
+      - type: NaftikoCapability
+        url: capabilities/profiles-profile.yaml
+      - type: NaftikoCapability
+        url: capabilities/profiles-profiles.yaml
+    authentication:
+      - type: API Key
+        description: Account API key passed via the `x-api-key` HTTP header.
+  - aid: hyperbrowser:scrape-api
+    name: Hyperbrowser Scrape API
+    description: >-
+      Single-page and batch scrape jobs returning HTML, Markdown, links, and
+      screenshots with asynchronous status polling.
+    humanURL: https://docs.hyperbrowser.ai/scrape/overview
+    baseURL: https://api.hyperbrowser.ai
+    tags:
+      - Scrape
+      - Web Scraping
+      - Batch
+    properties:
+      - type: Documentation
+        url: https://docs.hyperbrowser.ai/scrape/overview
+      - type: OpenAPI
+        url: openapi/hyperbrowser-scrape-api-openapi.yml
+      - type: JSONSchema
+        url: json-schema/hyperbrowser-scrape-job-schema.json
+      - type: NaftikoCapability
+        url: capabilities/scrape-scrape.yaml
+      - type: Example
+        url: examples/hyperbrowser-scrape-example.json
+    authentication:
+      - type: API Key
+        description: Account API key passed via the `x-api-key` HTTP header.
+  - aid: hyperbrowser:crawl-api
+    name: Hyperbrowser Crawl API
+    description: >-
+      Recursive crawl jobs across many pages with structured page-by-page
+      results and status polling.
+    humanURL: https://docs.hyperbrowser.ai/crawl/overview
+    baseURL: https://api.hyperbrowser.ai
+    tags:
+      - Crawl
+      - Web Crawling
+    properties:
+      - type: Documentation
+        url: https://docs.hyperbrowser.ai/crawl/overview
+      - type: OpenAPI
+        url: openapi/hyperbrowser-crawl-api-openapi.yml
+      - type: JSONSchema
+        url: json-schema/hyperbrowser-crawl-job-schema.json
+      - type: NaftikoCapability
+        url: capabilities/crawl-crawl.yaml
+    authentication:
+      - type: API Key
+        description: Account API key passed via the `x-api-key` HTTP header.
+  - aid: hyperbrowser:extract-api
+    name: Hyperbrowser Extract API
+    description: >-
+      Structured data extraction jobs that pull typed records from one or more
+      pages using prompts and JSON schemas.
+    humanURL: https://docs.hyperbrowser.ai/extract/overview
+    baseURL: https://api.hyperbrowser.ai
+    tags:
+      - Extract
+      - Structured Extraction
+      - Data Extraction
+    properties:
+      - type: Documentation
+        url: https://docs.hyperbrowser.ai/extract/overview
+      - type: OpenAPI
+        url: openapi/hyperbrowser-extract-api-openapi.yml
+      - type: JSONSchema
+        url: json-schema/hyperbrowser-extract-job-schema.json
+      - type: NaftikoCapability
+        url: capabilities/extract-extract.yaml
+      - type: Example
+        url: examples/hyperbrowser-extract-example.json
+    authentication:
+      - type: API Key
+        description: Account API key passed via the `x-api-key` HTTP header.
+  - aid: hyperbrowser:agents-api
+    name: Hyperbrowser Agents API
+    description: >-
+      Start, stop, and monitor agentic browser tasks across HyperAgent,
+      Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI's CUA.
+      Each task runs inside a stealth Hyperbrowser session with live-view URL,
+      proxy support, and CAPTCHA solving.
+    humanURL: https://docs.hyperbrowser.ai/agents/overview
+    baseURL: https://api.hyperbrowser.ai
+    tags:
+      - Agents
+      - Computer Use
+      - HyperAgent
+      - Browser-Use
+      - Claude
+      - Gemini
+      - OpenAI CUA
+    properties:
+      - type: Documentation
+        url: https://docs.hyperbrowser.ai/agents/overview
+      - type: OpenAPI
+        url: openapi/hyperbrowser-agents-api-openapi.yml
+      - type: JSONSchema
+        url: json-schema/hyperbrowser-agent-task-schema.json
+      - type: NaftikoCapability
+        url: capabilities/agents-hyper-agent.yaml
+      - type: NaftikoCapability
+        url: capabilities/agents-browser-use.yaml
+      - type: NaftikoCapability
+        url: capabilities/agents-claude-computer-use.yaml
+      - type: NaftikoCapability
+        url: capabilities/agents-gemini-computer-use.yaml
+      - type: NaftikoCapability
+        url: capabilities/agents-cua.yaml
+      - type: Example
+        url: examples/hyperbrowser-claude-computer-use-example.json
+    authentication:
+      - type: API Key
+        description: Account API key passed via the `x-api-key` HTTP header.
+  - aid: hyperbrowser:extensions-api
+    name: Hyperbrowser Extensions API
+    description: >-
+      Upload and list custom Chrome extensions that can be attached to browser
+      sessions for advanced automation, custom UI, or workflow tooling.
+    humanURL: https://docs.hyperbrowser.ai/sessions/advanced-privacy-and-anti-detection/uploading-extensions
+    baseURL: https://api.hyperbrowser.ai
+    tags:
+      - Extensions
+      - Sessions
+    properties:
+      - type: Documentation
+        url: https://docs.hyperbrowser.ai/sessions/advanced-privacy-and-anti-detection/uploading-extensions
+      - type: OpenAPI
+        url: openapi/hyperbrowser-extensions-api-openapi.yml
+      - type: NaftikoCapability
+        url: capabilities/extensions-extensions.yaml
+    authentication:
+      - type: API Key
+        description: Account API key passed via the `x-api-key` HTTP header.
+  - aid: hyperbrowser:web-api
+    name: Hyperbrowser Web API
+    description: >-
+      Stateless web utilities: fetch a single page, run a web search, or start a
+      crawl. Includes `/x402` micropayment-gated variants of fetch and search
+      for permissionless, pay-per-call usage.
+    humanURL: https://docs.hyperbrowser.ai/web/overview
+    baseURL: https://api.hyperbrowser.ai
+    tags:
+      - Web
+      - Fetch
+      - Search
+      - X402
+    properties:
+      - type: Documentation
+        url: https://docs.hyperbrowser.ai/web/overview
+      - type: OpenAPI
+        url: openapi/hyperbrowser-web-api-openapi.yml
+      - type: NaftikoCapability
+        url: capabilities/web-web.yaml
+      - type: NaftikoCapability
+        url: capabilities/web-x402-web.yaml
+      - type: Example
+        url: examples/hyperbrowser-web-search-example.json
+    authentication:
+      - type: API Key
+        description: Account API key passed via the `x-api-key` HTTP header.
+features:
+  - name: Cloud Browser Sessions
+    description: Managed Chromium sessions with lifecycle, recording, and download retrieval.
+  - name: Scrape and Crawl
+    description: Single-page scrape, batch scrape, and recursive crawl jobs with status polling.
+  - name: Structured Extraction
+    description: Extract typed data from pages using prompts and JSON schemas.
+  - name: Agent Task APIs
+    description: Start, stop, and monitor agentic tasks across HyperAgent, Browser-Use, Claude CUA, Gemini CUA, and OpenAI CUA.
+  - name: Stealth and Proxies
+    description: Anti-detection, residential and datacenter proxies, static IPs, and multi-region routing.
+  - name: Browser Profiles
+    description: Persist authenticated state and cookies across sessions.
+  - name: CAPTCHA Solving
+    description: Built-in CAPTCHA handling for protected sites.
+  - name: Extensions and Uploads
+    description: Add custom Chrome extensions and handle file uploads and downloads.
+  - name: MCP Server
+    description: Model Context Protocol server for Claude Desktop, Cursor, Windsurf, and other MCP clients.
+  - name: X402 Pay-per-Call
+    description: Per-call payments via the HTTP 402 protocol for permissionless usage of fetch and search.
+useCases:
+  - name: Production Web Agents
+    description: Power agents that browse, click, and complete real workflows on third-party sites.
+  - name: Large-Scale Data Extraction
+    description: Run scrape and crawl jobs across millions of pages with proxy rotation.
+  - name: Computer Use Agents
+    description: Provide a stealthy browser for Claude, Gemini, and OpenAI computer-use models.
+  - name: Lead and Market Research
+    description: Crawl sites and extract structured records into CRMs and data warehouses.
+  - name: RL and Eval Environments
+    description: Use snapshots and profiles to train and evaluate web-using agents.
+integrations:
+  - name: HyperAgent
+  - name: Browser-Use
+  - name: Playwright
+  - name: Puppeteer
+  - name: Stagehand
+  - name: Anthropic Claude Computer Use
+  - name: Google Gemini Computer Use
+  - name: OpenAI CUA
+  - name: LangChain
+  - name: LlamaIndex
+  - name: MCP
+  - name: n8n
+  - name: X402 Payment Protocol
 common:
   - type: Website
     url: https://hyperbrowser.ai
   - type: Documentation
-    url: https://hyperbrowser.ai/docs
+    url: https://docs.hyperbrowser.ai
+  - type: APIReference
+    url: https://docs.hyperbrowser.ai/api-reference
+  - type: GettingStarted
+    url: https://docs.hyperbrowser.ai/quickstart
   - type: Blog
     url: https://hyperbrowser.ai/blog
   - type: GitHubOrganization
@@ -137,6 +318,40 @@ common:
     url: https://hyperbrowser.ai/terms
   - type: PrivacyPolicy
     url: https://hyperbrowser.ai/privacy
+  - type: LLMsTxt
+    url: https://hyperbrowser.ai/llms.txt
+  - type: SDK
+    url: https://github.com/hyperbrowserai/python-sdk
+  - type: SDK
+    url: https://github.com/hyperbrowserai/node-sdk
+  - type: SDK
+    url: https://pypi.org/project/hyperbrowser/
+  - type: SDK
+    url: https://www.npmjs.com/package/@hyperbrowser/sdk
+  - type: Tool
+    url: https://github.com/hyperbrowserai/mcp
+  - type: Tool
+    url: https://github.com/hyperbrowserai/HyperAgent
+  - type: Tool
+    url: https://github.com/hyperbrowserai/n8n-node
+  - type: CodeExamples
+    url: https://github.com/hyperbrowserai/examples
+  - type: CodeExamples
+    url: https://github.com/hyperbrowserai/hyperbrowser-app-examples
+  - type: CodeExamples
+    url: https://github.com/hyperbrowserai/cua-as-a-tool
+  - type: Plans
+    url: plans/hyperbrowser-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/hyperbrowser-rate-limits.yml
+  - type: FinOps
+    url: finops/hyperbrowser-finops.yml
+  - type: Vocabulary
+    url: vocabulary/hyperbrowser-vocabulary.yml
+  - type: JSONLD
+    url: json-ld/hyperbrowser-context.jsonld
+  - type: SpectralRules
+    url: rules/hyperbrowser-rules.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

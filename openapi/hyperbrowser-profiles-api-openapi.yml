@@ -1,0 +1,186 @@
+openapi: 3.0.1
+info:
+  title: Hyperbrowser Profiles API
+  version: 1.0.0
+  description: Manage persistent browser profiles that retain authenticated state, cookies, and storage across sessions.
+  contact:
+    name: Hyperbrowser
+    url: https://hyperbrowser.ai
+  license:
+    name: Hyperbrowser Terms
+    url: https://hyperbrowser.ai/terms
+servers:
+- url: https://api.hyperbrowser.ai
+  description: Production server
+security:
+- ApiKeyAuth: []
+paths:
+  /api/profile:
+    post:
+      operationId: post-api-profile
+      summary: Creates a New Profile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProfileParams'
+      responses:
+        '200':
+          description: Profile created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateProfileResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Profiles
+  /api/profile/{id}:
+    get:
+      operationId: get-api-profile-id
+      summary: Get Profile by ID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Profile details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfileResponse'
+        '404':
+          description: Profile not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Profiles
+    delete:
+      operationId: delete-api-profile-id
+      summary: Delete Profile by ID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Profile deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Profiles
+  /api/profiles:
+    get:
+      operationId: get-api-profiles
+      summary: Get List of Profiles
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: number
+          default: 1
+      - name: limit
+        in: query
+        schema:
+          type: number
+          default: 10
+      - name: name
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of profiles
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfileListResponse'
+        '400':
+          description: Invalid query parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Profiles
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Account API key from app.hyperbrowser.ai
+  schemas:
+    BasicResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+    CreateProfileParams:
+      type: object
+      properties:
+        name:
+          type: string
+    CreateProfileResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+          nullable: true
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    ProfileListResponse:
+      type: object
+      properties:
+        profiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProfileResponse'
+        totalCount:
+          type: number
+        page:
+          type: number
+        perPage:
+          type: number
+    ProfileResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+          nullable: true
+        teamId:
+          type: string
+        createdAt:
+          type: string
+          format: iso8601
+        updatedAt:
+          type: string
+          format: iso8601

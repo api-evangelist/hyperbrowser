@@ -1,0 +1,87 @@
+{
+  "title": "Hyperbrowser Session Structure",
+  "description": "Compact structural overview of the Hyperbrowser Session resource and its lifecycle.",
+  "resource": "Session",
+  "lifecycle": [
+    "create",
+    "active",
+    "stop",
+    "ended"
+  ],
+  "fields": [
+    {
+      "name": "id",
+      "type": "string",
+      "description": "Server-issued session identifier."
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "enum": [
+        "pending",
+        "active",
+        "ended",
+        "error"
+      ]
+    },
+    {
+      "name": "wsEndpoint",
+      "type": "string",
+      "description": "WebSocket CDP endpoint."
+    },
+    {
+      "name": "liveUrl",
+      "type": "string",
+      "description": "Optional live-view URL."
+    },
+    {
+      "name": "sessionUrl",
+      "type": "string",
+      "description": "REST URL of this session."
+    },
+    {
+      "name": "createdAt",
+      "type": "string",
+      "format": "date-time"
+    },
+    {
+      "name": "updatedAt",
+      "type": "string",
+      "format": "date-time"
+    },
+    {
+      "name": "endedAt",
+      "type": "string",
+      "format": "date-time"
+    },
+    {
+      "name": "useStealth",
+      "type": "boolean"
+    },
+    {
+      "name": "useProxy",
+      "type": "boolean"
+    },
+    {
+      "name": "solveCaptchas",
+      "type": "boolean"
+    },
+    {
+      "name": "profile",
+      "type": "object",
+      "description": "Optional persistent profile reference."
+    }
+  ],
+  "transitions": [
+    {
+      "from": "pending",
+      "to": "active",
+      "trigger": "session ready"
+    },
+    {
+      "from": "active",
+      "to": "ended",
+      "trigger": "PUT /api/session/{id}/stop or TTL expiry"
+    }
+  ]
+}

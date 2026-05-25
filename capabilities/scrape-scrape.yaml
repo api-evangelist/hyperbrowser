@@ -1,0 +1,282 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Hyperbrowser Scrape — Scrape
+  description: Hyperbrowser Scrape — Scrape. 6 operations. Self-contained Naftiko capability covering one Hyperbrowser business
+    surface.
+  tags:
+  - Hyperbrowser
+  - Scrape
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    HYPERBROWSER_API_KEY: HYPERBROWSER_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: scrape-scrape
+    baseUri: https://api.hyperbrowser.ai
+    description: Hyperbrowser Scrape — Scrape business capability. Self-contained, no shared references.
+    resources:
+    - name: api-scrape
+      path: /api/scrape
+      operations:
+      - name: post-api-scrape
+        method: POST
+        description: Create New Scrape Job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-scrape-id
+      path: /api/scrape/{id}
+      operations:
+      - name: get-api-scrape-id
+        method: GET
+        description: Get Scrape Job Status and Result
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id
+          required: true
+    - name: api-scrape-id-status
+      path: /api/scrape/{id}/status
+      operations:
+      - name: get-api-scrape-id-status
+        method: GET
+        description: Get Scrape Job Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id
+          required: true
+    - name: api-scrape-batch
+      path: /api/scrape/batch
+      operations:
+      - name: post-api-scrape-batch
+        method: POST
+        description: Start a Batch Scrape Job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-scrape-batch-id
+      path: /api/scrape/batch/{id}
+      operations:
+      - name: get-api-scrape-batch-id
+        method: GET
+        description: Get Batch Scrape Job Status and Results
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id
+          required: true
+    - name: api-scrape-batch-id-status
+      path: /api/scrape/batch/{id}/status
+      operations:
+      - name: get-api-scrape-batch-id-status
+        method: GET
+        description: Get Batch Scrape Job Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id
+          required: true
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.HYPERBROWSER_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: scrape-scrape-rest
+    port: 8080
+    description: REST adapter for Hyperbrowser Scrape — Scrape.
+    resources:
+    - path: /v1/api/scrape
+      name: api-scrape
+      description: REST surface for api-scrape.
+      operations:
+      - method: POST
+        name: post-api-scrape
+        description: Create New Scrape Job
+        call: scrape-scrape.post-api-scrape
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/scrape/{id}
+      name: api-scrape-id
+      description: REST surface for api-scrape-id.
+      operations:
+      - method: GET
+        name: get-api-scrape-id
+        description: Get Scrape Job Status and Result
+        call: scrape-scrape.get-api-scrape-id
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/scrape/{id}/status
+      name: api-scrape-id-status
+      description: REST surface for api-scrape-id-status.
+      operations:
+      - method: GET
+        name: get-api-scrape-id-status
+        description: Get Scrape Job Status
+        call: scrape-scrape.get-api-scrape-id-status
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/scrape/batch
+      name: api-scrape-batch
+      description: REST surface for api-scrape-batch.
+      operations:
+      - method: POST
+        name: post-api-scrape-batch
+        description: Start a Batch Scrape Job
+        call: scrape-scrape.post-api-scrape-batch
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/scrape/batch/{id}
+      name: api-scrape-batch-id
+      description: REST surface for api-scrape-batch-id.
+      operations:
+      - method: GET
+        name: get-api-scrape-batch-id
+        description: Get Batch Scrape Job Status and Results
+        call: scrape-scrape.get-api-scrape-batch-id
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/scrape/batch/{id}/status
+      name: api-scrape-batch-id-status
+      description: REST surface for api-scrape-batch-id-status.
+      operations:
+      - method: GET
+        name: get-api-scrape-batch-id-status
+        description: Get Batch Scrape Job Status
+        call: scrape-scrape.get-api-scrape-batch-id-status
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: scrape-scrape-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Hyperbrowser Scrape — Scrape.
+    tools:
+    - name: hyperbrowser-post-api-scrape
+      description: Create New Scrape Job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: scrape-scrape.post-api-scrape
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hyperbrowser-get-api-scrape-id
+      description: Get Scrape Job Status and Result
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: scrape-scrape.get-api-scrape-id
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hyperbrowser-get-api-scrape-id-status
+      description: Get Scrape Job Status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: scrape-scrape.get-api-scrape-id-status
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hyperbrowser-post-api-scrape-batch
+      description: Start a Batch Scrape Job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: scrape-scrape.post-api-scrape-batch
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hyperbrowser-get-api-scrape-batch-id
+      description: Get Batch Scrape Job Status and Results
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: scrape-scrape.get-api-scrape-batch-id
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hyperbrowser-get-api-scrape-batch-id-status
+      description: Get Batch Scrape Job Status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: scrape-scrape.get-api-scrape-batch-id-status
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.

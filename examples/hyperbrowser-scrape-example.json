@@ -1,0 +1,16 @@
+{
+  "operation": "POST /api/scrape",
+  "request": {
+    "url": "https://hyperbrowser.ai",
+    "scrapeOptions": {
+      "formats": [
+        "markdown",
+        "links"
+      ]
+    }
+  },
+  "response": {
+    "jobId": "scrape_01HZ8YQM4N7XEXAMPLE",
+    "status": "pending"
+  }
+}

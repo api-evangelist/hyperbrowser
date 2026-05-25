@@ -1,0 +1,374 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Hyperbrowser Sessions — Session
+  description: Hyperbrowser Sessions — Session. 8 operations. Self-contained Naftiko capability covering one Hyperbrowser
+    business surface.
+  tags:
+  - Hyperbrowser
+  - Sessions
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    HYPERBROWSER_API_KEY: HYPERBROWSER_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sessions-session
+    baseUri: https://api.hyperbrowser.ai
+    description: Hyperbrowser Sessions — Session business capability. Self-contained, no shared references.
+    resources:
+    - name: api-session
+      path: /api/session
+      operations:
+      - name: post-api-session
+        method: POST
+        description: Create New Session
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-session-id
+      path: /api/session/{id}
+      operations:
+      - name: get-api-session-id
+        method: GET
+        description: Get Session by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id
+          required: true
+    - name: api-session-id-stop
+      path: /api/session/{id}/stop
+      operations:
+      - name: put-api-session-id-stop
+        method: PUT
+        description: Stop a Session
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id
+          required: true
+    - name: api-session-id-update
+      path: /api/session/{id}/update
+      operations:
+      - name: put-api-session-id-update
+        method: PUT
+        description: Update a Running Session
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-session-id-captcha-evaluate
+      path: /api/session/{id}/captcha/evaluate
+      operations:
+      - name: post-api-session-id-captcha-evaluate
+        method: POST
+        description: Run Manual CAPTCHA Evaluation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-session-id-recording-url
+      path: /api/session/{id}/recording-url
+      operations:
+      - name: get-api-session-id-recording-url
+        method: GET
+        description: Get Session Recording URL
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id
+          required: true
+    - name: api-session-id-video-recording-url
+      path: /api/session/{id}/video-recording-url
+      operations:
+      - name: get-api-session-id-video-recording-url
+        method: GET
+        description: Get Session Video Recording URL
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id
+          required: true
+    - name: api-session-id-downloads-url
+      path: /api/session/{id}/downloads-url
+      operations:
+      - name: get-api-session-id-downloads-url
+        method: GET
+        description: Get Session Downloads URL
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id
+          required: true
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.HYPERBROWSER_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: sessions-session-rest
+    port: 8080
+    description: REST adapter for Hyperbrowser Sessions — Session.
+    resources:
+    - path: /v1/api/session
+      name: api-session
+      description: REST surface for api-session.
+      operations:
+      - method: POST
+        name: post-api-session
+        description: Create New Session
+        call: sessions-session.post-api-session
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/session/{id}
+      name: api-session-id
+      description: REST surface for api-session-id.
+      operations:
+      - method: GET
+        name: get-api-session-id
+        description: Get Session by ID
+        call: sessions-session.get-api-session-id
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/session/{id}/stop
+      name: api-session-id-stop
+      description: REST surface for api-session-id-stop.
+      operations:
+      - method: PUT
+        name: put-api-session-id-stop
+        description: Stop a Session
+        call: sessions-session.put-api-session-id-stop
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/session/{id}/update
+      name: api-session-id-update
+      description: REST surface for api-session-id-update.
+      operations:
+      - method: PUT
+        name: put-api-session-id-update
+        description: Update a Running Session
+        call: sessions-session.put-api-session-id-update
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/session/{id}/captcha/evaluate
+      name: api-session-id-captcha-evaluate
+      description: REST surface for api-session-id-captcha-evaluate.
+      operations:
+      - method: POST
+        name: post-api-session-id-captcha-evaluate
+        description: Run Manual CAPTCHA Evaluation
+        call: sessions-session.post-api-session-id-captcha-evaluate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/session/{id}/recording-url
+      name: api-session-id-recording-url
+      description: REST surface for api-session-id-recording-url.
+      operations:
+      - method: GET
+        name: get-api-session-id-recording-url
+        description: Get Session Recording URL
+        call: sessions-session.get-api-session-id-recording-url
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/session/{id}/video-recording-url
+      name: api-session-id-video-recording-url
+      description: REST surface for api-session-id-video-recording-url.
+      operations:
+      - method: GET
+        name: get-api-session-id-video-recording-url
+        description: Get Session Video Recording URL
+        call: sessions-session.get-api-session-id-video-recording-url
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/session/{id}/downloads-url
+      name: api-session-id-downloads-url
+      description: REST surface for api-session-id-downloads-url.
+      operations:
+      - method: GET
+        name: get-api-session-id-downloads-url
+        description: Get Session Downloads URL
+        call: sessions-session.get-api-session-id-downloads-url
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sessions-session-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Hyperbrowser Sessions — Session.
+    tools:
+    - name: hyperbrowser-post-api-session
+      description: Create New Session
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: sessions-session.post-api-session
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hyperbrowser-get-api-session-id
+      description: Get Session by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sessions-session.get-api-session-id
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hyperbrowser-put-api-session-id-stop
+      description: Stop a Session
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: false
+      call: sessions-session.put-api-session-id-stop
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hyperbrowser-put-api-session-id-update
+      description: Update a Running Session
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: sessions-session.put-api-session-id-update
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hyperbrowser-post-api-session-id-captcha-evaluate
+      description: Run Manual CAPTCHA Evaluation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: sessions-session.post-api-session-id-captcha-evaluate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hyperbrowser-get-api-session-id-recording-url
+      description: Get Session Recording URL
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sessions-session.get-api-session-id-recording-url
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hyperbrowser-get-api-session-id-video-recording-url
+      description: Get Session Video Recording URL
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sessions-session.get-api-session-id-video-recording-url
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hyperbrowser-get-api-session-id-downloads-url
+      description: Get Session Downloads URL
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sessions-session.get-api-session-id-downloads-url
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.

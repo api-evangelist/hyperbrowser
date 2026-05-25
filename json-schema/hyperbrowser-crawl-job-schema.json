@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/hyperbrowser/main/json-schema/hyperbrowser-crawl-job-schema.json",
+  "title": "Hyperbrowser Crawl Job",
+  "description": "JSON Schema for the Hyperbrowser Hyperbrowser Crawl Job resource extracted from the official OpenAPI spec.",
+  "type": "object",
+  "properties": {
+    "status": {
+      "$ref": "#/$defs/JobStatus"
+    }
+  },
+  "required": [
+    "status"
+  ],
+  "$defs": {
+    "JobStatus": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "running",
+        "completed",
+        "failed",
+        "stopped"
+      ]
+    }
+  }
+}

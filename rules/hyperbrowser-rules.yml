@@ -1,0 +1,55 @@
+extends:
+- - spectral:oas
+  - recommended
+rules:
+  hyperbrowser-operation-summary-title-case:
+    description: Operation summaries must be Title Case.
+    given: $.paths.*.*.summary
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: ^([A-Z][a-zA-Z0-9]*)(\s+(?:[A-Za-z0-9]+))*$
+  hyperbrowser-path-prefix:
+    description: Hyperbrowser paths begin with /api or /x402.
+    given: $.paths.*~
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: ^/(api|x402)/
+  hyperbrowser-api-key-scheme:
+    description: Hyperbrowser uses the x-api-key header for authentication.
+    given: $.components.securitySchemes.*
+    severity: warn
+    then:
+    - field: type
+      function: enumeration
+      functionOptions:
+        values:
+        - apiKey
+    - field: name
+      function: enumeration
+      functionOptions:
+        values:
+        - x-api-key
+    - field: in
+      function: enumeration
+      functionOptions:
+        values:
+        - header
+  hyperbrowser-job-status-resources:
+    description: Long-running jobs SHOULD expose a /status path alongside the result path.
+    message: '{{path}} looks like a job resource — consider exposing a sibling /status endpoint.'
+    given: $.paths[?(@property =~ /\/(scrape|crawl|extract|task\/.+)\/\{id\}$/)]~
+    severity: info
+    then:
+      function: truthy
+  hyperbrowser-camelcase-properties:
+    description: Schema property names should be camelCase per Hyperbrowser convention.
+    given: $.components.schemas.*.properties.*~
+    severity: info
+    then:
+      function: pattern
+      functionOptions:
+        match: ^[a-z][A-Za-z0-9]*$

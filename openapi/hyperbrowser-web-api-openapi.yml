@@ -1,0 +1,873 @@
+openapi: 3.0.1
+info:
+  title: Hyperbrowser Web API
+  version: 1.0.0
+  description: 'Stateless web utilities: fetch a page, run a web search, or start a web-wide crawl job. Includes x402 payment-gated
+    variants.'
+  contact:
+    name: Hyperbrowser
+    url: https://hyperbrowser.ai
+  license:
+    name: Hyperbrowser Terms
+    url: https://hyperbrowser.ai/terms
+servers:
+- url: https://api.hyperbrowser.ai
+  description: Production server
+security:
+- ApiKeyAuth: []
+paths:
+  /api/web/fetch:
+    post:
+      operationId: post-api-web-fetch
+      summary: Fetch a Web Page
+      description: Fetches a web page and returns the content in various formats (HTML, Markdown, JSON, screenshot, etc.)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FetchParams'
+      responses:
+        '200':
+          description: Page fetched successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FetchResponse'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Web
+  /api/web/search:
+    post:
+      operationId: post-api-web-search
+      summary: Search the Web
+      description: Performs a web search and returns search results with titles, URLs, and descriptions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebSearchParams'
+      responses:
+        '200':
+          description: Search completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebSearchResponse'
+        '400':
+          description: Invalid search parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Web
+  /api/web/crawl:
+    post:
+      operationId: post-api-web-crawl
+      summary: Start a Web Crawl Job
+      description: Starts an asynchronous crawl job that follows links from a starting URL and returns content from each page
+        in the specified formats.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StartWebCrawlJobParams'
+      responses:
+        '200':
+          description: Crawl job started successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - jobId
+                properties:
+                  jobId:
+                    type: string
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Web
+  /api/web/crawl/{id}:
+    get:
+      operationId: get-api-web-crawl-id
+      summary: Get Web Crawl Job Results
+      description: Retrieves the status and results of a web crawl job. Results are paginated.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+      - name: batchSize
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+      responses:
+        '200':
+          description: Web crawl job details retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebCrawlJobResponse'
+        '404':
+          description: Crawl job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Web
+  /api/web/crawl/{id}/status:
+    get:
+      operationId: get-api-web-crawl-id-status
+      summary: Get Web Crawl Job Status
+      description: Retrieves just the status of a web crawl job without the full results.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Web crawl job status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+        '404':
+          description: Crawl job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Web
+  /x402/web/fetch:
+    post:
+      operationId: post-x402-web-fetch
+      summary: Fetch a Web Page with X402 Payment
+      description: X402 payment endpoint. First request returns 402 with payment requirements. Retry with PAYMENT-SIGNATURE
+        header containing cryptographic proof to get the actual data. See https://x402.gitbook.io/x402 for protocol details.
+      parameters:
+      - name: PAYMENT-SIGNATURE
+        in: header
+        required: false
+        description: Base64-encoded JSON containing payment proof (x402Version, resource, accepted payment method, and cryptographic
+          payload with signature and payer address)
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FetchParams'
+      responses:
+        '200':
+          description: Page fetched successfully (after valid payment)
+          headers:
+            PAYMENT-RESPONSE:
+              description: Base64-encoded JSON with settlement information
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FetchResponse'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '402':
+          description: Payment Required - returned on first request without PAYMENT-SIGNATURE header
+          headers:
+            PAYMENT-REQUIRED:
+              description: Base64-encoded JSON containing X402 payment requirements (x402Version, resource info, and array
+                of accepted payment methods with network, asset, amount, payTo address, and timeout)
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      tags:
+      - Web
+  /x402/web/search:
+    post:
+      operationId: post-x402-web-search
+      summary: Search the Web with X402 Payment
+      description: X402 payment endpoint. First request returns 402 with payment requirements. Retry with PAYMENT-SIGNATURE
+        header containing cryptographic proof to get search results. See https://x402.gitbook.io/x402 for protocol details.
+      parameters:
+      - name: PAYMENT-SIGNATURE
+        in: header
+        required: false
+        description: Base64-encoded JSON containing payment proof (x402Version, resource, accepted payment method, and cryptographic
+          payload with signature and payer address)
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebSearchParams'
+      responses:
+        '200':
+          description: Search completed successfully (after valid payment)
+          headers:
+            PAYMENT-RESPONSE:
+              description: Base64-encoded JSON with settlement information
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebSearchResponse'
+        '400':
+          description: Invalid search parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '402':
+          description: Payment Required - returned on first request without PAYMENT-SIGNATURE header
+          headers:
+            PAYMENT-REQUIRED:
+              description: Base64-encoded JSON containing X402 payment requirements (x402Version, resource info, and array
+                of accepted payment methods with network, asset, amount, payTo address, and timeout)
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      tags:
+      - Web
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Account API key from app.hyperbrowser.ai
+  schemas:
+    BrandingProfile:
+      type: object
+      description: Visual brand profile extracted via DOM analysis + LLM enhancement. All fields optional; the server may
+        return a partial profile when the LLM refuses or fails.
+      properties:
+        colorScheme:
+          type: string
+          description: 'Page color scheme. Common values: light, dark.'
+        colors:
+          type: object
+          description: 'Color role assignments. Common keys: primary, secondary, accent, background, textPrimary, textSecondary,
+            link.'
+        fonts:
+          type: array
+          description: Cleaned brand fonts with roles.
+          items:
+            type: object
+            properties:
+              family:
+                type: string
+              role:
+                type: string
+        typography:
+          type: object
+          description: 'Font families, stacks, and sizes. Keys: fontFamilies, fontStacks, fontSizes, lineHeights, fontWeights.'
+        spacing:
+          type: object
+          description: 'Spacing scale. Common keys: baseUnit, borderRadius, padding, margins, gridGutter.'
+        components:
+          type: object
+          description: 'Per-component style dictionaries. Common keys: buttonPrimary, buttonSecondary, input. Each value has
+            background, textColor, borderColor, borderRadius, borderRadiusCorners, shadow.'
+        images:
+          type: object
+          description: 'Brand images. Common keys: logo, logoHref, logoAlt, favicon, ogImage.'
+        personality:
+          type: object
+          description: 'Brand personality. Common keys: tone, energy, targetAudience.'
+        designSystem:
+          type: object
+          description: 'Detected design system. Common keys: framework, componentLibrary.'
+        confidence:
+          type: object
+          description: 'Confidence scores (0-1). Common keys: buttons, colors, overall.'
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    FetchBrowserLocationOptions:
+      type: object
+      properties:
+        country:
+          type: string
+        state:
+          type: string
+        city:
+          type: string
+    FetchBrowserOptions:
+      type: object
+      properties:
+        screen:
+          $ref: '#/components/schemas/ScreenConfig'
+        profileId:
+          type: string
+        solveCaptchas:
+          type: string
+        location:
+          $ref: '#/components/schemas/FetchBrowserLocationOptions'
+    FetchCacheOptions:
+      type: object
+      properties:
+        maxAgeSeconds:
+          type: integer
+    FetchNavigationOptions:
+      type: object
+      properties:
+        waitUntil:
+          $ref: '#/components/schemas/FetchWaitUntil'
+        timeoutMs:
+          type: integer
+        waitFor:
+          type: integer
+    FetchOutputBranding:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - branding
+      required:
+      - type
+    FetchOutputHtml:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - html
+      required:
+      - type
+    FetchOutputJson:
+      allOf:
+      - $ref: '#/components/schemas/FetchOutputJsonOptions'
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - json
+        required:
+        - type
+    FetchOutputJsonOptions:
+      type: object
+      properties:
+        schema:
+          type: object
+        prompt:
+          type: string
+          description: Natural language prompt describing what data to extract. If only prompt is provided, a schema is auto-generated
+            from it. If both prompt and schema are provided, the schema defines the output structure while the prompt provides
+            additional guidance for the extraction.
+    FetchOutputLinks:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - links
+      required:
+      - type
+    FetchOutputMarkdown:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - markdown
+      required:
+      - type
+    FetchOutputOptions:
+      type: object
+      properties:
+        formats:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/FetchOutputMarkdown'
+            - $ref: '#/components/schemas/FetchOutputHtml'
+            - $ref: '#/components/schemas/FetchOutputLinks'
+            - $ref: '#/components/schemas/FetchOutputScreenshot'
+            - $ref: '#/components/schemas/FetchOutputJson'
+            - $ref: '#/components/schemas/FetchOutputBranding'
+            - type: string
+              enum:
+              - markdown
+              - html
+              - links
+              - screenshot
+              - branding
+        sanitize:
+          $ref: '#/components/schemas/FetchSanitizeMode'
+        includeSelectors:
+          type: array
+          items:
+            type: string
+        excludeSelectors:
+          type: array
+          items:
+            type: string
+        storageState:
+          $ref: '#/components/schemas/FetchStorageStateOptions'
+    FetchOutputScreenshot:
+      allOf:
+      - $ref: '#/components/schemas/FetchOutputScreenshotOptions'
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - screenshot
+        required:
+        - type
+    FetchOutputScreenshotOptions:
+      type: object
+      properties:
+        fullPage:
+          type: boolean
+        format:
+          $ref: '#/components/schemas/FetchScreenshotFormat'
+        cropToContent:
+          type: boolean
+        cropToContentMaxHeight:
+          type: integer
+        cropToContentMinHeight:
+          type: integer
+    FetchParams:
+      type: object
+      properties:
+        url:
+          type: string
+        stealth:
+          $ref: '#/components/schemas/FetchStealthMode'
+        outputs:
+          $ref: '#/components/schemas/FetchOutputOptions'
+        browser:
+          $ref: '#/components/schemas/FetchBrowserOptions'
+        navigation:
+          $ref: '#/components/schemas/FetchNavigationOptions'
+        cache:
+          $ref: '#/components/schemas/FetchCacheOptions'
+      required:
+      - url
+    FetchResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          $ref: '#/components/schemas/FetchStatus'
+        error:
+          type: string
+          nullable: true
+        data:
+          $ref: '#/components/schemas/FetchResponseData'
+      required:
+      - jobId
+      - status
+    FetchResponseData:
+      type: object
+      properties:
+        metadata:
+          type: object
+          additionalProperties:
+            oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+        html:
+          type: string
+        markdown:
+          type: string
+        links:
+          type: array
+          items:
+            type: string
+        screenshot:
+          type: string
+        json:
+          type: object
+        branding:
+          $ref: '#/components/schemas/BrandingProfile'
+    FetchSanitizeMode:
+      type: string
+      enum:
+      - none
+      - basic
+      - advanced
+    FetchScreenshotFormat:
+      type: string
+      enum:
+      - jpeg
+      - png
+      - webp
+    FetchStatus:
+      type: string
+      enum:
+      - completed
+      - failed
+      - pending
+      - running
+    FetchStealthMode:
+      type: string
+      enum:
+      - none
+      - auto
+      - ultra
+    FetchStorageStateOptions:
+      type: object
+      properties:
+        localStorage:
+          type: object
+          additionalProperties:
+            type: string
+        sessionStorage:
+          type: object
+          additionalProperties:
+            type: string
+    FetchWaitUntil:
+      type: string
+      enum:
+      - load
+      - domcontentloaded
+      - networkidle
+    JobStatus:
+      type: string
+      enum:
+      - pending
+      - running
+      - completed
+      - failed
+      - stopped
+    JobStatusResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/JobStatus'
+      required:
+      - status
+    PageStatus:
+      type: string
+      enum:
+      - completed
+      - failed
+      - pending
+      - running
+    ScreenConfig:
+      type: object
+      properties:
+        width:
+          type: number
+          default: 1280
+        height:
+          type: number
+          default: 720
+    StartWebCrawlJobParams:
+      type: object
+      properties:
+        url:
+          type: string
+        stealth:
+          $ref: '#/components/schemas/FetchStealthMode'
+        outputs:
+          $ref: '#/components/schemas/FetchOutputOptions'
+        browser:
+          $ref: '#/components/schemas/FetchBrowserOptions'
+        navigation:
+          $ref: '#/components/schemas/FetchNavigationOptions'
+        cache:
+          $ref: '#/components/schemas/FetchCacheOptions'
+        crawlOptions:
+          $ref: '#/components/schemas/WebCrawlOptions'
+      required:
+      - url
+    WebCrawlJobResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+          format: uuid
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        error:
+          type: string
+          nullable: true
+        totalPages:
+          type: integer
+          minimum: 0
+        totalPageBatches:
+          type: integer
+          minimum: 0
+        currentPageBatch:
+          type: integer
+          minimum: 0
+        batchSize:
+          type: integer
+          minimum: 1
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebCrawlPageData'
+      required:
+      - status
+      - jobId
+    WebCrawlOptions:
+      type: object
+      properties:
+        maxPages:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 10
+        followLinks:
+          type: boolean
+          default: true
+        ignoreSitemap:
+          type: boolean
+          default: false
+        excludePatterns:
+          type: array
+          items:
+            type: string
+        includePatterns:
+          type: array
+          items:
+            type: string
+    WebCrawlPageData:
+      type: object
+      properties:
+        url:
+          type: string
+        status:
+          $ref: '#/components/schemas/PageStatus'
+        error:
+          type: string
+          nullable: true
+        metadata:
+          type: object
+          additionalProperties:
+            oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+        markdown:
+          type: string
+        html:
+          type: string
+        links:
+          type: array
+          items:
+            type: string
+        screenshot:
+          type: string
+        json:
+          type: object
+        branding:
+          $ref: '#/components/schemas/BrandingProfile'
+      required:
+      - url
+      - status
+    WebSearchFiletype:
+      type: string
+      enum:
+      - pdf
+      - doc
+      - docx
+      - xls
+      - xlsx
+      - ppt
+      - pptx
+      - html
+    WebSearchFilters:
+      type: object
+      properties:
+        exactPhrase:
+          type: boolean
+        semanticPhrase:
+          type: boolean
+        excludeTerms:
+          type: array
+          items:
+            type: string
+        boostTerms:
+          type: array
+          items:
+            type: string
+        filetype:
+          $ref: '#/components/schemas/WebSearchFiletype'
+        site:
+          type: string
+        excludeSite:
+          type: string
+        intitle:
+          type: string
+        inurl:
+          type: string
+    WebSearchLocation:
+      type: object
+      properties:
+        country:
+          type: string
+        state:
+          type: string
+        city:
+          type: string
+      required:
+      - country
+    WebSearchParams:
+      type: object
+      properties:
+        query:
+          type: string
+        page:
+          type: integer
+        maxAgeSeconds:
+          type: integer
+        location:
+          $ref: '#/components/schemas/WebSearchLocation'
+        filters:
+          $ref: '#/components/schemas/WebSearchFilters'
+      required:
+      - query
+    WebSearchResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          $ref: '#/components/schemas/WebSearchStatus'
+        error:
+          type: string
+          nullable: true
+        data:
+          $ref: '#/components/schemas/WebSearchResponseData'
+      required:
+      - jobId
+      - status
+    WebSearchResponseData:
+      type: object
+      properties:
+        query:
+          type: string
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebSearchResultItem'
+      required:
+      - query
+      - results
+    WebSearchResultItem:
+      type: object
+      properties:
+        title:
+          type: string
+        url:
+          type: string
+        description:
+          type: string
+      required:
+      - title
+      - url
+      - description
+    WebSearchStatus:
+      type: string
+      enum:
+      - completed
+      - failed
+      - pending
+      - running
+      - stopped

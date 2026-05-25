@@ -1,0 +1,170 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Hyperbrowser Crawl — Crawl
+  description: Hyperbrowser Crawl — Crawl. 3 operations. Self-contained Naftiko capability covering one Hyperbrowser business
+    surface.
+  tags:
+  - Hyperbrowser
+  - Crawl
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    HYPERBROWSER_API_KEY: HYPERBROWSER_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: crawl-crawl
+    baseUri: https://api.hyperbrowser.ai
+    description: Hyperbrowser Crawl — Crawl business capability. Self-contained, no shared references.
+    resources:
+    - name: api-crawl
+      path: /api/crawl
+      operations:
+      - name: post-api-crawl
+        method: POST
+        description: Start a Crawl Job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-crawl-id
+      path: /api/crawl/{id}
+      operations:
+      - name: get-api-crawl-id
+        method: GET
+        description: Get Crawl Job Status and Results
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id
+          required: true
+        - name: page
+          in: query
+          type: string
+          description: Query parameter page
+          required: false
+        - name: batchSize
+          in: query
+          type: string
+          description: Query parameter batchSize
+          required: false
+    - name: api-crawl-id-status
+      path: /api/crawl/{id}/status
+      operations:
+      - name: get-api-crawl-id-status
+        method: GET
+        description: Get Crawl Job Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id
+          required: true
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.HYPERBROWSER_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: crawl-crawl-rest
+    port: 8080
+    description: REST adapter for Hyperbrowser Crawl — Crawl.
+    resources:
+    - path: /v1/api/crawl
+      name: api-crawl
+      description: REST surface for api-crawl.
+      operations:
+      - method: POST
+        name: post-api-crawl
+        description: Start a Crawl Job
+        call: crawl-crawl.post-api-crawl
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/crawl/{id}
+      name: api-crawl-id
+      description: REST surface for api-crawl-id.
+      operations:
+      - method: GET
+        name: get-api-crawl-id
+        description: Get Crawl Job Status and Results
+        call: crawl-crawl.get-api-crawl-id
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/crawl/{id}/status
+      name: api-crawl-id-status
+      description: REST surface for api-crawl-id-status.
+      operations:
+      - method: GET
+        name: get-api-crawl-id-status
+        description: Get Crawl Job Status
+        call: crawl-crawl.get-api-crawl-id-status
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: crawl-crawl-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Hyperbrowser Crawl — Crawl.
+    tools:
+    - name: hyperbrowser-post-api-crawl
+      description: Start a Crawl Job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: crawl-crawl.post-api-crawl
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hyperbrowser-get-api-crawl-id
+      description: Get Crawl Job Status and Results
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: crawl-crawl.get-api-crawl-id
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hyperbrowser-get-api-crawl-id-status
+      description: Get Crawl Job Status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: crawl-crawl.get-api-crawl-id-status
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.

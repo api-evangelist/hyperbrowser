@@ -1,0 +1,86 @@
+openapi: 3.0.1
+info:
+  title: Hyperbrowser Extensions API
+  version: 1.0.0
+  description: Upload and list custom Chrome extensions that can be attached to browser sessions.
+  contact:
+    name: Hyperbrowser
+    url: https://hyperbrowser.ai
+  license:
+    name: Hyperbrowser Terms
+    url: https://hyperbrowser.ai/terms
+servers:
+- url: https://api.hyperbrowser.ai
+  description: Production server
+security:
+- ApiKeyAuth: []
+paths:
+  /api/extensions/add:
+    post:
+      operationId: post-api-extensions-add
+      summary: Add a New Extension
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateExtensionParams'
+      responses:
+        '200':
+          description: Extension added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtensionResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Extensions
+  /api/extensions/list:
+    get:
+      operationId: get-api-extensions-list
+      summary: List All Extensions
+      responses:
+        '200':
+          description: Extension added successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExtensionResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Extensions
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Account API key from app.hyperbrowser.ai
+  schemas:
+    CreateExtensionParams:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+        name:
+          type: string
+      required:
+      - file
+    ExtensionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        createdAt:
+          type: string
+          format: iso8601
+        updatedAt:
+          type: string
+          format: iso8601

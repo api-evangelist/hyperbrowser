@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/hyperbrowser/main/json-schema/hyperbrowser-agent-task-schema.json",
+  "title": "Hyperbrowser Agent Task",
+  "description": "JSON Schema for the Hyperbrowser Hyperbrowser Agent Task resource extracted from the official OpenAPI spec.",
+  "type": "object",
+  "properties": {
+    "jobId": {
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/$defs/JobStatus"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "finalResult": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "error": {
+      "type": "string",
+      "nullable": true
+    },
+    "liveUrl": {
+      "type": "string",
+      "nullable": true
+    }
+  },
+  "required": [
+    "jobId",
+    "status"
+  ],
+  "$defs": {
+    "JobStatus": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "running",
+        "completed",
+        "failed",
+        "stopped"
+      ]
+    }
+  }
+}

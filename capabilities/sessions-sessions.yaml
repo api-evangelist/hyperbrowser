@@ -1,0 +1,83 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Hyperbrowser Sessions — Sessions
+  description: Hyperbrowser Sessions — Sessions. 1 operations. Self-contained Naftiko capability covering one Hyperbrowser
+    business surface.
+  tags:
+  - Hyperbrowser
+  - Sessions
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    HYPERBROWSER_API_KEY: HYPERBROWSER_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sessions-sessions
+    baseUri: https://api.hyperbrowser.ai
+    description: Hyperbrowser Sessions — Sessions business capability. Self-contained, no shared references.
+    resources:
+    - name: api-sessions
+      path: /api/sessions
+      operations:
+      - name: get-api-sessions
+        method: GET
+        description: Get List of Sessions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: string
+          description: Query parameter page
+          required: false
+        - name: status
+          in: query
+          type: string
+          description: Query parameter status
+          required: false
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.HYPERBROWSER_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: sessions-sessions-rest
+    port: 8080
+    description: REST adapter for Hyperbrowser Sessions — Sessions.
+    resources:
+    - path: /v1/api/sessions
+      name: api-sessions
+      description: REST surface for api-sessions.
+      operations:
+      - method: GET
+        name: get-api-sessions
+        description: Get List of Sessions
+        call: sessions-sessions.get-api-sessions
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sessions-sessions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Hyperbrowser Sessions — Sessions.
+    tools:
+    - name: hyperbrowser-get-api-sessions
+      description: Get List of Sessions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sessions-sessions.get-api-sessions
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.

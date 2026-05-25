@@ -1,0 +1,1846 @@
+openapi: 3.0.1
+info:
+  title: Hyperbrowser Agents API
+  version: 1.0.0
+  description: Start, stop, and monitor agentic browser tasks across HyperAgent, Browser-Use, Claude Computer Use, Gemini
+    Computer Use, and OpenAI CUA.
+  contact:
+    name: Hyperbrowser
+    url: https://hyperbrowser.ai
+  license:
+    name: Hyperbrowser Terms
+    url: https://hyperbrowser.ai/terms
+servers:
+- url: https://api.hyperbrowser.ai
+  description: Production server
+security:
+- ApiKeyAuth: []
+paths:
+  /api/task/hyper-agent:
+    post:
+      operationId: post-api-task-hyper-agent
+      summary: Start a HyperAgent Task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StartHyperAgentTaskParams'
+      responses:
+        '200':
+          description: HyperAgent task started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StartHyperAgentTaskResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Agents
+  /api/task/hyper-agent/{id}:
+    get:
+      operationId: get-api-task-hyper-agent-id
+      summary: Get HyperAgent Task Status and Results
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: HyperAgent task details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HyperAgentTaskResponse'
+        '404':
+          description: HyperAgent task not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Agents
+  /api/task/hyper-agent/{id}/stop:
+    put:
+      operationId: put-api-task-hyper-agent-id-stop
+      summary: Stop a HyperAgent Task
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: HyperAgent task stopped successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Agents
+  /api/task/hyper-agent/{id}/status:
+    get:
+      operationId: get-api-task-hyper-agent-id-status
+      summary: Get HyperAgent Task Status
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: HyperAgent task status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+        '404':
+          description: HyperAgent task not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Agents
+  /api/task/browser-use:
+    post:
+      operationId: post-api-task-browser-use
+      summary: Start a Browser Use Task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StartBrowserUseTaskParams'
+      responses:
+        '200':
+          description: Browser use task started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StartBrowserUseTaskResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Agents
+  /api/task/browser-use/{id}:
+    get:
+      operationId: get-api-task-browser-use-id
+      summary: Get Browser Use Task Status and Results
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Browser use task details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrowserUseTaskResponse'
+        '404':
+          description: Browser use task not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Agents
+  /api/task/browser-use/{id}/stop:
+    put:
+      operationId: put-api-task-browser-use-id-stop
+      summary: Stop a Browser Use Task
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Browser use task stopped successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Agents
+  /api/task/browser-use/{id}/status:
+    get:
+      operationId: get-api-task-browser-use-id-status
+      summary: Get Browser Use Task Status
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Browser use task status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+        '404':
+          description: Browser use task not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Agents
+  /api/task/claude-computer-use:
+    post:
+      operationId: post-api-task-claude-computer-use
+      summary: Start a Claude Computer Use Task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StartClaudeComputerUseTaskParams'
+      responses:
+        '200':
+          description: Claude computer use task started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StartClaudeComputerUseTaskResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Agents
+  /api/task/claude-computer-use/{id}:
+    get:
+      operationId: get-api-task-claude-computer-use-id
+      summary: Get Claude Computer Use Task Status and Results
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Claude computer use task details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClaudeComputerUseTaskResponse'
+        '404':
+          description: Claude computer use task not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Agents
+  /api/task/claude-computer-use/{id}/stop:
+    put:
+      operationId: put-api-task-claude-computer-use-id-stop
+      summary: Stop a Claude Computer Use Task
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Claude computer use task stopped successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Agents
+  /api/task/claude-computer-use/{id}/status:
+    get:
+      operationId: get-api-task-claude-computer-use-id-status
+      summary: Get Claude Computer Use Task Status
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Claude computer use task status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+        '404':
+          description: Claude computer use task not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Agents
+  /api/task/gemini-computer-use:
+    post:
+      operationId: post-api-task-gemini-computer-use
+      summary: Start a Gemini Computer Use Task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StartGeminiComputerUseTaskParams'
+      responses:
+        '200':
+          description: Gemini computer use task started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StartGeminiComputerUseTaskResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Agents
+  /api/task/gemini-computer-use/{id}:
+    get:
+      operationId: get-api-task-gemini-computer-use-id
+      summary: Get Gemini Computer Use Task Status and Results
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Gemini computer use task details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeminiComputerUseTaskResponse'
+        '404':
+          description: Gemini computer use task not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Agents
+  /api/task/gemini-computer-use/{id}/stop:
+    put:
+      operationId: put-api-task-gemini-computer-use-id-stop
+      summary: Stop a Gemini Computer Use Task
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Gemini computer use task stopped successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Agents
+  /api/task/gemini-computer-use/{id}/status:
+    get:
+      operationId: get-api-task-gemini-computer-use-id-status
+      summary: Get Gemini Computer Use Task Status
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Gemini computer use task status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+        '404':
+          description: Gemini computer use task not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Agents
+  /api/task/cua:
+    post:
+      operationId: post-api-task-cua
+      summary: Start a CUA Task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StartCuaTaskParams'
+      responses:
+        '200':
+          description: CUA task started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StartCuaTaskResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Agents
+  /api/task/cua/{id}:
+    get:
+      operationId: get-api-task-cua-id
+      summary: Get CUA Task Status and Results
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: CUA task details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CuaTaskResponse'
+        '404':
+          description: CUA task not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Agents
+  /api/task/cua/{id}/stop:
+    put:
+      operationId: put-api-task-cua-id-stop
+      summary: Stop a CUA Task
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: CUA task stopped successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Agents
+  /api/task/cua/{id}/status:
+    get:
+      operationId: get-api-task-cua-id-status
+      summary: Get CUA Task Status
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: CUA task status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+        '404':
+          description: CUA task not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Agents
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Account API key from app.hyperbrowser.ai
+  schemas:
+    BasicResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+    BrowserUseLlm:
+      type: string
+      enum:
+      - gpt-4o
+      - gpt-4o-mini
+      - gpt-4.1
+      - gpt-4.1-mini
+      - claude-sonnet-4-6
+      - claude-sonnet-4-5
+      - claude-sonnet-4-20250514
+      - gemini-2.0-flash
+      - gemini-2.5-flash
+      default: gemini-2.0-flash
+    BrowserUseTaskResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        data:
+          type: object
+          properties:
+            steps:
+              type: array
+              items:
+                type: object
+            finalResult:
+              type: string
+              nullable: true
+        error:
+          type: string
+          nullable: true
+        liveUrl:
+          type: string
+          nullable: true
+      required:
+      - jobId
+      - status
+    BrowserUseVersion:
+      type: string
+      enum:
+      - 0.1.40
+      - 0.7.10
+      - latest
+      default: 0.1.40
+    ClaudeComputerUseLlm:
+      type: string
+      enum:
+      - claude-opus-4-5
+      - claude-opus-4-6
+      - claude-haiku-4-5-20251001
+      - claude-sonnet-4-6
+      - claude-sonnet-4-5
+      - claude-sonnet-4-20250514
+      default: claude-sonnet-4-5
+    ClaudeComputerUseTaskResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        data:
+          type: object
+          properties:
+            steps:
+              type: array
+              items:
+                type: object
+            finalResult:
+              type: string
+              nullable: true
+        error:
+          type: string
+          nullable: true
+        liveUrl:
+          type: string
+          nullable: true
+      required:
+      - jobId
+      - status
+    CreateSessionParams:
+      type: object
+      properties:
+        useUltraStealth:
+          type: boolean
+          default: false
+        useStealth:
+          type: boolean
+          default: false
+        useProxy:
+          type: boolean
+          default: false
+        proxyServer:
+          type: string
+        proxyServerPassword:
+          type: string
+        proxyServerUsername:
+          type: string
+        proxyCountry:
+          $ref: '#/components/schemas/ProxyCountry'
+        proxyState:
+          $ref: '#/components/schemas/ProxyState'
+        proxyCity:
+          type: string
+          example: new york
+          nullable: true
+          description: Desired Country. Is mutually exclusive with proxyState. Some cities might not be supported, so before
+            using a new city, we recommend trying it out
+        region:
+          $ref: '#/components/schemas/SessionRegion'
+        operatingSystems:
+          type: array
+          items:
+            $ref: '#/components/schemas/OperatingSystem'
+        device:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device'
+        platform:
+          type: array
+          items:
+            $ref: '#/components/schemas/Platform'
+        locales:
+          type: array
+          items:
+            $ref: '#/components/schemas/ISO639_1'
+          default:
+          - en
+        screen:
+          $ref: '#/components/schemas/ScreenConfig'
+        solveCaptchas:
+          type: boolean
+          default: false
+        solverType:
+          type: string
+          enum:
+          - visual
+          description: Optional CAPTCHA solver mode. Set to visual to use the visual reCAPTCHA solver.
+        adblock:
+          type: boolean
+          default: false
+        trackers:
+          type: boolean
+          default: false
+        annoyances:
+          type: boolean
+          default: false
+        enableWebRecording:
+          type: boolean
+        enableVideoWebRecording:
+          type: boolean
+          default: false
+          description: enableWebRecording must also be true for this to work
+        profile:
+          $ref: '#/components/schemas/CreateSessionProfile'
+        acceptCookies:
+          type: boolean
+        staticIpId:
+          type: string
+          format: uuid
+        saveDownloads:
+          type: boolean
+          default: false
+        extensionIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+            nullable: false
+          default: []
+        urlBlocklist:
+          type: array
+          items:
+            type: string
+            nullable: false
+          default: []
+        browserArgs:
+          type: array
+          items:
+            type: string
+            nullable: false
+          default: []
+        imageCaptchaParams:
+          type: array
+          items:
+            type: object
+            properties:
+              imageSelector:
+                type: string
+              inputSelector:
+                type: string
+          nullable: true
+        timeoutMinutes:
+          type: number
+          minimum: 1
+          maximum: 720
+        enableWindowManager:
+          type: boolean
+          default: false
+        enableWindowManagerTaskbar:
+          type: boolean
+          default: false
+        viewOnlyLiveView:
+          type: boolean
+          default: false
+        disablePasswordManager:
+          type: boolean
+          default: false
+        enableAlwaysOpenPdfExternally:
+          type: boolean
+          default: false
+        disablePostQuantumKeyAgreement:
+          type: boolean
+          default: false
+      default:
+        useStealth: false
+        useProxy: false
+        acceptCookies: false
+    CreateSessionProfile:
+      type: object
+      properties:
+        id:
+          type: string
+        persistChanges:
+          type: boolean
+        persistNetworkCache:
+          type: boolean
+          description: When persisting profile changes, also persist the browser's network cache (HTTP cache).
+    CuaLlm:
+      type: string
+      enum:
+      - computer-use-preview
+      - gpt-5.4
+      - gpt-5.4-mini
+      default: computer-use-preview
+    CuaTaskResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        data:
+          type: object
+          properties:
+            steps:
+              type: array
+              items:
+                type: object
+            finalResult:
+              type: string
+              nullable: true
+        error:
+          type: string
+          nullable: true
+        liveUrl:
+          type: string
+          nullable: true
+      required:
+      - jobId
+      - status
+    Device:
+      type: string
+      enum:
+      - desktop
+      - mobile
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    GeminiComputerUseLlm:
+      type: string
+      enum:
+      - gemini-3-flash-preview
+      - gemini-2.5-computer-use-preview-10-2025
+      default: gemini-3-flash-preview
+    GeminiComputerUseTaskResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        data:
+          type: object
+          properties:
+            steps:
+              type: array
+              items:
+                type: object
+            finalResult:
+              type: string
+              nullable: true
+        error:
+          type: string
+          nullable: true
+        liveUrl:
+          type: string
+          nullable: true
+      required:
+      - jobId
+      - status
+    HyperAgentLlm:
+      type: string
+      enum:
+      - gpt-5.2
+      - gpt-5.1
+      - gpt-5
+      - gpt-5-mini
+      - gpt-4o
+      - gpt-4o-mini
+      - gpt-4.1
+      - gpt-4.1-mini
+      - claude-sonnet-4-6
+      - claude-sonnet-4-5
+      - gemini-2.5-flash
+      - gemini-3-flash-preview
+      default: gpt-4o
+    HyperAgentTaskResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        data:
+          type: object
+          properties:
+            steps:
+              type: array
+              items:
+                type: object
+            finalResult:
+              type: string
+              nullable: true
+        error:
+          type: string
+          nullable: true
+        liveUrl:
+          type: string
+          nullable: true
+      required:
+      - jobId
+      - status
+    HyperAgentVersion:
+      type: string
+      enum:
+      - 0.8.0
+      - 1.1.0
+      default: 0.8.0
+    ISO639_1:
+      type: string
+      enum:
+      - aa
+      - ab
+      - ae
+      - af
+      - ak
+      - am
+      - an
+      - ar
+      - as
+      - av
+      - ay
+      - az
+      - ba
+      - be
+      - bg
+      - bh
+      - bi
+      - bm
+      - bn
+      - bo
+      - br
+      - bs
+      - ca
+      - ce
+      - ch
+      - co
+      - cr
+      - cs
+      - cu
+      - cv
+      - cy
+      - da
+      - de
+      - dv
+      - dz
+      - ee
+      - el
+      - en
+      - eo
+      - es
+      - et
+      - eu
+      - fa
+      - ff
+      - fi
+      - fj
+      - fo
+      - fr
+      - fy
+      - ga
+      - gd
+      - gl
+      - gn
+      - gu
+      - gv
+      - ha
+      - he
+      - hi
+      - ho
+      - hr
+      - ht
+      - hu
+      - hy
+      - hz
+      - ia
+      - id
+      - ie
+      - ig
+      - ii
+      - ik
+      - io
+      - is
+      - it
+      - iu
+      - ja
+      - jv
+      - ka
+      - kg
+      - ki
+      - kj
+      - kk
+      - kl
+      - km
+      - kn
+      - ko
+      - kr
+      - ks
+      - ku
+      - kv
+      - kw
+      - ky
+      - la
+      - lb
+      - lg
+      - li
+      - ln
+      - lo
+      - lt
+      - lu
+      - lv
+      - mg
+      - mh
+      - mi
+      - mk
+      - ml
+      - mn
+      - mo
+      - mr
+      - ms
+      - mt
+      - my
+      - na
+      - nb
+      - nd
+      - ne
+      - ng
+      - nl
+      - nn
+      - 'no'
+      - nr
+      - nv
+      - ny
+      - oc
+      - oj
+      - om
+      - or
+      - os
+      - pa
+      - pi
+      - pl
+      - ps
+      - pt
+      - qu
+      - rm
+      - rn
+      - ro
+      - ru
+      - rw
+      - sa
+      - sc
+      - sd
+      - se
+      - sg
+      - si
+      - sk
+      - sl
+      - sm
+      - sn
+      - so
+      - sq
+      - sr
+      - ss
+      - st
+      - su
+      - sv
+      - sw
+      - ta
+      - te
+      - tg
+      - th
+      - ti
+      - tk
+      - tl
+      - tn
+      - to
+      - tr
+      - ts
+      - tt
+      - tw
+      - ty
+      - ug
+      - uk
+      - ur
+      - uz
+      - ve
+      - vi
+      - vo
+      - wa
+      - wo
+      - xh
+      - yi
+      - yo
+      - za
+      - zh
+      - zu
+    JobStatus:
+      type: string
+      enum:
+      - pending
+      - running
+      - completed
+      - failed
+      - stopped
+    JobStatusResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/JobStatus'
+      required:
+      - status
+    OperatingSystem:
+      type: string
+      enum:
+      - windows
+      - android
+      - macos
+      - linux
+      - ios
+    Platform:
+      type: string
+      enum:
+      - chrome
+      - firefox
+      - safari
+      - edge
+    ProxyCountry:
+      type: string
+      enum:
+      - AD
+      - AE
+      - AF
+      - AL
+      - AM
+      - AO
+      - AR
+      - AT
+      - AU
+      - AW
+      - AZ
+      - BA
+      - BD
+      - BE
+      - BG
+      - BH
+      - BJ
+      - BO
+      - BR
+      - BS
+      - BT
+      - BY
+      - BZ
+      - CA
+      - CF
+      - CH
+      - CI
+      - CL
+      - CM
+      - CN
+      - CO
+      - CR
+      - CU
+      - CY
+      - CZ
+      - DE
+      - DJ
+      - DK
+      - DM
+      - EC
+      - EE
+      - EG
+      - ES
+      - ET
+      - EU
+      - FI
+      - FJ
+      - FR
+      - GB
+      - GE
+      - GH
+      - GM
+      - GR
+      - HK
+      - HN
+      - HR
+      - HT
+      - HU
+      - ID
+      - IE
+      - IL
+      - IN
+      - IQ
+      - IR
+      - IS
+      - IT
+      - JM
+      - JO
+      - JP
+      - KE
+      - KH
+      - KR
+      - KW
+      - KZ
+      - LB
+      - LI
+      - LR
+      - LT
+      - LU
+      - LV
+      - MA
+      - MC
+      - MD
+      - ME
+      - MG
+      - MK
+      - ML
+      - MM
+      - MN
+      - MR
+      - MT
+      - MU
+      - MV
+      - MX
+      - MY
+      - MZ
+      - NG
+      - NL
+      - 'NO'
+      - NZ
+      - OM
+      - PA
+      - PE
+      - PH
+      - PK
+      - PL
+      - PR
+      - PT
+      - PY
+      - QA
+      - RANDOM_COUNTRY
+      - RO
+      - RS
+      - RU
+      - SA
+      - SC
+      - SD
+      - SE
+      - SG
+      - SI
+      - SK
+      - SN
+      - SS
+      - TD
+      - TG
+      - TH
+      - TM
+      - TN
+      - TR
+      - TT
+      - TW
+      - UA
+      - UG
+      - US
+      - UY
+      - UZ
+      - VE
+      - VG
+      - VN
+      - YE
+      - ZA
+      - ZM
+      - ZW
+      - ad
+      - ae
+      - af
+      - al
+      - am
+      - ao
+      - ar
+      - at
+      - au
+      - aw
+      - az
+      - ba
+      - bd
+      - be
+      - bg
+      - bh
+      - bj
+      - bo
+      - br
+      - bs
+      - bt
+      - by
+      - bz
+      - ca
+      - cf
+      - ch
+      - ci
+      - cl
+      - cm
+      - cn
+      - co
+      - cr
+      - cu
+      - cy
+      - cz
+      - de
+      - dj
+      - dk
+      - dm
+      - ec
+      - ee
+      - eg
+      - es
+      - et
+      - eu
+      - fi
+      - fj
+      - fr
+      - gb
+      - ge
+      - gh
+      - gm
+      - gr
+      - hk
+      - hn
+      - hr
+      - ht
+      - hu
+      - id
+      - ie
+      - il
+      - in
+      - iq
+      - ir
+      - is
+      - it
+      - jm
+      - jo
+      - jp
+      - ke
+      - kh
+      - kr
+      - kw
+      - kz
+      - lb
+      - li
+      - lr
+      - lt
+      - lu
+      - lv
+      - ma
+      - mc
+      - md
+      - me
+      - mg
+      - mk
+      - ml
+      - mm
+      - mn
+      - mr
+      - mt
+      - mu
+      - mv
+      - mx
+      - my
+      - mz
+      - ng
+      - nl
+      - 'no'
+      - nz
+      - om
+      - pa
+      - pe
+      - ph
+      - pk
+      - pl
+      - pr
+      - pt
+      - py
+      - qa
+      - ro
+      - rs
+      - ru
+      - sa
+      - sc
+      - sd
+      - se
+      - sg
+      - si
+      - sk
+      - sn
+      - ss
+      - td
+      - tg
+      - th
+      - tm
+      - tn
+      - tr
+      - tt
+      - tw
+      - ua
+      - ug
+      - us
+      - uy
+      - uz
+      - ve
+      - vg
+      - vn
+      - ye
+      - za
+      - zm
+      - zw
+    ProxyState:
+      type: string
+      enum:
+      - AL
+      - AK
+      - AZ
+      - AR
+      - CA
+      - CO
+      - CT
+      - DE
+      - FL
+      - GA
+      - HI
+      - ID
+      - IL
+      - IN
+      - IA
+      - KS
+      - KY
+      - LA
+      - ME
+      - MD
+      - MA
+      - MI
+      - MN
+      - MS
+      - MO
+      - MT
+      - NE
+      - NV
+      - NH
+      - NJ
+      - NM
+      - NY
+      - NC
+      - ND
+      - OH
+      - OK
+      - OR
+      - PA
+      - RI
+      - SC
+      - SD
+      - TN
+      - TX
+      - UT
+      - VT
+      - VA
+      - WA
+      - WV
+      - WI
+      - WY
+      - al
+      - ak
+      - az
+      - ar
+      - ca
+      - co
+      - ct
+      - de
+      - fl
+      - ga
+      - hi
+      - id
+      - il
+      - in
+      - ia
+      - ks
+      - ky
+      - la
+      - me
+      - md
+      - ma
+      - mi
+      - mn
+      - ms
+      - mo
+      - mt
+      - ne
+      - nv
+      - nh
+      - nj
+      - nm
+      - ny
+      - nc
+      - nd
+      - oh
+      - ok
+      - or
+      - pa
+      - ri
+      - sc
+      - sd
+      - tn
+      - tx
+      - ut
+      - vt
+      - va
+      - wa
+      - wv
+      - wi
+      - wy
+      nullable: true
+      description: Optional state code for proxies to US states. Is mutually exclusive with proxyCity. Takes in two letter
+        state code.
+    ScreenConfig:
+      type: object
+      properties:
+        width:
+          type: number
+          default: 1280
+        height:
+          type: number
+          default: 720
+    SessionRegion:
+      type: string
+      enum:
+      - us-central
+      - us-west
+      - us-east
+      - asia-south
+      - europe-west
+    StartBrowserUseTaskParams:
+      type: object
+      properties:
+        task:
+          type: string
+        version:
+          $ref: '#/components/schemas/BrowserUseVersion'
+        llm:
+          $ref: '#/components/schemas/BrowserUseLlm'
+        sessionId:
+          type: string
+        validateOutput:
+          type: boolean
+          default: false
+        useVision:
+          type: boolean
+          default: true
+        useVisionForPlanner:
+          type: boolean
+          default: false
+        maxActionsPerStep:
+          type: number
+          default: 10
+        maxInputTokens:
+          type: number
+          default: 128000
+        plannerLlm:
+          $ref: '#/components/schemas/BrowserUseLlm'
+        pageExtractionLlm:
+          $ref: '#/components/schemas/BrowserUseLlm'
+        plannerInterval:
+          type: number
+          default: 10
+        maxSteps:
+          type: number
+          default: 20
+        maxFailures:
+          type: number
+          default: 3
+        initialActions:
+          type: array
+          items:
+            type: object
+            additionalProperties:
+              type: object
+              additionalProperties: true
+        sensitiveData:
+          type: object
+          additionalProperties:
+            type: string
+        messageContext:
+          type: string
+        keepBrowserOpen:
+          type: boolean
+          default: false
+        sessionOptions:
+          $ref: '#/components/schemas/CreateSessionParams'
+        useCustomApiKeys:
+          type: boolean
+          default: false
+        apiKeys:
+          type: object
+          properties:
+            openai:
+              type: string
+            anthropic:
+              type: string
+            google:
+              type: string
+      required:
+      - task
+      default:
+        task: go to example.com
+    StartBrowserUseTaskResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        liveUrl:
+          type: string
+          nullable: true
+      required:
+      - jobId
+    StartClaudeComputerUseTaskParams:
+      type: object
+      properties:
+        task:
+          type: string
+        llm:
+          $ref: '#/components/schemas/ClaudeComputerUseLlm'
+        sessionId:
+          type: string
+        maxFailures:
+          type: number
+          default: 3
+        maxSteps:
+          type: number
+          default: 20
+        keepBrowserOpen:
+          type: boolean
+          default: false
+        sessionOptions:
+          $ref: '#/components/schemas/CreateSessionParams'
+        useCustomApiKeys:
+          type: boolean
+          default: false
+        apiKeys:
+          type: object
+          properties:
+            anthropic:
+              type: string
+        useComputerAction:
+          type: boolean
+          default: false
+      required:
+      - task
+      default:
+        task: go to example.com
+    StartClaudeComputerUseTaskResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        liveUrl:
+          type: string
+          nullable: true
+      required:
+      - jobId
+    StartCuaTaskParams:
+      type: object
+      properties:
+        task:
+          type: string
+        llm:
+          $ref: '#/components/schemas/CuaLlm'
+        sessionId:
+          type: string
+        maxFailures:
+          type: number
+          default: 3
+        maxSteps:
+          type: number
+          default: 20
+        keepBrowserOpen:
+          type: boolean
+          default: false
+        sessionOptions:
+          $ref: '#/components/schemas/CreateSessionParams'
+        useCustomApiKeys:
+          type: boolean
+          default: false
+        apiKeys:
+          type: object
+          properties:
+            openai:
+              type: string
+        useComputerAction:
+          type: boolean
+          default: false
+      required:
+      - task
+      default:
+        task: go to example.com
+    StartCuaTaskResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        liveUrl:
+          type: string
+          nullable: true
+      required:
+      - jobId
+    StartGeminiComputerUseTaskParams:
+      type: object
+      properties:
+        task:
+          type: string
+        llm:
+          $ref: '#/components/schemas/GeminiComputerUseLlm'
+        sessionId:
+          type: string
+        maxFailures:
+          type: number
+          default: 3
+        maxSteps:
+          type: number
+          default: 20
+        keepBrowserOpen:
+          type: boolean
+          default: false
+        sessionOptions:
+          $ref: '#/components/schemas/CreateSessionParams'
+        useCustomApiKeys:
+          type: boolean
+          default: false
+        apiKeys:
+          type: object
+          properties:
+            google:
+              type: string
+        useComputerAction:
+          type: boolean
+          default: false
+      required:
+      - task
+      default:
+        task: go to example.com
+    StartGeminiComputerUseTaskResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        liveUrl:
+          type: string
+          nullable: true
+      required:
+      - jobId
+    StartHyperAgentTaskParams:
+      type: object
+      properties:
+        task:
+          type: string
+        version:
+          $ref: '#/components/schemas/HyperAgentVersion'
+        llm:
+          $ref: '#/components/schemas/HyperAgentLlm'
+        sessionId:
+          type: string
+        maxSteps:
+          type: number
+          default: 20
+        keepBrowserOpen:
+          type: boolean
+          default: false
+        sessionOptions:
+          $ref: '#/components/schemas/CreateSessionParams'
+        useCustomApiKeys:
+          type: boolean
+          default: false
+        apiKeys:
+          type: object
+          properties:
+            openai:
+              type: string
+            anthropic:
+              type: string
+            google:
+              type: string
+      required:
+      - task
+      default:
+        task: go to example.com
+    StartHyperAgentTaskResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        liveUrl:
+          type: string
+          nullable: true
+      required:
+      - jobId

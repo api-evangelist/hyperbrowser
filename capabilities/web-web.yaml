@@ -1,0 +1,254 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Hyperbrowser Web — Web
+  description: Hyperbrowser Web — Web. 5 operations. Self-contained Naftiko capability covering one Hyperbrowser business
+    surface.
+  tags:
+  - Hyperbrowser
+  - Web
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    HYPERBROWSER_API_KEY: HYPERBROWSER_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: web-web
+    baseUri: https://api.hyperbrowser.ai
+    description: Hyperbrowser Web — Web business capability. Self-contained, no shared references.
+    resources:
+    - name: api-web-fetch
+      path: /api/web/fetch
+      operations:
+      - name: post-api-web-fetch
+        method: POST
+        description: Fetch a Web Page
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-web-search
+      path: /api/web/search
+      operations:
+      - name: post-api-web-search
+        method: POST
+        description: Search the Web
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-web-crawl
+      path: /api/web/crawl
+      operations:
+      - name: post-api-web-crawl
+        method: POST
+        description: Start a Web Crawl Job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-web-crawl-id
+      path: /api/web/crawl/{id}
+      operations:
+      - name: get-api-web-crawl-id
+        method: GET
+        description: Get Web Crawl Job Results
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id
+          required: true
+        - name: page
+          in: query
+          type: string
+          description: Query parameter page
+          required: false
+        - name: batchSize
+          in: query
+          type: string
+          description: Query parameter batchSize
+          required: false
+    - name: api-web-crawl-id-status
+      path: /api/web/crawl/{id}/status
+      operations:
+      - name: get-api-web-crawl-id-status
+        method: GET
+        description: Get Web Crawl Job Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id
+          required: true
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.HYPERBROWSER_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: web-web-rest
+    port: 8080
+    description: REST adapter for Hyperbrowser Web — Web.
+    resources:
+    - path: /v1/api/web/fetch
+      name: api-web-fetch
+      description: REST surface for api-web-fetch.
+      operations:
+      - method: POST
+        name: post-api-web-fetch
+        description: Fetch a Web Page
+        call: web-web.post-api-web-fetch
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/web/search
+      name: api-web-search
+      description: REST surface for api-web-search.
+      operations:
+      - method: POST
+        name: post-api-web-search
+        description: Search the Web
+        call: web-web.post-api-web-search
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/web/crawl
+      name: api-web-crawl
+      description: REST surface for api-web-crawl.
+      operations:
+      - method: POST
+        name: post-api-web-crawl
+        description: Start a Web Crawl Job
+        call: web-web.post-api-web-crawl
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/web/crawl/{id}
+      name: api-web-crawl-id
+      description: REST surface for api-web-crawl-id.
+      operations:
+      - method: GET
+        name: get-api-web-crawl-id
+        description: Get Web Crawl Job Results
+        call: web-web.get-api-web-crawl-id
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/web/crawl/{id}/status
+      name: api-web-crawl-id-status
+      description: REST surface for api-web-crawl-id-status.
+      operations:
+      - method: GET
+        name: get-api-web-crawl-id-status
+        description: Get Web Crawl Job Status
+        call: web-web.get-api-web-crawl-id-status
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: web-web-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Hyperbrowser Web — Web.
+    tools:
+    - name: hyperbrowser-post-api-web-fetch
+      description: Fetch a Web Page
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: web-web.post-api-web-fetch
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hyperbrowser-post-api-web-search
+      description: Search the Web
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: web-web.post-api-web-search
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hyperbrowser-post-api-web-crawl
+      description: Start a Web Crawl Job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: web-web.post-api-web-crawl
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hyperbrowser-get-api-web-crawl-id
+      description: Get Web Crawl Job Results
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: web-web.get-api-web-crawl-id
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hyperbrowser-get-api-web-crawl-id-status
+      description: Get Web Crawl Job Status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: web-web.get-api-web-crawl-id-status
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.

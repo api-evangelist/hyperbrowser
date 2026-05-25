@@ -1,0 +1,38 @@
+{
+  "operation": "POST /api/extract",
+  "request": {
+    "urls": [
+      "https://hyperbrowser.ai/pricing"
+    ],
+    "prompt": "Extract every pricing tier with monthly price, included credits, and overage rate.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "tiers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "monthlyPriceUsd": {
+                "type": "number"
+              },
+              "includedCredits": {
+                "type": "number"
+              },
+              "overagePerCreditUsd": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "jobId": "extract_01HZ8YQ2NJEXAMPLE",
+    "status": "pending"
+  }
+}
