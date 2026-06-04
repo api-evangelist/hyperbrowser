@@ -1,0 +1,114 @@
+arazzo: 1.0.1
+info:
+  title: Hyperbrowser HyperAgent Task Run
+  summary: Start a HyperAgent task, poll status, then fetch its final result.
+  description: >-
+    Drives an autonomous HyperAgent run. The workflow starts a HyperAgent task
+    from a natural-language instruction, captures the live view URL so the run
+    can be watched, polls the lightweight status endpoint until the task reaches
+    a terminal state, and fetches the final result and step trace once it
+    completes. Every step spells out its request inline so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: agentsApi
+  url: ../openapi/hyperbrowser-agents-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: hyperagent-task-run
+  summary: Run a HyperAgent task to completion and return its final result.
+  description: >-
+    Submits a HyperAgent task, waits for completion by polling status, and
+    returns the final result and step trace once the task finishes.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - task
+    properties:
+      apiKey:
+        type: string
+        description: Hyperbrowser account API key sent in the x-api-key header.
+      task:
+        type: string
+        description: The natural-language task for the HyperAgent to perform.
+      maxSteps:
+        type: number
+        description: Maximum number of agent steps before the task is stopped.
+  steps:
+  - stepId: startTask
+    description: >-
+      Submit a HyperAgent task from the supplied instruction and capture the
+      jobId and live view URL.
+    operationId: post-api-task-hyper-agent
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        task: $inputs.task
+        maxSteps: $inputs.maxSteps
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      jobId: $response.body#/jobId
+      liveUrl: $response.body#/liveUrl
+  - stepId: pollStatus
+    description: >-
+      Poll the HyperAgent task status. The status moves through pending and
+      running before reaching completed, failed, or stopped; loop back while
+      still in progress and branch out on a terminal state.
+    operationId: get-api-task-hyper-agent-id-status
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    - name: id
+      in: path
+      value: $steps.startTask.outputs.jobId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      status: $response.body#/status
+    onSuccess:
+    - name: taskComplete
+      type: goto
+      stepId: getResult
+      criteria:
+      - context: $response.body
+        condition: $.status == "completed"
+        type: jsonpath
+    - name: taskRunning
+      type: goto
+      stepId: pollStatus
+      criteria:
+      - context: $response.body
+        condition: $.status == "pending" || $.status == "running"
+        type: jsonpath
+  - stepId: getResult
+    description: >-
+      Fetch the completed HyperAgent task to return its final result string and
+      the recorded step trace.
+    operationId: get-api-task-hyper-agent-id
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    - name: id
+      in: path
+      value: $steps.startTask.outputs.jobId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.status == "completed"
+      type: jsonpath
+    outputs:
+      status: $response.body#/status
+      finalResult: $response.body#/data/finalResult
+      steps: $response.body#/data/steps
+  outputs:
+    jobId: $steps.startTask.outputs.jobId
+    liveUrl: $steps.startTask.outputs.liveUrl
+    finalResult: $steps.getResult.outputs.finalResult

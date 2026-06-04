@@ -298,6 +298,42 @@ integrations:
   - name: n8n
   - name: X402 Payment Protocol
 common:
+  - type: ArazzoWorkflows
+    url: arazzo/
+    workflows:
+    - url: arazzo/hyperbrowser-batch-scrape-and-retrieve-workflow.yml
+      name: Hyperbrowser Batch Scrape and Retrieve
+      summary: Start a batch scrape over many URLs, poll status, then fetch all results.
+    - url: arazzo/hyperbrowser-browser-use-task-run-workflow.yml
+      name: Hyperbrowser Browser Use Task Run
+      summary: Start a Browser Use agent task, poll status, then fetch its final result.
+    - url: arazzo/hyperbrowser-crawl-site-and-retrieve-workflow.yml
+      name: Hyperbrowser Crawl Site and Retrieve
+      summary: Start a crawl from a seed URL, poll status, then page through the results.
+    - url: arazzo/hyperbrowser-extract-structured-data-workflow.yml
+      name: Hyperbrowser Extract Structured Data
+      summary: Start an extract job with a prompt and schema, poll status, then fetch data.
+    - url: arazzo/hyperbrowser-hyperagent-task-run-workflow.yml
+      name: Hyperbrowser HyperAgent Task Run
+      summary: Start a HyperAgent task, poll status, then fetch its final result.
+    - url: arazzo/hyperbrowser-persistent-profile-session-workflow.yml
+      name: Hyperbrowser Persistent Profile Session
+      summary: Create a profile, launch a session bound to it, persist changes, then stop.
+    - url: arazzo/hyperbrowser-scrape-and-retrieve-workflow.yml
+      name: Hyperbrowser Scrape and Retrieve
+      summary: Start a scrape job for a single URL, poll its status, then fetch the result.
+    - url: arazzo/hyperbrowser-session-lifecycle-workflow.yml
+      name: Hyperbrowser Session Lifecycle
+      summary: Create a cloud browser session, inspect it, and stop it cleanly.
+    - url: arazzo/hyperbrowser-session-recording-retrieval-workflow.yml
+      name: Hyperbrowser Session Recording Retrieval
+      summary: Create a recorded browser session, stop it, then poll for the recording URL.
+    - url: arazzo/hyperbrowser-web-crawl-and-retrieve-workflow.yml
+      name: Hyperbrowser Web Crawl and Retrieve
+      summary: Start a Web API crawl job, poll status, then page through the results.
+    - url: arazzo/hyperbrowser-web-search-then-fetch-workflow.yml
+      name: Hyperbrowser Web Search then Fetch
+      summary: Search the web, confirm results, then fetch the top result page as markdown.
   - type: Website
     url: https://hyperbrowser.ai
   - type: Documentation

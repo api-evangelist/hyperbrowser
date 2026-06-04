@@ -1,0 +1,115 @@
+arazzo: 1.0.1
+info:
+  title: Hyperbrowser Persistent Profile Session
+  summary: Create a profile, launch a session bound to it, persist changes, then stop.
+  description: >-
+    Sets up an authenticated, reusable browser identity. The workflow creates a
+    persistent profile, launches a cloud browser session bound to that profile
+    with change persistence enabled so cookies and storage survive, confirms the
+    session is active, and stops it so the captured authenticated state is saved
+    back to the profile for reuse. This flow spans the Profiles and Sessions
+    APIs. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: profilesApi
+  url: ../openapi/hyperbrowser-profiles-api-openapi.yml
+  type: openapi
+- name: sessionsApi
+  url: ../openapi/hyperbrowser-sessions-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: persistent-profile-session
+  summary: Create a persistent profile and run a session that saves state back to it.
+  description: >-
+    Creates a profile, launches a session that persists changes into the
+    profile, verifies it is active, and stops it so authenticated state is
+    retained for future sessions.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    properties:
+      apiKey:
+        type: string
+        description: Hyperbrowser account API key sent in the x-api-key header.
+      profileName:
+        type: string
+        description: A human-readable name for the new persistent profile.
+  steps:
+  - stepId: createProfile
+    description: >-
+      Create a persistent browser profile that will retain cookies, storage, and
+      authenticated state across sessions.
+    operationId: post-api-profile
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.profileName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      profileId: $response.body#/id
+  - stepId: createSession
+    description: >-
+      Launch a cloud browser session bound to the new profile with change
+      persistence enabled so state captured during the session is saved back.
+    operationId: post-api-session
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        profile:
+          id: $steps.createProfile.outputs.profileId
+          persistChanges: true
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      sessionId: $response.body#/id
+      liveUrl: $response.body#/liveUrl
+  - stepId: getSession
+    description: >-
+      Read the session back to confirm it launched against the profile and is in
+      the active status before any authentication is performed.
+    operationId: get-api-session-id
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    - name: id
+      in: path
+      value: $steps.createSession.outputs.sessionId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.status == "active"
+      type: jsonpath
+    outputs:
+      status: $response.body#/status
+  - stepId: stopSession
+    description: >-
+      Stop the session, which persists the captured cookies and storage back
+      into the profile for reuse in future sessions.
+    operationId: put-api-session-id-stop
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    - name: id
+      in: path
+      value: $steps.createSession.outputs.sessionId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      success: $response.body#/success
+  outputs:
+    profileId: $steps.createProfile.outputs.profileId
+    sessionId: $steps.createSession.outputs.sessionId
+    stopped: $steps.stopSession.outputs.success

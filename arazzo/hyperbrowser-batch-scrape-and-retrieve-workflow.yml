@@ -1,0 +1,111 @@
+arazzo: 1.0.1
+info:
+  title: Hyperbrowser Batch Scrape and Retrieve
+  summary: Start a batch scrape over many URLs, poll status, then fetch all results.
+  description: >-
+    Scrapes many URLs in a single asynchronous job. The workflow submits a batch
+    scrape over a list of URLs, polls the lightweight batch status endpoint until
+    the job reaches a terminal state, and then fetches the full batch record
+    containing every scraped page plus batching counters. Every step spells out
+    its request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: scrapeApi
+  url: ../openapi/hyperbrowser-scrape-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: batch-scrape-and-retrieve
+  summary: Scrape a list of URLs in one batch job and return all page content.
+  description: >-
+    Submits a batch scrape job, waits for completion by polling status, and
+    pulls every scraped page once the batch finishes.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - urls
+    properties:
+      apiKey:
+        type: string
+        description: Hyperbrowser account API key sent in the x-api-key header.
+      urls:
+        type: array
+        description: The list of URLs to scrape in the batch.
+        items:
+          type: string
+  steps:
+  - stepId: startBatch
+    description: >-
+      Submit a batch scrape job for the supplied URLs and capture the returned
+      jobId used to track and retrieve results.
+    operationId: post-api-scrape-batch
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        urls: $inputs.urls
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      jobId: $response.body#/jobId
+  - stepId: pollStatus
+    description: >-
+      Poll the batch scrape job status. The status moves through pending and
+      running before reaching completed, failed, or stopped; loop back while
+      still in progress and branch out on a terminal state.
+    operationId: get-api-scrape-batch-id-status
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    - name: id
+      in: path
+      value: $steps.startBatch.outputs.jobId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      status: $response.body#/status
+    onSuccess:
+    - name: batchComplete
+      type: goto
+      stepId: getResults
+      criteria:
+      - context: $response.body
+        condition: $.status == "completed"
+        type: jsonpath
+    - name: batchRunning
+      type: goto
+      stepId: pollStatus
+      criteria:
+      - context: $response.body
+        condition: $.status == "pending" || $.status == "running"
+        type: jsonpath
+  - stepId: getResults
+    description: >-
+      Fetch the completed batch scrape job to return every scraped page and the
+      total page count.
+    operationId: get-api-scrape-batch-id
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    - name: id
+      in: path
+      value: $steps.startBatch.outputs.jobId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.status == "completed"
+      type: jsonpath
+    outputs:
+      status: $response.body#/status
+      pages: $response.body#/data
+      totalScrapedPages: $response.body#/totalScrapedPages
+  outputs:
+    jobId: $steps.startBatch.outputs.jobId
+    pages: $steps.getResults.outputs.pages
+    totalScrapedPages: $steps.getResults.outputs.totalScrapedPages

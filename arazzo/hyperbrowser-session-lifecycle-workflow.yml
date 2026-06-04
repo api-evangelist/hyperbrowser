@@ -1,0 +1,101 @@
+arazzo: 1.0.1
+info:
+  title: Hyperbrowser Session Lifecycle
+  summary: Create a cloud browser session, inspect it, and stop it cleanly.
+  description: >-
+    The core lifecycle for a Hyperbrowser cloud Chromium session. The workflow
+    creates a new session, reads back its connection details (live view URL and
+    websocket endpoint a client would drive), confirms the session is active,
+    and then stops it to release the browser and stop billing. Every step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: sessionsApi
+  url: ../openapi/hyperbrowser-sessions-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: session-lifecycle
+  summary: Create, inspect, and stop a single cloud browser session.
+  description: >-
+    Creates a browser session with the supplied stealth and proxy options,
+    retrieves its connection endpoints, and stops it once work is complete.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    properties:
+      apiKey:
+        type: string
+        description: Hyperbrowser account API key sent in the x-api-key header.
+      useStealth:
+        type: boolean
+        description: Whether to launch the session with stealth mode enabled.
+      useProxy:
+        type: boolean
+        description: Whether to route the session through a managed proxy.
+      timeoutMinutes:
+        type: number
+        description: Idle timeout in minutes before the session is auto-stopped.
+  steps:
+  - stepId: createSession
+    description: >-
+      Create a new cloud browser session using the supplied launch options and
+      capture its id and connection endpoints.
+    operationId: post-api-session
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        useStealth: $inputs.useStealth
+        useProxy: $inputs.useProxy
+        timeoutMinutes: $inputs.timeoutMinutes
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      sessionId: $response.body#/id
+      liveUrl: $response.body#/liveUrl
+      wsEndpoint: $response.body#/wsEndpoint
+  - stepId: getSession
+    description: >-
+      Read the session back by id to confirm it launched and is in the active
+      status before any automation is driven against it.
+    operationId: get-api-session-id
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    - name: id
+      in: path
+      value: $steps.createSession.outputs.sessionId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.status == "active"
+      type: jsonpath
+    outputs:
+      status: $response.body#/status
+      sessionUrl: $response.body#/sessionUrl
+  - stepId: stopSession
+    description: >-
+      Stop the session to release the cloud browser and end billing once the
+      automation work against it is complete.
+    operationId: put-api-session-id-stop
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    - name: id
+      in: path
+      value: $steps.createSession.outputs.sessionId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      success: $response.body#/success
+  outputs:
+    sessionId: $steps.createSession.outputs.sessionId
+    liveUrl: $steps.createSession.outputs.liveUrl
+    stopped: $steps.stopSession.outputs.success

@@ -1,0 +1,112 @@
+arazzo: 1.0.1
+info:
+  title: Hyperbrowser Web Crawl and Retrieve
+  summary: Start a Web API crawl job, poll status, then page through the results.
+  description: >-
+    Uses the higher-level Web API crawl endpoint to follow links from a starting
+    URL and return content in the requested output formats. The workflow starts
+    the web crawl job, polls the lightweight status endpoint until it reaches a
+    terminal state, and fetches the first batch of crawled pages. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: webApi
+  url: ../openapi/hyperbrowser-web-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: web-crawl-and-retrieve
+  summary: Crawl from a starting URL via the Web API and return page content.
+  description: >-
+    Submits a Web API crawl job, waits for completion by polling status, and
+    pulls the first batch of crawled pages once the job finishes.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - url
+    properties:
+      apiKey:
+        type: string
+        description: Hyperbrowser account API key sent in the x-api-key header.
+      url:
+        type: string
+        description: The starting URL to crawl from.
+  steps:
+  - stepId: startWebCrawl
+    description: >-
+      Submit a Web API crawl job for the starting URL and capture the returned
+      jobId used to track and retrieve results.
+    operationId: post-api-web-crawl
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        url: $inputs.url
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      jobId: $response.body#/jobId
+  - stepId: pollStatus
+    description: >-
+      Poll the web crawl job status. The status moves through pending and
+      running before reaching completed, failed, or stopped; loop back while
+      still in progress and branch out on a terminal state.
+    operationId: get-api-web-crawl-id-status
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    - name: id
+      in: path
+      value: $steps.startWebCrawl.outputs.jobId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      status: $response.body#/status
+    onSuccess:
+    - name: webCrawlComplete
+      type: goto
+      stepId: getResults
+      criteria:
+      - context: $response.body
+        condition: $.status == "completed"
+        type: jsonpath
+    - name: webCrawlRunning
+      type: goto
+      stepId: pollStatus
+      criteria:
+      - context: $response.body
+        condition: $.status == "pending" || $.status == "running"
+        type: jsonpath
+  - stepId: getResults
+    description: >-
+      Fetch the first batch of crawled pages from the completed web crawl job
+      along with the total page count and batch counters.
+    operationId: get-api-web-crawl-id
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    - name: id
+      in: path
+      value: $steps.startWebCrawl.outputs.jobId
+    - name: page
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.status == "completed"
+      type: jsonpath
+    outputs:
+      status: $response.body#/status
+      pages: $response.body#/data
+      totalPages: $response.body#/totalPages
+  outputs:
+    jobId: $steps.startWebCrawl.outputs.jobId
+    pages: $steps.getResults.outputs.pages
+    totalPages: $steps.getResults.outputs.totalPages

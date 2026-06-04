@@ -1,0 +1,121 @@
+arazzo: 1.0.1
+info:
+  title: Hyperbrowser Crawl Site and Retrieve
+  summary: Start a crawl from a seed URL, poll status, then page through the results.
+  description: >-
+    Crawls a site starting from a seed URL, following links up to a page budget,
+    then returns the scraped content for each crawled page. The workflow starts
+    the crawl job, polls the lightweight status endpoint until it reaches a
+    terminal state, and fetches the first batch of crawled pages. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: crawlApi
+  url: ../openapi/hyperbrowser-crawl-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: crawl-site-and-retrieve
+  summary: Crawl a site from a seed URL and return the crawled page content.
+  description: >-
+    Submits a crawl job, waits for completion by polling status, and pulls the
+    first batch of crawled pages once the job finishes.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - url
+    properties:
+      apiKey:
+        type: string
+        description: Hyperbrowser account API key sent in the x-api-key header.
+      url:
+        type: string
+        description: The seed URL to start the crawl from.
+      maxPages:
+        type: integer
+        description: Maximum number of pages to crawl.
+      followLinks:
+        type: boolean
+        description: Whether to follow links discovered on crawled pages.
+  steps:
+  - stepId: startCrawl
+    description: >-
+      Submit a crawl job for the seed URL with the supplied page budget and
+      capture the returned jobId.
+    operationId: post-api-crawl
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        url: $inputs.url
+        maxPages: $inputs.maxPages
+        followLinks: $inputs.followLinks
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      jobId: $response.body#/jobId
+  - stepId: pollStatus
+    description: >-
+      Poll the crawl job status. The status moves through pending and running
+      before reaching completed, failed, or stopped; loop back while still in
+      progress and branch out on a terminal state.
+    operationId: get-api-crawl-id-status
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    - name: id
+      in: path
+      value: $steps.startCrawl.outputs.jobId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      status: $response.body#/status
+    onSuccess:
+    - name: crawlComplete
+      type: goto
+      stepId: getResults
+      criteria:
+      - context: $response.body
+        condition: $.status == "completed"
+        type: jsonpath
+    - name: crawlRunning
+      type: goto
+      stepId: pollStatus
+      criteria:
+      - context: $response.body
+        condition: $.status == "pending" || $.status == "running"
+        type: jsonpath
+  - stepId: getResults
+    description: >-
+      Fetch the first batch of crawled pages from the completed crawl job along
+      with the total crawled page count and batch counters.
+    operationId: get-api-crawl-id
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    - name: id
+      in: path
+      value: $steps.startCrawl.outputs.jobId
+    - name: page
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.status == "completed"
+      type: jsonpath
+    outputs:
+      status: $response.body#/status
+      pages: $response.body#/data
+      totalCrawledPages: $response.body#/totalCrawledPages
+      totalPageBatches: $response.body#/totalPageBatches
+  outputs:
+    jobId: $steps.startCrawl.outputs.jobId
+    pages: $steps.getResults.outputs.pages
+    totalCrawledPages: $steps.getResults.outputs.totalCrawledPages

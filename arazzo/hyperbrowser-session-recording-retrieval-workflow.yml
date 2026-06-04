@@ -1,0 +1,102 @@
+arazzo: 1.0.1
+info:
+  title: Hyperbrowser Session Recording Retrieval
+  summary: Create a recorded browser session, stop it, then poll for the recording URL.
+  description: >-
+    Captures a replay of a cloud browser session. The workflow creates a session
+    with web recording enabled, stops it to finalize the recording, and then
+    polls the recording-url endpoint until the recording status reports
+    completed and a signed URL is available to download. Every step spells out
+    its request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: sessionsApi
+  url: ../openapi/hyperbrowser-sessions-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: session-recording-retrieval
+  summary: Record a browser session and retrieve its replay URL once finalized.
+  description: >-
+    Creates a session with recording enabled, stops it to trigger recording
+    finalization, and polls for the completed recording URL.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    properties:
+      apiKey:
+        type: string
+        description: Hyperbrowser account API key sent in the x-api-key header.
+      timeoutMinutes:
+        type: number
+        description: Idle timeout in minutes before the session is auto-stopped.
+  steps:
+  - stepId: createSession
+    description: >-
+      Create a session with web recording enabled so a replay is captured for
+      the lifetime of the browser session.
+    operationId: post-api-session
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        enableWebRecording: true
+        timeoutMinutes: $inputs.timeoutMinutes
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      sessionId: $response.body#/id
+      liveUrl: $response.body#/liveUrl
+  - stepId: stopSession
+    description: >-
+      Stop the session, which finalizes the recording so it can be fetched from
+      the recording-url endpoint.
+    operationId: put-api-session-id-stop
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    - name: id
+      in: path
+      value: $steps.createSession.outputs.sessionId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: pollRecording
+    description: >-
+      Poll the recording URL endpoint. The recording status moves through
+      pending and in_progress before reaching completed; branch back and retry
+      while it is still being processed.
+    operationId: get-api-session-id-recording-url
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    - name: id
+      in: path
+      value: $steps.createSession.outputs.sessionId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      recordingStatus: $response.body#/status
+      recordingUrl: $response.body#/recordingUrl
+    onSuccess:
+    - name: recordingReady
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.status == "completed"
+        type: jsonpath
+    - name: recordingPending
+      type: goto
+      stepId: pollRecording
+      criteria:
+      - context: $response.body
+        condition: $.status == "pending" || $.status == "in_progress"
+        type: jsonpath
+  outputs:
+    sessionId: $steps.createSession.outputs.sessionId
+    recordingUrl: $steps.pollRecording.outputs.recordingUrl

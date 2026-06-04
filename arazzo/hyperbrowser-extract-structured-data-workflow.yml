@@ -1,0 +1,118 @@
+arazzo: 1.0.1
+info:
+  title: Hyperbrowser Extract Structured Data
+  summary: Start an extract job with a prompt and schema, poll status, then fetch data.
+  description: >-
+    Turns one or more pages into structured JSON using an LLM prompt and an
+    optional output schema. The workflow starts the extract job over a list of
+    URLs, polls the lightweight status endpoint until the job reaches a terminal
+    state, and fetches the structured data object once it completes. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: extractApi
+  url: ../openapi/hyperbrowser-extract-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: extract-structured-data
+  summary: Extract structured JSON from pages using a prompt and optional schema.
+  description: >-
+    Submits an extract job, waits for completion by polling status, and returns
+    the structured data once the job finishes.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - urls
+    - prompt
+    properties:
+      apiKey:
+        type: string
+        description: Hyperbrowser account API key sent in the x-api-key header.
+      urls:
+        type: array
+        description: The list of URLs to extract structured data from.
+        items:
+          type: string
+      prompt:
+        type: string
+        description: The natural-language extraction prompt.
+      schema:
+        type: object
+        description: Optional JSON schema describing the structured output shape.
+  steps:
+  - stepId: startExtract
+    description: >-
+      Submit an extract job over the supplied URLs using the prompt and optional
+      output schema, capturing the returned jobId.
+    operationId: post-api-extract
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        urls: $inputs.urls
+        prompt: $inputs.prompt
+        schema: $inputs.schema
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      jobId: $response.body#/jobId
+  - stepId: pollStatus
+    description: >-
+      Poll the extract job status. The status moves through pending and running
+      before reaching completed, failed, or stopped; loop back while still in
+      progress and branch out on a terminal state.
+    operationId: get-api-extract-id-status
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    - name: id
+      in: path
+      value: $steps.startExtract.outputs.jobId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      status: $response.body#/status
+    onSuccess:
+    - name: extractComplete
+      type: goto
+      stepId: getResult
+      criteria:
+      - context: $response.body
+        condition: $.status == "completed"
+        type: jsonpath
+    - name: extractRunning
+      type: goto
+      stepId: pollStatus
+      criteria:
+      - context: $response.body
+        condition: $.status == "pending" || $.status == "running"
+        type: jsonpath
+  - stepId: getResult
+    description: >-
+      Fetch the completed extract job to return the structured data object the
+      LLM produced from the pages.
+    operationId: get-api-extract-id
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    - name: id
+      in: path
+      value: $steps.startExtract.outputs.jobId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.status == "completed"
+      type: jsonpath
+    outputs:
+      status: $response.body#/status
+      data: $response.body#/data
+  outputs:
+    jobId: $steps.startExtract.outputs.jobId
+    data: $steps.getResult.outputs.data

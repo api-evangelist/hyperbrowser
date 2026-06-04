@@ -1,0 +1,94 @@
+arazzo: 1.0.1
+info:
+  title: Hyperbrowser Web Search then Fetch
+  summary: Search the web, confirm results, then fetch the top result page as markdown.
+  description: >-
+    A research primitive that chains the Web API search and fetch endpoints. The
+    workflow runs a web search for a query, confirms the search completed with at
+    least one result, and then fetches the top result's page, returning its
+    rendered markdown, links, and metadata. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: webApi
+  url: ../openapi/hyperbrowser-web-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: web-search-then-fetch
+  summary: Search the web and fetch the page content of the top result.
+  description: >-
+    Performs a web search, branches on whether any results were returned, and
+    fetches the first result's page content when a result is found.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - query
+    properties:
+      apiKey:
+        type: string
+        description: Hyperbrowser account API key sent in the x-api-key header.
+      query:
+        type: string
+        description: The web search query string.
+  steps:
+  - stepId: search
+    description: >-
+      Run a web search for the query and capture the URL of the top result to
+      fetch next.
+    operationId: post-api-web-search
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        query: $inputs.query
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.status == "completed"
+      type: jsonpath
+    outputs:
+      status: $response.body#/status
+      topResultUrl: $response.body#/data/results/0/url
+    onSuccess:
+    - name: hasResults
+      type: goto
+      stepId: fetchTop
+      criteria:
+      - context: $response.body
+        condition: $.data.results.length > 0
+        type: jsonpath
+  - stepId: fetchTop
+    description: >-
+      Fetch the top search result's page and return its rendered markdown,
+      links, and metadata.
+    operationId: post-api-web-fetch
+    parameters:
+    - name: x-api-key
+      in: header
+      value: $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        url: $steps.search.outputs.topResultUrl
+        outputs:
+          formats:
+          - markdown
+          - links
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.status == "completed"
+      type: jsonpath
+    outputs:
+      status: $response.body#/status
+      markdown: $response.body#/data/markdown
+      links: $response.body#/data/links
+  outputs:
+    topResultUrl: $steps.search.outputs.topResultUrl
+    markdown: $steps.fetchTop.outputs.markdown
+    links: $steps.fetchTop.outputs.links
