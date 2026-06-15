@@ -1,0 +1,3843 @@
+{
+  "info": {
+    "_postman_id": "9f21378d-ee21-4794-9307-9afa641fa59e",
+    "name": "Hyperbrowser Agents API",
+    "description": "Start, stop, and monitor agentic browser tasks across HyperAgent, Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI CUA.\n\nContact Support:\n Name: Hyperbrowser",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:10:08.000Z",
+    "updatedAt": "2026-06-05T15:10:08.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9f21378d-ee21-4794-9307-9afa641fa59e"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "task",
+          "item": [
+            {
+              "name": "hyper-agent",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "stop",
+                      "item": [
+                        {
+                          "name": "Stop a HyperAgent Task",
+                          "id": "728365d7-d1df-4400-a3f0-f9cfc85a57f5",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "x-api-key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/hyper-agent/:id/stop",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "hyper-agent",
+                                ":id",
+                                "stop"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "e54d8950-49cc-4bf6-9f05-49efd8824ea7",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "edf2313d-d878-46a8-ae38-09ae8516c100",
+                              "name": "HyperAgent task stopped successfully",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/task/hyper-agent/:id/stop",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "task",
+                                    "hyper-agent",
+                                    ":id",
+                                    "stop"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"success\": \"<boolean>\"\n}",
+                              "createdAt": "2026-06-05T15:10:09.000Z",
+                              "updatedAt": "2026-06-05T15:10:09.000Z",
+                              "uid": "35240-edf2313d-d878-46a8-ae38-09ae8516c100"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-728365d7-d1df-4400-a3f0-f9cfc85a57f5"
+                        }
+                      ],
+                      "id": "61afbc9a-64f6-4ef7-8627-10b59c9cf33e",
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-61afbc9a-64f6-4ef7-8627-10b59c9cf33e"
+                    },
+                    {
+                      "name": "status",
+                      "item": [
+                        {
+                          "name": "Get HyperAgent Task Status",
+                          "id": "1a6e4aed-7acf-4dc9-932c-bc0f2b9ffd89",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "x-api-key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/hyper-agent/:id/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "hyper-agent",
+                                ":id",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "a877410a-c449-4c98-bace-64dd5d7832d5",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "d46f5bcf-ebc6-4371-805a-332118feeaf3",
+                              "name": "HyperAgent task status",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/task/hyper-agent/:id/status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "task",
+                                    "hyper-agent",
+                                    ":id",
+                                    "status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"stopped\"\n}",
+                              "createdAt": "2026-06-05T15:10:09.000Z",
+                              "updatedAt": "2026-06-05T15:10:09.000Z",
+                              "uid": "35240-d46f5bcf-ebc6-4371-805a-332118feeaf3"
+                            },
+                            {
+                              "id": "e181ba9d-8d6c-4f27-91e1-73e4090ba8e2",
+                              "name": "HyperAgent task not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/task/hyper-agent/:id/status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "task",
+                                    "hyper-agent",
+                                    ":id",
+                                    "status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:10:09.000Z",
+                              "updatedAt": "2026-06-05T15:10:09.000Z",
+                              "uid": "35240-e181ba9d-8d6c-4f27-91e1-73e4090ba8e2"
+                            },
+                            {
+                              "id": "1307e77b-0dc3-484f-b936-5ac788bab0fd",
+                              "name": "Server error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/task/hyper-agent/:id/status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "task",
+                                    "hyper-agent",
+                                    ":id",
+                                    "status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:10:09.000Z",
+                              "updatedAt": "2026-06-05T15:10:09.000Z",
+                              "uid": "35240-1307e77b-0dc3-484f-b936-5ac788bab0fd"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-1a6e4aed-7acf-4dc9-932c-bc0f2b9ffd89"
+                        }
+                      ],
+                      "id": "457dc817-f8e9-4f20-a98e-525ad7adce2a",
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-457dc817-f8e9-4f20-a98e-525ad7adce2a"
+                    },
+                    {
+                      "name": "Get HyperAgent Task Status and Results",
+                      "id": "43208e53-8731-45f8-883d-8943514d4e9f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/task/hyper-agent/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "task",
+                            "hyper-agent",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "e57ecbed-5136-4eab-9ecc-cd927babe892",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "e38cf0ba-f845-4067-a5cd-9d59fb1631c0",
+                          "name": "HyperAgent task details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/hyper-agent/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "hyper-agent",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"jobId\": \"<string>\",\n  \"status\": \"pending\",\n  \"data\": {\n    \"finalResult\": \"<string>\"\n  },\n  \"error\": \"<string>\",\n  \"liveUrl\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-e38cf0ba-f845-4067-a5cd-9d59fb1631c0"
+                        },
+                        {
+                          "id": "8035859d-dc54-4051-941e-9513a0a1d4a1",
+                          "name": "HyperAgent task not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/hyper-agent/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "hyper-agent",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-8035859d-dc54-4051-941e-9513a0a1d4a1"
+                        },
+                        {
+                          "id": "1dca0444-18b4-4f87-aae2-e3b794ede2a4",
+                          "name": "Server error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/hyper-agent/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "hyper-agent",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-1dca0444-18b4-4f87-aae2-e3b794ede2a4"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-43208e53-8731-45f8-883d-8943514d4e9f"
+                    }
+                  ],
+                  "id": "961cb503-f4c4-43a2-b779-04facf57a39c",
+                  "createdAt": "2026-06-05T15:10:09.000Z",
+                  "updatedAt": "2026-06-05T15:10:09.000Z",
+                  "uid": "35240-961cb503-f4c4-43a2-b779-04facf57a39c"
+                },
+                {
+                  "name": "Start a HyperAgent Task",
+                  "id": "671ff563-3848-4adc-926e-32d6103e0598",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"task\": \"go to example.com\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/task/hyper-agent",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "task",
+                        "hyper-agent"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "a08715a8-d9b4-4b30-90ec-625ad663311d",
+                      "name": "HyperAgent task started successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"task\": \"go to example.com\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/task/hyper-agent",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "task",
+                            "hyper-agent"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"jobId\": \"<string>\",\n  \"liveUrl\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-a08715a8-d9b4-4b30-90ec-625ad663311d"
+                    },
+                    {
+                      "id": "b02b743b-3a34-4170-a736-26d3386008e8",
+                      "name": "Server error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"task\": \"go to example.com\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/task/hyper-agent",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "task",
+                            "hyper-agent"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-b02b743b-3a34-4170-a736-26d3386008e8"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:10:09.000Z",
+                  "updatedAt": "2026-06-05T15:10:09.000Z",
+                  "uid": "35240-671ff563-3848-4adc-926e-32d6103e0598"
+                }
+              ],
+              "id": "611cb695-a657-4210-84d0-3465f32227b2",
+              "createdAt": "2026-06-05T15:10:09.000Z",
+              "updatedAt": "2026-06-05T15:10:09.000Z",
+              "uid": "35240-611cb695-a657-4210-84d0-3465f32227b2"
+            },
+            {
+              "name": "browser-use",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "stop",
+                      "item": [
+                        {
+                          "name": "Stop a Browser Use Task",
+                          "id": "b9748ecc-2b19-4771-a08d-18172c9d4e26",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "x-api-key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/browser-use/:id/stop",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "browser-use",
+                                ":id",
+                                "stop"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "468bd6d0-d9ab-4ae3-af61-e82fc8615752",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "2afcbbcb-8d2b-4624-8f01-c7210ff18be4",
+                              "name": "Browser use task stopped successfully",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/task/browser-use/:id/stop",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "task",
+                                    "browser-use",
+                                    ":id",
+                                    "stop"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"success\": \"<boolean>\"\n}",
+                              "createdAt": "2026-06-05T15:10:09.000Z",
+                              "updatedAt": "2026-06-05T15:10:09.000Z",
+                              "uid": "35240-2afcbbcb-8d2b-4624-8f01-c7210ff18be4"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-b9748ecc-2b19-4771-a08d-18172c9d4e26"
+                        }
+                      ],
+                      "id": "5fce65a0-9354-4c6a-9230-413b485b18cc",
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-5fce65a0-9354-4c6a-9230-413b485b18cc"
+                    },
+                    {
+                      "name": "status",
+                      "item": [
+                        {
+                          "name": "Get Browser Use Task Status",
+                          "id": "c117832d-96a1-42c9-9f5a-0468c55839ca",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "x-api-key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/browser-use/:id/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "browser-use",
+                                ":id",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "4a537de9-4a1f-43c5-9afb-37b9d33e36b8",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "ab43de78-491a-448a-b05d-29e226c9f79d",
+                              "name": "Browser use task status",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/task/browser-use/:id/status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "task",
+                                    "browser-use",
+                                    ":id",
+                                    "status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"stopped\"\n}",
+                              "createdAt": "2026-06-05T15:10:09.000Z",
+                              "updatedAt": "2026-06-05T15:10:09.000Z",
+                              "uid": "35240-ab43de78-491a-448a-b05d-29e226c9f79d"
+                            },
+                            {
+                              "id": "ae5cba8c-0232-4eee-ab1d-40b02a72c049",
+                              "name": "Browser use task not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/task/browser-use/:id/status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "task",
+                                    "browser-use",
+                                    ":id",
+                                    "status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:10:09.000Z",
+                              "updatedAt": "2026-06-05T15:10:09.000Z",
+                              "uid": "35240-ae5cba8c-0232-4eee-ab1d-40b02a72c049"
+                            },
+                            {
+                              "id": "531cf387-01d2-4114-9bc3-6b52158f6f32",
+                              "name": "Server error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/task/browser-use/:id/status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "task",
+                                    "browser-use",
+                                    ":id",
+                                    "status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:10:09.000Z",
+                              "updatedAt": "2026-06-05T15:10:09.000Z",
+                              "uid": "35240-531cf387-01d2-4114-9bc3-6b52158f6f32"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-c117832d-96a1-42c9-9f5a-0468c55839ca"
+                        }
+                      ],
+                      "id": "6ed509fc-f327-47a5-a43a-0029f96477e9",
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-6ed509fc-f327-47a5-a43a-0029f96477e9"
+                    },
+                    {
+                      "name": "Get Browser Use Task Status and Results",
+                      "id": "f0557a63-f29c-4a08-9923-12b48d5f1e77",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/task/browser-use/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "task",
+                            "browser-use",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "640ac027-7a49-4ef9-a5d6-305184115f9f",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "1671408e-caa9-4657-9bb7-fb9e9fe26d7a",
+                          "name": "Browser use task details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/browser-use/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "browser-use",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"jobId\": \"<string>\",\n  \"status\": \"pending\",\n  \"data\": {\n    \"finalResult\": \"<string>\"\n  },\n  \"error\": \"<string>\",\n  \"liveUrl\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-1671408e-caa9-4657-9bb7-fb9e9fe26d7a"
+                        },
+                        {
+                          "id": "7ed49edb-2c91-42d0-80f3-b28ada355362",
+                          "name": "Browser use task not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/browser-use/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "browser-use",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-7ed49edb-2c91-42d0-80f3-b28ada355362"
+                        },
+                        {
+                          "id": "ef352c0c-e8b8-4e6f-ab04-225376b70a27",
+                          "name": "Server error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/browser-use/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "browser-use",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-ef352c0c-e8b8-4e6f-ab04-225376b70a27"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-f0557a63-f29c-4a08-9923-12b48d5f1e77"
+                    }
+                  ],
+                  "id": "11ddf6c8-3ceb-49bf-95e8-f0026816fb81",
+                  "createdAt": "2026-06-05T15:10:09.000Z",
+                  "updatedAt": "2026-06-05T15:10:09.000Z",
+                  "uid": "35240-11ddf6c8-3ceb-49bf-95e8-f0026816fb81"
+                },
+                {
+                  "name": "Start a Browser Use Task",
+                  "id": "c96b4515-73c2-4fb9-b4f0-d3e1e6092f1b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"task\": \"go to example.com\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/task/browser-use",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "task",
+                        "browser-use"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "57b20082-3145-421f-b3a2-8dab2bcfd4a0",
+                      "name": "Browser use task started successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"task\": \"go to example.com\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/task/browser-use",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "task",
+                            "browser-use"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"jobId\": \"<string>\",\n  \"liveUrl\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-57b20082-3145-421f-b3a2-8dab2bcfd4a0"
+                    },
+                    {
+                      "id": "6a6f00fd-824d-453b-b15c-51ae6c45ecaf",
+                      "name": "Server error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"task\": \"go to example.com\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/task/browser-use",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "task",
+                            "browser-use"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-6a6f00fd-824d-453b-b15c-51ae6c45ecaf"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:10:09.000Z",
+                  "updatedAt": "2026-06-05T15:10:09.000Z",
+                  "uid": "35240-c96b4515-73c2-4fb9-b4f0-d3e1e6092f1b"
+                }
+              ],
+              "id": "321c94e8-560b-4ea3-b9d1-18b408795cb4",
+              "createdAt": "2026-06-05T15:10:09.000Z",
+              "updatedAt": "2026-06-05T15:10:09.000Z",
+              "uid": "35240-321c94e8-560b-4ea3-b9d1-18b408795cb4"
+            },
+            {
+              "name": "claude-computer-use",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "stop",
+                      "item": [
+                        {
+                          "name": "Stop a Claude Computer Use Task",
+                          "id": "2a3b3328-5357-4f60-adac-1ffd1022547c",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "x-api-key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/claude-computer-use/:id/stop",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "claude-computer-use",
+                                ":id",
+                                "stop"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "11947148-dfa9-4983-b096-44b0bd8cc803",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "29fd6f6b-6ebc-456b-801b-7102665ed70d",
+                              "name": "Claude computer use task stopped successfully",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/task/claude-computer-use/:id/stop",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "task",
+                                    "claude-computer-use",
+                                    ":id",
+                                    "stop"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"success\": \"<boolean>\"\n}",
+                              "createdAt": "2026-06-05T15:10:09.000Z",
+                              "updatedAt": "2026-06-05T15:10:09.000Z",
+                              "uid": "35240-29fd6f6b-6ebc-456b-801b-7102665ed70d"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-2a3b3328-5357-4f60-adac-1ffd1022547c"
+                        }
+                      ],
+                      "id": "23f879dd-4333-4473-a605-5385c9ff687c",
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-23f879dd-4333-4473-a605-5385c9ff687c"
+                    },
+                    {
+                      "name": "status",
+                      "item": [
+                        {
+                          "name": "Get Claude Computer Use Task Status",
+                          "id": "dcf76a39-b555-45dd-8d77-ffebf12159f8",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "x-api-key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/claude-computer-use/:id/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "claude-computer-use",
+                                ":id",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "78c85bfc-2762-470f-9462-e1c759872dc4",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "65581d67-fade-448d-a69d-ded8415ef68a",
+                              "name": "Claude computer use task status",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/task/claude-computer-use/:id/status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "task",
+                                    "claude-computer-use",
+                                    ":id",
+                                    "status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"stopped\"\n}",
+                              "createdAt": "2026-06-05T15:10:09.000Z",
+                              "updatedAt": "2026-06-05T15:10:09.000Z",
+                              "uid": "35240-65581d67-fade-448d-a69d-ded8415ef68a"
+                            },
+                            {
+                              "id": "2bcbe0fa-7eb3-4e73-b135-a1cd3fe6dc5e",
+                              "name": "Claude computer use task not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/task/claude-computer-use/:id/status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "task",
+                                    "claude-computer-use",
+                                    ":id",
+                                    "status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:10:09.000Z",
+                              "updatedAt": "2026-06-05T15:10:09.000Z",
+                              "uid": "35240-2bcbe0fa-7eb3-4e73-b135-a1cd3fe6dc5e"
+                            },
+                            {
+                              "id": "5d74c521-583c-49f6-9678-caee1e481756",
+                              "name": "Server error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/task/claude-computer-use/:id/status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "task",
+                                    "claude-computer-use",
+                                    ":id",
+                                    "status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:10:09.000Z",
+                              "updatedAt": "2026-06-05T15:10:09.000Z",
+                              "uid": "35240-5d74c521-583c-49f6-9678-caee1e481756"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-dcf76a39-b555-45dd-8d77-ffebf12159f8"
+                        }
+                      ],
+                      "id": "87a15e87-2c1e-4ef5-a268-7463a3db2dba",
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-87a15e87-2c1e-4ef5-a268-7463a3db2dba"
+                    },
+                    {
+                      "name": "Get Claude Computer Use Task Status and Results",
+                      "id": "5214bcaf-8082-4d97-ab9f-e9bc7b798a11",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/task/claude-computer-use/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "task",
+                            "claude-computer-use",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "cd084403-d5bf-48d6-9c94-76be616ded3f",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "35c9991f-c815-4269-9e29-09407e0bf84e",
+                          "name": "Claude computer use task details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/claude-computer-use/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "claude-computer-use",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"jobId\": \"<string>\",\n  \"status\": \"pending\",\n  \"data\": {\n    \"finalResult\": \"<string>\"\n  },\n  \"error\": \"<string>\",\n  \"liveUrl\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-35c9991f-c815-4269-9e29-09407e0bf84e"
+                        },
+                        {
+                          "id": "85e7c37f-d901-46be-8c48-2d7f30fb24ba",
+                          "name": "Claude computer use task not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/claude-computer-use/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "claude-computer-use",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-85e7c37f-d901-46be-8c48-2d7f30fb24ba"
+                        },
+                        {
+                          "id": "e81dea08-cf56-4e67-ac23-8b8396f3d69b",
+                          "name": "Server error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/claude-computer-use/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "claude-computer-use",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-e81dea08-cf56-4e67-ac23-8b8396f3d69b"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-5214bcaf-8082-4d97-ab9f-e9bc7b798a11"
+                    }
+                  ],
+                  "id": "cc329d6e-516e-44c9-87fb-6d99371690ef",
+                  "createdAt": "2026-06-05T15:10:09.000Z",
+                  "updatedAt": "2026-06-05T15:10:09.000Z",
+                  "uid": "35240-cc329d6e-516e-44c9-87fb-6d99371690ef"
+                },
+                {
+                  "name": "Start a Claude Computer Use Task",
+                  "id": "27a8be7a-5aae-455b-b893-6ddee6815824",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"task\": \"go to example.com\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/task/claude-computer-use",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "task",
+                        "claude-computer-use"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "aa3c89a4-69fa-43c8-bb29-6bade185e86c",
+                      "name": "Claude computer use task started successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"task\": \"go to example.com\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/task/claude-computer-use",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "task",
+                            "claude-computer-use"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"jobId\": \"<string>\",\n  \"liveUrl\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-aa3c89a4-69fa-43c8-bb29-6bade185e86c"
+                    },
+                    {
+                      "id": "eccbf65d-02ac-46c7-b223-f44aa2f5e02e",
+                      "name": "Server error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"task\": \"go to example.com\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/task/claude-computer-use",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "task",
+                            "claude-computer-use"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-eccbf65d-02ac-46c7-b223-f44aa2f5e02e"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:10:09.000Z",
+                  "updatedAt": "2026-06-05T15:10:09.000Z",
+                  "uid": "35240-27a8be7a-5aae-455b-b893-6ddee6815824"
+                }
+              ],
+              "id": "6bf5c1f3-7de8-4f48-b77a-4a44b4abb1c0",
+              "createdAt": "2026-06-05T15:10:09.000Z",
+              "updatedAt": "2026-06-05T15:10:09.000Z",
+              "uid": "35240-6bf5c1f3-7de8-4f48-b77a-4a44b4abb1c0"
+            },
+            {
+              "name": "gemini-computer-use",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "stop",
+                      "item": [
+                        {
+                          "name": "Stop a Gemini Computer Use Task",
+                          "id": "b912951b-deaf-4e57-adf4-8837de882b64",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "x-api-key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/gemini-computer-use/:id/stop",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "gemini-computer-use",
+                                ":id",
+                                "stop"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "3cc4f9f3-5265-45ee-917f-e71fb4c08d0f",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "e9f32a96-4af4-4106-9acd-cdd42dfb9d98",
+                              "name": "Gemini computer use task stopped successfully",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/task/gemini-computer-use/:id/stop",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "task",
+                                    "gemini-computer-use",
+                                    ":id",
+                                    "stop"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"success\": \"<boolean>\"\n}",
+                              "createdAt": "2026-06-05T15:10:09.000Z",
+                              "updatedAt": "2026-06-05T15:10:09.000Z",
+                              "uid": "35240-e9f32a96-4af4-4106-9acd-cdd42dfb9d98"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-b912951b-deaf-4e57-adf4-8837de882b64"
+                        }
+                      ],
+                      "id": "6eb5ba7c-bacd-4370-a51e-b5ccd2c59755",
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-6eb5ba7c-bacd-4370-a51e-b5ccd2c59755"
+                    },
+                    {
+                      "name": "status",
+                      "item": [
+                        {
+                          "name": "Get Gemini Computer Use Task Status",
+                          "id": "d55739fb-b0df-4099-9b7b-7011172fdb8e",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "x-api-key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/gemini-computer-use/:id/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "gemini-computer-use",
+                                ":id",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "a4233858-a1cd-477c-a6cc-48b9ba0c5e1e",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "f914d57e-88d3-4677-85e2-ce4a12878e63",
+                              "name": "Gemini computer use task status",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/task/gemini-computer-use/:id/status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "task",
+                                    "gemini-computer-use",
+                                    ":id",
+                                    "status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"stopped\"\n}",
+                              "createdAt": "2026-06-05T15:10:09.000Z",
+                              "updatedAt": "2026-06-05T15:10:09.000Z",
+                              "uid": "35240-f914d57e-88d3-4677-85e2-ce4a12878e63"
+                            },
+                            {
+                              "id": "5d78c561-2bcd-4afb-8b84-dbedd814f163",
+                              "name": "Gemini computer use task not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/task/gemini-computer-use/:id/status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "task",
+                                    "gemini-computer-use",
+                                    ":id",
+                                    "status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:10:09.000Z",
+                              "updatedAt": "2026-06-05T15:10:09.000Z",
+                              "uid": "35240-5d78c561-2bcd-4afb-8b84-dbedd814f163"
+                            },
+                            {
+                              "id": "93dfef22-1865-41d2-916c-3c1fa09a71d5",
+                              "name": "Server error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/task/gemini-computer-use/:id/status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "task",
+                                    "gemini-computer-use",
+                                    ":id",
+                                    "status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:10:09.000Z",
+                              "updatedAt": "2026-06-05T15:10:09.000Z",
+                              "uid": "35240-93dfef22-1865-41d2-916c-3c1fa09a71d5"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-d55739fb-b0df-4099-9b7b-7011172fdb8e"
+                        }
+                      ],
+                      "id": "7332b915-e35d-4f52-879e-82d16f8e0deb",
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-7332b915-e35d-4f52-879e-82d16f8e0deb"
+                    },
+                    {
+                      "name": "Get Gemini Computer Use Task Status and Results",
+                      "id": "ecfe63a0-8501-470a-a808-fa113020bec5",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/task/gemini-computer-use/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "task",
+                            "gemini-computer-use",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1247d4d5-1df6-4547-ae33-e7e8cf5568d9",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "f74c52b5-498a-471d-832c-ddad27850353",
+                          "name": "Gemini computer use task details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/gemini-computer-use/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "gemini-computer-use",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"jobId\": \"<string>\",\n  \"status\": \"pending\",\n  \"data\": {\n    \"finalResult\": \"<string>\"\n  },\n  \"error\": \"<string>\",\n  \"liveUrl\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-f74c52b5-498a-471d-832c-ddad27850353"
+                        },
+                        {
+                          "id": "06181e95-c6f9-4e3e-80a0-d89f45538512",
+                          "name": "Gemini computer use task not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/gemini-computer-use/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "gemini-computer-use",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-06181e95-c6f9-4e3e-80a0-d89f45538512"
+                        },
+                        {
+                          "id": "6e94af6b-47a8-4527-827a-090cad694701",
+                          "name": "Server error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/gemini-computer-use/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "gemini-computer-use",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-6e94af6b-47a8-4527-827a-090cad694701"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-ecfe63a0-8501-470a-a808-fa113020bec5"
+                    }
+                  ],
+                  "id": "6dffc554-bcbc-4d92-b2e6-f99695b90820",
+                  "createdAt": "2026-06-05T15:10:09.000Z",
+                  "updatedAt": "2026-06-05T15:10:09.000Z",
+                  "uid": "35240-6dffc554-bcbc-4d92-b2e6-f99695b90820"
+                },
+                {
+                  "name": "Start a Gemini Computer Use Task",
+                  "id": "ef203dc4-a12c-48e5-b951-57b886f83a69",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"task\": \"go to example.com\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/task/gemini-computer-use",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "task",
+                        "gemini-computer-use"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "09668d57-5659-4f10-b614-e350581ada46",
+                      "name": "Gemini computer use task started successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"task\": \"go to example.com\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/task/gemini-computer-use",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "task",
+                            "gemini-computer-use"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"jobId\": \"<string>\",\n  \"liveUrl\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-09668d57-5659-4f10-b614-e350581ada46"
+                    },
+                    {
+                      "id": "e6be65f0-6697-4c0a-a0b6-cb6cee7358e4",
+                      "name": "Server error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"task\": \"go to example.com\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/task/gemini-computer-use",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "task",
+                            "gemini-computer-use"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-e6be65f0-6697-4c0a-a0b6-cb6cee7358e4"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:10:09.000Z",
+                  "updatedAt": "2026-06-05T15:10:09.000Z",
+                  "uid": "35240-ef203dc4-a12c-48e5-b951-57b886f83a69"
+                }
+              ],
+              "id": "10895c21-1613-4aa2-9278-7c39fde263e5",
+              "createdAt": "2026-06-05T15:10:09.000Z",
+              "updatedAt": "2026-06-05T15:10:09.000Z",
+              "uid": "35240-10895c21-1613-4aa2-9278-7c39fde263e5"
+            },
+            {
+              "name": "cua",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "stop",
+                      "item": [
+                        {
+                          "name": "Stop a CUA Task",
+                          "id": "d2276557-5bf9-418d-b92f-a8c1a19409de",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "x-api-key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/cua/:id/stop",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "cua",
+                                ":id",
+                                "stop"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "fc74e267-d964-40d8-b2b8-4615f1f66537",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "dde18e40-9576-4c30-a509-34561b58d5ba",
+                              "name": "CUA task stopped successfully",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/task/cua/:id/stop",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "task",
+                                    "cua",
+                                    ":id",
+                                    "stop"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"success\": \"<boolean>\"\n}",
+                              "createdAt": "2026-06-05T15:10:09.000Z",
+                              "updatedAt": "2026-06-05T15:10:09.000Z",
+                              "uid": "35240-dde18e40-9576-4c30-a509-34561b58d5ba"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-d2276557-5bf9-418d-b92f-a8c1a19409de"
+                        }
+                      ],
+                      "id": "644f854c-a12d-4770-94d7-871641d5f6d5",
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-644f854c-a12d-4770-94d7-871641d5f6d5"
+                    },
+                    {
+                      "name": "status",
+                      "item": [
+                        {
+                          "name": "Get CUA Task Status",
+                          "id": "a8487c98-cacb-4e67-864e-7b7aa6996381",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "x-api-key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/cua/:id/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "cua",
+                                ":id",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "2ebe429e-bc5e-40c2-b0d7-366dbecfa45b",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "7f08a31d-f954-468e-a610-17526d87a0ef",
+                              "name": "CUA task status",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/task/cua/:id/status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "task",
+                                    "cua",
+                                    ":id",
+                                    "status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"stopped\"\n}",
+                              "createdAt": "2026-06-05T15:10:09.000Z",
+                              "updatedAt": "2026-06-05T15:10:09.000Z",
+                              "uid": "35240-7f08a31d-f954-468e-a610-17526d87a0ef"
+                            },
+                            {
+                              "id": "7789b66e-fe87-4f1c-86ca-bedd0af65220",
+                              "name": "CUA task not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/task/cua/:id/status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "task",
+                                    "cua",
+                                    ":id",
+                                    "status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:10:09.000Z",
+                              "updatedAt": "2026-06-05T15:10:09.000Z",
+                              "uid": "35240-7789b66e-fe87-4f1c-86ca-bedd0af65220"
+                            },
+                            {
+                              "id": "ef6f6471-3953-46d6-b871-a6b6ac19fe5e",
+                              "name": "Server error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/task/cua/:id/status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "task",
+                                    "cua",
+                                    ":id",
+                                    "status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:10:09.000Z",
+                              "updatedAt": "2026-06-05T15:10:09.000Z",
+                              "uid": "35240-ef6f6471-3953-46d6-b871-a6b6ac19fe5e"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-a8487c98-cacb-4e67-864e-7b7aa6996381"
+                        }
+                      ],
+                      "id": "d6f790d8-7d88-41c6-b9f5-b382ef289cc8",
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-d6f790d8-7d88-41c6-b9f5-b382ef289cc8"
+                    },
+                    {
+                      "name": "Get CUA Task Status and Results",
+                      "id": "28c4c988-3470-4ac0-ad7d-308c2f8858e8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/task/cua/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "task",
+                            "cua",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9636dfbb-1a93-4fb7-8d43-47efce770062",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "8330434f-d3b4-463e-86df-b65b44207594",
+                          "name": "CUA task details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/cua/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "cua",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"jobId\": \"<string>\",\n  \"status\": \"pending\",\n  \"data\": {\n    \"finalResult\": \"<string>\"\n  },\n  \"error\": \"<string>\",\n  \"liveUrl\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-8330434f-d3b4-463e-86df-b65b44207594"
+                        },
+                        {
+                          "id": "c617a833-2f2f-48da-a9a5-431ae39f2dcc",
+                          "name": "CUA task not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/cua/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "cua",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-c617a833-2f2f-48da-a9a5-431ae39f2dcc"
+                        },
+                        {
+                          "id": "74c8d2ed-9d28-4996-932d-5cf02ea66cdd",
+                          "name": "Server error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/task/cua/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "task",
+                                "cua",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:10:09.000Z",
+                          "updatedAt": "2026-06-05T15:10:09.000Z",
+                          "uid": "35240-74c8d2ed-9d28-4996-932d-5cf02ea66cdd"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-28c4c988-3470-4ac0-ad7d-308c2f8858e8"
+                    }
+                  ],
+                  "id": "17ff706b-dfa5-44d7-8a62-c0e924d62c78",
+                  "createdAt": "2026-06-05T15:10:09.000Z",
+                  "updatedAt": "2026-06-05T15:10:09.000Z",
+                  "uid": "35240-17ff706b-dfa5-44d7-8a62-c0e924d62c78"
+                },
+                {
+                  "name": "Start a CUA Task",
+                  "id": "dbd3ed1b-b9fe-4bfa-9d72-74772cdb36df",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"task\": \"go to example.com\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/task/cua",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "task",
+                        "cua"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "362610a5-ccb6-4196-b501-b7f3f17bff22",
+                      "name": "CUA task started successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"task\": \"go to example.com\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/task/cua",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "task",
+                            "cua"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"jobId\": \"<string>\",\n  \"liveUrl\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-362610a5-ccb6-4196-b501-b7f3f17bff22"
+                    },
+                    {
+                      "id": "6220797e-4510-4b7f-9965-d3092f8cd414",
+                      "name": "Server error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"task\": \"go to example.com\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/task/cua",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "task",
+                            "cua"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:09.000Z",
+                      "updatedAt": "2026-06-05T15:10:09.000Z",
+                      "uid": "35240-6220797e-4510-4b7f-9965-d3092f8cd414"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:10:09.000Z",
+                  "updatedAt": "2026-06-05T15:10:09.000Z",
+                  "uid": "35240-dbd3ed1b-b9fe-4bfa-9d72-74772cdb36df"
+                }
+              ],
+              "id": "daa9cee7-345d-4ea0-8198-d310f5d80f5a",
+              "createdAt": "2026-06-05T15:10:09.000Z",
+              "updatedAt": "2026-06-05T15:10:09.000Z",
+              "uid": "35240-daa9cee7-345d-4ea0-8198-d310f5d80f5a"
+            }
+          ],
+          "id": "c9748620-6ea4-437e-90a7-c680282f67bc",
+          "createdAt": "2026-06-05T15:10:09.000Z",
+          "updatedAt": "2026-06-05T15:10:09.000Z",
+          "uid": "35240-c9748620-6ea4-437e-90a7-c680282f67bc"
+        }
+      ],
+      "id": "11a3f755-7d71-4329-8bcd-d08f20699f00",
+      "createdAt": "2026-06-05T15:10:09.000Z",
+      "updatedAt": "2026-06-05T15:10:09.000Z",
+      "uid": "35240-11a3f755-7d71-4329-8bcd-d08f20699f00"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.hyperbrowser.ai"
+    }
+  ]
+}

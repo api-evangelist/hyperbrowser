@@ -1,0 +1,2281 @@
+{
+  "info": {
+    "_postman_id": "d64e7a93-ed0b-42a1-83c3-1922ebf83462",
+    "name": "Hyperbrowser Sessions API",
+    "description": "Manage cloud Chromium browser sessions: create, list, inspect, update, stop, plus recording, video, and downloads URLs and CAPTCHA evaluation.\n\nContact Support:\n Name: Hyperbrowser",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:09:53.000Z",
+    "updatedAt": "2026-06-05T15:09:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d64e7a93-ed0b-42a1-83c3-1922ebf83462"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "session",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "stop",
+                  "item": [
+                    {
+                      "name": "Stop a Session",
+                      "id": "9d80ea57-cb98-4762-8535-4d549b7f92c1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/session/:id/stop",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "session",
+                            ":id",
+                            "stop"
+                          ],
+                          "variable": [
+                            {
+                              "id": "f5b1307c-c3fd-4c64-a8ed-373e4e1f56f8",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "e563683b-4e67-410d-87de-409f45076d87",
+                          "name": "Session stopped successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/session/:id/stop",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "session",
+                                ":id",
+                                "stop"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\"\n}",
+                          "createdAt": "2026-06-05T15:09:54.000Z",
+                          "updatedAt": "2026-06-05T15:09:54.000Z",
+                          "uid": "35240-e563683b-4e67-410d-87de-409f45076d87"
+                        },
+                        {
+                          "id": "9708af3b-9078-48c4-80e0-b28c21a0745c",
+                          "name": "Session not found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/session/:id/stop",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "session",
+                                ":id",
+                                "stop"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:09:54.000Z",
+                          "updatedAt": "2026-06-05T15:09:54.000Z",
+                          "uid": "35240-9708af3b-9078-48c4-80e0-b28c21a0745c"
+                        },
+                        {
+                          "id": "946fefd2-9142-410a-a260-f3db19f326d8",
+                          "name": "Server error",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/session/:id/stop",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "session",
+                                ":id",
+                                "stop"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:09:54.000Z",
+                          "updatedAt": "2026-06-05T15:09:54.000Z",
+                          "uid": "35240-946fefd2-9142-410a-a260-f3db19f326d8"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:09:54.000Z",
+                      "updatedAt": "2026-06-05T15:09:54.000Z",
+                      "uid": "35240-9d80ea57-cb98-4762-8535-4d549b7f92c1"
+                    }
+                  ],
+                  "id": "4525d97a-3cc2-4bcc-a18c-0e913d8c2d76",
+                  "createdAt": "2026-06-05T15:09:54.000Z",
+                  "updatedAt": "2026-06-05T15:09:54.000Z",
+                  "uid": "35240-4525d97a-3cc2-4bcc-a18c-0e913d8c2d76"
+                },
+                {
+                  "name": "update",
+                  "item": [
+                    {
+                      "name": "Update a Running Session",
+                      "id": "d60ea681-1211-4351-a683-9db738e958e3",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"profile\",\n  \"params\": {\n    \"persistChanges\": \"<boolean>\",\n    \"persistNetworkCache\": \"<boolean>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/session/:id/update",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "session",
+                            ":id",
+                            "update"
+                          ],
+                          "variable": [
+                            {
+                              "id": "692d0d1f-25e0-4ec0-a0dd-9bb61b3c1568",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Update supported settings on an active browser session. Supported update types are profile, proxy, screen, and solveCaptchas."
+                      },
+                      "response": [
+                        {
+                          "id": "7606bed1-75c9-4f24-b09d-56eb6560210d",
+                          "name": "Session updated successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"type\": \"profile\",\n  \"params\": {\n    \"persistChanges\": \"<boolean>\",\n    \"persistNetworkCache\": \"<boolean>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/session/:id/update",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "session",
+                                ":id",
+                                "update"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"solveCaptchas\": \"<boolean>\",\n  \"sessionId\": \"<string>\",\n  \"telemetryReady\": \"<boolean>\"\n}",
+                          "createdAt": "2026-06-05T15:09:54.000Z",
+                          "updatedAt": "2026-06-05T15:09:54.000Z",
+                          "uid": "35240-7606bed1-75c9-4f24-b09d-56eb6560210d"
+                        },
+                        {
+                          "id": "0277531a-be4d-4038-bbd9-edffcc2198e7",
+                          "name": "Invalid update request",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"type\": \"profile\",\n  \"params\": {\n    \"persistChanges\": \"<boolean>\",\n    \"persistNetworkCache\": \"<boolean>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/session/:id/update",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "session",
+                                ":id",
+                                "update"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:09:54.000Z",
+                          "updatedAt": "2026-06-05T15:09:54.000Z",
+                          "uid": "35240-0277531a-be4d-4038-bbd9-edffcc2198e7"
+                        },
+                        {
+                          "id": "4e8d0489-dec9-4914-9144-021950be1a47",
+                          "name": "Session not found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"type\": \"profile\",\n  \"params\": {\n    \"persistChanges\": \"<boolean>\",\n    \"persistNetworkCache\": \"<boolean>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/session/:id/update",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "session",
+                                ":id",
+                                "update"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:09:54.000Z",
+                          "updatedAt": "2026-06-05T15:09:54.000Z",
+                          "uid": "35240-4e8d0489-dec9-4914-9144-021950be1a47"
+                        },
+                        {
+                          "id": "325aaebe-c533-4be4-a5d2-95fc61745f3a",
+                          "name": "CAPTCHA evaluation is already running",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"type\": \"profile\",\n  \"params\": {\n    \"persistChanges\": \"<boolean>\",\n    \"persistNetworkCache\": \"<boolean>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/session/:id/update",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "session",
+                                ":id",
+                                "update"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:09:54.000Z",
+                          "updatedAt": "2026-06-05T15:09:54.000Z",
+                          "uid": "35240-325aaebe-c533-4be4-a5d2-95fc61745f3a"
+                        },
+                        {
+                          "id": "7e145ba7-3b95-4acc-a86f-2c3a3adf52d9",
+                          "name": "Server error",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"type\": \"profile\",\n  \"params\": {\n    \"persistChanges\": \"<boolean>\",\n    \"persistNetworkCache\": \"<boolean>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/session/:id/update",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "session",
+                                ":id",
+                                "update"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:09:54.000Z",
+                          "updatedAt": "2026-06-05T15:09:54.000Z",
+                          "uid": "35240-7e145ba7-3b95-4acc-a86f-2c3a3adf52d9"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:09:54.000Z",
+                      "updatedAt": "2026-06-05T15:09:54.000Z",
+                      "uid": "35240-d60ea681-1211-4351-a683-9db738e958e3"
+                    }
+                  ],
+                  "id": "28509b0c-93fd-4839-a287-92c5ad146529",
+                  "createdAt": "2026-06-05T15:09:54.000Z",
+                  "updatedAt": "2026-06-05T15:09:54.000Z",
+                  "uid": "35240-28509b0c-93fd-4839-a287-92c5ad146529"
+                },
+                {
+                  "name": "captcha",
+                  "item": [
+                    {
+                      "name": "evaluate",
+                      "item": [
+                        {
+                          "name": "Run Manual CAPTCHA Evaluation",
+                          "id": "783aa67e-d830-4f40-9914-cf45871abb91",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "x-api-key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"captcha\": \"amazon\",\n  \"captchaType\": \"amazon\",\n  \"text\": \"amazon\",\n  \"iterations\": \"<integer>\",\n  \"maxIterations\": \"<integer>\",\n  \"solverType\": \"visual\",\n  \"imageCaptchaParams\": [\n    {\n      \"imageSelector\": \"<string>\",\n      \"inputSelector\": \"<string>\"\n    },\n    {\n      \"imageSelector\": \"<string>\",\n      \"inputSelector\": \"<string>\"\n    }\n  ],\n  \"useUltraStealth\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/session/:id/captcha/evaluate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "session",
+                                ":id",
+                                "captcha",
+                                "evaluate"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "c5c7d9da-b346-49b2-b61d-1bb8d4a5d342",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Trigger a bounded CAPTCHA evaluation on an active browser session. Supported CAPTCHA targets are turnstile, cloudflare-challenge, aliexpress, recaptcha, and amazon."
+                          },
+                          "response": [
+                            {
+                              "id": "f9bafab6-b47a-4a63-a23b-5735b326b52c",
+                              "name": "CAPTCHA evaluation completed",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"captcha\": \"amazon\",\n  \"captchaType\": \"amazon\",\n  \"text\": \"amazon\",\n  \"iterations\": \"<integer>\",\n  \"maxIterations\": \"<integer>\",\n  \"solverType\": \"visual\",\n  \"imageCaptchaParams\": [\n    {\n      \"imageSelector\": \"<string>\",\n      \"inputSelector\": \"<string>\"\n    },\n    {\n      \"imageSelector\": \"<string>\",\n      \"inputSelector\": \"<string>\"\n    }\n  ],\n  \"useUltraStealth\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/session/:id/captcha/evaluate",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "session",
+                                    ":id",
+                                    "captcha",
+                                    "evaluate"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"success\": \"<boolean>\",\n  \"captcha\": \"aliexpress\",\n  \"iterationsRequested\": \"<integer>\",\n  \"iterationsRun\": \"<integer>\",\n  \"solved\": \"<boolean>\",\n  \"solvedCaptchas\": [\n    \"turnstile\",\n    \"amazon\"\n  ],\n  \"pages\": [\n    {\n      \"url\": \"<string>\",\n      \"targetId\": \"<string>\",\n      \"iterationsRun\": \"<integer>\",\n      \"solved\": \"<boolean>\",\n      \"solvedCaptchas\": [\n        \"cloudflare-challenge\",\n        \"turnstile\"\n      ],\n      \"checkedCaptchas\": [\n        \"amazon\",\n        \"cloudflare-challenge\"\n      ],\n      \"captchaSolvedCounts\": {\n        \"adipisicing5cf\": \"<number>\"\n      },\n      \"lastSolveTime\": {\n        \"nisi_35\": \"<number>\",\n        \"mollit36\": \"<number>\"\n      }\n    },\n    {\n      \"url\": \"<string>\",\n      \"targetId\": \"<string>\",\n      \"iterationsRun\": \"<integer>\",\n      \"solved\": \"<boolean>\",\n      \"solvedCaptchas\": [\n        \"turnstile\",\n        \"recaptcha\"\n      ],\n      \"checkedCaptchas\": [\n        \"turnstile\",\n        \"aliexpress\"\n      ],\n      \"captchaSolvedCounts\": {\n        \"minimf\": \"<number>\",\n        \"commodo_fa9\": \"<number>\",\n        \"nulla_b\": \"<number>\",\n        \"voluptate37\": \"<number>\"\n      },\n      \"lastSolveTime\": {\n        \"nulla2c1\": \"<number>\"\n      }\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:09:54.000Z",
+                              "updatedAt": "2026-06-05T15:09:54.000Z",
+                              "uid": "35240-f9bafab6-b47a-4a63-a23b-5735b326b52c"
+                            },
+                            {
+                              "id": "01da4eed-a38c-45c1-b2e1-bea0c7efec84",
+                              "name": "Invalid evaluation request",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"captcha\": \"amazon\",\n  \"captchaType\": \"amazon\",\n  \"text\": \"amazon\",\n  \"iterations\": \"<integer>\",\n  \"maxIterations\": \"<integer>\",\n  \"solverType\": \"visual\",\n  \"imageCaptchaParams\": [\n    {\n      \"imageSelector\": \"<string>\",\n      \"inputSelector\": \"<string>\"\n    },\n    {\n      \"imageSelector\": \"<string>\",\n      \"inputSelector\": \"<string>\"\n    }\n  ],\n  \"useUltraStealth\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/session/:id/captcha/evaluate",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "session",
+                                    ":id",
+                                    "captcha",
+                                    "evaluate"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:09:54.000Z",
+                              "updatedAt": "2026-06-05T15:09:54.000Z",
+                              "uid": "35240-01da4eed-a38c-45c1-b2e1-bea0c7efec84"
+                            },
+                            {
+                              "id": "d7ecfe43-8ea8-408d-b183-5e1f925bec46",
+                              "name": "Session not found",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"captcha\": \"amazon\",\n  \"captchaType\": \"amazon\",\n  \"text\": \"amazon\",\n  \"iterations\": \"<integer>\",\n  \"maxIterations\": \"<integer>\",\n  \"solverType\": \"visual\",\n  \"imageCaptchaParams\": [\n    {\n      \"imageSelector\": \"<string>\",\n      \"inputSelector\": \"<string>\"\n    },\n    {\n      \"imageSelector\": \"<string>\",\n      \"inputSelector\": \"<string>\"\n    }\n  ],\n  \"useUltraStealth\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/session/:id/captcha/evaluate",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "session",
+                                    ":id",
+                                    "captcha",
+                                    "evaluate"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:09:54.000Z",
+                              "updatedAt": "2026-06-05T15:09:54.000Z",
+                              "uid": "35240-d7ecfe43-8ea8-408d-b183-5e1f925bec46"
+                            },
+                            {
+                              "id": "42ba15ed-aa84-4cfd-b1ec-82b7c420942d",
+                              "name": "CAPTCHA evaluation is already running",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"captcha\": \"amazon\",\n  \"captchaType\": \"amazon\",\n  \"text\": \"amazon\",\n  \"iterations\": \"<integer>\",\n  \"maxIterations\": \"<integer>\",\n  \"solverType\": \"visual\",\n  \"imageCaptchaParams\": [\n    {\n      \"imageSelector\": \"<string>\",\n      \"inputSelector\": \"<string>\"\n    },\n    {\n      \"imageSelector\": \"<string>\",\n      \"inputSelector\": \"<string>\"\n    }\n  ],\n  \"useUltraStealth\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/session/:id/captcha/evaluate",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "session",
+                                    ":id",
+                                    "captcha",
+                                    "evaluate"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Conflict",
+                              "code": 409,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:09:54.000Z",
+                              "updatedAt": "2026-06-05T15:09:54.000Z",
+                              "uid": "35240-42ba15ed-aa84-4cfd-b1ec-82b7c420942d"
+                            },
+                            {
+                              "id": "98b90d54-e738-4139-92e1-3ef779ea864d",
+                              "name": "Server error",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"captcha\": \"amazon\",\n  \"captchaType\": \"amazon\",\n  \"text\": \"amazon\",\n  \"iterations\": \"<integer>\",\n  \"maxIterations\": \"<integer>\",\n  \"solverType\": \"visual\",\n  \"imageCaptchaParams\": [\n    {\n      \"imageSelector\": \"<string>\",\n      \"inputSelector\": \"<string>\"\n    },\n    {\n      \"imageSelector\": \"<string>\",\n      \"inputSelector\": \"<string>\"\n    }\n  ],\n  \"useUltraStealth\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/session/:id/captcha/evaluate",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "session",
+                                    ":id",
+                                    "captcha",
+                                    "evaluate"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:09:54.000Z",
+                              "updatedAt": "2026-06-05T15:09:54.000Z",
+                              "uid": "35240-98b90d54-e738-4139-92e1-3ef779ea864d"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:09:54.000Z",
+                          "updatedAt": "2026-06-05T15:09:54.000Z",
+                          "uid": "35240-783aa67e-d830-4f40-9914-cf45871abb91"
+                        }
+                      ],
+                      "id": "5e8bd5c0-a44a-46ea-9704-9526214e900b",
+                      "createdAt": "2026-06-05T15:09:54.000Z",
+                      "updatedAt": "2026-06-05T15:09:54.000Z",
+                      "uid": "35240-5e8bd5c0-a44a-46ea-9704-9526214e900b"
+                    }
+                  ],
+                  "id": "9e604345-4572-4697-bf5b-6290b2620638",
+                  "createdAt": "2026-06-05T15:09:54.000Z",
+                  "updatedAt": "2026-06-05T15:09:54.000Z",
+                  "uid": "35240-9e604345-4572-4697-bf5b-6290b2620638"
+                },
+                {
+                  "name": "recording-url",
+                  "item": [
+                    {
+                      "name": "Get Session Recording URL",
+                      "id": "ed3fed58-dd31-45c8-853e-a397144fca29",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/session/:id/recording-url",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "session",
+                            ":id",
+                            "recording-url"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1dfe6534-003f-4ece-99b6-7bb87a3197da",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "352ccce5-c14e-4a2f-9a87-5b7d47b9a4a5",
+                          "name": "Session recording URL",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/session/:id/recording-url",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "session",
+                                ":id",
+                                "recording-url"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"pending\",\n  \"recordingUrl\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:09:54.000Z",
+                          "updatedAt": "2026-06-05T15:09:54.000Z",
+                          "uid": "35240-352ccce5-c14e-4a2f-9a87-5b7d47b9a4a5"
+                        },
+                        {
+                          "id": "4a1b9bb9-2663-40ce-969a-a61e0b528ec3",
+                          "name": "Session not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/session/:id/recording-url",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "session",
+                                ":id",
+                                "recording-url"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:09:54.000Z",
+                          "updatedAt": "2026-06-05T15:09:54.000Z",
+                          "uid": "35240-4a1b9bb9-2663-40ce-969a-a61e0b528ec3"
+                        },
+                        {
+                          "id": "af025915-abdf-4678-bd28-17476f4d70ad",
+                          "name": "Server error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/session/:id/recording-url",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "session",
+                                ":id",
+                                "recording-url"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:09:54.000Z",
+                          "updatedAt": "2026-06-05T15:09:54.000Z",
+                          "uid": "35240-af025915-abdf-4678-bd28-17476f4d70ad"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:09:54.000Z",
+                      "updatedAt": "2026-06-05T15:09:54.000Z",
+                      "uid": "35240-ed3fed58-dd31-45c8-853e-a397144fca29"
+                    }
+                  ],
+                  "id": "ce815da3-4359-45c4-94b0-0aef17dd1d51",
+                  "createdAt": "2026-06-05T15:09:54.000Z",
+                  "updatedAt": "2026-06-05T15:09:54.000Z",
+                  "uid": "35240-ce815da3-4359-45c4-94b0-0aef17dd1d51"
+                },
+                {
+                  "name": "video-recording-url",
+                  "item": [
+                    {
+                      "name": "Get Session Video Recording URL",
+                      "id": "a62a37ce-ff67-4e43-a0dd-1f96e3157fa5",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/session/:id/video-recording-url",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "session",
+                            ":id",
+                            "video-recording-url"
+                          ],
+                          "variable": [
+                            {
+                              "id": "31c7feae-ed52-4d49-b493-af789db4f81b",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "80c7dabb-a496-4b79-b566-1281bde46ef7",
+                          "name": "Session video recording URL",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/session/:id/video-recording-url",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "session",
+                                ":id",
+                                "video-recording-url"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"pending\",\n  \"recordingUrl\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:09:54.000Z",
+                          "updatedAt": "2026-06-05T15:09:54.000Z",
+                          "uid": "35240-80c7dabb-a496-4b79-b566-1281bde46ef7"
+                        },
+                        {
+                          "id": "4850e88d-03aa-4dd1-825d-ee5f78a454d2",
+                          "name": "Session not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/session/:id/video-recording-url",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "session",
+                                ":id",
+                                "video-recording-url"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:09:54.000Z",
+                          "updatedAt": "2026-06-05T15:09:54.000Z",
+                          "uid": "35240-4850e88d-03aa-4dd1-825d-ee5f78a454d2"
+                        },
+                        {
+                          "id": "855e067a-8d71-4c6b-90c7-c4f647c0fe84",
+                          "name": "Server error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/session/:id/video-recording-url",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "session",
+                                ":id",
+                                "video-recording-url"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:09:54.000Z",
+                          "updatedAt": "2026-06-05T15:09:54.000Z",
+                          "uid": "35240-855e067a-8d71-4c6b-90c7-c4f647c0fe84"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:09:54.000Z",
+                      "updatedAt": "2026-06-05T15:09:54.000Z",
+                      "uid": "35240-a62a37ce-ff67-4e43-a0dd-1f96e3157fa5"
+                    }
+                  ],
+                  "id": "24d4aa3b-379f-4817-a8b7-a803deab28c4",
+                  "createdAt": "2026-06-05T15:09:54.000Z",
+                  "updatedAt": "2026-06-05T15:09:54.000Z",
+                  "uid": "35240-24d4aa3b-379f-4817-a8b7-a803deab28c4"
+                },
+                {
+                  "name": "downloads-url",
+                  "item": [
+                    {
+                      "name": "Get Session Downloads URL",
+                      "id": "645a8dd6-a131-4ed6-bac0-ded998bba9e1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/session/:id/downloads-url",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "session",
+                            ":id",
+                            "downloads-url"
+                          ],
+                          "variable": [
+                            {
+                              "id": "fdbc69c0-f6a9-4154-b4ff-e776cd3a0e72",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "5cad18f8-c33e-4ccf-a72d-c1ba1c055e8d",
+                          "name": "Session downloads URL",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/session/:id/downloads-url",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "session",
+                                ":id",
+                                "downloads-url"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"in_progress\",\n  \"downloadsUrl\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:09:54.000Z",
+                          "updatedAt": "2026-06-05T15:09:54.000Z",
+                          "uid": "35240-5cad18f8-c33e-4ccf-a72d-c1ba1c055e8d"
+                        },
+                        {
+                          "id": "92fe29c0-1b2b-4693-8a59-07dfc92f1cac",
+                          "name": "Session not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/session/:id/downloads-url",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "session",
+                                ":id",
+                                "downloads-url"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:09:54.000Z",
+                          "updatedAt": "2026-06-05T15:09:54.000Z",
+                          "uid": "35240-92fe29c0-1b2b-4693-8a59-07dfc92f1cac"
+                        },
+                        {
+                          "id": "a6c47f83-32eb-4724-965c-ca32d4ebf4cc",
+                          "name": "Server error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/session/:id/downloads-url",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "session",
+                                ":id",
+                                "downloads-url"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:09:54.000Z",
+                          "updatedAt": "2026-06-05T15:09:54.000Z",
+                          "uid": "35240-a6c47f83-32eb-4724-965c-ca32d4ebf4cc"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:09:54.000Z",
+                      "updatedAt": "2026-06-05T15:09:54.000Z",
+                      "uid": "35240-645a8dd6-a131-4ed6-bac0-ded998bba9e1"
+                    }
+                  ],
+                  "id": "7e2d5445-891a-4b9c-9d9a-78a4ba5367ae",
+                  "createdAt": "2026-06-05T15:09:54.000Z",
+                  "updatedAt": "2026-06-05T15:09:54.000Z",
+                  "uid": "35240-7e2d5445-891a-4b9c-9d9a-78a4ba5367ae"
+                },
+                {
+                  "name": "Get Session by ID",
+                  "id": "21aa1f96-7d3c-4f4b-8bf2-f829753e8b8f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/session/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "session",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e2a612a6-d6b2-4100-bdba-25ee9786c4a2",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "bec27408-a7c8-453c-9a62-12514670b6a6",
+                      "name": "Session details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/session/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "session",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<uuid>\",\n  \"teamId\": \"<uuid>\",\n  \"status\": \"error\",\n  \"startTime\": \"<string>\",\n  \"endTime\": \"<string>\",\n  \"createdAt\": \"<string>\",\n  \"updatedAt\": \"<string>\",\n  \"launchState\": {\n    \"useUltraStealth\": \"<boolean>\",\n    \"useStealth\": \"<boolean>\",\n    \"useProxy\": \"<boolean>\",\n    \"solveCaptchas\": \"<boolean>\",\n    \"solverType\": \"visual\",\n    \"adblock\": \"<boolean>\",\n    \"trackers\": \"<boolean>\",\n    \"annoyances\": \"<boolean>\",\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"enableWebRecording\": \"<boolean>\",\n    \"enableVideoWebRecording\": \"<boolean>\",\n    \"enableLogCapture\": \"<boolean>\",\n    \"acceptCookies\": \"<boolean>\",\n    \"profile\": {\n      \"id\": \"<string>\",\n      \"persistChanges\": \"<boolean>\",\n      \"persistNetworkCache\": \"<boolean>\"\n    },\n    \"staticIpId\": \"<string>\",\n    \"saveDownloads\": \"<boolean>\",\n    \"enableWindowManager\": \"<boolean>\",\n    \"enableWindowManagerTaskbar\": \"<boolean>\",\n    \"viewOnlyLiveView\": \"<boolean>\",\n    \"disablePasswordManager\": \"<boolean>\",\n    \"enableAlwaysOpenPdfExternally\": \"<boolean>\",\n    \"disablePostQuantumKeyAgreement\": \"<boolean>\"\n  },\n  \"creditsUsed\": \"<number>\",\n  \"sessionUrl\": \"<string>\",\n  \"liveUrl\": \"<string>\",\n  \"token\": \"<string>\",\n  \"wsEndpoint\": \"<string>\",\n  \"webdriverEndpoint\": \"<string>\",\n  \"computerActionEndpoint\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:09:54.000Z",
+                      "updatedAt": "2026-06-05T15:09:54.000Z",
+                      "uid": "35240-bec27408-a7c8-453c-9a62-12514670b6a6"
+                    },
+                    {
+                      "id": "d3fb35d1-f0dd-47d2-8345-b9646cc74b73",
+                      "name": "Session not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/session/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "session",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:09:54.000Z",
+                      "updatedAt": "2026-06-05T15:09:54.000Z",
+                      "uid": "35240-d3fb35d1-f0dd-47d2-8345-b9646cc74b73"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:09:54.000Z",
+                  "updatedAt": "2026-06-05T15:09:54.000Z",
+                  "uid": "35240-21aa1f96-7d3c-4f4b-8bf2-f829753e8b8f"
+                }
+              ],
+              "id": "641c6032-08bb-4d99-914a-90e007d8c64f",
+              "createdAt": "2026-06-05T15:09:54.000Z",
+              "updatedAt": "2026-06-05T15:09:54.000Z",
+              "uid": "35240-641c6032-08bb-4d99-914a-90e007d8c64f"
+            },
+            {
+              "name": "Create New Session",
+              "id": "dda26aab-d5ba-42c0-a78d-b0a8f6536e28",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-key",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"useStealth\": false,\n  \"useProxy\": false,\n  \"acceptCookies\": false\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/session",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "session"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "c848d1e5-ad18-4214-90cd-cc37f8927558",
+                  "name": "Session created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"useStealth\": false,\n  \"useProxy\": false,\n  \"acceptCookies\": false\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/session",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "session"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<uuid>\",\n  \"teamId\": \"<uuid>\",\n  \"status\": \"error\",\n  \"startTime\": \"<string>\",\n  \"endTime\": \"<string>\",\n  \"createdAt\": \"<string>\",\n  \"updatedAt\": \"<string>\",\n  \"launchState\": {\n    \"useUltraStealth\": \"<boolean>\",\n    \"useStealth\": \"<boolean>\",\n    \"useProxy\": \"<boolean>\",\n    \"solveCaptchas\": \"<boolean>\",\n    \"solverType\": \"visual\",\n    \"adblock\": \"<boolean>\",\n    \"trackers\": \"<boolean>\",\n    \"annoyances\": \"<boolean>\",\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"enableWebRecording\": \"<boolean>\",\n    \"enableVideoWebRecording\": \"<boolean>\",\n    \"enableLogCapture\": \"<boolean>\",\n    \"acceptCookies\": \"<boolean>\",\n    \"profile\": {\n      \"id\": \"<string>\",\n      \"persistChanges\": \"<boolean>\",\n      \"persistNetworkCache\": \"<boolean>\"\n    },\n    \"staticIpId\": \"<string>\",\n    \"saveDownloads\": \"<boolean>\",\n    \"enableWindowManager\": \"<boolean>\",\n    \"enableWindowManagerTaskbar\": \"<boolean>\",\n    \"viewOnlyLiveView\": \"<boolean>\",\n    \"disablePasswordManager\": \"<boolean>\",\n    \"enableAlwaysOpenPdfExternally\": \"<boolean>\",\n    \"disablePostQuantumKeyAgreement\": \"<boolean>\"\n  },\n  \"creditsUsed\": \"<number>\",\n  \"sessionUrl\": \"<string>\",\n  \"liveUrl\": \"<string>\",\n  \"token\": \"<string>\",\n  \"wsEndpoint\": \"<string>\",\n  \"webdriverEndpoint\": \"<string>\",\n  \"computerActionEndpoint\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:09:54.000Z",
+                  "updatedAt": "2026-06-05T15:09:54.000Z",
+                  "uid": "35240-c848d1e5-ad18-4214-90cd-cc37f8927558"
+                }
+              ],
+              "createdAt": "2026-06-05T15:09:54.000Z",
+              "updatedAt": "2026-06-05T15:09:54.000Z",
+              "uid": "35240-dda26aab-d5ba-42c0-a78d-b0a8f6536e28"
+            }
+          ],
+          "id": "24b77f57-a947-4ef5-ae16-7679f402633d",
+          "createdAt": "2026-06-05T15:09:54.000Z",
+          "updatedAt": "2026-06-05T15:09:54.000Z",
+          "uid": "35240-24b77f57-a947-4ef5-ae16-7679f402633d"
+        },
+        {
+          "name": "sessions",
+          "item": [
+            {
+              "name": "Get List of Sessions",
+              "id": "c150ccad-f9e5-440d-afeb-9755f3dc9478",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-key",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/sessions?page=1&status=active",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "sessions"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "status",
+                      "value": "active"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "918f2646-fc07-4d0d-9d4d-732f07b19385",
+                  "name": "List of sessions",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/sessions?page=1&status=active",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "sessions"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "status",
+                          "value": "active"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"sessions\": [\n    {\n      \"id\": \"<uuid>\",\n      \"teamId\": \"<uuid>\",\n      \"status\": \"error\",\n      \"startTime\": \"<string>\",\n      \"endTime\": \"<string>\",\n      \"createdAt\": \"<string>\",\n      \"updatedAt\": \"<string>\",\n      \"launchState\": {\n        \"useUltraStealth\": \"<boolean>\",\n        \"useStealth\": \"<boolean>\",\n        \"useProxy\": \"<boolean>\",\n        \"solveCaptchas\": \"<boolean>\",\n        \"solverType\": \"visual\",\n        \"adblock\": \"<boolean>\",\n        \"trackers\": \"<boolean>\",\n        \"annoyances\": \"<boolean>\",\n        \"screen\": {\n          \"width\": 1280,\n          \"height\": 720\n        },\n        \"enableWebRecording\": \"<boolean>\",\n        \"enableVideoWebRecording\": \"<boolean>\",\n        \"enableLogCapture\": \"<boolean>\",\n        \"acceptCookies\": \"<boolean>\",\n        \"profile\": {\n          \"id\": \"<string>\",\n          \"persistChanges\": \"<boolean>\",\n          \"persistNetworkCache\": \"<boolean>\"\n        },\n        \"staticIpId\": \"<string>\",\n        \"saveDownloads\": \"<boolean>\",\n        \"enableWindowManager\": \"<boolean>\",\n        \"enableWindowManagerTaskbar\": \"<boolean>\",\n        \"viewOnlyLiveView\": \"<boolean>\",\n        \"disablePasswordManager\": \"<boolean>\",\n        \"enableAlwaysOpenPdfExternally\": \"<boolean>\",\n        \"disablePostQuantumKeyAgreement\": \"<boolean>\"\n      },\n      \"creditsUsed\": \"<number>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"teamId\": \"<uuid>\",\n      \"status\": \"error\",\n      \"startTime\": \"<string>\",\n      \"endTime\": \"<string>\",\n      \"createdAt\": \"<string>\",\n      \"updatedAt\": \"<string>\",\n      \"launchState\": {\n        \"useUltraStealth\": \"<boolean>\",\n        \"useStealth\": \"<boolean>\",\n        \"useProxy\": \"<boolean>\",\n        \"solveCaptchas\": \"<boolean>\",\n        \"solverType\": \"visual\",\n        \"adblock\": \"<boolean>\",\n        \"trackers\": \"<boolean>\",\n        \"annoyances\": \"<boolean>\",\n        \"screen\": {\n          \"width\": 1280,\n          \"height\": 720\n        },\n        \"enableWebRecording\": \"<boolean>\",\n        \"enableVideoWebRecording\": \"<boolean>\",\n        \"enableLogCapture\": \"<boolean>\",\n        \"acceptCookies\": \"<boolean>\",\n        \"profile\": {\n          \"id\": \"<string>\",\n          \"persistChanges\": \"<boolean>\",\n          \"persistNetworkCache\": \"<boolean>\"\n        },\n        \"staticIpId\": \"<string>\",\n        \"saveDownloads\": \"<boolean>\",\n        \"enableWindowManager\": \"<boolean>\",\n        \"enableWindowManagerTaskbar\": \"<boolean>\",\n        \"viewOnlyLiveView\": \"<boolean>\",\n        \"disablePasswordManager\": \"<boolean>\",\n        \"enableAlwaysOpenPdfExternally\": \"<boolean>\",\n        \"disablePostQuantumKeyAgreement\": \"<boolean>\"\n      },\n      \"creditsUsed\": \"<number>\"\n    }\n  ],\n  \"totalCount\": \"<number>\",\n  \"page\": \"<number>\",\n  \"pageSize\": \"<number>\"\n}",
+                  "createdAt": "2026-06-05T15:09:54.000Z",
+                  "updatedAt": "2026-06-05T15:09:54.000Z",
+                  "uid": "35240-918f2646-fc07-4d0d-9d4d-732f07b19385"
+                },
+                {
+                  "id": "0e773051-641b-4625-83ee-13017c50187d",
+                  "name": "Invalid query parameters",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/sessions?page=1&status=active",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "sessions"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "status",
+                          "value": "active"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:09:54.000Z",
+                  "updatedAt": "2026-06-05T15:09:54.000Z",
+                  "uid": "35240-0e773051-641b-4625-83ee-13017c50187d"
+                },
+                {
+                  "id": "9351a2be-92dd-4ae3-a1bc-a1cd58fee460",
+                  "name": "Server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/sessions?page=1&status=active",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "sessions"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "status",
+                          "value": "active"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:09:54.000Z",
+                  "updatedAt": "2026-06-05T15:09:54.000Z",
+                  "uid": "35240-9351a2be-92dd-4ae3-a1bc-a1cd58fee460"
+                }
+              ],
+              "createdAt": "2026-06-05T15:09:54.000Z",
+              "updatedAt": "2026-06-05T15:09:54.000Z",
+              "uid": "35240-c150ccad-f9e5-440d-afeb-9755f3dc9478"
+            }
+          ],
+          "id": "25ad9adc-f827-4638-830e-d7af36fd7c48",
+          "createdAt": "2026-06-05T15:09:54.000Z",
+          "updatedAt": "2026-06-05T15:09:54.000Z",
+          "uid": "35240-25ad9adc-f827-4638-830e-d7af36fd7c48"
+        }
+      ],
+      "id": "b58b3144-6ec5-44ef-9392-87b3c6897467",
+      "createdAt": "2026-06-05T15:09:54.000Z",
+      "updatedAt": "2026-06-05T15:09:54.000Z",
+      "uid": "35240-b58b3144-6ec5-44ef-9392-87b3c6897467"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.hyperbrowser.ai"
+    }
+  ]
+}

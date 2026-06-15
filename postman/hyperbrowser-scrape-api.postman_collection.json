@@ -1,0 +1,1589 @@
+{
+  "info": {
+    "_postman_id": "eb6b6e30-6f51-42b4-9227-d3c97f7eb66d",
+    "name": "Hyperbrowser Scrape API",
+    "description": "Single-page and batch scrape jobs returning HTML, Markdown, links, and screenshots with status polling.\n\nContact Support:\n Name: Hyperbrowser",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:09:56.000Z",
+    "updatedAt": "2026-06-05T15:09:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-eb6b6e30-6f51-42b4-9227-d3c97f7eb66d"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "scrape",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "status",
+                  "item": [
+                    {
+                      "name": "Get Scrape Job Status",
+                      "id": "e08462fa-476b-41f7-bcd5-370cc7284e17",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/scrape/:id/status",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "scrape",
+                            ":id",
+                            "status"
+                          ],
+                          "variable": [
+                            {
+                              "id": "84bc03ef-7f70-4742-864b-063487f264ba",
+                              "key": "id",
+                              "value": "<uuid>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "707a578e-cbe1-4c1d-ba09-e384f4f31c1b",
+                          "name": "Scrape job status",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/scrape/:id/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "scrape",
+                                ":id",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"pending\"\n}",
+                          "createdAt": "2026-06-05T15:09:57.000Z",
+                          "updatedAt": "2026-06-05T15:09:57.000Z",
+                          "uid": "35240-707a578e-cbe1-4c1d-ba09-e384f4f31c1b"
+                        },
+                        {
+                          "id": "97df28e0-aecb-46bb-9ebf-c0faee775142",
+                          "name": "Job not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/scrape/:id/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "scrape",
+                                ":id",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:09:57.000Z",
+                          "updatedAt": "2026-06-05T15:09:57.000Z",
+                          "uid": "35240-97df28e0-aecb-46bb-9ebf-c0faee775142"
+                        },
+                        {
+                          "id": "8245d024-dba9-4d62-8710-a1906a07d9ba",
+                          "name": "Server error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/scrape/:id/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "scrape",
+                                ":id",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:09:57.000Z",
+                          "updatedAt": "2026-06-05T15:09:57.000Z",
+                          "uid": "35240-8245d024-dba9-4d62-8710-a1906a07d9ba"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:09:57.000Z",
+                      "updatedAt": "2026-06-05T15:09:57.000Z",
+                      "uid": "35240-e08462fa-476b-41f7-bcd5-370cc7284e17"
+                    }
+                  ],
+                  "id": "b6340edd-e590-4a70-85d0-b6fb06821f6d",
+                  "createdAt": "2026-06-05T15:09:57.000Z",
+                  "updatedAt": "2026-06-05T15:09:57.000Z",
+                  "uid": "35240-b6340edd-e590-4a70-85d0-b6fb06821f6d"
+                },
+                {
+                  "name": "Get Scrape Job Status and Result",
+                  "id": "b20620b6-4c86-4d48-8377-a678e4ecda52",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/scrape/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "scrape",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "c4529e07-fd24-47c8-9f75-1271a38f63c4",
+                          "key": "id",
+                          "value": "<uuid>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "3db651a0-8c04-47f6-8807-5e2548ca9205",
+                      "name": "Scrape job details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/scrape/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "scrape",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"jobId\": \"<string>\",\n  \"status\": \"stopped\",\n  \"data\": {\n    \"metadata\": {\n      \"eu1_\": \"<string>\"\n    },\n    \"markdown\": \"<string>\",\n    \"html\": \"<string>\",\n    \"links\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"screenshot\": \"<string>\"\n  },\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:09:57.000Z",
+                      "updatedAt": "2026-06-05T15:09:57.000Z",
+                      "uid": "35240-3db651a0-8c04-47f6-8807-5e2548ca9205"
+                    },
+                    {
+                      "id": "08ad992a-41ce-4e6d-a338-d12d073a216c",
+                      "name": "Job not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/scrape/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "scrape",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:09:57.000Z",
+                      "updatedAt": "2026-06-05T15:09:57.000Z",
+                      "uid": "35240-08ad992a-41ce-4e6d-a338-d12d073a216c"
+                    },
+                    {
+                      "id": "b550e76a-627c-4821-9368-b5ef32b0b68d",
+                      "name": "Server error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/scrape/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "scrape",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:09:57.000Z",
+                      "updatedAt": "2026-06-05T15:09:57.000Z",
+                      "uid": "35240-b550e76a-627c-4821-9368-b5ef32b0b68d"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:09:57.000Z",
+                  "updatedAt": "2026-06-05T15:09:57.000Z",
+                  "uid": "35240-b20620b6-4c86-4d48-8377-a678e4ecda52"
+                }
+              ],
+              "id": "60707ddf-b15a-4bce-8545-f874b4fdecaf",
+              "createdAt": "2026-06-05T15:09:57.000Z",
+              "updatedAt": "2026-06-05T15:09:57.000Z",
+              "uid": "35240-60707ddf-b15a-4bce-8545-f874b4fdecaf"
+            },
+            {
+              "name": "batch",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "status",
+                      "item": [
+                        {
+                          "name": "Get Batch Scrape Job Status",
+                          "id": "65f28cd5-cb87-4533-a26a-7f9efc0f974e",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "x-api-key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/scrape/batch/:id/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "scrape",
+                                "batch",
+                                ":id",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "f27577e3-c30a-4dea-af6f-44d2ff354b70",
+                                  "key": "id",
+                                  "value": "<uuid>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "52403d14-64cc-4745-984a-4364e91f5a07",
+                              "name": "Batch scrape job status",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/scrape/batch/:id/status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "scrape",
+                                    "batch",
+                                    ":id",
+                                    "status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"pending\"\n}",
+                              "createdAt": "2026-06-05T15:09:57.000Z",
+                              "updatedAt": "2026-06-05T15:09:57.000Z",
+                              "uid": "35240-52403d14-64cc-4745-984a-4364e91f5a07"
+                            },
+                            {
+                              "id": "2f5d6dad-6fd7-4fe9-ad79-de2c1713f0b6",
+                              "name": "Batch scrape job not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/scrape/batch/:id/status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "scrape",
+                                    "batch",
+                                    ":id",
+                                    "status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:09:57.000Z",
+                              "updatedAt": "2026-06-05T15:09:57.000Z",
+                              "uid": "35240-2f5d6dad-6fd7-4fe9-ad79-de2c1713f0b6"
+                            },
+                            {
+                              "id": "f535bf7c-36c9-4dd7-be15-aeef846cbf02",
+                              "name": "Server error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/scrape/batch/:id/status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "scrape",
+                                    "batch",
+                                    ":id",
+                                    "status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:09:57.000Z",
+                              "updatedAt": "2026-06-05T15:09:57.000Z",
+                              "uid": "35240-f535bf7c-36c9-4dd7-be15-aeef846cbf02"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:09:57.000Z",
+                          "updatedAt": "2026-06-05T15:09:57.000Z",
+                          "uid": "35240-65f28cd5-cb87-4533-a26a-7f9efc0f974e"
+                        }
+                      ],
+                      "id": "160babc6-a18a-4b05-bbf1-401fc5497c63",
+                      "createdAt": "2026-06-05T15:09:57.000Z",
+                      "updatedAt": "2026-06-05T15:09:57.000Z",
+                      "uid": "35240-160babc6-a18a-4b05-bbf1-401fc5497c63"
+                    },
+                    {
+                      "name": "Get Batch Scrape Job Status and Results",
+                      "id": "b736c3fc-5d97-4bec-81b0-b2b700099f94",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/scrape/batch/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "scrape",
+                            "batch",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "5eeee36a-982e-4e6a-a1fb-32d4c5c874ae",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "43ff0049-bfb9-4574-897f-85e1d1f1f1ae",
+                          "name": "Batch scrape job details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/scrape/batch/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "scrape",
+                                "batch",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"jobId\": \"<string>\",\n  \"status\": \"stopped\",\n  \"data\": [\n    {\n      \"url\": \"<string>\",\n      \"status\": \"running\",\n      \"error\": \"<string>\",\n      \"metadata\": {\n        \"non__f0\": \"<string>\",\n        \"fugiat_a3\": \"<string>\"\n      },\n      \"markdown\": \"<string>\",\n      \"html\": \"<string>\",\n      \"links\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"screenshot\": \"<string>\"\n    },\n    {\n      \"url\": \"<string>\",\n      \"status\": \"pending\",\n      \"error\": \"<string>\",\n      \"metadata\": {\n        \"ad_55\": \"<string>\",\n        \"Lorem_93\": \"<string>\"\n      },\n      \"markdown\": \"<string>\",\n      \"html\": \"<string>\",\n      \"links\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"screenshot\": \"<string>\"\n    }\n  ],\n  \"error\": \"<string>\",\n  \"totalScrapedPages\": \"<number>\",\n  \"totalPageBatches\": \"<number>\",\n  \"currentPageBatch\": \"<number>\",\n  \"batchSize\": \"<number>\"\n}",
+                          "createdAt": "2026-06-05T15:09:57.000Z",
+                          "updatedAt": "2026-06-05T15:09:57.000Z",
+                          "uid": "35240-43ff0049-bfb9-4574-897f-85e1d1f1f1ae"
+                        },
+                        {
+                          "id": "d72d32ce-0200-42c2-bed5-ff074a9eee75",
+                          "name": "Invalid request parameters",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/scrape/batch/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "scrape",
+                                "batch",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:09:57.000Z",
+                          "updatedAt": "2026-06-05T15:09:57.000Z",
+                          "uid": "35240-d72d32ce-0200-42c2-bed5-ff074a9eee75"
+                        },
+                        {
+                          "id": "92bb9698-d81f-46fc-a0b4-501caf600b41",
+                          "name": "Batch scrape job not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/scrape/batch/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "scrape",
+                                "batch",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:09:57.000Z",
+                          "updatedAt": "2026-06-05T15:09:57.000Z",
+                          "uid": "35240-92bb9698-d81f-46fc-a0b4-501caf600b41"
+                        },
+                        {
+                          "id": "716ca588-8f24-46a7-9b91-3e91a37f3924",
+                          "name": "Server error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/scrape/batch/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "scrape",
+                                "batch",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:09:57.000Z",
+                          "updatedAt": "2026-06-05T15:09:57.000Z",
+                          "uid": "35240-716ca588-8f24-46a7-9b91-3e91a37f3924"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:09:57.000Z",
+                      "updatedAt": "2026-06-05T15:09:57.000Z",
+                      "uid": "35240-b736c3fc-5d97-4bec-81b0-b2b700099f94"
+                    }
+                  ],
+                  "id": "fc26ec04-05c3-411e-b921-af195da9b525",
+                  "createdAt": "2026-06-05T15:09:57.000Z",
+                  "updatedAt": "2026-06-05T15:09:57.000Z",
+                  "uid": "35240-fc26ec04-05c3-411e-b921-af195da9b525"
+                },
+                {
+                  "name": "Start a Batch Scrape Job",
+                  "id": "2ac4834c-80d9-4924-95b0-bb10d8827f70",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"commodo_ca1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"dolor_102\": \"<string>\"\n      }\n    }\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/scrape/batch",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "scrape",
+                        "batch"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "3c30fd87-b47a-4540-a16c-04106a658f06",
+                      "name": "Batch scrape job started successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"commodo_ca1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"dolor_102\": \"<string>\"\n      }\n    }\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/scrape/batch",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "scrape",
+                            "batch"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"jobId\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:09:57.000Z",
+                      "updatedAt": "2026-06-05T15:09:57.000Z",
+                      "uid": "35240-3c30fd87-b47a-4540-a16c-04106a658f06"
+                    },
+                    {
+                      "id": "cf8ddda6-4e44-45b6-894b-50b7d8bf579f",
+                      "name": "Invalid request parameters",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"commodo_ca1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"dolor_102\": \"<string>\"\n      }\n    }\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/scrape/batch",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "scrape",
+                            "batch"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:09:57.000Z",
+                      "updatedAt": "2026-06-05T15:09:57.000Z",
+                      "uid": "35240-cf8ddda6-4e44-45b6-894b-50b7d8bf579f"
+                    },
+                    {
+                      "id": "dae6ec74-854c-414d-a1f3-f06001541455",
+                      "name": "Insufficient plan",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"commodo_ca1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"dolor_102\": \"<string>\"\n      }\n    }\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/scrape/batch",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "scrape",
+                            "batch"
+                          ]
+                        }
+                      },
+                      "status": "Payment Required",
+                      "code": 402,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:09:57.000Z",
+                      "updatedAt": "2026-06-05T15:09:57.000Z",
+                      "uid": "35240-dae6ec74-854c-414d-a1f3-f06001541455"
+                    },
+                    {
+                      "id": "507c83b5-a7b8-42d7-a55a-3a2dc9dfacda",
+                      "name": "Too many concurrent batch scrape jobs",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"commodo_ca1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"dolor_102\": \"<string>\"\n      }\n    }\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/scrape/batch",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "scrape",
+                            "batch"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:09:57.000Z",
+                      "updatedAt": "2026-06-05T15:09:57.000Z",
+                      "uid": "35240-507c83b5-a7b8-42d7-a55a-3a2dc9dfacda"
+                    },
+                    {
+                      "id": "3d88faa7-f3d2-412e-bcfd-8f3ce9eae980",
+                      "name": "Server error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"commodo_ca1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"dolor_102\": \"<string>\"\n      }\n    }\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/scrape/batch",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "scrape",
+                            "batch"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:09:57.000Z",
+                      "updatedAt": "2026-06-05T15:09:57.000Z",
+                      "uid": "35240-3d88faa7-f3d2-412e-bcfd-8f3ce9eae980"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:09:57.000Z",
+                  "updatedAt": "2026-06-05T15:09:57.000Z",
+                  "uid": "35240-2ac4834c-80d9-4924-95b0-bb10d8827f70"
+                }
+              ],
+              "id": "32ed45e2-b325-47d4-836f-5dc6b9f30f64",
+              "createdAt": "2026-06-05T15:09:57.000Z",
+              "updatedAt": "2026-06-05T15:09:57.000Z",
+              "uid": "35240-32ed45e2-b325-47d4-836f-5dc6b9f30f64"
+            },
+            {
+              "name": "Create New Scrape Job",
+              "id": "8b59fadc-d41a-49fb-998c-8c396dcf315c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-key",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"id_074\": \"<string>\",\n        \"nonb4\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"sit_fea\": \"<string>\",\n        \"dolor2\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/scrape",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "scrape"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "8ef61fd2-e898-42d7-958c-9ecedaf21901",
+                  "name": "Scrape job created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"url\": \"<string>\",\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"id_074\": \"<string>\",\n        \"nonb4\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"sit_fea\": \"<string>\",\n        \"dolor2\": \"<string>\"\n      }\n    }\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/scrape",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "scrape"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"jobId\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:09:57.000Z",
+                  "updatedAt": "2026-06-05T15:09:57.000Z",
+                  "uid": "35240-8ef61fd2-e898-42d7-958c-9ecedaf21901"
+                },
+                {
+                  "id": "d5995e6d-519b-4067-bde0-502a848f46f6",
+                  "name": "Invalid request parameters",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"url\": \"<string>\",\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"id_074\": \"<string>\",\n        \"nonb4\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"sit_fea\": \"<string>\",\n        \"dolor2\": \"<string>\"\n      }\n    }\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/scrape",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "scrape"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:09:57.000Z",
+                  "updatedAt": "2026-06-05T15:09:57.000Z",
+                  "uid": "35240-d5995e6d-519b-4067-bde0-502a848f46f6"
+                },
+                {
+                  "id": "a0e9f985-9dc4-41ec-8d3d-66182b7ab13e",
+                  "name": "Server error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"url\": \"<string>\",\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"id_074\": \"<string>\",\n        \"nonb4\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"sit_fea\": \"<string>\",\n        \"dolor2\": \"<string>\"\n      }\n    }\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/scrape",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "scrape"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:09:57.000Z",
+                  "updatedAt": "2026-06-05T15:09:57.000Z",
+                  "uid": "35240-a0e9f985-9dc4-41ec-8d3d-66182b7ab13e"
+                }
+              ],
+              "createdAt": "2026-06-05T15:09:57.000Z",
+              "updatedAt": "2026-06-05T15:09:57.000Z",
+              "uid": "35240-8b59fadc-d41a-49fb-998c-8c396dcf315c"
+            }
+          ],
+          "id": "0c06bec0-4523-4680-a2e1-4e25914c4185",
+          "createdAt": "2026-06-05T15:09:57.000Z",
+          "updatedAt": "2026-06-05T15:09:57.000Z",
+          "uid": "35240-0c06bec0-4523-4680-a2e1-4e25914c4185"
+        }
+      ],
+      "id": "2af397d9-d7bd-49be-99cb-caa1b8911b4f",
+      "createdAt": "2026-06-05T15:09:57.000Z",
+      "updatedAt": "2026-06-05T15:09:57.000Z",
+      "uid": "35240-2af397d9-d7bd-49be-99cb-caa1b8911b4f"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.hyperbrowser.ai"
+    }
+  ]
+}

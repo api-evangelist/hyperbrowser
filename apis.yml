@@ -1,18 +1,14 @@
 aid: hyperbrowser
 name: Hyperbrowser
 description: >-
-  Hyperbrowser provides cloud browser infrastructure tailored for AI agents,
-  bundling managed Chromium sessions with web scraping, crawling, and
-  data-extraction APIs. The platform ships the open-source HyperAgent
-  framework and first-class integrations for Browser-Use, Claude Computer Use,
-  Gemini Computer Use, and OpenAI's CUA, so teams can deploy general-purpose
-  web agents quickly. Customers include AI startups, data teams, and
-  enterprises that need stealthy, multi-region browsers with CAPTCHA solving,
-  proxies, and session profiles. Python and Node SDKs cover sessions,
-  scrape/crawl/extract jobs, agent task management, and an MCP server lets
-  any Model Context Protocol client (Claude Desktop, Cursor, Windsurf, etc.)
-  drive Hyperbrowser tools. Pricing is usage-based via the hyperbrowser.ai
-  pricing page.
+  Hyperbrowser provides cloud browser infrastructure tailored for AI agents, bundling managed Chromium sessions with web
+  scraping, crawling, and data-extraction APIs. The platform ships the open-source HyperAgent framework and first-class
+  integrations for Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI's CUA, so teams can deploy
+  general-purpose web agents quickly. Customers include AI startups, data teams, and enterprises that need stealthy,
+  multi-region browsers with CAPTCHA solving, proxies, and session profiles. Python and Node SDKs cover sessions,
+  scrape/crawl/extract jobs, agent task management, and an MCP server lets any Model Context Protocol client (Claude
+  Desktop, Cursor, Windsurf, etc.) drive Hyperbrowser tools. Pricing is usage-based via the hyperbrowser.ai pricing
+  page.
 type: Index
 position: Provider
 access: 3rd-Party
@@ -40,9 +36,8 @@ apis:
   - aid: hyperbrowser:sessions-api
     name: Hyperbrowser Sessions API
     description: >-
-      Manage cloud Chromium browser sessions: create, list, inspect, update, and
-      stop sessions; retrieve recording, video, and downloads URLs; and run
-      manual CAPTCHA evaluation. Sessions expose a WebSocket CDP endpoint and an
+      Manage cloud Chromium browser sessions: create, list, inspect, update, and stop sessions; retrieve recording,
+      video, and downloads URLs; and run manual CAPTCHA evaluation. Sessions expose a WebSocket CDP endpoint and an
       optional live-view URL.
     humanURL: https://docs.hyperbrowser.ai/sessions/overview
     baseURL: https://api.hyperbrowser.ai
@@ -62,10 +57,6 @@ apis:
         url: json-schema/hyperbrowser-session-schema.json
       - type: JSONStructure
         url: json-structure/hyperbrowser-session-structure.json
-      - type: NaftikoCapability
-        url: capabilities/sessions-session.yaml
-      - type: NaftikoCapability
-        url: capabilities/sessions-sessions.yaml
       - type: Example
         url: examples/hyperbrowser-create-session-example.json
     authentication:
@@ -74,8 +65,8 @@ apis:
   - aid: hyperbrowser:profiles-api
     name: Hyperbrowser Profiles API
     description: >-
-      Create, list, fetch, and delete persistent browser profiles that retain
-      cookies, local storage, and authenticated state across sessions.
+      Create, list, fetch, and delete persistent browser profiles that retain cookies, local storage, and authenticated
+      state across sessions.
     humanURL: https://docs.hyperbrowser.ai/sessions/advanced-privacy-and-anti-detection/profiles
     baseURL: https://api.hyperbrowser.ai
     tags:
@@ -86,18 +77,14 @@ apis:
         url: https://docs.hyperbrowser.ai/sessions/advanced-privacy-and-anti-detection/profiles
       - type: OpenAPI
         url: openapi/hyperbrowser-profiles-api-openapi.yml
-      - type: NaftikoCapability
-        url: capabilities/profiles-profile.yaml
-      - type: NaftikoCapability
-        url: capabilities/profiles-profiles.yaml
     authentication:
       - type: API Key
         description: Account API key passed via the `x-api-key` HTTP header.
   - aid: hyperbrowser:scrape-api
     name: Hyperbrowser Scrape API
     description: >-
-      Single-page and batch scrape jobs returning HTML, Markdown, links, and
-      screenshots with asynchronous status polling.
+      Single-page and batch scrape jobs returning HTML, Markdown, links, and screenshots with asynchronous status
+      polling.
     humanURL: https://docs.hyperbrowser.ai/scrape/overview
     baseURL: https://api.hyperbrowser.ai
     tags:
@@ -111,8 +98,6 @@ apis:
         url: openapi/hyperbrowser-scrape-api-openapi.yml
       - type: JSONSchema
         url: json-schema/hyperbrowser-scrape-job-schema.json
-      - type: NaftikoCapability
-        url: capabilities/scrape-scrape.yaml
       - type: Example
         url: examples/hyperbrowser-scrape-example.json
     authentication:
@@ -120,9 +105,7 @@ apis:
         description: Account API key passed via the `x-api-key` HTTP header.
   - aid: hyperbrowser:crawl-api
     name: Hyperbrowser Crawl API
-    description: >-
-      Recursive crawl jobs across many pages with structured page-by-page
-      results and status polling.
+    description: Recursive crawl jobs across many pages with structured page-by-page results and status polling.
     humanURL: https://docs.hyperbrowser.ai/crawl/overview
     baseURL: https://api.hyperbrowser.ai
     tags:
@@ -135,16 +118,12 @@ apis:
         url: openapi/hyperbrowser-crawl-api-openapi.yml
       - type: JSONSchema
         url: json-schema/hyperbrowser-crawl-job-schema.json
-      - type: NaftikoCapability
-        url: capabilities/crawl-crawl.yaml
     authentication:
       - type: API Key
         description: Account API key passed via the `x-api-key` HTTP header.
   - aid: hyperbrowser:extract-api
     name: Hyperbrowser Extract API
-    description: >-
-      Structured data extraction jobs that pull typed records from one or more
-      pages using prompts and JSON schemas.
+    description: Structured data extraction jobs that pull typed records from one or more pages using prompts and JSON schemas.
     humanURL: https://docs.hyperbrowser.ai/extract/overview
     baseURL: https://api.hyperbrowser.ai
     tags:
@@ -158,8 +137,6 @@ apis:
         url: openapi/hyperbrowser-extract-api-openapi.yml
       - type: JSONSchema
         url: json-schema/hyperbrowser-extract-job-schema.json
-      - type: NaftikoCapability
-        url: capabilities/extract-extract.yaml
       - type: Example
         url: examples/hyperbrowser-extract-example.json
     authentication:
@@ -168,10 +145,9 @@ apis:
   - aid: hyperbrowser:agents-api
     name: Hyperbrowser Agents API
     description: >-
-      Start, stop, and monitor agentic browser tasks across HyperAgent,
-      Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI's CUA.
-      Each task runs inside a stealth Hyperbrowser session with live-view URL,
-      proxy support, and CAPTCHA solving.
+      Start, stop, and monitor agentic browser tasks across HyperAgent, Browser-Use, Claude Computer Use, Gemini
+      Computer Use, and OpenAI's CUA. Each task runs inside a stealth Hyperbrowser session with live-view URL, proxy
+      support, and CAPTCHA solving.
     humanURL: https://docs.hyperbrowser.ai/agents/overview
     baseURL: https://api.hyperbrowser.ai
     tags:
@@ -189,16 +165,6 @@ apis:
         url: openapi/hyperbrowser-agents-api-openapi.yml
       - type: JSONSchema
         url: json-schema/hyperbrowser-agent-task-schema.json
-      - type: NaftikoCapability
-        url: capabilities/agents-hyper-agent.yaml
-      - type: NaftikoCapability
-        url: capabilities/agents-browser-use.yaml
-      - type: NaftikoCapability
-        url: capabilities/agents-claude-computer-use.yaml
-      - type: NaftikoCapability
-        url: capabilities/agents-gemini-computer-use.yaml
-      - type: NaftikoCapability
-        url: capabilities/agents-cua.yaml
       - type: Example
         url: examples/hyperbrowser-claude-computer-use-example.json
     authentication:
@@ -207,8 +173,8 @@ apis:
   - aid: hyperbrowser:extensions-api
     name: Hyperbrowser Extensions API
     description: >-
-      Upload and list custom Chrome extensions that can be attached to browser
-      sessions for advanced automation, custom UI, or workflow tooling.
+      Upload and list custom Chrome extensions that can be attached to browser sessions for advanced automation, custom
+      UI, or workflow tooling.
     humanURL: https://docs.hyperbrowser.ai/sessions/advanced-privacy-and-anti-detection/uploading-extensions
     baseURL: https://api.hyperbrowser.ai
     tags:
@@ -219,17 +185,14 @@ apis:
         url: https://docs.hyperbrowser.ai/sessions/advanced-privacy-and-anti-detection/uploading-extensions
       - type: OpenAPI
         url: openapi/hyperbrowser-extensions-api-openapi.yml
-      - type: NaftikoCapability
-        url: capabilities/extensions-extensions.yaml
     authentication:
       - type: API Key
         description: Account API key passed via the `x-api-key` HTTP header.
   - aid: hyperbrowser:web-api
     name: Hyperbrowser Web API
     description: >-
-      Stateless web utilities: fetch a single page, run a web search, or start a
-      crawl. Includes `/x402` micropayment-gated variants of fetch and search
-      for permissionless, pay-per-call usage.
+      Stateless web utilities: fetch a single page, run a web search, or start a crawl. Includes `/x402`
+      micropayment-gated variants of fetch and search for permissionless, pay-per-call usage.
     humanURL: https://docs.hyperbrowser.ai/web/overview
     baseURL: https://api.hyperbrowser.ai
     tags:
@@ -242,10 +205,6 @@ apis:
         url: https://docs.hyperbrowser.ai/web/overview
       - type: OpenAPI
         url: openapi/hyperbrowser-web-api-openapi.yml
-      - type: NaftikoCapability
-        url: capabilities/web-web.yaml
-      - type: NaftikoCapability
-        url: capabilities/web-x402-web.yaml
       - type: Example
         url: examples/hyperbrowser-web-search-example.json
     authentication:
@@ -298,42 +257,44 @@ integrations:
   - name: n8n
   - name: X402 Payment Protocol
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/hyperbrowser/overview
   - type: ArazzoWorkflows
     url: arazzo/
     workflows:
-    - url: arazzo/hyperbrowser-batch-scrape-and-retrieve-workflow.yml
-      name: Hyperbrowser Batch Scrape and Retrieve
-      summary: Start a batch scrape over many URLs, poll status, then fetch all results.
-    - url: arazzo/hyperbrowser-browser-use-task-run-workflow.yml
-      name: Hyperbrowser Browser Use Task Run
-      summary: Start a Browser Use agent task, poll status, then fetch its final result.
-    - url: arazzo/hyperbrowser-crawl-site-and-retrieve-workflow.yml
-      name: Hyperbrowser Crawl Site and Retrieve
-      summary: Start a crawl from a seed URL, poll status, then page through the results.
-    - url: arazzo/hyperbrowser-extract-structured-data-workflow.yml
-      name: Hyperbrowser Extract Structured Data
-      summary: Start an extract job with a prompt and schema, poll status, then fetch data.
-    - url: arazzo/hyperbrowser-hyperagent-task-run-workflow.yml
-      name: Hyperbrowser HyperAgent Task Run
-      summary: Start a HyperAgent task, poll status, then fetch its final result.
-    - url: arazzo/hyperbrowser-persistent-profile-session-workflow.yml
-      name: Hyperbrowser Persistent Profile Session
-      summary: Create a profile, launch a session bound to it, persist changes, then stop.
-    - url: arazzo/hyperbrowser-scrape-and-retrieve-workflow.yml
-      name: Hyperbrowser Scrape and Retrieve
-      summary: Start a scrape job for a single URL, poll its status, then fetch the result.
-    - url: arazzo/hyperbrowser-session-lifecycle-workflow.yml
-      name: Hyperbrowser Session Lifecycle
-      summary: Create a cloud browser session, inspect it, and stop it cleanly.
-    - url: arazzo/hyperbrowser-session-recording-retrieval-workflow.yml
-      name: Hyperbrowser Session Recording Retrieval
-      summary: Create a recorded browser session, stop it, then poll for the recording URL.
-    - url: arazzo/hyperbrowser-web-crawl-and-retrieve-workflow.yml
-      name: Hyperbrowser Web Crawl and Retrieve
-      summary: Start a Web API crawl job, poll status, then page through the results.
-    - url: arazzo/hyperbrowser-web-search-then-fetch-workflow.yml
-      name: Hyperbrowser Web Search then Fetch
-      summary: Search the web, confirm results, then fetch the top result page as markdown.
+      - url: arazzo/hyperbrowser-batch-scrape-and-retrieve-workflow.yml
+        name: Hyperbrowser Batch Scrape and Retrieve
+        summary: Start a batch scrape over many URLs, poll status, then fetch all results.
+      - url: arazzo/hyperbrowser-browser-use-task-run-workflow.yml
+        name: Hyperbrowser Browser Use Task Run
+        summary: Start a Browser Use agent task, poll status, then fetch its final result.
+      - url: arazzo/hyperbrowser-crawl-site-and-retrieve-workflow.yml
+        name: Hyperbrowser Crawl Site and Retrieve
+        summary: Start a crawl from a seed URL, poll status, then page through the results.
+      - url: arazzo/hyperbrowser-extract-structured-data-workflow.yml
+        name: Hyperbrowser Extract Structured Data
+        summary: Start an extract job with a prompt and schema, poll status, then fetch data.
+      - url: arazzo/hyperbrowser-hyperagent-task-run-workflow.yml
+        name: Hyperbrowser HyperAgent Task Run
+        summary: Start a HyperAgent task, poll status, then fetch its final result.
+      - url: arazzo/hyperbrowser-persistent-profile-session-workflow.yml
+        name: Hyperbrowser Persistent Profile Session
+        summary: Create a profile, launch a session bound to it, persist changes, then stop.
+      - url: arazzo/hyperbrowser-scrape-and-retrieve-workflow.yml
+        name: Hyperbrowser Scrape and Retrieve
+        summary: Start a scrape job for a single URL, poll its status, then fetch the result.
+      - url: arazzo/hyperbrowser-session-lifecycle-workflow.yml
+        name: Hyperbrowser Session Lifecycle
+        summary: Create a cloud browser session, inspect it, and stop it cleanly.
+      - url: arazzo/hyperbrowser-session-recording-retrieval-workflow.yml
+        name: Hyperbrowser Session Recording Retrieval
+        summary: Create a recorded browser session, stop it, then poll for the recording URL.
+      - url: arazzo/hyperbrowser-web-crawl-and-retrieve-workflow.yml
+        name: Hyperbrowser Web Crawl and Retrieve
+        summary: Start a Web API crawl job, poll status, then page through the results.
+      - url: arazzo/hyperbrowser-web-search-then-fetch-workflow.yml
+        name: Hyperbrowser Web Search then Fetch
+        summary: Search the web, confirm results, then fetch the top result page as markdown.
   - type: Website
     url: https://hyperbrowser.ai
   - type: Documentation

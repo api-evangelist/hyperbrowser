@@ -1,0 +1,307 @@
+{
+  "info": {
+    "_postman_id": "08b9be0d-df24-457d-a638-3edc98554a73",
+    "name": "Hyperbrowser Extensions API",
+    "description": "Upload and list custom Chrome extensions that can be attached to browser sessions.\n\nContact Support:\n Name: Hyperbrowser",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:10:09.000Z",
+    "updatedAt": "2026-06-05T15:10:09.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-08b9be0d-df24-457d-a638-3edc98554a73"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "extensions",
+          "item": [
+            {
+              "name": "add",
+              "item": [
+                {
+                  "name": "Add a New Extension",
+                  "id": "cd4358e1-7568-4fd2-8c92-6396ca755601",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) ",
+                          "key": "file",
+                          "type": "file",
+                          "value": null
+                        },
+                        {
+                          "key": "name",
+                          "value": "<string>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/extensions/add",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "extensions",
+                        "add"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "dd1cf052-3737-4260-95a0-2a2cd3367bff",
+                      "name": "Extension added successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) ",
+                              "key": "file",
+                              "type": "file"
+                            },
+                            {
+                              "key": "name",
+                              "value": "<string>",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/extensions/add",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "extensions",
+                            "add"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"createdAt\": \"<string>\",\n  \"updatedAt\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:10.000Z",
+                      "updatedAt": "2026-06-05T15:10:10.000Z",
+                      "uid": "35240-dd1cf052-3737-4260-95a0-2a2cd3367bff"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:10:10.000Z",
+                  "updatedAt": "2026-06-05T15:10:10.000Z",
+                  "uid": "35240-cd4358e1-7568-4fd2-8c92-6396ca755601"
+                }
+              ],
+              "id": "d40480df-c031-4475-9fa8-297a938ba446",
+              "createdAt": "2026-06-05T15:10:10.000Z",
+              "updatedAt": "2026-06-05T15:10:10.000Z",
+              "uid": "35240-d40480df-c031-4475-9fa8-297a938ba446"
+            },
+            {
+              "name": "list",
+              "item": [
+                {
+                  "name": "List All Extensions",
+                  "id": "263daa8e-56a8-4c51-b93e-cca208f63c35",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/extensions/list",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "extensions",
+                        "list"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "b98f6e74-6ab2-44a7-8c4a-5f0ef99d9b50",
+                      "name": "Extension added successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/extensions/list",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "extensions",
+                            "list"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"createdAt\": \"<string>\",\n    \"updatedAt\": \"<string>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"createdAt\": \"<string>\",\n    \"updatedAt\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-06-05T15:10:10.000Z",
+                      "updatedAt": "2026-06-05T15:10:10.000Z",
+                      "uid": "35240-b98f6e74-6ab2-44a7-8c4a-5f0ef99d9b50"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:10:10.000Z",
+                  "updatedAt": "2026-06-05T15:10:10.000Z",
+                  "uid": "35240-263daa8e-56a8-4c51-b93e-cca208f63c35"
+                }
+              ],
+              "id": "cbec2e41-6c8b-46ab-b744-740fffbc136d",
+              "createdAt": "2026-06-05T15:10:10.000Z",
+              "updatedAt": "2026-06-05T15:10:10.000Z",
+              "uid": "35240-cbec2e41-6c8b-46ab-b744-740fffbc136d"
+            }
+          ],
+          "id": "88bcd69b-9771-45c4-8607-1d22760294ec",
+          "createdAt": "2026-06-05T15:10:10.000Z",
+          "updatedAt": "2026-06-05T15:10:10.000Z",
+          "uid": "35240-88bcd69b-9771-45c4-8607-1d22760294ec"
+        }
+      ],
+      "id": "2a4ef955-7f7a-4bf5-804d-6197d2e514e5",
+      "createdAt": "2026-06-05T15:10:10.000Z",
+      "updatedAt": "2026-06-05T15:10:10.000Z",
+      "uid": "35240-2a4ef955-7f7a-4bf5-804d-6197d2e514e5"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.hyperbrowser.ai"
+    }
+  ]
+}

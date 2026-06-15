@@ -1,0 +1,1974 @@
+{
+  "info": {
+    "_postman_id": "f7c17c49-9712-44e0-b41b-8344ea092fd6",
+    "name": "Hyperbrowser Web API",
+    "description": "Stateless web utilities: fetch a page, run a web search, or start a web-wide crawl job. Includes x402 payment-gated variants.\n\nContact Support:\n Name: Hyperbrowser",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:10:10.000Z",
+    "updatedAt": "2026-06-05T15:10:11.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f7c17c49-9712-44e0-b41b-8344ea092fd6"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "web",
+          "item": [
+            {
+              "name": "fetch",
+              "item": [
+                {
+                  "name": "Fetch a Web Page",
+                  "id": "f8e1c66e-c792-4e95-9f92-279ac7be5efe",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"auto\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"markdown\"\n      },\n      {\n        \"type\": \"markdown\"\n      }\n    ],\n    \"sanitize\": \"advanced\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"et_8f\": \"<string>\",\n        \"aute_5d\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"cupidatatdd\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"networkidle\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/web/fetch",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "web",
+                        "fetch"
+                      ]
+                    },
+                    "description": "Fetches a web page and returns the content in various formats (HTML, Markdown, JSON, screenshot, etc.)"
+                  },
+                  "response": [
+                    {
+                      "id": "9ba09d55-a804-4353-8679-db91b1ecbe41",
+                      "name": "Page fetched successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"auto\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"markdown\"\n      },\n      {\n        \"type\": \"markdown\"\n      }\n    ],\n    \"sanitize\": \"advanced\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"et_8f\": \"<string>\",\n        \"aute_5d\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"cupidatatdd\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"networkidle\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/web/fetch",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "web",
+                            "fetch"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"jobId\": \"<string>\",\n  \"status\": \"completed\",\n  \"error\": \"<string>\",\n  \"data\": {\n    \"metadata\": {\n      \"sint_84c\": \"<string>\"\n    },\n    \"html\": \"<string>\",\n    \"markdown\": \"<string>\",\n    \"links\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"screenshot\": \"<string>\",\n    \"json\": {},\n    \"branding\": {\n      \"colorScheme\": \"<string>\",\n      \"colors\": {},\n      \"fonts\": [\n        {\n          \"family\": \"<string>\",\n          \"role\": \"<string>\"\n        },\n        {\n          \"family\": \"<string>\",\n          \"role\": \"<string>\"\n        }\n      ],\n      \"typography\": {},\n      \"spacing\": {},\n      \"components\": {},\n      \"images\": {},\n      \"personality\": {},\n      \"designSystem\": {},\n      \"confidence\": {}\n    }\n  }\n}",
+                      "createdAt": "2026-06-05T15:10:11.000Z",
+                      "updatedAt": "2026-06-05T15:10:11.000Z",
+                      "uid": "35240-9ba09d55-a804-4353-8679-db91b1ecbe41"
+                    },
+                    {
+                      "id": "630d6f48-4ced-459f-a65f-61eeaf4c42dd",
+                      "name": "Invalid request parameters",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"auto\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"markdown\"\n      },\n      {\n        \"type\": \"markdown\"\n      }\n    ],\n    \"sanitize\": \"advanced\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"et_8f\": \"<string>\",\n        \"aute_5d\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"cupidatatdd\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"networkidle\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/web/fetch",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "web",
+                            "fetch"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:11.000Z",
+                      "updatedAt": "2026-06-05T15:10:11.000Z",
+                      "uid": "35240-630d6f48-4ced-459f-a65f-61eeaf4c42dd"
+                    },
+                    {
+                      "id": "eca73f2f-f79b-4804-8e4e-8ae59cf5a0a7",
+                      "name": "Server error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"auto\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"markdown\"\n      },\n      {\n        \"type\": \"markdown\"\n      }\n    ],\n    \"sanitize\": \"advanced\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"et_8f\": \"<string>\",\n        \"aute_5d\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"cupidatatdd\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"networkidle\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/web/fetch",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "web",
+                            "fetch"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:11.000Z",
+                      "updatedAt": "2026-06-05T15:10:11.000Z",
+                      "uid": "35240-eca73f2f-f79b-4804-8e4e-8ae59cf5a0a7"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:10:11.000Z",
+                  "updatedAt": "2026-06-05T15:10:11.000Z",
+                  "uid": "35240-f8e1c66e-c792-4e95-9f92-279ac7be5efe"
+                }
+              ],
+              "id": "d5371ea0-5b68-4b05-b643-8301d8cf582c",
+              "createdAt": "2026-06-05T15:10:11.000Z",
+              "updatedAt": "2026-06-05T15:10:11.000Z",
+              "uid": "35240-d5371ea0-5b68-4b05-b643-8301d8cf582c"
+            },
+            {
+              "name": "search",
+              "item": [
+                {
+                  "name": "Search the Web",
+                  "id": "d9e42a42-623c-4a5c-972a-9c80acac926a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"query\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"maxAgeSeconds\": \"<integer>\",\n  \"location\": {\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\"\n  },\n  \"filters\": {\n    \"exactPhrase\": \"<boolean>\",\n    \"semanticPhrase\": \"<boolean>\",\n    \"excludeTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"boostTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filetype\": \"xlsx\",\n    \"site\": \"<string>\",\n    \"excludeSite\": \"<string>\",\n    \"intitle\": \"<string>\",\n    \"inurl\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/web/search",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "web",
+                        "search"
+                      ]
+                    },
+                    "description": "Performs a web search and returns search results with titles, URLs, and descriptions"
+                  },
+                  "response": [
+                    {
+                      "id": "331995db-fadd-4059-832e-5445c73463a0",
+                      "name": "Search completed successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"query\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"maxAgeSeconds\": \"<integer>\",\n  \"location\": {\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\"\n  },\n  \"filters\": {\n    \"exactPhrase\": \"<boolean>\",\n    \"semanticPhrase\": \"<boolean>\",\n    \"excludeTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"boostTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filetype\": \"xlsx\",\n    \"site\": \"<string>\",\n    \"excludeSite\": \"<string>\",\n    \"intitle\": \"<string>\",\n    \"inurl\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/web/search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "web",
+                            "search"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"jobId\": \"<string>\",\n  \"status\": \"failed\",\n  \"error\": \"<string>\",\n  \"data\": {\n    \"query\": \"<string>\",\n    \"results\": [\n      {\n        \"title\": \"<string>\",\n        \"url\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      {\n        \"title\": \"<string>\",\n        \"url\": \"<string>\",\n        \"description\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-06-05T15:10:11.000Z",
+                      "updatedAt": "2026-06-05T15:10:11.000Z",
+                      "uid": "35240-331995db-fadd-4059-832e-5445c73463a0"
+                    },
+                    {
+                      "id": "bd47dbbb-3e63-4ee1-95aa-821b33129495",
+                      "name": "Invalid search parameters",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"query\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"maxAgeSeconds\": \"<integer>\",\n  \"location\": {\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\"\n  },\n  \"filters\": {\n    \"exactPhrase\": \"<boolean>\",\n    \"semanticPhrase\": \"<boolean>\",\n    \"excludeTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"boostTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filetype\": \"xlsx\",\n    \"site\": \"<string>\",\n    \"excludeSite\": \"<string>\",\n    \"intitle\": \"<string>\",\n    \"inurl\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/web/search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "web",
+                            "search"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:11.000Z",
+                      "updatedAt": "2026-06-05T15:10:11.000Z",
+                      "uid": "35240-bd47dbbb-3e63-4ee1-95aa-821b33129495"
+                    },
+                    {
+                      "id": "4647ca3a-0a53-42ff-94ce-44bc68a346e6",
+                      "name": "Server error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"query\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"maxAgeSeconds\": \"<integer>\",\n  \"location\": {\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\"\n  },\n  \"filters\": {\n    \"exactPhrase\": \"<boolean>\",\n    \"semanticPhrase\": \"<boolean>\",\n    \"excludeTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"boostTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filetype\": \"xlsx\",\n    \"site\": \"<string>\",\n    \"excludeSite\": \"<string>\",\n    \"intitle\": \"<string>\",\n    \"inurl\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/web/search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "web",
+                            "search"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:11.000Z",
+                      "updatedAt": "2026-06-05T15:10:11.000Z",
+                      "uid": "35240-4647ca3a-0a53-42ff-94ce-44bc68a346e6"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:10:11.000Z",
+                  "updatedAt": "2026-06-05T15:10:11.000Z",
+                  "uid": "35240-d9e42a42-623c-4a5c-972a-9c80acac926a"
+                }
+              ],
+              "id": "5ce665e3-7478-4ed4-986f-6b4181191194",
+              "createdAt": "2026-06-05T15:10:11.000Z",
+              "updatedAt": "2026-06-05T15:10:11.000Z",
+              "uid": "35240-5ce665e3-7478-4ed4-986f-6b4181191194"
+            },
+            {
+              "name": "crawl",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "status",
+                      "item": [
+                        {
+                          "name": "Get Web Crawl Job Status",
+                          "id": "8d6db144-321a-4a9e-9d09-ef358af999d5",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "x-api-key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/web/crawl/:id/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "web",
+                                "crawl",
+                                ":id",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "de66a6af-79d9-4475-bcac-bb05f44b99a0",
+                                  "key": "id",
+                                  "value": "<uuid>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Retrieves just the status of a web crawl job without the full results."
+                          },
+                          "response": [
+                            {
+                              "id": "e5f8e235-0080-417d-b5ff-d53cd97625be",
+                              "name": "Web crawl job status",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/web/crawl/:id/status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "web",
+                                    "crawl",
+                                    ":id",
+                                    "status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"stopped\"\n}",
+                              "createdAt": "2026-06-05T15:10:11.000Z",
+                              "updatedAt": "2026-06-05T15:10:11.000Z",
+                              "uid": "35240-e5f8e235-0080-417d-b5ff-d53cd97625be"
+                            },
+                            {
+                              "id": "9d3d528a-a67d-4e63-a1d7-4b41c08f9248",
+                              "name": "Crawl job not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/web/crawl/:id/status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "web",
+                                    "crawl",
+                                    ":id",
+                                    "status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:10:11.000Z",
+                              "updatedAt": "2026-06-05T15:10:11.000Z",
+                              "uid": "35240-9d3d528a-a67d-4e63-a1d7-4b41c08f9248"
+                            },
+                            {
+                              "id": "d27d4434-1ca4-49a2-90ff-e44c15128175",
+                              "name": "Server error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/web/crawl/:id/status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "web",
+                                    "crawl",
+                                    ":id",
+                                    "status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:10:11.000Z",
+                              "updatedAt": "2026-06-05T15:10:11.000Z",
+                              "uid": "35240-d27d4434-1ca4-49a2-90ff-e44c15128175"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:10:11.000Z",
+                          "updatedAt": "2026-06-05T15:10:11.000Z",
+                          "uid": "35240-8d6db144-321a-4a9e-9d09-ef358af999d5"
+                        }
+                      ],
+                      "id": "6852e779-31d1-4a96-ae78-0e0707301f33",
+                      "createdAt": "2026-06-05T15:10:11.000Z",
+                      "updatedAt": "2026-06-05T15:10:11.000Z",
+                      "uid": "35240-6852e779-31d1-4a96-ae78-0e0707301f33"
+                    },
+                    {
+                      "name": "Get Web Crawl Job Results",
+                      "id": "a36840a0-fd80-4246-8d83-3c51c2330a97",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/web/crawl/:id?page=<integer>&batchSize=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "web",
+                            "crawl",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "batchSize",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "d9bef9e6-96cc-41b5-ab32-689626595539",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Retrieves the status and results of a web crawl job. Results are paginated."
+                      },
+                      "response": [
+                        {
+                          "id": "8b2d83d5-1f58-48a2-9538-604ca63badf5",
+                          "name": "Web crawl job details retrieved successfully",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/web/crawl/:id?page=<integer>&batchSize=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "web",
+                                "crawl",
+                                ":id"
+                              ],
+                              "query": [
+                                {
+                                  "key": "page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "batchSize",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"pending\",\n  \"jobId\": \"<uuid>\",\n  \"error\": \"<string>\",\n  \"totalPages\": \"<integer>\",\n  \"totalPageBatches\": \"<integer>\",\n  \"currentPageBatch\": \"<integer>\",\n  \"batchSize\": \"<integer>\",\n  \"data\": [\n    {\n      \"url\": \"<string>\",\n      \"status\": \"running\",\n      \"error\": \"<string>\",\n      \"metadata\": {\n        \"voluptate_8\": \"<string>\",\n        \"dolor_a\": \"<string>\"\n      },\n      \"markdown\": \"<string>\",\n      \"html\": \"<string>\",\n      \"links\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"screenshot\": \"<string>\",\n      \"json\": {},\n      \"branding\": {\n        \"colorScheme\": \"<string>\",\n        \"colors\": {},\n        \"fonts\": [\n          {\n            \"family\": \"<string>\",\n            \"role\": \"<string>\"\n          },\n          {\n            \"family\": \"<string>\",\n            \"role\": \"<string>\"\n          }\n        ],\n        \"typography\": {},\n        \"spacing\": {},\n        \"components\": {},\n        \"images\": {},\n        \"personality\": {},\n        \"designSystem\": {},\n        \"confidence\": {}\n      }\n    },\n    {\n      \"url\": \"<string>\",\n      \"status\": \"completed\",\n      \"error\": \"<string>\",\n      \"metadata\": {\n        \"magna437\": \"<string>\",\n        \"irure_10c\": \"<string>\",\n        \"id_e7\": \"<string>\",\n        \"ad8\": \"<string>\",\n        \"quis088\": \"<string>\"\n      },\n      \"markdown\": \"<string>\",\n      \"html\": \"<string>\",\n      \"links\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"screenshot\": \"<string>\",\n      \"json\": {},\n      \"branding\": {\n        \"colorScheme\": \"<string>\",\n        \"colors\": {},\n        \"fonts\": [\n          {\n            \"family\": \"<string>\",\n            \"role\": \"<string>\"\n          },\n          {\n            \"family\": \"<string>\",\n            \"role\": \"<string>\"\n          }\n        ],\n        \"typography\": {},\n        \"spacing\": {},\n        \"components\": {},\n        \"images\": {},\n        \"personality\": {},\n        \"designSystem\": {},\n        \"confidence\": {}\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:10:11.000Z",
+                          "updatedAt": "2026-06-05T15:10:11.000Z",
+                          "uid": "35240-8b2d83d5-1f58-48a2-9538-604ca63badf5"
+                        },
+                        {
+                          "id": "9346fd30-4b0b-4d28-8e17-898f22a0c57d",
+                          "name": "Crawl job not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/web/crawl/:id?page=<integer>&batchSize=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "web",
+                                "crawl",
+                                ":id"
+                              ],
+                              "query": [
+                                {
+                                  "key": "page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "batchSize",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:10:11.000Z",
+                          "updatedAt": "2026-06-05T15:10:11.000Z",
+                          "uid": "35240-9346fd30-4b0b-4d28-8e17-898f22a0c57d"
+                        },
+                        {
+                          "id": "e055262e-2fba-4dbb-8a47-c120acf12dfb",
+                          "name": "Server error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/web/crawl/:id?page=<integer>&batchSize=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "web",
+                                "crawl",
+                                ":id"
+                              ],
+                              "query": [
+                                {
+                                  "key": "page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "batchSize",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:10:11.000Z",
+                          "updatedAt": "2026-06-05T15:10:11.000Z",
+                          "uid": "35240-e055262e-2fba-4dbb-8a47-c120acf12dfb"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:10:11.000Z",
+                      "updatedAt": "2026-06-05T15:10:11.000Z",
+                      "uid": "35240-a36840a0-fd80-4246-8d83-3c51c2330a97"
+                    }
+                  ],
+                  "id": "a6d00af8-b6cd-4da5-958e-83bbaebd505e",
+                  "createdAt": "2026-06-05T15:10:11.000Z",
+                  "updatedAt": "2026-06-05T15:10:11.000Z",
+                  "uid": "35240-a6d00af8-b6cd-4da5-958e-83bbaebd505e"
+                },
+                {
+                  "name": "Start a Web Crawl Job",
+                  "id": "5c66ace1-fee6-475a-aaf8-da59e7555030",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"auto\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"markdown\"\n      },\n      {\n        \"type\": \"markdown\"\n      }\n    ],\n    \"sanitize\": \"advanced\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"Duis_8f5\": \"<string>\",\n        \"veniam_a\": \"<string>\",\n        \"officia_8\": \"<string>\",\n        \"dolore_d_b\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"laborum99f\": \"<string>\",\n        \"Duis78\": \"<string>\",\n        \"ut_7f\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"networkidle\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  },\n  \"crawlOptions\": {\n    \"maxPages\": 10,\n    \"followLinks\": true,\n    \"ignoreSitemap\": false,\n    \"excludePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"includePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/web/crawl",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "web",
+                        "crawl"
+                      ]
+                    },
+                    "description": "Starts an asynchronous crawl job that follows links from a starting URL and returns content from each page in the specified formats."
+                  },
+                  "response": [
+                    {
+                      "id": "1ef90a34-a8f5-4a2b-a747-28a99be016d4",
+                      "name": "Crawl job started successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"auto\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"markdown\"\n      },\n      {\n        \"type\": \"markdown\"\n      }\n    ],\n    \"sanitize\": \"advanced\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"Duis_8f5\": \"<string>\",\n        \"veniam_a\": \"<string>\",\n        \"officia_8\": \"<string>\",\n        \"dolore_d_b\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"laborum99f\": \"<string>\",\n        \"Duis78\": \"<string>\",\n        \"ut_7f\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"networkidle\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  },\n  \"crawlOptions\": {\n    \"maxPages\": 10,\n    \"followLinks\": true,\n    \"ignoreSitemap\": false,\n    \"excludePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"includePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/web/crawl",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "web",
+                            "crawl"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"jobId\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:11.000Z",
+                      "updatedAt": "2026-06-05T15:10:11.000Z",
+                      "uid": "35240-1ef90a34-a8f5-4a2b-a747-28a99be016d4"
+                    },
+                    {
+                      "id": "f8413e4d-6eaa-4b30-908b-345a21f4fe12",
+                      "name": "Invalid request parameters",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"auto\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"markdown\"\n      },\n      {\n        \"type\": \"markdown\"\n      }\n    ],\n    \"sanitize\": \"advanced\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"Duis_8f5\": \"<string>\",\n        \"veniam_a\": \"<string>\",\n        \"officia_8\": \"<string>\",\n        \"dolore_d_b\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"laborum99f\": \"<string>\",\n        \"Duis78\": \"<string>\",\n        \"ut_7f\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"networkidle\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  },\n  \"crawlOptions\": {\n    \"maxPages\": 10,\n    \"followLinks\": true,\n    \"ignoreSitemap\": false,\n    \"excludePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"includePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/web/crawl",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "web",
+                            "crawl"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:11.000Z",
+                      "updatedAt": "2026-06-05T15:10:11.000Z",
+                      "uid": "35240-f8413e4d-6eaa-4b30-908b-345a21f4fe12"
+                    },
+                    {
+                      "id": "21736b83-e247-46a2-aaad-8d6db7f22629",
+                      "name": "Server error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"auto\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"markdown\"\n      },\n      {\n        \"type\": \"markdown\"\n      }\n    ],\n    \"sanitize\": \"advanced\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"Duis_8f5\": \"<string>\",\n        \"veniam_a\": \"<string>\",\n        \"officia_8\": \"<string>\",\n        \"dolore_d_b\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"laborum99f\": \"<string>\",\n        \"Duis78\": \"<string>\",\n        \"ut_7f\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"networkidle\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  },\n  \"crawlOptions\": {\n    \"maxPages\": 10,\n    \"followLinks\": true,\n    \"ignoreSitemap\": false,\n    \"excludePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"includePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/web/crawl",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "web",
+                            "crawl"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:11.000Z",
+                      "updatedAt": "2026-06-05T15:10:11.000Z",
+                      "uid": "35240-21736b83-e247-46a2-aaad-8d6db7f22629"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:10:11.000Z",
+                  "updatedAt": "2026-06-05T15:10:11.000Z",
+                  "uid": "35240-5c66ace1-fee6-475a-aaf8-da59e7555030"
+                }
+              ],
+              "id": "35bd47b6-58bc-44d7-b5a6-5dfc8cce8b80",
+              "createdAt": "2026-06-05T15:10:11.000Z",
+              "updatedAt": "2026-06-05T15:10:11.000Z",
+              "uid": "35240-35bd47b6-58bc-44d7-b5a6-5dfc8cce8b80"
+            }
+          ],
+          "id": "3cb63bdf-9d73-4df8-8ad0-d5400178a9d5",
+          "createdAt": "2026-06-05T15:10:11.000Z",
+          "updatedAt": "2026-06-05T15:10:11.000Z",
+          "uid": "35240-3cb63bdf-9d73-4df8-8ad0-d5400178a9d5"
+        }
+      ],
+      "id": "a51b91e0-0bc8-4b1c-8cd6-0261af78f7a2",
+      "createdAt": "2026-06-05T15:10:11.000Z",
+      "updatedAt": "2026-06-05T15:10:11.000Z",
+      "uid": "35240-a51b91e0-0bc8-4b1c-8cd6-0261af78f7a2"
+    },
+    {
+      "name": "x402",
+      "item": [
+        {
+          "name": "web",
+          "item": [
+            {
+              "name": "fetch",
+              "item": [
+                {
+                  "name": "Fetch a Web Page with X402 Payment",
+                  "id": "90a855fa-17a7-47ee-8a14-081bc7042005",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Base64-encoded JSON containing payment proof (x402Version, resource, accepted payment method, and cryptographic payload with signature and payer address)",
+                        "key": "PAYMENT-SIGNATURE",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"auto\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"markdown\"\n      },\n      {\n        \"type\": \"markdown\"\n      }\n    ],\n    \"sanitize\": \"advanced\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"et_8f\": \"<string>\",\n        \"aute_5d\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"cupidatatdd\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"networkidle\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/x402/web/fetch",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "x402",
+                        "web",
+                        "fetch"
+                      ]
+                    },
+                    "description": "X402 payment endpoint. First request returns 402 with payment requirements. Retry with PAYMENT-SIGNATURE header containing cryptographic proof to get the actual data. See https://x402.gitbook.io/x402 for protocol details."
+                  },
+                  "response": [
+                    {
+                      "id": "33998012-1c30-4672-8de2-e4d1bf7282d6",
+                      "name": "Page fetched successfully (after valid payment)",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Base64-encoded JSON containing payment proof (x402Version, resource, accepted payment method, and cryptographic payload with signature and payer address)",
+                            "key": "PAYMENT-SIGNATURE",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"auto\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"markdown\"\n      },\n      {\n        \"type\": \"markdown\"\n      }\n    ],\n    \"sanitize\": \"advanced\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"et_8f\": \"<string>\",\n        \"aute_5d\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"cupidatatdd\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"networkidle\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/x402/web/fetch",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "x402",
+                            "web",
+                            "fetch"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Base64-encoded JSON with settlement information",
+                            "type": "text/plain"
+                          },
+                          "key": "PAYMENT-RESPONSE",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"jobId\": \"<string>\",\n  \"status\": \"completed\",\n  \"error\": \"<string>\",\n  \"data\": {\n    \"metadata\": {\n      \"sint_84c\": \"<string>\"\n    },\n    \"html\": \"<string>\",\n    \"markdown\": \"<string>\",\n    \"links\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"screenshot\": \"<string>\",\n    \"json\": {},\n    \"branding\": {\n      \"colorScheme\": \"<string>\",\n      \"colors\": {},\n      \"fonts\": [\n        {\n          \"family\": \"<string>\",\n          \"role\": \"<string>\"\n        },\n        {\n          \"family\": \"<string>\",\n          \"role\": \"<string>\"\n        }\n      ],\n      \"typography\": {},\n      \"spacing\": {},\n      \"components\": {},\n      \"images\": {},\n      \"personality\": {},\n      \"designSystem\": {},\n      \"confidence\": {}\n    }\n  }\n}",
+                      "createdAt": "2026-06-05T15:10:11.000Z",
+                      "updatedAt": "2026-06-05T15:10:11.000Z",
+                      "uid": "35240-33998012-1c30-4672-8de2-e4d1bf7282d6"
+                    },
+                    {
+                      "id": "6b686c9b-1fcf-4f3b-8817-8c4d606a0694",
+                      "name": "Invalid request parameters",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Base64-encoded JSON containing payment proof (x402Version, resource, accepted payment method, and cryptographic payload with signature and payer address)",
+                            "key": "PAYMENT-SIGNATURE",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"auto\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"markdown\"\n      },\n      {\n        \"type\": \"markdown\"\n      }\n    ],\n    \"sanitize\": \"advanced\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"et_8f\": \"<string>\",\n        \"aute_5d\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"cupidatatdd\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"networkidle\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/x402/web/fetch",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "x402",
+                            "web",
+                            "fetch"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:11.000Z",
+                      "updatedAt": "2026-06-05T15:10:11.000Z",
+                      "uid": "35240-6b686c9b-1fcf-4f3b-8817-8c4d606a0694"
+                    },
+                    {
+                      "id": "ff6f4b95-7d76-424d-86c6-2ec814e9d11f",
+                      "name": "Payment Required - returned on first request without PAYMENT-SIGNATURE header",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Base64-encoded JSON containing payment proof (x402Version, resource, accepted payment method, and cryptographic payload with signature and payer address)",
+                            "key": "PAYMENT-SIGNATURE",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"auto\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"markdown\"\n      },\n      {\n        \"type\": \"markdown\"\n      }\n    ],\n    \"sanitize\": \"advanced\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"et_8f\": \"<string>\",\n        \"aute_5d\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"cupidatatdd\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"networkidle\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/x402/web/fetch",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "x402",
+                            "web",
+                            "fetch"
+                          ]
+                        }
+                      },
+                      "status": "Payment Required",
+                      "code": 402,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Base64-encoded JSON containing X402 payment requirements (x402Version, resource info, and array of accepted payment methods with network, asset, amount, payTo address, and timeout)",
+                            "type": "text/plain"
+                          },
+                          "key": "PAYMENT-REQUIRED",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-06-05T15:10:11.000Z",
+                      "updatedAt": "2026-06-05T15:10:11.000Z",
+                      "uid": "35240-ff6f4b95-7d76-424d-86c6-2ec814e9d11f"
+                    },
+                    {
+                      "id": "8859d4dd-7851-4e71-8cfb-008ea8740d2a",
+                      "name": "Server error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Base64-encoded JSON containing payment proof (x402Version, resource, accepted payment method, and cryptographic payload with signature and payer address)",
+                            "key": "PAYMENT-SIGNATURE",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"auto\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"markdown\"\n      },\n      {\n        \"type\": \"markdown\"\n      }\n    ],\n    \"sanitize\": \"advanced\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"et_8f\": \"<string>\",\n        \"aute_5d\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"cupidatatdd\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"networkidle\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/x402/web/fetch",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "x402",
+                            "web",
+                            "fetch"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:11.000Z",
+                      "updatedAt": "2026-06-05T15:10:11.000Z",
+                      "uid": "35240-8859d4dd-7851-4e71-8cfb-008ea8740d2a"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:10:11.000Z",
+                  "updatedAt": "2026-06-05T15:10:11.000Z",
+                  "uid": "35240-90a855fa-17a7-47ee-8a14-081bc7042005"
+                }
+              ],
+              "id": "a7535761-0f92-40b7-b0c7-c8e61e84991c",
+              "createdAt": "2026-06-05T15:10:11.000Z",
+              "updatedAt": "2026-06-05T15:10:11.000Z",
+              "uid": "35240-a7535761-0f92-40b7-b0c7-c8e61e84991c"
+            },
+            {
+              "name": "search",
+              "item": [
+                {
+                  "name": "Search the Web with X402 Payment",
+                  "id": "3da259ac-178e-4e23-9268-5c87298e4fa8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Base64-encoded JSON containing payment proof (x402Version, resource, accepted payment method, and cryptographic payload with signature and payer address)",
+                        "key": "PAYMENT-SIGNATURE",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"query\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"maxAgeSeconds\": \"<integer>\",\n  \"location\": {\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\"\n  },\n  \"filters\": {\n    \"exactPhrase\": \"<boolean>\",\n    \"semanticPhrase\": \"<boolean>\",\n    \"excludeTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"boostTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filetype\": \"xlsx\",\n    \"site\": \"<string>\",\n    \"excludeSite\": \"<string>\",\n    \"intitle\": \"<string>\",\n    \"inurl\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/x402/web/search",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "x402",
+                        "web",
+                        "search"
+                      ]
+                    },
+                    "description": "X402 payment endpoint. First request returns 402 with payment requirements. Retry with PAYMENT-SIGNATURE header containing cryptographic proof to get search results. See https://x402.gitbook.io/x402 for protocol details."
+                  },
+                  "response": [
+                    {
+                      "id": "64ed1e66-5e59-460c-a918-6f85c4cd807a",
+                      "name": "Search completed successfully (after valid payment)",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Base64-encoded JSON containing payment proof (x402Version, resource, accepted payment method, and cryptographic payload with signature and payer address)",
+                            "key": "PAYMENT-SIGNATURE",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"query\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"maxAgeSeconds\": \"<integer>\",\n  \"location\": {\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\"\n  },\n  \"filters\": {\n    \"exactPhrase\": \"<boolean>\",\n    \"semanticPhrase\": \"<boolean>\",\n    \"excludeTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"boostTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filetype\": \"xlsx\",\n    \"site\": \"<string>\",\n    \"excludeSite\": \"<string>\",\n    \"intitle\": \"<string>\",\n    \"inurl\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/x402/web/search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "x402",
+                            "web",
+                            "search"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Base64-encoded JSON with settlement information",
+                            "type": "text/plain"
+                          },
+                          "key": "PAYMENT-RESPONSE",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"jobId\": \"<string>\",\n  \"status\": \"failed\",\n  \"error\": \"<string>\",\n  \"data\": {\n    \"query\": \"<string>\",\n    \"results\": [\n      {\n        \"title\": \"<string>\",\n        \"url\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      {\n        \"title\": \"<string>\",\n        \"url\": \"<string>\",\n        \"description\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-06-05T15:10:11.000Z",
+                      "updatedAt": "2026-06-05T15:10:11.000Z",
+                      "uid": "35240-64ed1e66-5e59-460c-a918-6f85c4cd807a"
+                    },
+                    {
+                      "id": "11276412-bb51-4fc5-b371-663cc71af3e7",
+                      "name": "Invalid search parameters",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Base64-encoded JSON containing payment proof (x402Version, resource, accepted payment method, and cryptographic payload with signature and payer address)",
+                            "key": "PAYMENT-SIGNATURE",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"query\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"maxAgeSeconds\": \"<integer>\",\n  \"location\": {\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\"\n  },\n  \"filters\": {\n    \"exactPhrase\": \"<boolean>\",\n    \"semanticPhrase\": \"<boolean>\",\n    \"excludeTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"boostTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filetype\": \"xlsx\",\n    \"site\": \"<string>\",\n    \"excludeSite\": \"<string>\",\n    \"intitle\": \"<string>\",\n    \"inurl\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/x402/web/search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "x402",
+                            "web",
+                            "search"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:11.000Z",
+                      "updatedAt": "2026-06-05T15:10:11.000Z",
+                      "uid": "35240-11276412-bb51-4fc5-b371-663cc71af3e7"
+                    },
+                    {
+                      "id": "cbc1648e-2335-44ec-a91b-61364fb8603c",
+                      "name": "Payment Required - returned on first request without PAYMENT-SIGNATURE header",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Base64-encoded JSON containing payment proof (x402Version, resource, accepted payment method, and cryptographic payload with signature and payer address)",
+                            "key": "PAYMENT-SIGNATURE",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"query\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"maxAgeSeconds\": \"<integer>\",\n  \"location\": {\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\"\n  },\n  \"filters\": {\n    \"exactPhrase\": \"<boolean>\",\n    \"semanticPhrase\": \"<boolean>\",\n    \"excludeTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"boostTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filetype\": \"xlsx\",\n    \"site\": \"<string>\",\n    \"excludeSite\": \"<string>\",\n    \"intitle\": \"<string>\",\n    \"inurl\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/x402/web/search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "x402",
+                            "web",
+                            "search"
+                          ]
+                        }
+                      },
+                      "status": "Payment Required",
+                      "code": 402,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Base64-encoded JSON containing X402 payment requirements (x402Version, resource info, and array of accepted payment methods with network, asset, amount, payTo address, and timeout)",
+                            "type": "text/plain"
+                          },
+                          "key": "PAYMENT-REQUIRED",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-06-05T15:10:11.000Z",
+                      "updatedAt": "2026-06-05T15:10:11.000Z",
+                      "uid": "35240-cbc1648e-2335-44ec-a91b-61364fb8603c"
+                    },
+                    {
+                      "id": "39180d70-a24e-46f6-a062-e1f888ac8fc5",
+                      "name": "Server error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Base64-encoded JSON containing payment proof (x402Version, resource, accepted payment method, and cryptographic payload with signature and payer address)",
+                            "key": "PAYMENT-SIGNATURE",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"query\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"maxAgeSeconds\": \"<integer>\",\n  \"location\": {\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\"\n  },\n  \"filters\": {\n    \"exactPhrase\": \"<boolean>\",\n    \"semanticPhrase\": \"<boolean>\",\n    \"excludeTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"boostTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filetype\": \"xlsx\",\n    \"site\": \"<string>\",\n    \"excludeSite\": \"<string>\",\n    \"intitle\": \"<string>\",\n    \"inurl\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/x402/web/search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "x402",
+                            "web",
+                            "search"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:11.000Z",
+                      "updatedAt": "2026-06-05T15:10:11.000Z",
+                      "uid": "35240-39180d70-a24e-46f6-a062-e1f888ac8fc5"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:10:11.000Z",
+                  "updatedAt": "2026-06-05T15:10:11.000Z",
+                  "uid": "35240-3da259ac-178e-4e23-9268-5c87298e4fa8"
+                }
+              ],
+              "id": "25cfce41-f7cb-48e6-aade-e3bb88876e4a",
+              "createdAt": "2026-06-05T15:10:11.000Z",
+              "updatedAt": "2026-06-05T15:10:11.000Z",
+              "uid": "35240-25cfce41-f7cb-48e6-aade-e3bb88876e4a"
+            }
+          ],
+          "id": "8090f93e-a0d0-4155-95ee-a77ec291022c",
+          "createdAt": "2026-06-05T15:10:11.000Z",
+          "updatedAt": "2026-06-05T15:10:11.000Z",
+          "uid": "35240-8090f93e-a0d0-4155-95ee-a77ec291022c"
+        }
+      ],
+      "id": "fa0c4e31-c2ed-4a75-a0fe-0b77219844d7",
+      "createdAt": "2026-06-05T15:10:11.000Z",
+      "updatedAt": "2026-06-05T15:10:11.000Z",
+      "uid": "35240-fa0c4e31-c2ed-4a75-a0fe-0b77219844d7"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.hyperbrowser.ai"
+    }
+  ]
+}

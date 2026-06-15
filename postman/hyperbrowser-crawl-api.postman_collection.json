@@ -1,0 +1,770 @@
+{
+  "info": {
+    "_postman_id": "a6d7662a-8283-402c-a333-622bfc650590",
+    "name": "Hyperbrowser Crawl API",
+    "description": "Recursive crawl jobs across many pages with structured page-by-page results and status polling.\n\nContact Support:\n Name: Hyperbrowser",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:10:00.000Z",
+    "updatedAt": "2026-06-05T15:10:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a6d7662a-8283-402c-a333-622bfc650590"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "crawl",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "status",
+                  "item": [
+                    {
+                      "name": "Get Crawl Job Status",
+                      "id": "d16d96ca-17a3-46e8-8d2c-0d5cb1d709a8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/crawl/:id/status",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "crawl",
+                            ":id",
+                            "status"
+                          ],
+                          "variable": [
+                            {
+                              "id": "297f3eae-7e37-4c04-8572-7fa93ccedf19",
+                              "key": "id",
+                              "value": "<uuid>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "55b04587-660c-430b-b6bf-ed6c863fc6cb",
+                          "name": "Crawl job status",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/crawl/:id/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "crawl",
+                                ":id",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"pending\"\n}",
+                          "createdAt": "2026-06-05T15:10:01.000Z",
+                          "updatedAt": "2026-06-05T15:10:01.000Z",
+                          "uid": "35240-55b04587-660c-430b-b6bf-ed6c863fc6cb"
+                        },
+                        {
+                          "id": "2f9a5fbe-eb81-4f6c-b259-5f0cbfbedc66",
+                          "name": "Crawl job not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/crawl/:id/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "crawl",
+                                ":id",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:10:01.000Z",
+                          "updatedAt": "2026-06-05T15:10:01.000Z",
+                          "uid": "35240-2f9a5fbe-eb81-4f6c-b259-5f0cbfbedc66"
+                        },
+                        {
+                          "id": "809aacab-55ef-4cd9-a311-9563b7cfb2c5",
+                          "name": "Server error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/crawl/:id/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "crawl",
+                                ":id",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:10:01.000Z",
+                          "updatedAt": "2026-06-05T15:10:01.000Z",
+                          "uid": "35240-809aacab-55ef-4cd9-a311-9563b7cfb2c5"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:10:01.000Z",
+                      "updatedAt": "2026-06-05T15:10:01.000Z",
+                      "uid": "35240-d16d96ca-17a3-46e8-8d2c-0d5cb1d709a8"
+                    }
+                  ],
+                  "id": "6f477aec-64f2-426e-99ac-f7c6951cb467",
+                  "createdAt": "2026-06-05T15:10:01.000Z",
+                  "updatedAt": "2026-06-05T15:10:01.000Z",
+                  "uid": "35240-6f477aec-64f2-426e-99ac-f7c6951cb467"
+                },
+                {
+                  "name": "Get Crawl Job Status and Results",
+                  "id": "a886ad95-2acc-4ead-b024-8df46a51dfd8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/crawl/:id?page=<integer>&batchSize=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "crawl",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "batchSize",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "a891da79-249c-4566-ad02-d58c43c83cc2",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "5f4aeecc-9789-418b-a86f-f538f2b5e1f2",
+                      "name": "Crawl job details retrieved successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/crawl/:id?page=<integer>&batchSize=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "crawl",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "batchSize",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"completed\",\n  \"jobId\": \"<uuid>\",\n  \"error\": \"<string>\",\n  \"totalCrawledPages\": \"<integer>\",\n  \"totalPageBatches\": \"<integer>\",\n  \"currentPageBatch\": \"<integer>\",\n  \"batchSize\": \"<integer>\",\n  \"data\": [\n    {\n      \"url\": \"<string>\",\n      \"status\": \"completed\",\n      \"error\": \"<string>\",\n      \"metadata\": {\n        \"velit_f49\": \"<string>\"\n      },\n      \"markdown\": \"<string>\",\n      \"html\": \"<string>\",\n      \"links\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"screenshot\": \"<string>\"\n    },\n    {\n      \"url\": \"<string>\",\n      \"status\": \"completed\",\n      \"error\": \"<string>\",\n      \"metadata\": {\n        \"fugiat79\": \"<string>\",\n        \"commodoa\": \"<string>\",\n        \"nulla_9d3\": \"<string>\"\n      },\n      \"markdown\": \"<string>\",\n      \"html\": \"<string>\",\n      \"links\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"screenshot\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:10:01.000Z",
+                      "updatedAt": "2026-06-05T15:10:01.000Z",
+                      "uid": "35240-5f4aeecc-9789-418b-a86f-f538f2b5e1f2"
+                    },
+                    {
+                      "id": "1ba9cbe9-4945-4b12-a3e1-68eb076053eb",
+                      "name": "Crawl job not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/crawl/:id?page=<integer>&batchSize=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "crawl",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "batchSize",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:01.000Z",
+                      "updatedAt": "2026-06-05T15:10:01.000Z",
+                      "uid": "35240-1ba9cbe9-4945-4b12-a3e1-68eb076053eb"
+                    },
+                    {
+                      "id": "e6ff3148-cab7-4017-bcd4-7ea105e8db66",
+                      "name": "Server error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/crawl/:id?page=<integer>&batchSize=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "crawl",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "batchSize",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:01.000Z",
+                      "updatedAt": "2026-06-05T15:10:01.000Z",
+                      "uid": "35240-e6ff3148-cab7-4017-bcd4-7ea105e8db66"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:10:01.000Z",
+                  "updatedAt": "2026-06-05T15:10:01.000Z",
+                  "uid": "35240-a886ad95-2acc-4ead-b024-8df46a51dfd8"
+                }
+              ],
+              "id": "6f27a634-52ad-4bb0-a8c5-6a826c3c9f6b",
+              "createdAt": "2026-06-05T15:10:01.000Z",
+              "updatedAt": "2026-06-05T15:10:01.000Z",
+              "uid": "35240-6f27a634-52ad-4bb0-a8c5-6a826c3c9f6b"
+            },
+            {
+              "name": "Start a Crawl Job",
+              "id": "a4408de8-4ff9-4352-93ef-1822aa9f39d3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-key",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"maxPages\": \"<integer>\",\n  \"followLinks\": true,\n  \"ignoreSitemap\": false,\n  \"excludePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"includePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"veniamf6\": \"<string>\",\n        \"elit8\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"aliqua_e\": \"<string>\",\n        \"sitd0d\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/crawl",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "crawl"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "7bdd9092-1c42-4fa1-9a0d-d98935467264",
+                  "name": "Crawl job started successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"url\": \"<string>\",\n  \"maxPages\": \"<integer>\",\n  \"followLinks\": true,\n  \"ignoreSitemap\": false,\n  \"excludePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"includePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"veniamf6\": \"<string>\",\n        \"elit8\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"aliqua_e\": \"<string>\",\n        \"sitd0d\": \"<string>\"\n      }\n    }\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/crawl",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "crawl"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"jobId\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:10:01.000Z",
+                  "updatedAt": "2026-06-05T15:10:01.000Z",
+                  "uid": "35240-7bdd9092-1c42-4fa1-9a0d-d98935467264"
+                },
+                {
+                  "id": "fc08ffd6-1f6f-4dbd-9fd6-e93d1c4f5716",
+                  "name": "Invalid request parameters",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"url\": \"<string>\",\n  \"maxPages\": \"<integer>\",\n  \"followLinks\": true,\n  \"ignoreSitemap\": false,\n  \"excludePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"includePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"veniamf6\": \"<string>\",\n        \"elit8\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"aliqua_e\": \"<string>\",\n        \"sitd0d\": \"<string>\"\n      }\n    }\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/crawl",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "crawl"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:10:01.000Z",
+                  "updatedAt": "2026-06-05T15:10:01.000Z",
+                  "uid": "35240-fc08ffd6-1f6f-4dbd-9fd6-e93d1c4f5716"
+                },
+                {
+                  "id": "3110346c-cedf-4136-9b71-b042be553f1c",
+                  "name": "Server error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"url\": \"<string>\",\n  \"maxPages\": \"<integer>\",\n  \"followLinks\": true,\n  \"ignoreSitemap\": false,\n  \"excludePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"includePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"veniamf6\": \"<string>\",\n        \"elit8\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"aliqua_e\": \"<string>\",\n        \"sitd0d\": \"<string>\"\n      }\n    }\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/crawl",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "crawl"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:10:01.000Z",
+                  "updatedAt": "2026-06-05T15:10:01.000Z",
+                  "uid": "35240-3110346c-cedf-4136-9b71-b042be553f1c"
+                }
+              ],
+              "createdAt": "2026-06-05T15:10:01.000Z",
+              "updatedAt": "2026-06-05T15:10:01.000Z",
+              "uid": "35240-a4408de8-4ff9-4352-93ef-1822aa9f39d3"
+            }
+          ],
+          "id": "e8a25643-4159-4589-9ad1-a312f75ddeb5",
+          "createdAt": "2026-06-05T15:10:01.000Z",
+          "updatedAt": "2026-06-05T15:10:01.000Z",
+          "uid": "35240-e8a25643-4159-4589-9ad1-a312f75ddeb5"
+        }
+      ],
+      "id": "d36c2f46-8789-4333-9d6f-d49c218c7f61",
+      "createdAt": "2026-06-05T15:10:01.000Z",
+      "updatedAt": "2026-06-05T15:10:01.000Z",
+      "uid": "35240-d36c2f46-8789-4333-9d6f-d49c218c7f61"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.hyperbrowser.ai"
+    }
+  ]
+}

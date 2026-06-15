@@ -1,0 +1,730 @@
+{
+  "info": {
+    "_postman_id": "da664ad7-f2da-4a7e-841d-54688b930870",
+    "name": "Hyperbrowser Extract API",
+    "description": "Structured data extraction jobs that pull typed records from one or more pages using prompts and JSON schemas.\n\nContact Support:\n Name: Hyperbrowser",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:10:03.000Z",
+    "updatedAt": "2026-06-05T15:10:03.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-da664ad7-f2da-4a7e-841d-54688b930870"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "extract",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "status",
+                  "item": [
+                    {
+                      "name": "Get Extract Job Status",
+                      "id": "53781154-55e2-4617-b74b-6d4a27ccc4ef",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/extract/:id/status",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "extract",
+                            ":id",
+                            "status"
+                          ],
+                          "variable": [
+                            {
+                              "id": "8a1c9fa3-e6d7-4a9b-abe1-a65ed02be8dd",
+                              "key": "id",
+                              "value": "<uuid>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "d799ac9f-bd0f-42f1-a673-ae7737c9162e",
+                          "name": "Extract job status",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/extract/:id/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "extract",
+                                ":id",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"pending\"\n}",
+                          "createdAt": "2026-06-05T15:10:04.000Z",
+                          "updatedAt": "2026-06-05T15:10:04.000Z",
+                          "uid": "35240-d799ac9f-bd0f-42f1-a673-ae7737c9162e"
+                        },
+                        {
+                          "id": "0c414d0d-6bff-46eb-a0c1-4f5f7465ff65",
+                          "name": "Extract job not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/extract/:id/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "extract",
+                                ":id",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:10:04.000Z",
+                          "updatedAt": "2026-06-05T15:10:04.000Z",
+                          "uid": "35240-0c414d0d-6bff-46eb-a0c1-4f5f7465ff65"
+                        },
+                        {
+                          "id": "3f0717ed-1f3a-43ab-8cee-8d9b352cb8c6",
+                          "name": "Server error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/extract/:id/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "extract",
+                                ":id",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:10:04.000Z",
+                          "updatedAt": "2026-06-05T15:10:04.000Z",
+                          "uid": "35240-3f0717ed-1f3a-43ab-8cee-8d9b352cb8c6"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:10:04.000Z",
+                      "updatedAt": "2026-06-05T15:10:04.000Z",
+                      "uid": "35240-53781154-55e2-4617-b74b-6d4a27ccc4ef"
+                    }
+                  ],
+                  "id": "65c2556d-b46a-4b65-a1de-6de3b7b713a3",
+                  "createdAt": "2026-06-05T15:10:04.000Z",
+                  "updatedAt": "2026-06-05T15:10:04.000Z",
+                  "uid": "35240-65c2556d-b46a-4b65-a1de-6de3b7b713a3"
+                },
+                {
+                  "name": "Get Extract Job Status and Results",
+                  "id": "3dbf74ca-8801-4761-86a1-505dfc10ae4f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/extract/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "extract",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "5789f915-8fc9-4f8e-aacc-392f9d0f47de",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "092e7c4b-2b7a-402c-8dc0-977446214943",
+                      "name": "Extract job details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/extract/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "extract",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"jobId\": \"<string>\",\n  \"status\": \"failed\",\n  \"data\": {},\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:04.000Z",
+                      "updatedAt": "2026-06-05T15:10:04.000Z",
+                      "uid": "35240-092e7c4b-2b7a-402c-8dc0-977446214943"
+                    },
+                    {
+                      "id": "cfee850f-14bd-4e11-9848-a86aaf1da943",
+                      "name": "Extract job not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/extract/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "extract",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:04.000Z",
+                      "updatedAt": "2026-06-05T15:10:04.000Z",
+                      "uid": "35240-cfee850f-14bd-4e11-9848-a86aaf1da943"
+                    },
+                    {
+                      "id": "7598dbfd-24e3-4ccd-a5ce-779812e8596a",
+                      "name": "Server error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/extract/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "extract",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:10:04.000Z",
+                      "updatedAt": "2026-06-05T15:10:04.000Z",
+                      "uid": "35240-7598dbfd-24e3-4ccd-a5ce-779812e8596a"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:10:04.000Z",
+                  "updatedAt": "2026-06-05T15:10:04.000Z",
+                  "uid": "35240-3dbf74ca-8801-4761-86a1-505dfc10ae4f"
+                }
+              ],
+              "id": "1b4e65e5-b929-4a60-bf81-2bae40c3ca44",
+              "createdAt": "2026-06-05T15:10:04.000Z",
+              "updatedAt": "2026-06-05T15:10:04.000Z",
+              "uid": "35240-1b4e65e5-b929-4a60-bf81-2bae40c3ca44"
+            },
+            {
+              "name": "Start an Extract Job",
+              "id": "20285fe0-a3ab-4d70-ae93-abcdcd62617c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-key",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"systemPrompt\": \"<string>\",\n  \"maxLinks\": \"<number>\",\n  \"prompt\": \"<string>\",\n  \"schema\": {},\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"waitFor\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/extract",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "extract"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "2feec4b8-df82-46cb-bb7c-530d02d89dde",
+                  "name": "Extract job started successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"systemPrompt\": \"<string>\",\n  \"maxLinks\": \"<number>\",\n  \"prompt\": \"<string>\",\n  \"schema\": {},\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"waitFor\": 0\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/extract",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "extract"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"jobId\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:10:04.000Z",
+                  "updatedAt": "2026-06-05T15:10:04.000Z",
+                  "uid": "35240-2feec4b8-df82-46cb-bb7c-530d02d89dde"
+                },
+                {
+                  "id": "b2f2fa7e-c610-42ca-8011-d9318fb494a1",
+                  "name": "Invalid request parameters",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"systemPrompt\": \"<string>\",\n  \"maxLinks\": \"<number>\",\n  \"prompt\": \"<string>\",\n  \"schema\": {},\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"waitFor\": 0\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/extract",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "extract"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:10:04.000Z",
+                  "updatedAt": "2026-06-05T15:10:04.000Z",
+                  "uid": "35240-b2f2fa7e-c610-42ca-8011-d9318fb494a1"
+                },
+                {
+                  "id": "cf6c3c7d-87ed-4be7-9cc8-40dcb1abd690",
+                  "name": "Server error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"systemPrompt\": \"<string>\",\n  \"maxLinks\": \"<number>\",\n  \"prompt\": \"<string>\",\n  \"schema\": {},\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"waitFor\": 0\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/extract",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "extract"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:10:04.000Z",
+                  "updatedAt": "2026-06-05T15:10:04.000Z",
+                  "uid": "35240-cf6c3c7d-87ed-4be7-9cc8-40dcb1abd690"
+                }
+              ],
+              "createdAt": "2026-06-05T15:10:04.000Z",
+              "updatedAt": "2026-06-05T15:10:04.000Z",
+              "uid": "35240-20285fe0-a3ab-4d70-ae93-abcdcd62617c"
+            }
+          ],
+          "id": "070ea134-f95c-4c31-bcdf-0d91d0522415",
+          "createdAt": "2026-06-05T15:10:04.000Z",
+          "updatedAt": "2026-06-05T15:10:04.000Z",
+          "uid": "35240-070ea134-f95c-4c31-bcdf-0d91d0522415"
+        }
+      ],
+      "id": "0853387f-99ca-4505-acfe-e11dfbb8b2e9",
+      "createdAt": "2026-06-05T15:10:04.000Z",
+      "updatedAt": "2026-06-05T15:10:04.000Z",
+      "uid": "35240-0853387f-99ca-4505-acfe-e11dfbb8b2e9"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.hyperbrowser.ai"
+    }
+  ]
+}
