@@ -257,6 +257,10 @@ integrations:
   - name: n8n
   - name: X402 Payment Protocol
 common:
+  - type: DomainSecurity
+    url: security/hyperbrowser-domain-security.yml
+  - type: Authentication
+    url: authentication/hyperbrowser-authentication.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/hyperbrowser/overview
   - type: Arazzo

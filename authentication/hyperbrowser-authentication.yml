@@ -1,0 +1,27 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/hyperbrowser-agents-api-openapi.yml, openapi/hyperbrowser-crawl-api-openapi.yml,
+  openapi/hyperbrowser-extensions-api-openapi.yml, openapi/hyperbrowser-extract-api-openapi.yml,
+  openapi/hyperbrowser-openapi.json, openapi/hyperbrowser-profiles-api-openapi.yml, openapi/hyperbrowser-scrape-api-openapi.yml,
+  openapi/hyperbrowser-sessions-api-openapi.yml, openapi/hyperbrowser-web-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter: x-api-key
+  description: Account API key from app.hyperbrowser.ai
+  sources:
+  - openapi/hyperbrowser-agents-api-openapi.yml
+  - openapi/hyperbrowser-crawl-api-openapi.yml
+  - openapi/hyperbrowser-extensions-api-openapi.yml
+  - openapi/hyperbrowser-extract-api-openapi.yml
+  - openapi/hyperbrowser-openapi.json
+  - openapi/hyperbrowser-profiles-api-openapi.yml
+  - openapi/hyperbrowser-scrape-api-openapi.yml
+  - openapi/hyperbrowser-sessions-api-openapi.yml
+  - openapi/hyperbrowser-web-api-openapi.yml
