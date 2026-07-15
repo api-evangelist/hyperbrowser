@@ -257,6 +257,8 @@ integrations:
   - name: n8n
   - name: X402 Payment Protocol
 common:
+  - type: AgenticAccess
+    url: agentic-access/hyperbrowser-agentic-access.yml
   - type: DomainSecurity
     url: security/hyperbrowser-domain-security.yml
   - type: Authentication
