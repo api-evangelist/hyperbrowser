@@ -1,8 +1,8 @@
 openapi: 3.0.1
 info:
-  title: Hyperbrowser Scrape API
+  title: Hyperbrowser Agents Scrape API
   version: 1.0.0
-  description: Single-page and batch scrape jobs returning HTML, Markdown, links, and screenshots with status polling.
+  description: Start, stop, and monitor agentic browser tasks across HyperAgent, Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI CUA.
   contact:
     name: Hyperbrowser
     url: https://hyperbrowser.ai
@@ -14,11 +14,21 @@ servers:
   description: Production server
 security:
 - ApiKeyAuth: []
+tags:
+- name: Scrape
 paths:
   /api/scrape:
     post:
-      operationId: post-api-scrape
-      summary: Create New Scrape Job
+      summary: Create new scrape job
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Start scrape job
+        source: "import { Hyperbrowser } from '@hyperbrowser/sdk';\n\nconst client = new Hyperbrowser({ apiKey: 'your-api-key' });\n\nawait client.scrape.start({\n  url: 'https://example.com',\n  scrapeOptions: {\n    formats: ['markdown']\n  }\n});"
+      - lang: python
+        label: Start scrape job
+        source: "from hyperbrowser import Hyperbrowser\nfrom hyperbrowser.models import StartScrapeJobParams, ScrapeOptions\n\nclient = Hyperbrowser(api_key='your-api-key')\n\nclient.scrape.start(StartScrapeJobParams(\n  url='https://example.com',\n  scrape_options=ScrapeOptions(\n    formats=['markdown']\n  )\n))"
       requestBody:
         required: true
         content:
@@ -44,14 +54,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
       - Scrape
   /api/scrape/{id}:
     get:
-      operationId: get-api-scrape-id
-      summary: Get Scrape Job Status and Result
+      summary: Get scrape job status and result
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Get scrape job
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.scrape.get(''job-id'');'
+      - lang: python
+        label: Get scrape job
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.scrape.get(''job-id'')'
       parameters:
       - name: id
         in: path
@@ -78,14 +106,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
       - Scrape
   /api/scrape/{id}/status:
     get:
-      operationId: get-api-scrape-id-status
-      summary: Get Scrape Job Status
+      summary: Get scrape job status
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Get scrape job status
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.scrape.getStatus(''job-id'');'
+      - lang: python
+        label: Get scrape job status
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.scrape.get_status(''job-id'')'
       parameters:
       - name: id
         in: path
@@ -112,14 +158,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
       - Scrape
   /api/scrape/batch:
     post:
-      operationId: post-api-scrape-batch
-      summary: Start a Batch Scrape Job
+      summary: Start a batch scrape job
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Start batch scrape job
+        source: "import { Hyperbrowser } from '@hyperbrowser/sdk';\n\nconst client = new Hyperbrowser({ apiKey: 'your-api-key' });\n\nawait client.scrape.batch.start({\n  urls: ['https://example.com/page1', 'https://example.com/page2'],\n  scrapeOptions: {\n    formats: ['markdown']\n  }\n});"
+      - lang: python
+        label: Start batch scrape job
+        source: "from hyperbrowser import Hyperbrowser\nfrom hyperbrowser.models import StartBatchScrapeJobParams, ScrapeOptions\n\nclient = Hyperbrowser(api_key='your-api-key')\n\nclient.scrape.batch.start(StartBatchScrapeJobParams(\n  urls=['https://example.com/page1', 'https://example.com/page2'],\n  scrape_options=ScrapeOptions(\n    formats=['markdown']\n  )\n))"
       requestBody:
         required: true
         content:
@@ -157,14 +209,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
       - Scrape
   /api/scrape/batch/{id}:
     get:
-      operationId: get-api-scrape-batch-id
-      summary: Get Batch Scrape Job Status and Results
+      summary: Get batch scrape job status and results
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Get batch scrape job
+        source: "import { Hyperbrowser } from '@hyperbrowser/sdk';\n\nconst client = new Hyperbrowser({ apiKey: 'your-api-key' });\n\nawait client.scrape.batch.get('job-id', {\n  page: 1\n});"
+      - lang: python
+        label: Get batch scrape job
+        source: "from hyperbrowser import Hyperbrowser\nfrom hyperbrowser.models import GetBatchScrapeJobParams\n\nclient = Hyperbrowser(api_key='your-api-key')\n\nclient.scrape.batch.get('job-id', GetBatchScrapeJobParams(\n  page=1\n))"
       parameters:
       - name: id
         in: path
@@ -196,14 +254,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
       - Scrape
   /api/scrape/batch/{id}/status:
     get:
-      operationId: get-api-scrape-batch-id-status
-      summary: Get Batch Scrape Job Status
+      summary: Get batch scrape job status
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Get batch scrape job status
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.scrape.batch.getStatus(''job-id'');'
+      - lang: python
+        label: Get batch scrape job status
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.scrape.batch.get_status(''job-id'')'
       parameters:
       - name: id
         in: path
@@ -230,385 +306,43 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
       - Scrape
 components:
-  securitySchemes:
-    ApiKeyAuth:
-      type: apiKey
-      in: header
-      name: x-api-key
-      description: Account API key from app.hyperbrowser.ai
   schemas:
-    BatchScrapeJobResponse:
+    ScrapeJobData:
       type: object
       properties:
-        jobId:
-          type: string
-        status:
-          $ref: '#/components/schemas/JobStatus'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ScrapedPage'
-        error:
-          type: string
-        totalScrapedPages:
-          type: number
-        totalPageBatches:
-          type: number
-        currentPageBatch:
-          type: number
-        batchSize:
-          type: number
-    CreateSessionParams:
-      type: object
-      properties:
-        useUltraStealth:
-          type: boolean
-          default: false
-        useStealth:
-          type: boolean
-          default: false
-        useProxy:
-          type: boolean
-          default: false
-        proxyServer:
-          type: string
-        proxyServerPassword:
-          type: string
-        proxyServerUsername:
-          type: string
-        proxyCountry:
-          $ref: '#/components/schemas/ProxyCountry'
-        proxyState:
-          $ref: '#/components/schemas/ProxyState'
-        proxyCity:
-          type: string
-          example: new york
-          nullable: true
-          description: Desired Country. Is mutually exclusive with proxyState. Some cities might not be supported, so before
-            using a new city, we recommend trying it out
-        region:
-          $ref: '#/components/schemas/SessionRegion'
-        operatingSystems:
-          type: array
-          items:
-            $ref: '#/components/schemas/OperatingSystem'
-        device:
-          type: array
-          items:
-            $ref: '#/components/schemas/Device'
-        platform:
-          type: array
-          items:
-            $ref: '#/components/schemas/Platform'
-        locales:
-          type: array
-          items:
-            $ref: '#/components/schemas/ISO639_1'
-          default:
-          - en
-        screen:
-          $ref: '#/components/schemas/ScreenConfig'
-        solveCaptchas:
-          type: boolean
-          default: false
-        solverType:
-          type: string
-          enum:
-          - visual
-          description: Optional CAPTCHA solver mode. Set to visual to use the visual reCAPTCHA solver.
-        adblock:
-          type: boolean
-          default: false
-        trackers:
-          type: boolean
-          default: false
-        annoyances:
-          type: boolean
-          default: false
-        enableWebRecording:
-          type: boolean
-        enableVideoWebRecording:
-          type: boolean
-          default: false
-          description: enableWebRecording must also be true for this to work
-        profile:
-          $ref: '#/components/schemas/CreateSessionProfile'
-        acceptCookies:
-          type: boolean
-        staticIpId:
-          type: string
-          format: uuid
-        saveDownloads:
-          type: boolean
-          default: false
-        extensionIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-            nullable: false
-          default: []
-        urlBlocklist:
-          type: array
-          items:
-            type: string
-            nullable: false
-          default: []
-        browserArgs:
-          type: array
-          items:
-            type: string
-            nullable: false
-          default: []
-        imageCaptchaParams:
-          type: array
-          items:
-            type: object
-            properties:
-              imageSelector:
+        metadata:
+          type: object
+          additionalProperties:
+            oneOf:
+            - type: string
+            - type: array
+              items:
                 type: string
-              inputSelector:
-                type: string
-          nullable: true
-        timeoutMinutes:
-          type: number
-          minimum: 1
-          maximum: 720
-        enableWindowManager:
-          type: boolean
-          default: false
-        enableWindowManagerTaskbar:
-          type: boolean
-          default: false
-        viewOnlyLiveView:
-          type: boolean
-          default: false
-        disablePasswordManager:
-          type: boolean
-          default: false
-        enableAlwaysOpenPdfExternally:
-          type: boolean
-          default: false
-        disablePostQuantumKeyAgreement:
-          type: boolean
-          default: false
-      default:
-        useStealth: false
-        useProxy: false
-        acceptCookies: false
-    CreateSessionProfile:
-      type: object
-      properties:
-        id:
+        markdown:
           type: string
-        persistChanges:
-          type: boolean
-        persistNetworkCache:
-          type: boolean
-          description: When persisting profile changes, also persist the browser's network cache (HTTP cache).
-    Device:
-      type: string
-      enum:
-      - desktop
-      - mobile
-    ErrorResponse:
-      type: object
-      properties:
-        message:
+        html:
           type: string
-    ISO639_1:
-      type: string
-      enum:
-      - aa
-      - ab
-      - ae
-      - af
-      - ak
-      - am
-      - an
-      - ar
-      - as
-      - av
-      - ay
-      - az
-      - ba
-      - be
-      - bg
-      - bh
-      - bi
-      - bm
-      - bn
-      - bo
-      - br
-      - bs
-      - ca
-      - ce
-      - ch
-      - co
-      - cr
-      - cs
-      - cu
-      - cv
-      - cy
-      - da
-      - de
-      - dv
-      - dz
-      - ee
-      - el
-      - en
-      - eo
-      - es
-      - et
-      - eu
-      - fa
-      - ff
-      - fi
-      - fj
-      - fo
-      - fr
-      - fy
-      - ga
-      - gd
-      - gl
-      - gn
-      - gu
-      - gv
-      - ha
-      - he
-      - hi
-      - ho
-      - hr
-      - ht
-      - hu
-      - hy
-      - hz
-      - ia
-      - id
-      - ie
-      - ig
-      - ii
-      - ik
-      - io
-      - is
-      - it
-      - iu
-      - ja
-      - jv
-      - ka
-      - kg
-      - ki
-      - kj
-      - kk
-      - kl
-      - km
-      - kn
-      - ko
-      - kr
-      - ks
-      - ku
-      - kv
-      - kw
-      - ky
-      - la
-      - lb
-      - lg
-      - li
-      - ln
-      - lo
-      - lt
-      - lu
-      - lv
-      - mg
-      - mh
-      - mi
-      - mk
-      - ml
-      - mn
-      - mo
-      - mr
-      - ms
-      - mt
-      - my
-      - na
-      - nb
-      - nd
-      - ne
-      - ng
-      - nl
-      - nn
-      - 'no'
-      - nr
-      - nv
-      - ny
-      - oc
-      - oj
-      - om
-      - or
-      - os
-      - pa
-      - pi
-      - pl
-      - ps
-      - pt
-      - qu
-      - rm
-      - rn
-      - ro
-      - ru
-      - rw
-      - sa
-      - sc
-      - sd
-      - se
-      - sg
-      - si
-      - sk
-      - sl
-      - sm
-      - sn
-      - so
-      - sq
-      - sr
-      - ss
-      - st
-      - su
-      - sv
-      - sw
-      - ta
-      - te
-      - tg
-      - th
-      - ti
-      - tk
-      - tl
-      - tn
-      - to
-      - tr
-      - ts
-      - tt
-      - tw
-      - ty
-      - ug
-      - uk
-      - ur
-      - uz
-      - ve
-      - vi
-      - vo
-      - wa
-      - wo
-      - xh
-      - yi
-      - yo
-      - za
-      - zh
-      - zu
+        links:
+          type: array
+          items:
+            type: string
+        screenshot:
+          type: string
+    StartScrapeJobParams:
+      type: object
+      required:
+      - url
+      properties:
+        url:
+          type: string
+          minLength: 1
+        sessionOptions:
+          $ref: '#/components/schemas/CreateSessionParams'
+        scrapeOptions:
+          $ref: '#/components/schemas/ScrapeOptions'
     JobStatus:
       type: string
       enum:
@@ -617,28 +351,86 @@ components:
       - completed
       - failed
       - stopped
-    JobStatusResponse:
+    ScrapeOptions:
       type: object
       properties:
-        status:
-          $ref: '#/components/schemas/JobStatus'
+        formats:
+          type: array
+          items:
+            type: string
+            enum:
+            - html
+            - links
+            - markdown
+            - screenshot
+          default:
+          - markdown
+        includeTags:
+          type: array
+          items:
+            type: string
+        excludeTags:
+          type: array
+          items:
+            type: string
+        onlyMainContent:
+          type: boolean
+          default: true
+        waitFor:
+          type: number
+          default: 0
+        timeout:
+          type: number
+          default: 30000
+        waitUntil:
+          type: string
+          enum:
+          - load
+          - domcontentloaded
+          - networkidle
+          default: load
+        screenshotOptions:
+          type: object
+          description: Options for the screenshot. Both `fullPage` and `cropToContent` cannot be true at the same time.
+          properties:
+            fullPage:
+              type: boolean
+              default: false
+            format:
+              type: string
+              enum:
+              - jpeg
+              - png
+              - webp
+              default: webp
+            cropToContent:
+              type: boolean
+              default: false
+              description: Automatically adjusts the screenshot height to match the page's actual content. If the page is shorter than the viewport, the screenshot is trimmed to remove any empty space below the content. If the page is taller than the viewport, the screenshot is cropped to the height of the viewport.
+            cropToContentMaxHeight:
+              type: number
+              description: The maximum height of the screenshot when `cropToContent` is true. Overrides the height set in the `screen` configuration.
+            cropToContentMinHeight:
+              type: number
+              description: The minimum height of the screenshot when `cropToContent` is true. Overrides the height set in the `screen` configuration.
+        storageState:
+          type: object
+          properties:
+            localStorage:
+              type: object
+              additionalProperties:
+                type: string
+            sessionStorage:
+              type: object
+              additionalProperties:
+                type: string
+    StartBatchScrapeJobResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
       required:
-      - status
-    OperatingSystem:
-      type: string
-      enum:
-      - windows
-      - android
-      - macos
-      - linux
-      - ios
-    Platform:
-      type: string
-      enum:
-      - chrome
-      - firefox
-      - safari
-      - edge
+      - jobId
     ProxyCountry:
       type: string
       enum:
@@ -927,6 +719,43 @@ components:
       - za
       - zm
       - zw
+    ScrapeJobResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        data:
+          $ref: '#/components/schemas/ScrapeJobData'
+        error:
+          type: string
+      required:
+      - jobId
+      - status
+    Device:
+      type: string
+      enum:
+      - desktop
+      - mobile
+    CreateSessionProfile:
+      type: object
+      properties:
+        id:
+          type: string
+        persistChanges:
+          type: boolean
+        persistNetworkCache:
+          type: boolean
+          description: When persisting profile changes, also persist the browser's network cache (HTTP cache).
+    SessionRegion:
+      type: string
+      enum:
+      - us-central
+      - us-west
+      - us-east
+      - asia-south
+      - europe-west
     ProxyState:
       type: string
       enum:
@@ -1031,30 +860,205 @@ components:
       - wi
       - wy
       nullable: true
-      description: Optional state code for proxies to US states. Is mutually exclusive with proxyCity. Takes in two letter
-        state code.
-    ScrapeJobData:
+      description: Optional state code for proxies to US states. Is mutually exclusive with proxyCity. Takes in two letter state code.
+    ScreenConfig:
       type: object
       properties:
-        metadata:
-          type: object
-          additionalProperties:
-            oneOf:
-            - type: string
-            - type: array
-              items:
-                type: string
-        markdown:
-          type: string
-        html:
-          type: string
-        links:
-          type: array
-          items:
-            type: string
-        screenshot:
-          type: string
-    ScrapeJobResponse:
+        width:
+          type: number
+          default: 1280
+        height:
+          type: number
+          default: 720
+    ISO639_1:
+      type: string
+      enum:
+      - aa
+      - ab
+      - ae
+      - af
+      - ak
+      - am
+      - an
+      - ar
+      - as
+      - av
+      - ay
+      - az
+      - ba
+      - be
+      - bg
+      - bh
+      - bi
+      - bm
+      - bn
+      - bo
+      - br
+      - bs
+      - ca
+      - ce
+      - ch
+      - co
+      - cr
+      - cs
+      - cu
+      - cv
+      - cy
+      - da
+      - de
+      - dv
+      - dz
+      - ee
+      - el
+      - en
+      - eo
+      - es
+      - et
+      - eu
+      - fa
+      - ff
+      - fi
+      - fj
+      - fo
+      - fr
+      - fy
+      - ga
+      - gd
+      - gl
+      - gn
+      - gu
+      - gv
+      - ha
+      - he
+      - hi
+      - ho
+      - hr
+      - ht
+      - hu
+      - hy
+      - hz
+      - ia
+      - id
+      - ie
+      - ig
+      - ii
+      - ik
+      - io
+      - is
+      - it
+      - iu
+      - ja
+      - jv
+      - ka
+      - kg
+      - ki
+      - kj
+      - kk
+      - kl
+      - km
+      - kn
+      - ko
+      - kr
+      - ks
+      - ku
+      - kv
+      - kw
+      - ky
+      - la
+      - lb
+      - lg
+      - li
+      - ln
+      - lo
+      - lt
+      - lu
+      - lv
+      - mg
+      - mh
+      - mi
+      - mk
+      - ml
+      - mn
+      - mo
+      - mr
+      - ms
+      - mt
+      - my
+      - na
+      - nb
+      - nd
+      - ne
+      - ng
+      - nl
+      - nn
+      - 'no'
+      - nr
+      - nv
+      - ny
+      - oc
+      - oj
+      - om
+      - or
+      - os
+      - pa
+      - pi
+      - pl
+      - ps
+      - pt
+      - qu
+      - rm
+      - rn
+      - ro
+      - ru
+      - rw
+      - sa
+      - sc
+      - sd
+      - se
+      - sg
+      - si
+      - sk
+      - sl
+      - sm
+      - sn
+      - so
+      - sq
+      - sr
+      - ss
+      - st
+      - su
+      - sv
+      - sw
+      - ta
+      - te
+      - tg
+      - th
+      - ti
+      - tk
+      - tl
+      - tn
+      - to
+      - tr
+      - ts
+      - tt
+      - tw
+      - ty
+      - ug
+      - uk
+      - ur
+      - uz
+      - ve
+      - vi
+      - vo
+      - wa
+      - wo
+      - xh
+      - yi
+      - yo
+      - za
+      - zh
+      - zu
+    BatchScrapeJobResponse:
       type: object
       properties:
         jobId:
@@ -1062,89 +1066,196 @@ components:
         status:
           $ref: '#/components/schemas/JobStatus'
         data:
-          $ref: '#/components/schemas/ScrapeJobData'
+          type: array
+          items:
+            $ref: '#/components/schemas/ScrapedPage'
         error:
           type: string
-      required:
-      - jobId
-      - status
-    ScrapeOptions:
+        totalScrapedPages:
+          type: number
+        totalPageBatches:
+          type: number
+        currentPageBatch:
+          type: number
+        batchSize:
+          type: number
+    StartBatchScrapeJobParams:
       type: object
       properties:
-        formats:
+        urls:
           type: array
           items:
             type: string
-            enum:
-            - html
-            - links
-            - markdown
-            - screenshot
-          default:
-          - markdown
-        includeTags:
-          type: array
-          items:
-            type: string
-        excludeTags:
-          type: array
-          items:
-            type: string
-        onlyMainContent:
+        sessionOptions:
+          $ref: '#/components/schemas/CreateSessionParams'
+        scrapeOptions:
+          $ref: '#/components/schemas/ScrapeOptions'
+      required:
+      - urls
+    StartScrapeJobResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+    CreateSessionParams:
+      type: object
+      properties:
+        useUltraStealth:
           type: boolean
-          default: true
-        waitFor:
-          type: number
-          default: 0
-        timeout:
-          type: number
-          default: 30000
-        waitUntil:
+          default: false
+        useStealth:
+          type: boolean
+          default: false
+        useProxy:
+          type: boolean
+          default: false
+        proxyServer:
+          type: string
+        proxyServerPassword:
+          type: string
+        proxyServerUsername:
+          type: string
+        proxyCountry:
+          $ref: '#/components/schemas/ProxyCountry'
+        proxyState:
+          $ref: '#/components/schemas/ProxyState'
+        proxyCity:
+          type: string
+          example: new york
+          nullable: true
+          description: Desired Country. Is mutually exclusive with proxyState. Some cities might not be supported, so before using a new city, we recommend trying it out
+        region:
+          $ref: '#/components/schemas/SessionRegion'
+        operatingSystems:
+          type: array
+          items:
+            $ref: '#/components/schemas/OperatingSystem'
+        device:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device'
+        platform:
+          type: array
+          items:
+            $ref: '#/components/schemas/Platform'
+        locales:
+          type: array
+          items:
+            $ref: '#/components/schemas/ISO639_1'
+          default:
+          - en
+        screen:
+          $ref: '#/components/schemas/ScreenConfig'
+        solveCaptchas:
+          type: boolean
+          default: false
+        solverType:
           type: string
           enum:
-          - load
-          - domcontentloaded
-          - networkidle
-          default: load
-        screenshotOptions:
-          type: object
-          description: Options for the screenshot. Both `fullPage` and `cropToContent` cannot be true at the same time.
-          properties:
-            fullPage:
-              type: boolean
-              default: false
-            format:
-              type: string
-              enum:
-              - jpeg
-              - png
-              - webp
-              default: webp
-            cropToContent:
-              type: boolean
-              default: false
-              description: Automatically adjusts the screenshot height to match the page's actual content. If the page is
-                shorter than the viewport, the screenshot is trimmed to remove any empty space below the content. If the page
-                is taller than the viewport, the screenshot is cropped to the height of the viewport.
-            cropToContentMaxHeight:
-              type: number
-              description: The maximum height of the screenshot when `cropToContent` is true. Overrides the height set in
-                the `screen` configuration.
-            cropToContentMinHeight:
-              type: number
-              description: The minimum height of the screenshot when `cropToContent` is true. Overrides the height set in
-                the `screen` configuration.
-        storageState:
-          type: object
-          properties:
-            localStorage:
-              type: object
-              additionalProperties:
+          - visual
+          description: Optional CAPTCHA solver mode. Set to visual to use the visual reCAPTCHA solver.
+        adblock:
+          type: boolean
+          default: false
+        trackers:
+          type: boolean
+          default: false
+        annoyances:
+          type: boolean
+          default: false
+        enableWebRecording:
+          type: boolean
+        enableVideoWebRecording:
+          type: boolean
+          default: false
+          description: enableWebRecording must also be true for this to work
+        profile:
+          $ref: '#/components/schemas/CreateSessionProfile'
+        acceptCookies:
+          type: boolean
+        staticIpId:
+          type: string
+          format: uuid
+        saveDownloads:
+          type: boolean
+          default: false
+        extensionIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+            nullable: false
+          default: []
+        urlBlocklist:
+          type: array
+          items:
+            type: string
+            nullable: false
+          default: []
+        browserArgs:
+          type: array
+          items:
+            type: string
+            nullable: false
+          default: []
+        imageCaptchaParams:
+          type: array
+          items:
+            type: object
+            properties:
+              imageSelector:
                 type: string
-            sessionStorage:
-              type: object
-              additionalProperties:
+              inputSelector:
                 type: string
+          nullable: true
+        timeoutMinutes:
+          type: number
+          minimum: 1
+          maximum: 720
+        enableWindowManager:
+          type: boolean
+          default: false
+        enableWindowManagerTaskbar:
+          type: boolean
+          default: false
+        viewOnlyLiveView:
+          type: boolean
+          default: false
+        disablePasswordManager:
+          type: boolean
+          default: false
+        enableAlwaysOpenPdfExternally:
+          type: boolean
+          default: false
+        disablePostQuantumKeyAgreement:
+          type: boolean
+          default: false
+      default:
+        useStealth: false
+        useProxy: false
+        acceptCookies: false
+    JobStatusResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/JobStatus'
+      required:
+      - status
+    Platform:
+      type: string
+      enum:
+      - chrome
+      - firefox
+      - safari
+      - edge
+    OperatingSystem:
+      type: string
+      enum:
+      - windows
+      - android
+      - macos
+      - linux
+      - ios
     ScrapedPage:
       type: object
       properties:
@@ -1176,57 +1287,14 @@ components:
       required:
       - url
       - status
-    ScreenConfig:
+    ErrorResponse:
       type: object
       properties:
-        width:
-          type: number
-          default: 1280
-        height:
-          type: number
-          default: 720
-    SessionRegion:
-      type: string
-      enum:
-      - us-central
-      - us-west
-      - us-east
-      - asia-south
-      - europe-west
-    StartBatchScrapeJobParams:
-      type: object
-      properties:
-        urls:
-          type: array
-          items:
-            type: string
-        sessionOptions:
-          $ref: '#/components/schemas/CreateSessionParams'
-        scrapeOptions:
-          $ref: '#/components/schemas/ScrapeOptions'
-      required:
-      - urls
-    StartBatchScrapeJobResponse:
-      type: object
-      properties:
-        jobId:
+        message:
           type: string
-      required:
-      - jobId
-    StartScrapeJobParams:
-      type: object
-      required:
-      - url
-      properties:
-        url:
-          type: string
-          minLength: 1
-        sessionOptions:
-          $ref: '#/components/schemas/CreateSessionParams'
-        scrapeOptions:
-          $ref: '#/components/schemas/ScrapeOptions'
-    StartScrapeJobResponse:
-      type: object
-      properties:
-        jobId:
-          type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Account API key from app.hyperbrowser.ai

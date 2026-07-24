@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: Hyperbrowser Agents Sessions API
+  title: Hyperbrowser Agents Session API
   version: 1.0.0
   description: Start, stop, and monitor agentic browser tasks across HyperAgent, Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI CUA.
   contact:
@@ -15,77 +15,20 @@ servers:
 security:
 - ApiKeyAuth: []
 tags:
-- name: Sessions
+- name: Session
 paths:
-  /api/sessions:
-    get:
-      summary: Get list of sessions
+  /api/session:
+    post:
+      summary: Create new session
       security:
       - ApiKeyAuth: []
       x-codeSamples:
       - lang: javascript
-        label: List sessions
-        source: "import { Hyperbrowser } from '@hyperbrowser/sdk';\n\nconst client = new Hyperbrowser({ apiKey: 'your-api-key' });\n\nawait client.sessions.list({\n  status: 'active'\n});"
+        label: Create a session
+        source: "import { Hyperbrowser } from '@hyperbrowser/sdk';\n\nconst client = new Hyperbrowser({ apiKey: 'your-api-key' });\n\nawait client.sessions.create({\n  useStealth: true\n});"
       - lang: python
-        label: List sessions
-        source: "from hyperbrowser import Hyperbrowser\nfrom hyperbrowser.models import SessionListParams\n\nclient = Hyperbrowser(api_key='your-api-key')\n\nclient.sessions.list(SessionListParams(\n  status='active'\n))"
-      parameters:
-      - name: page
-        in: query
-        schema:
-          type: number
-          required:
-          - 'false'
-          default: 1
-      - name: status
-        in: query
-        schema:
-          type: string
-          enum:
-          - active
-          - closed
-          - error
-          required:
-          - 'false'
-      responses:
-        '200':
-          description: List of sessions
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  sessions:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Session'
-                  totalCount:
-                    type: number
-                    example: 100
-                  page:
-                    type: number
-                    example: 1
-                  pageSize:
-                    type: number
-                    example: 10
-        '400':
-          description: Invalid query parameters
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '500':
-          description: Server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-      tags:
-      - Sessions
-  /api/session:
-    post:
-      operationId: post-api-session
-      summary: Create New Session
+        label: Create a session
+        source: "from hyperbrowser import Hyperbrowser\nfrom hyperbrowser.models import CreateSessionParams\n\nclient = Hyperbrowser(api_key='your-api-key')\n\nclient.sessions.create(CreateSessionParams(\n  use_stealth=True\n))"
       requestBody:
         content:
           application/json:
@@ -98,14 +41,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SessionDetail'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Sessions
+      - Session
   /api/session/{id}:
     get:
-      operationId: get-api-session-id
-      summary: Get Session by ID
+      summary: Get session by ID
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Get a session
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.sessions.get(''session-id'');'
+      - lang: python
+        label: Get a session
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.sessions.get(''session-id'')'
       parameters:
       - name: id
         in: path
@@ -125,14 +86,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Sessions
+      - Session
   /api/session/{id}/stop:
     put:
-      operationId: put-api-session-id-stop
-      summary: Stop a Session
+      summary: Stop a session
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Stop a session
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.sessions.stop(''session-id'');'
+      - lang: python
+        label: Stop a session
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.sessions.stop(''session-id'')'
       parameters:
       - name: id
         in: path
@@ -158,15 +137,24 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Sessions
+      - Session
   /api/session/{id}/update:
     put:
-      operationId: put-api-session-id-update
-      summary: Update a Running Session
+      summary: Update a running session
       description: Update supported settings on an active browser session. Supported update types are profile, proxy, screen, and solveCaptchas.
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Start CAPTCHA solving
+        source: "import { Hyperbrowser } from '@hyperbrowser/sdk';\n\nconst client = new Hyperbrowser({ apiKey: 'your-api-key' });\n\nawait client.sessions.startCaptchaSolving('session-id', {\n  solverType: 'visual'\n});\n\nawait client.sessions.stopCaptchaSolving('session-id');"
+      - lang: python
+        label: Start CAPTCHA solving
+        source: "from hyperbrowser import Hyperbrowser\nfrom hyperbrowser.models import UpdateSessionSolveCaptchasParams\n\nclient = Hyperbrowser(api_key='your-api-key')\n\nclient.sessions.start_captcha_solving(\n  'session-id',\n  UpdateSessionSolveCaptchasParams(solver_type='visual')\n)\n\nclient.sessions.stop_captcha_solving('session-id')"
+      - lang: bash
+        label: Start CAPTCHA solving
+        source: "curl -X PUT \"https://api.hyperbrowser.ai/api/session/$SESSION_ID/update\" \\\n  -H \"Content-Type: application/json\" \\\n  -H \"x-api-key: $HYPERBROWSER_API_KEY\" \\\n  -d '{\"type\":\"solveCaptchas\",\"params\":{\"enabled\":true,\"solverType\":\"visual\"}}'"
       parameters:
       - name: id
         in: path
@@ -247,15 +235,24 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Sessions
+      - Session
   /api/session/{id}/captcha/evaluate:
     post:
-      operationId: post-api-session-id-captcha-evaluate
-      summary: Run Manual CAPTCHA Evaluation
+      summary: Run manual CAPTCHA evaluation
       description: Trigger a bounded CAPTCHA evaluation on an active browser session. Supported CAPTCHA targets are turnstile, cloudflare-challenge, aliexpress, recaptcha, and amazon.
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Run manual CAPTCHA evaluation
+        source: "import { Hyperbrowser } from '@hyperbrowser/sdk';\n\nconst client = new Hyperbrowser({ apiKey: 'your-api-key' });\n\nconst result = await client.sessions.evaluateCaptcha('session-id', {\n  captchaType: 'recaptcha',\n  iterations: 2\n});"
+      - lang: python
+        label: Run manual CAPTCHA evaluation
+        source: "from hyperbrowser import Hyperbrowser\nfrom hyperbrowser.models import CaptchaEvaluationParams\n\nclient = Hyperbrowser(api_key='your-api-key')\n\nresult = client.sessions.evaluate_captcha(\n  'session-id',\n  CaptchaEvaluationParams(\n    captcha_type='recaptcha',\n    iterations=2\n  )\n)"
+      - lang: bash
+        label: Run manual CAPTCHA evaluation
+        source: "curl -X POST \"https://api.hyperbrowser.ai/api/session/$SESSION_ID/captcha/evaluate\" \\\n  -H \"Content-Type: application/json\" \\\n  -H \"x-api-key: $HYPERBROWSER_API_KEY\" \\\n  -d '{\"captchaType\":\"recaptcha\",\"iterations\":2}'"
       parameters:
       - name: id
         in: path
@@ -309,14 +306,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Sessions
+      - Session
   /api/session/{id}/recording-url:
     get:
-      operationId: get-api-session-id-recording-url
-      summary: Get Session Recording URL
+      summary: Get session recording URL
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Get recording URL
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.sessions.getRecordingURL(''session-id'');'
+      - lang: python
+        label: Get recording URL
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.sessions.get_recording_url(''session-id'')'
       parameters:
       - name: id
         in: path
@@ -342,14 +357,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Sessions
+      - Session
   /api/session/{id}/video-recording-url:
     get:
-      operationId: get-api-session-id-video-recording-url
-      summary: Get Session Video Recording URL
+      summary: Get session video recording URL
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Get video recording URL
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.sessions.getVideoRecordingURL(''session-id'');'
+      - lang: python
+        label: Get video recording URL
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.sessions.get_video_recording_url(''session-id'')'
       parameters:
       - name: id
         in: path
@@ -375,14 +408,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Sessions
+      - Session
   /api/session/{id}/downloads-url:
     get:
-      operationId: get-api-session-id-downloads-url
-      summary: Get Session Downloads URL
+      summary: Get session downloads URL
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Get downloads URL
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.sessions.getDownloadsURL(''session-id'');'
+      - lang: python
+        label: Get downloads URL
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.sessions.get_downloads_url(''session-id'')'
       parameters:
       - name: id
         in: path
@@ -408,10 +459,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Sessions
+      - Session
 components:
   schemas:
     SessionDetail:

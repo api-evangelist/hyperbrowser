@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: Hyperbrowser Agents Profiles API
+  title: Hyperbrowser Agents Profile API
   version: 1.0.0
   description: Start, stop, and monitor agentic browser tasks across HyperAgent, Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI CUA.
   contact:
@@ -15,60 +15,20 @@ servers:
 security:
 - ApiKeyAuth: []
 tags:
-- name: Profiles
+- name: Profile
 paths:
-  /api/profiles:
-    get:
-      summary: Get list of profiles
+  /api/profile:
+    post:
+      summary: Creates a new profile
       security:
       - ApiKeyAuth: []
       x-codeSamples:
       - lang: javascript
-        label: List profiles
-        source: "import { Hyperbrowser } from '@hyperbrowser/sdk';\n\nconst client = new Hyperbrowser({ apiKey: 'your-api-key' });\n\nawait client.profiles.list({\n  page: 1\n});"
+        label: Create a profile
+        source: "import { Hyperbrowser } from '@hyperbrowser/sdk';\n\nconst client = new Hyperbrowser({ apiKey: 'your-api-key' });\n\nawait client.profiles.create({\n  name: 'My Profile'\n});"
       - lang: python
-        label: List profiles
-        source: "from hyperbrowser import Hyperbrowser\nfrom hyperbrowser.models import ProfileListParams\n\nclient = Hyperbrowser(api_key='your-api-key')\n\nclient.profiles.list(ProfileListParams(\n  page=1\n))"
-      parameters:
-      - name: page
-        in: query
-        schema:
-          type: number
-          default: 1
-      - name: limit
-        in: query
-        schema:
-          type: number
-          default: 10
-      - name: name
-        in: query
-        schema:
-          type: string
-      responses:
-        '200':
-          description: List of profiles
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProfileListResponse'
-        '400':
-          description: Invalid query parameters
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '500':
-          description: Server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-      tags:
-      - Profiles
-  /api/profile:
-    post:
-      operationId: post-api-profile
-      summary: Creates a New Profile
+        label: Create a profile
+        source: "from hyperbrowser import Hyperbrowser\nfrom hyperbrowser.models import CreateProfileParams\n\nclient = Hyperbrowser(api_key='your-api-key')\n\nclient.profiles.create(CreateProfileParams(\n  name='My Profile'\n))"
       requestBody:
         content:
           application/json:
@@ -81,14 +41,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateProfileResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Profiles
+      - Profile
   /api/profile/{id}:
     get:
-      operationId: get-api-profile-id
-      summary: Get Profile by ID
+      summary: Get profile by ID
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Get a profile
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.profiles.get(''profile-id'');'
+      - lang: python
+        label: Get a profile
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.profiles.get(''profile-id'')'
       parameters:
       - name: id
         in: path
@@ -108,13 +86,31 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      tags:
+      - Profile
+    delete:
+      summary: Delete profile by ID
       security:
       - ApiKeyAuth: []
-      tags:
-      - Profiles
-    delete:
-      operationId: delete-api-profile-id
-      summary: Delete Profile by ID
+      x-codeSamples:
+      - lang: javascript
+        label: Delete a profile
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.profiles.delete(''profile-id'');'
+      - lang: python
+        label: Delete a profile
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.profiles.delete(''profile-id'')'
       parameters:
       - name: id
         in: path
@@ -128,10 +124,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BasicResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Profiles
+      - Profile
 components:
   schemas:
     CreateProfileParams:
@@ -152,19 +146,6 @@ components:
         name:
           type: string
           nullable: true
-    ProfileListResponse:
-      type: object
-      properties:
-        profiles:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProfileResponse'
-        totalCount:
-          type: number
-        page:
-          type: number
-        perPage:
-          type: number
     BasicResponse:
       type: object
       properties:

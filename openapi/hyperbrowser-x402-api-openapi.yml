@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: Hyperbrowser Agents Web API
+  title: Hyperbrowser Agents X402 API
   version: 1.0.0
   description: Start, stop, and monitor agentic browser tasks across HyperAgent, Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI CUA.
   contact:
@@ -15,242 +15,11 @@ servers:
 security:
 - ApiKeyAuth: []
 tags:
-- name: Web
+- name: X402
 paths:
-  /api/web/fetch:
-    post:
-      summary: Fetch a web page
-      description: Fetches a web page and returns the content in various formats (HTML, Markdown, JSON, screenshot, etc.)
-      security:
-      - ApiKeyAuth: []
-      x-codeSamples:
-      - lang: javascript
-        label: Fetch a page
-        source: "import { Hyperbrowser } from '@hyperbrowser/sdk';\n\nconst client = new Hyperbrowser({ apiKey: 'your-api-key' });\n\nconst response = await client.web.fetch({\n  url: 'https://example.com',\n  outputs: {\n    formats: ['markdown', 'screenshot']\n  }\n});"
-      - lang: python
-        label: Fetch a page
-        source: "from hyperbrowser import Hyperbrowser\nfrom hyperbrowser.models import FetchParams, FetchOutputOptions\n\nclient = Hyperbrowser(api_key='your-api-key')\n\nresponse = client.web.fetch(FetchParams(\n  url='https://example.com',\n  outputs=FetchOutputOptions(\n    formats=['markdown', 'screenshot']\n  )\n))"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/FetchParams'
-      responses:
-        '200':
-          description: Page fetched successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FetchResponse'
-        '400':
-          description: Invalid request parameters
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '500':
-          description: Server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-      tags:
-      - Web
-  /api/web/search:
-    post:
-      summary: Search the web
-      description: Performs a web search and returns search results with titles, URLs, and descriptions
-      security:
-      - ApiKeyAuth: []
-      x-codeSamples:
-      - lang: javascript
-        label: Search the web
-        source: "import { Hyperbrowser } from '@hyperbrowser/sdk';\n\nconst client = new Hyperbrowser({ apiKey: 'your-api-key' });\n\nconst response = await client.web.search({\n  query: 'hyperbrowser api',\n  filters: {\n    site: 'hyperbrowser.ai'\n  }\n});"
-      - lang: python
-        label: Search the web
-        source: "from hyperbrowser import Hyperbrowser\nfrom hyperbrowser.models import WebSearchParams, WebSearchFilters\n\nclient = Hyperbrowser(api_key='your-api-key')\n\nresponse = client.web.search(WebSearchParams(\n  query='hyperbrowser api',\n  filters=WebSearchFilters(\n    site='hyperbrowser.ai'\n  )\n))"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/WebSearchParams'
-      responses:
-        '200':
-          description: Search completed successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/WebSearchResponse'
-        '400':
-          description: Invalid search parameters
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '500':
-          description: Server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-      tags:
-      - Web
-  /api/web/crawl:
-    post:
-      summary: Start a web crawl job
-      description: Starts an asynchronous crawl job that follows links from a starting URL and returns content from each page in the specified formats.
-      security:
-      - ApiKeyAuth: []
-      x-codeSamples:
-      - lang: javascript
-        label: Start a web crawl
-        source: "import { Hyperbrowser } from '@hyperbrowser/sdk';\n\nconst client = new Hyperbrowser({ apiKey: 'your-api-key' });\n\nconst response = await client.web.crawl.start({\n  url: 'https://example.com',\n  outputs: {\n    formats: ['markdown']\n  },\n  crawlOptions: {\n    maxPages: 10,\n    followLinks: true\n  }\n});"
-      - lang: python
-        label: Start a web crawl
-        source: "from hyperbrowser import Hyperbrowser\nfrom hyperbrowser.models import StartWebCrawlJobParams, WebCrawlOptions, FetchOutputOptions\n\nclient = Hyperbrowser(api_key='your-api-key')\n\nresponse = client.web.crawl.start(StartWebCrawlJobParams(\n  url='https://example.com',\n  outputs=FetchOutputOptions(\n    formats=['markdown']\n  ),\n  crawl_options=WebCrawlOptions(\n    max_pages=10,\n    follow_links=True\n  )\n))"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/StartWebCrawlJobParams'
-      responses:
-        '200':
-          description: Crawl job started successfully
-          content:
-            application/json:
-              schema:
-                type: object
-                required:
-                - jobId
-                properties:
-                  jobId:
-                    type: string
-        '400':
-          description: Invalid request parameters
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '500':
-          description: Server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-      tags:
-      - Web
-  /api/web/crawl/{id}:
-    get:
-      summary: Get web crawl job results
-      description: Retrieves the status and results of a web crawl job. Results are paginated.
-      security:
-      - ApiKeyAuth: []
-      x-codeSamples:
-      - lang: javascript
-        label: Get web crawl job
-        source: "import { Hyperbrowser } from '@hyperbrowser/sdk';\n\nconst client = new Hyperbrowser({ apiKey: 'your-api-key' });\n\nconst response = await client.web.crawl.get('job-id', {\n  page: 0,\n  batchSize: 10\n});"
-      - lang: python
-        label: Get web crawl job
-        source: "from hyperbrowser import Hyperbrowser\nfrom hyperbrowser.models import GetWebCrawlJobParams\n\nclient = Hyperbrowser(api_key='your-api-key')\n\nresponse = client.web.crawl.get('job-id', GetWebCrawlJobParams(\n  page=0,\n  batch_size=10\n))"
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: page
-        in: query
-        required: false
-        schema:
-          type: integer
-          minimum: 0
-      - name: batchSize
-        in: query
-        required: false
-        schema:
-          type: integer
-          minimum: 1
-      responses:
-        '200':
-          description: Web crawl job details retrieved successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/WebCrawlJobResponse'
-        '404':
-          description: Crawl job not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '500':
-          description: Server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-      tags:
-      - Web
-  /api/web/crawl/{id}/status:
-    get:
-      summary: Get web crawl job status
-      description: Retrieves just the status of a web crawl job without the full results.
-      security:
-      - ApiKeyAuth: []
-      x-codeSamples:
-      - lang: javascript
-        label: Get web crawl job status
-        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
-
-
-          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
-
-
-          const response = await client.web.crawl.getStatus(''job-id'');'
-      - lang: python
-        label: Get web crawl job status
-        source: 'from hyperbrowser import Hyperbrowser
-
-
-          client = Hyperbrowser(api_key=''your-api-key'')
-
-
-          response = client.web.crawl.get_status(''job-id'')'
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
-          format: uuid
-      responses:
-        '200':
-          description: Web crawl job status
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/JobStatusResponse'
-        '404':
-          description: Crawl job not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '500':
-          description: Server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-      tags:
-      - Web
   /x402/web/fetch:
     post:
-      operationId: post-x402-web-fetch
-      summary: Fetch a Web Page with X402 Payment
+      summary: Fetch a web page with X402 payment
       description: X402 payment endpoint. First request returns 402 with payment requirements. Retry with PAYMENT-SIGNATURE header containing cryptographic proof to get the actual data. See https://x402.gitbook.io/x402 for protocol details.
       parameters:
       - name: PAYMENT-SIGNATURE
@@ -301,11 +70,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
       tags:
-      - Web
+      - X402
   /x402/web/search:
     post:
-      operationId: post-x402-web-search
-      summary: Search the Web with X402 Payment
+      summary: Search the web with X402 payment
       description: X402 payment endpoint. First request returns 402 with payment requirements. Retry with PAYMENT-SIGNATURE header containing cryptographic proof to get search results. See https://x402.gitbook.io/x402 for protocol details.
       parameters:
       - name: PAYMENT-SIGNATURE
@@ -356,7 +124,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
       tags:
-      - Web
+      - X402
 components:
   schemas:
     WebSearchResponseData:
@@ -422,47 +190,6 @@ components:
       - none
       - basic
       - advanced
-    WebCrawlPageData:
-      type: object
-      properties:
-        url:
-          type: string
-        status:
-          $ref: '#/components/schemas/PageStatus'
-        error:
-          type: string
-          nullable: true
-        metadata:
-          type: object
-          additionalProperties:
-            oneOf:
-            - type: string
-            - type: array
-              items:
-                type: string
-        markdown:
-          type: string
-        html:
-          type: string
-        links:
-          type: array
-          items:
-            type: string
-        screenshot:
-          type: string
-        json:
-          type: object
-        branding:
-          $ref: '#/components/schemas/BrandingProfile'
-      required:
-      - url
-      - status
-    FetchScreenshotFormat:
-      type: string
-      enum:
-      - jpeg
-      - png
-      - webp
     WebSearchResponse:
       type: object
       properties:
@@ -478,6 +205,12 @@ components:
       required:
       - jobId
       - status
+    FetchScreenshotFormat:
+      type: string
+      enum:
+      - jpeg
+      - png
+      - webp
     WebSearchFilters:
       type: object
       properties:
@@ -509,14 +242,6 @@ components:
       - none
       - auto
       - ultra
-    JobStatus:
-      type: string
-      enum:
-      - pending
-      - running
-      - completed
-      - failed
-      - stopped
     FetchOutputMarkdown:
       type: object
       properties:
@@ -550,36 +275,6 @@ components:
       required:
       - jobId
       - status
-    WebCrawlJobResponse:
-      type: object
-      properties:
-        jobId:
-          type: string
-          format: uuid
-        status:
-          $ref: '#/components/schemas/JobStatus'
-        error:
-          type: string
-          nullable: true
-        totalPages:
-          type: integer
-          minimum: 0
-        totalPageBatches:
-          type: integer
-          minimum: 0
-        currentPageBatch:
-          type: integer
-          minimum: 0
-        batchSize:
-          type: integer
-          minimum: 1
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/WebCrawlPageData'
-      required:
-      - status
-      - jobId
     FetchOutputJson:
       allOf:
       - $ref: '#/components/schemas/FetchOutputJsonOptions'
@@ -613,25 +308,6 @@ components:
           type: integer
         waitFor:
           type: integer
-    StartWebCrawlJobParams:
-      type: object
-      properties:
-        url:
-          type: string
-        stealth:
-          $ref: '#/components/schemas/FetchStealthMode'
-        outputs:
-          $ref: '#/components/schemas/FetchOutputOptions'
-        browser:
-          $ref: '#/components/schemas/FetchBrowserOptions'
-        navigation:
-          $ref: '#/components/schemas/FetchNavigationOptions'
-        cache:
-          $ref: '#/components/schemas/FetchCacheOptions'
-        crawlOptions:
-          $ref: '#/components/schemas/WebCrawlOptions'
-      required:
-      - url
     ScreenConfig:
       type: object
       properties:
@@ -690,13 +366,6 @@ components:
       - load
       - domcontentloaded
       - networkidle
-    JobStatusResponse:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/JobStatus'
-      required:
-      - status
     BrandingProfile:
       type: object
       description: Visual brand profile extracted via DOM analysis + LLM enhancement. All fields optional; the server may return a partial profile when the LLM refuses or fails.
@@ -770,13 +439,6 @@ components:
             type: string
         storageState:
           $ref: '#/components/schemas/FetchStorageStateOptions'
-    PageStatus:
-      type: string
-      enum:
-      - completed
-      - failed
-      - pending
-      - running
     ErrorResponse:
       type: object
       properties:
@@ -791,15 +453,6 @@ components:
           - html
       required:
       - type
-    FetchOutputLinks:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - links
-      required:
-      - type
     FetchStorageStateOptions:
       type: object
       properties:
@@ -811,6 +464,15 @@ components:
           type: object
           additionalProperties:
             type: string
+    FetchOutputLinks:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - links
+      required:
+      - type
     FetchOutputJsonOptions:
       type: object
       properties:
@@ -838,28 +500,6 @@ components:
       - pending
       - running
       - stopped
-    WebCrawlOptions:
-      type: object
-      properties:
-        maxPages:
-          type: integer
-          minimum: 1
-          maximum: 100
-          default: 10
-        followLinks:
-          type: boolean
-          default: true
-        ignoreSitemap:
-          type: boolean
-          default: false
-        excludePatterns:
-          type: array
-          items:
-            type: string
-        includePatterns:
-          type: array
-          items:
-            type: string
     WebSearchLocation:
       type: object
       properties:

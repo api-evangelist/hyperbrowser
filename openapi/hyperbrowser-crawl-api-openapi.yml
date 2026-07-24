@@ -1,8 +1,8 @@
 openapi: 3.0.1
 info:
-  title: Hyperbrowser Crawl API
+  title: Hyperbrowser Agents Crawl API
   version: 1.0.0
-  description: Recursive crawl jobs across many pages with structured page-by-page results and status polling.
+  description: Start, stop, and monitor agentic browser tasks across HyperAgent, Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI CUA.
   contact:
     name: Hyperbrowser
     url: https://hyperbrowser.ai
@@ -14,6 +14,8 @@ servers:
   description: Production server
 security:
 - ApiKeyAuth: []
+tags:
+- name: Crawl
 paths:
   /api/crawl:
     post:
@@ -187,200 +189,7 @@ paths:
       tags:
       - Crawl
 components:
-  securitySchemes:
-    ApiKeyAuth:
-      type: apiKey
-      in: header
-      name: x-api-key
-      description: Account API key from app.hyperbrowser.ai
   schemas:
-    CrawledPage:
-      type: object
-      properties:
-        url:
-          type: string
-        status:
-          type: string
-          enum:
-          - completed
-          - failed
-        error:
-          type: string
-          nullable: true
-        metadata:
-          type: object
-          additionalProperties:
-            oneOf:
-            - type: string
-            - type: array
-              items:
-                type: string
-        markdown:
-          type: string
-        html:
-          type: string
-        links:
-          type: array
-          items:
-            type: string
-        screenshot:
-          type: string
-      required:
-      - url
-      - status
-    CreateSessionParams:
-      type: object
-      properties:
-        useUltraStealth:
-          type: boolean
-          default: false
-        useStealth:
-          type: boolean
-          default: false
-        useProxy:
-          type: boolean
-          default: false
-        proxyServer:
-          type: string
-        proxyServerPassword:
-          type: string
-        proxyServerUsername:
-          type: string
-        proxyCountry:
-          $ref: '#/components/schemas/ProxyCountry'
-        proxyState:
-          $ref: '#/components/schemas/ProxyState'
-        proxyCity:
-          type: string
-          example: new york
-          nullable: true
-          description: Desired Country. Is mutually exclusive with proxyState. Some cities might not be supported, so before
-            using a new city, we recommend trying it out
-        region:
-          $ref: '#/components/schemas/SessionRegion'
-        operatingSystems:
-          type: array
-          items:
-            $ref: '#/components/schemas/OperatingSystem'
-        device:
-          type: array
-          items:
-            $ref: '#/components/schemas/Device'
-        platform:
-          type: array
-          items:
-            $ref: '#/components/schemas/Platform'
-        locales:
-          type: array
-          items:
-            $ref: '#/components/schemas/ISO639_1'
-          default:
-          - en
-        screen:
-          $ref: '#/components/schemas/ScreenConfig'
-        solveCaptchas:
-          type: boolean
-          default: false
-        solverType:
-          type: string
-          enum:
-          - visual
-          description: Optional CAPTCHA solver mode. Set to visual to use the visual reCAPTCHA solver.
-        adblock:
-          type: boolean
-          default: false
-        trackers:
-          type: boolean
-          default: false
-        annoyances:
-          type: boolean
-          default: false
-        enableWebRecording:
-          type: boolean
-        enableVideoWebRecording:
-          type: boolean
-          default: false
-          description: enableWebRecording must also be true for this to work
-        profile:
-          $ref: '#/components/schemas/CreateSessionProfile'
-        acceptCookies:
-          type: boolean
-        staticIpId:
-          type: string
-          format: uuid
-        saveDownloads:
-          type: boolean
-          default: false
-        extensionIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-            nullable: false
-          default: []
-        urlBlocklist:
-          type: array
-          items:
-            type: string
-            nullable: false
-          default: []
-        browserArgs:
-          type: array
-          items:
-            type: string
-            nullable: false
-          default: []
-        imageCaptchaParams:
-          type: array
-          items:
-            type: object
-            properties:
-              imageSelector:
-                type: string
-              inputSelector:
-                type: string
-          nullable: true
-        timeoutMinutes:
-          type: number
-          minimum: 1
-          maximum: 720
-        enableWindowManager:
-          type: boolean
-          default: false
-        enableWindowManagerTaskbar:
-          type: boolean
-          default: false
-        viewOnlyLiveView:
-          type: boolean
-          default: false
-        disablePasswordManager:
-          type: boolean
-          default: false
-        enableAlwaysOpenPdfExternally:
-          type: boolean
-          default: false
-        disablePostQuantumKeyAgreement:
-          type: boolean
-          default: false
-      default:
-        useStealth: false
-        useProxy: false
-        acceptCookies: false
-    CreateSessionProfile:
-      type: object
-      properties:
-        id:
-          type: string
-        persistChanges:
-          type: boolean
-        persistNetworkCache:
-          type: boolean
-          description: When persisting profile changes, also persist the browser's network cache (HTTP cache).
-    Device:
-      type: string
-      enum:
-      - desktop
-      - mobile
     ErrorResponse:
       type: object
       properties:
@@ -574,36 +383,6 @@ components:
       - za
       - zh
       - zu
-    JobStatus:
-      type: string
-      enum:
-      - pending
-      - running
-      - completed
-      - failed
-      - stopped
-    JobStatusResponse:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/JobStatus'
-      required:
-      - status
-    OperatingSystem:
-      type: string
-      enum:
-      - windows
-      - android
-      - macos
-      - linux
-      - ios
-    Platform:
-      type: string
-      enum:
-      - chrome
-      - firefox
-      - safari
-      - edge
     ProxyCountry:
       type: string
       enum:
@@ -892,6 +671,215 @@ components:
       - za
       - zm
       - zw
+    CreateSessionParams:
+      type: object
+      properties:
+        useUltraStealth:
+          type: boolean
+          default: false
+        useStealth:
+          type: boolean
+          default: false
+        useProxy:
+          type: boolean
+          default: false
+        proxyServer:
+          type: string
+        proxyServerPassword:
+          type: string
+        proxyServerUsername:
+          type: string
+        proxyCountry:
+          $ref: '#/components/schemas/ProxyCountry'
+        proxyState:
+          $ref: '#/components/schemas/ProxyState'
+        proxyCity:
+          type: string
+          example: new york
+          nullable: true
+          description: Desired Country. Is mutually exclusive with proxyState. Some cities might not be supported, so before using a new city, we recommend trying it out
+        region:
+          $ref: '#/components/schemas/SessionRegion'
+        operatingSystems:
+          type: array
+          items:
+            $ref: '#/components/schemas/OperatingSystem'
+        device:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device'
+        platform:
+          type: array
+          items:
+            $ref: '#/components/schemas/Platform'
+        locales:
+          type: array
+          items:
+            $ref: '#/components/schemas/ISO639_1'
+          default:
+          - en
+        screen:
+          $ref: '#/components/schemas/ScreenConfig'
+        solveCaptchas:
+          type: boolean
+          default: false
+        solverType:
+          type: string
+          enum:
+          - visual
+          description: Optional CAPTCHA solver mode. Set to visual to use the visual reCAPTCHA solver.
+        adblock:
+          type: boolean
+          default: false
+        trackers:
+          type: boolean
+          default: false
+        annoyances:
+          type: boolean
+          default: false
+        enableWebRecording:
+          type: boolean
+        enableVideoWebRecording:
+          type: boolean
+          default: false
+          description: enableWebRecording must also be true for this to work
+        profile:
+          $ref: '#/components/schemas/CreateSessionProfile'
+        acceptCookies:
+          type: boolean
+        staticIpId:
+          type: string
+          format: uuid
+        saveDownloads:
+          type: boolean
+          default: false
+        extensionIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+            nullable: false
+          default: []
+        urlBlocklist:
+          type: array
+          items:
+            type: string
+            nullable: false
+          default: []
+        browserArgs:
+          type: array
+          items:
+            type: string
+            nullable: false
+          default: []
+        imageCaptchaParams:
+          type: array
+          items:
+            type: object
+            properties:
+              imageSelector:
+                type: string
+              inputSelector:
+                type: string
+          nullable: true
+        timeoutMinutes:
+          type: number
+          minimum: 1
+          maximum: 720
+        enableWindowManager:
+          type: boolean
+          default: false
+        enableWindowManagerTaskbar:
+          type: boolean
+          default: false
+        viewOnlyLiveView:
+          type: boolean
+          default: false
+        disablePasswordManager:
+          type: boolean
+          default: false
+        enableAlwaysOpenPdfExternally:
+          type: boolean
+          default: false
+        disablePostQuantumKeyAgreement:
+          type: boolean
+          default: false
+      default:
+        useStealth: false
+        useProxy: false
+        acceptCookies: false
+    Device:
+      type: string
+      enum:
+      - desktop
+      - mobile
+    CrawledPage:
+      type: object
+      properties:
+        url:
+          type: string
+        status:
+          type: string
+          enum:
+          - completed
+          - failed
+        error:
+          type: string
+          nullable: true
+        metadata:
+          type: object
+          additionalProperties:
+            oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+        markdown:
+          type: string
+        html:
+          type: string
+        links:
+          type: array
+          items:
+            type: string
+        screenshot:
+          type: string
+      required:
+      - url
+      - status
+    CreateSessionProfile:
+      type: object
+      properties:
+        id:
+          type: string
+        persistChanges:
+          type: boolean
+        persistNetworkCache:
+          type: boolean
+          description: When persisting profile changes, also persist the browser's network cache (HTTP cache).
+    JobStatus:
+      type: string
+      enum:
+      - pending
+      - running
+      - completed
+      - failed
+      - stopped
+    SessionRegion:
+      type: string
+      enum:
+      - us-central
+      - us-west
+      - us-east
+      - asia-south
+      - europe-west
+    JobStatusResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/JobStatus'
+      required:
+      - status
     ProxyState:
       type: string
       enum:
@@ -996,8 +984,14 @@ components:
       - wi
       - wy
       nullable: true
-      description: Optional state code for proxies to US states. Is mutually exclusive with proxyCity. Takes in two letter
-        state code.
+      description: Optional state code for proxies to US states. Is mutually exclusive with proxyCity. Takes in two letter state code.
+    Platform:
+      type: string
+      enum:
+      - chrome
+      - firefox
+      - safari
+      - edge
     ScrapeOptions:
       type: object
       properties:
@@ -1053,17 +1047,13 @@ components:
             cropToContent:
               type: boolean
               default: false
-              description: Automatically adjusts the screenshot height to match the page's actual content. If the page is
-                shorter than the viewport, the screenshot is trimmed to remove any empty space below the content. If the page
-                is taller than the viewport, the screenshot is cropped to the height of the viewport.
+              description: Automatically adjusts the screenshot height to match the page's actual content. If the page is shorter than the viewport, the screenshot is trimmed to remove any empty space below the content. If the page is taller than the viewport, the screenshot is cropped to the height of the viewport.
             cropToContentMaxHeight:
               type: number
-              description: The maximum height of the screenshot when `cropToContent` is true. Overrides the height set in
-                the `screen` configuration.
+              description: The maximum height of the screenshot when `cropToContent` is true. Overrides the height set in the `screen` configuration.
             cropToContentMinHeight:
               type: number
-              description: The minimum height of the screenshot when `cropToContent` is true. Overrides the height set in
-                the `screen` configuration.
+              description: The minimum height of the screenshot when `cropToContent` is true. Overrides the height set in the `screen` configuration.
         storageState:
           type: object
           properties:
@@ -1075,6 +1065,14 @@ components:
               type: object
               additionalProperties:
                 type: string
+    OperatingSystem:
+      type: string
+      enum:
+      - windows
+      - android
+      - macos
+      - linux
+      - ios
     ScreenConfig:
       type: object
       properties:
@@ -1084,11 +1082,9 @@ components:
         height:
           type: number
           default: 720
-    SessionRegion:
-      type: string
-      enum:
-      - us-central
-      - us-west
-      - us-east
-      - asia-south
-      - europe-west
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Account API key from app.hyperbrowser.ai

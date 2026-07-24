@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: Hyperbrowser Agents API
+  title: Hyperbrowser Agents Task API
   version: 1.0.0
   description: Start, stop, and monitor agentic browser tasks across HyperAgent, Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI CUA.
   contact:
@@ -15,12 +15,20 @@ servers:
 security:
 - ApiKeyAuth: []
 tags:
-- name: Agents
+- name: Task
 paths:
   /api/task/hyper-agent:
     post:
-      operationId: post-api-task-hyper-agent
-      summary: Start a HyperAgent Task
+      summary: Start a HyperAgent task
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Start HyperAgent task
+        source: "import { Hyperbrowser } from '@hyperbrowser/sdk';\n\nconst client = new Hyperbrowser({ apiKey: 'your-api-key' });\n\nawait client.agents.hyperAgent.start({\n  task: 'Find the price of the product',\n  maxSteps: 20\n});"
+      - lang: python
+        label: Start HyperAgent task
+        source: "from hyperbrowser import Hyperbrowser\nfrom hyperbrowser.models import StartHyperAgentTaskParams\n\nclient = Hyperbrowser(api_key='your-api-key')\n\nclient.agents.hyper_agent.start(StartHyperAgentTaskParams(\n  task='Find the price of the product',\n  max_steps=20\n))"
       requestBody:
         required: true
         content:
@@ -40,14 +48,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Agents
+      - Task
   /api/task/hyper-agent/{id}:
     get:
-      operationId: get-api-task-hyper-agent-id
-      summary: Get HyperAgent Task Status and Results
+      summary: Get HyperAgent task status and results
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Get HyperAgent task
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.agents.hyperAgent.get(''task-id'');'
+      - lang: python
+        label: Get HyperAgent task
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.agents.hyper_agent.get(''task-id'')'
       parameters:
       - name: id
         in: path
@@ -73,14 +99,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Agents
+      - Task
   /api/task/hyper-agent/{id}/stop:
     put:
-      operationId: put-api-task-hyper-agent-id-stop
-      summary: Stop a HyperAgent Task
+      summary: Stop a HyperAgent task
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Stop HyperAgent task
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.agents.hyperAgent.stop(''task-id'');'
+      - lang: python
+        label: Stop HyperAgent task
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.agents.hyper_agent.stop(''task-id'')'
       parameters:
       - name: id
         in: path
@@ -94,14 +138,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BasicResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Agents
+      - Task
   /api/task/hyper-agent/{id}/status:
     get:
-      operationId: get-api-task-hyper-agent-id-status
-      summary: Get HyperAgent Task Status
+      summary: Get HyperAgent task status
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Get HyperAgent task status
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.agents.hyperAgent.getStatus(''task-id'');'
+      - lang: python
+        label: Get HyperAgent task status
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.agents.hyper_agent.get_status(''task-id'')'
       parameters:
       - name: id
         in: path
@@ -127,14 +189,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Agents
+      - Task
   /api/task/browser-use:
     post:
-      operationId: post-api-task-browser-use
-      summary: Start a Browser Use Task
+      summary: Start a browser use task
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Start BrowserUse task
+        source: "import { Hyperbrowser } from '@hyperbrowser/sdk';\n\nconst client = new Hyperbrowser({ apiKey: 'your-api-key' });\n\nawait client.agents.browserUse.start({\n  task: 'Find the price of the product',\n  llm: 'gemini-2.0-flash',\n  maxSteps: 20\n});"
+      - lang: python
+        label: Start BrowserUse task
+        source: "from hyperbrowser import Hyperbrowser\nfrom hyperbrowser.models import StartBrowserUseTaskParams\n\nclient = Hyperbrowser(api_key='your-api-key')\n\nclient.agents.browser_use.start(StartBrowserUseTaskParams(\n  task='Find the price of the product',\n  llm='gemini-2.0-flash',\n  max_steps=20\n))"
       requestBody:
         required: true
         content:
@@ -154,14 +222,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Agents
+      - Task
   /api/task/browser-use/{id}:
     get:
-      operationId: get-api-task-browser-use-id
-      summary: Get Browser Use Task Status and Results
+      summary: Get browser use task status and results
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Get BrowserUse task
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.agents.browserUse.get(''task-id'');'
+      - lang: python
+        label: Get BrowserUse task
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.agents.browser_use.get(''task-id'')'
       parameters:
       - name: id
         in: path
@@ -187,14 +273,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Agents
+      - Task
   /api/task/browser-use/{id}/stop:
     put:
-      operationId: put-api-task-browser-use-id-stop
-      summary: Stop a Browser Use Task
+      summary: Stop a browser use task
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Stop BrowserUse task
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.agents.browserUse.stop(''task-id'');'
+      - lang: python
+        label: Stop BrowserUse task
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.agents.browser_use.stop(''task-id'')'
       parameters:
       - name: id
         in: path
@@ -208,14 +312,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BasicResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Agents
+      - Task
   /api/task/browser-use/{id}/status:
     get:
-      operationId: get-api-task-browser-use-id-status
-      summary: Get Browser Use Task Status
+      summary: Get browser use task status
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Get BrowserUse task status
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.agents.browserUse.getStatus(''task-id'');'
+      - lang: python
+        label: Get BrowserUse task status
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.agents.browser_use.get_status(''task-id'')'
       parameters:
       - name: id
         in: path
@@ -241,14 +363,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Agents
+      - Task
   /api/task/claude-computer-use:
     post:
-      operationId: post-api-task-claude-computer-use
-      summary: Start a Claude Computer Use Task
+      summary: Start a claude computer use task
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Start Claude Computer Use task
+        source: "import { Hyperbrowser } from '@hyperbrowser/sdk';\n\nconst client = new Hyperbrowser({ apiKey: 'your-api-key' });\n\nawait client.agents.claudeComputerUse.start({\n  task: 'Find the price of the product',\n  llm: 'claude-sonnet-4-5',\n  maxSteps: 20\n});"
+      - lang: python
+        label: Start Claude Computer Use task
+        source: "from hyperbrowser import Hyperbrowser\nfrom hyperbrowser.models import StartClaudeComputerUseTaskParams\n\nclient = Hyperbrowser(api_key='your-api-key')\n\nclient.agents.claude_computer_use.start(StartClaudeComputerUseTaskParams(\n  task='Find the price of the product',\n  llm='claude-sonnet-4-5',\n  max_steps=20\n))"
       requestBody:
         required: true
         content:
@@ -268,14 +396,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Agents
+      - Task
   /api/task/claude-computer-use/{id}:
     get:
-      operationId: get-api-task-claude-computer-use-id
-      summary: Get Claude Computer Use Task Status and Results
+      summary: Get claude computer use task status and results
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Get Claude Computer Use task
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.agents.claudeComputerUse.get(''task-id'');'
+      - lang: python
+        label: Get Claude Computer Use task
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.agents.claude_computer_use.get(''task-id'')'
       parameters:
       - name: id
         in: path
@@ -301,14 +447,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Agents
+      - Task
   /api/task/claude-computer-use/{id}/stop:
     put:
-      operationId: put-api-task-claude-computer-use-id-stop
-      summary: Stop a Claude Computer Use Task
+      summary: Stop a claude computer use task
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Stop Claude Computer Use task
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.agents.claudeComputerUse.stop(''task-id'');'
+      - lang: python
+        label: Stop Claude Computer Use task
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.agents.claude_computer_use.stop(''task-id'')'
       parameters:
       - name: id
         in: path
@@ -322,14 +486,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BasicResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Agents
+      - Task
   /api/task/claude-computer-use/{id}/status:
     get:
-      operationId: get-api-task-claude-computer-use-id-status
-      summary: Get Claude Computer Use Task Status
+      summary: Get claude computer use task status
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Get Claude Computer Use task status
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.agents.claudeComputerUse.getStatus(''task-id'');'
+      - lang: python
+        label: Get Claude Computer Use task status
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.agents.claude_computer_use.get_status(''task-id'')'
       parameters:
       - name: id
         in: path
@@ -355,14 +537,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Agents
+      - Task
   /api/task/gemini-computer-use:
     post:
-      operationId: post-api-task-gemini-computer-use
-      summary: Start a Gemini Computer Use Task
+      summary: Start a gemini computer use task
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Start Gemini Computer Use task
+        source: "import { Hyperbrowser } from '@hyperbrowser/sdk';\n\nconst client = new Hyperbrowser({ apiKey: 'your-api-key' });\n\nawait client.agents.geminiComputerUse.start({\n  task: 'Find the price of the product',\n  maxSteps: 20\n});"
+      - lang: python
+        label: Start Gemini Computer Use task
+        source: "from hyperbrowser import Hyperbrowser\nfrom hyperbrowser.models import StartGeminiComputerUseTaskParams\n\nclient = Hyperbrowser(api_key='your-api-key')\n\nclient.agents.gemini_computer_use.start(StartGeminiComputerUseTaskParams(\n  task='Find the price of the product',\n  max_steps=20\n))"
       requestBody:
         required: true
         content:
@@ -382,14 +570,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Agents
+      - Task
   /api/task/gemini-computer-use/{id}:
     get:
-      operationId: get-api-task-gemini-computer-use-id
-      summary: Get Gemini Computer Use Task Status and Results
+      summary: Get gemini computer use task status and results
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Get Gemini Computer Use task
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.agents.geminiComputerUse.get(''task-id'');'
+      - lang: python
+        label: Get Gemini Computer Use task
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.agents.gemini_computer_use.get(''task-id'')'
       parameters:
       - name: id
         in: path
@@ -415,14 +621,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Agents
+      - Task
   /api/task/gemini-computer-use/{id}/stop:
     put:
-      operationId: put-api-task-gemini-computer-use-id-stop
-      summary: Stop a Gemini Computer Use Task
+      summary: Stop a gemini computer use task
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Stop Gemini Computer Use task
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.agents.geminiComputerUse.stop(''task-id'');'
+      - lang: python
+        label: Stop Gemini Computer Use task
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.agents.gemini_computer_use.stop(''task-id'')'
       parameters:
       - name: id
         in: path
@@ -436,14 +660,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BasicResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Agents
+      - Task
   /api/task/gemini-computer-use/{id}/status:
     get:
-      operationId: get-api-task-gemini-computer-use-id-status
-      summary: Get Gemini Computer Use Task Status
+      summary: Get gemini computer use task status
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Get Gemini Computer Use task status
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.agents.geminiComputerUse.getStatus(''task-id'');'
+      - lang: python
+        label: Get Gemini Computer Use task status
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.agents.gemini_computer_use.get_status(''task-id'')'
       parameters:
       - name: id
         in: path
@@ -469,14 +711,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Agents
+      - Task
   /api/task/cua:
     post:
-      operationId: post-api-task-cua
-      summary: Start a CUA Task
+      summary: Start a CUA task
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Start CUA task
+        source: "import { Hyperbrowser } from '@hyperbrowser/sdk';\n\nconst client = new Hyperbrowser({ apiKey: 'your-api-key' });\n\nawait client.agents.cua.start({\n  task: 'Find the price of the product',\n  maxSteps: 20\n});"
+      - lang: python
+        label: Start CUA task
+        source: "from hyperbrowser import Hyperbrowser\nfrom hyperbrowser.models import StartCuaTaskParams\n\nclient = Hyperbrowser(api_key='your-api-key')\n\nclient.agents.cua.start(StartCuaTaskParams(\n  task='Find the price of the product',\n  max_steps=20\n))"
       requestBody:
         required: true
         content:
@@ -496,14 +744,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Agents
+      - Task
   /api/task/cua/{id}:
     get:
-      operationId: get-api-task-cua-id
-      summary: Get CUA Task Status and Results
+      summary: Get CUA task status and results
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Get CUA task
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.agents.cua.get(''task-id'');'
+      - lang: python
+        label: Get CUA task
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.agents.cua.get(''task-id'')'
       parameters:
       - name: id
         in: path
@@ -529,14 +795,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Agents
+      - Task
   /api/task/cua/{id}/stop:
     put:
-      operationId: put-api-task-cua-id-stop
-      summary: Stop a CUA Task
+      summary: Stop a CUA task
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Stop CUA task
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.agents.cua.stop(''task-id'');'
+      - lang: python
+        label: Stop CUA task
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.agents.cua.stop(''task-id'')'
       parameters:
       - name: id
         in: path
@@ -550,14 +834,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BasicResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Agents
+      - Task
   /api/task/cua/{id}/status:
     get:
-      operationId: get-api-task-cua-id-status
-      summary: Get CUA Task Status
+      summary: Get CUA task status
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Get CUA task status
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.agents.cua.getStatus(''task-id'');'
+      - lang: python
+        label: Get CUA task status
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.agents.cua.get_status(''task-id'')'
       parameters:
       - name: id
         in: path
@@ -583,10 +885,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
-      - Agents
+      - Task
 components:
   schemas:
     GeminiComputerUseTaskResponse:
