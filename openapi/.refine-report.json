@@ -1,0 +1,36 @@
+{
+  "provider": "hyperbrowser",
+  "sources": [
+    "hyperbrowser-agents-api-openapi.yml",
+    "hyperbrowser-crawl-api-openapi.yml",
+    "hyperbrowser-extensions-api-openapi.yml",
+    "hyperbrowser-extract-api-openapi.yml",
+    "hyperbrowser-profile-api-openapi.yml",
+    "hyperbrowser-profiles-api-openapi.yml",
+    "hyperbrowser-scrape-api-openapi.yml",
+    "hyperbrowser-session-api-openapi.yml",
+    "hyperbrowser-sessions-api-openapi.yml",
+    "hyperbrowser-task-api-openapi.yml",
+    "hyperbrowser-web-api-openapi.yml",
+    "hyperbrowser-x402-api-openapi.yml"
+  ],
+  "outputs": [
+    "hyperbrowser-agents-api-openapi.yml",
+    "hyperbrowser-crawl-api-openapi.yml",
+    "hyperbrowser-extensions-api-openapi.yml",
+    "hyperbrowser-extract-api-openapi.yml",
+    "hyperbrowser-profile-api-openapi.yml",
+    "hyperbrowser-profiles-api-openapi.yml",
+    "hyperbrowser-scrape-api-openapi.yml",
+    "hyperbrowser-session-api-openapi.yml",
+    "hyperbrowser-sessions-api-openapi.yml",
+    "hyperbrowser-task-api-openapi.yml",
+    "hyperbrowser-web-api-openapi.yml",
+    "hyperbrowser-x402-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
