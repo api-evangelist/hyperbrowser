@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Hyperbrowser Sessions API",
+    "name": "Hyperbrowser Agents Sessions API",
     "version": "1.0.0"
   },
   "request": {
@@ -19,6 +19,35 @@
         "type": "folder"
       },
       "items": [
+        {
+          "info": {
+            "name": "Get list of sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hyperbrowser.ai/api/sessions",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get list of sessions"
+        },
         {
           "info": {
             "name": "Create New Session",
@@ -143,35 +172,6 @@
             }
           },
           "docs": "Trigger a bounded CAPTCHA evaluation on an active browser session. Supported CAPTCHA targets are turnstile, cloudflare-challenge, aliexpress, recaptcha, and amazon."
-        },
-        {
-          "info": {
-            "name": "Get List of Sessions",
-            "type": "http"
-          },
-          "http": {
-            "method": "GET",
-            "url": "https://api.hyperbrowser.ai/api/sessions",
-            "params": [
-              {
-                "name": "page",
-                "value": "",
-                "type": "query"
-              },
-              {
-                "name": "status",
-                "value": "",
-                "type": "query"
-              }
-            ],
-            "auth": {
-              "type": "apikey",
-              "key": "x-api-key",
-              "value": "{{x-api-key}}",
-              "placement": "header"
-            }
-          },
-          "docs": "Get List of Sessions"
         },
         {
           "info": {

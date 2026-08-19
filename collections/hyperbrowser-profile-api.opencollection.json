@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Hyperbrowser Agents Extract API",
+    "name": "Hyperbrowser Agents Profile API",
     "version": "1.0.0"
   },
   "request": {
@@ -15,18 +15,18 @@
   "items": [
     {
       "info": {
-        "name": "Extract",
+        "name": "Profile",
         "type": "folder"
       },
       "items": [
         {
           "info": {
-            "name": "Start an Extract Job",
+            "name": "Creates a new profile",
             "type": "http"
           },
           "http": {
             "method": "POST",
-            "url": "https://api.hyperbrowser.ai/api/extract",
+            "url": "https://api.hyperbrowser.ai/api/profile",
             "body": {
               "type": "json",
               "data": "{}"
@@ -38,16 +38,16 @@
               "placement": "header"
             }
           },
-          "docs": "Start an Extract Job"
+          "docs": "Creates a new profile"
         },
         {
           "info": {
-            "name": "Get Extract Job Status and Results",
+            "name": "Get profile by ID",
             "type": "http"
           },
           "http": {
             "method": "GET",
-            "url": "https://api.hyperbrowser.ai/api/extract/:id",
+            "url": "https://api.hyperbrowser.ai/api/profile/:id",
             "params": [
               {
                 "name": "id",
@@ -62,16 +62,16 @@
               "placement": "header"
             }
           },
-          "docs": "Get Extract Job Status and Results"
+          "docs": "Get profile by ID"
         },
         {
           "info": {
-            "name": "Get Extract Job Status",
+            "name": "Delete profile by ID",
             "type": "http"
           },
           "http": {
-            "method": "GET",
-            "url": "https://api.hyperbrowser.ai/api/extract/:id/status",
+            "method": "DELETE",
+            "url": "https://api.hyperbrowser.ai/api/profile/:id",
             "params": [
               {
                 "name": "id",
@@ -86,7 +86,7 @@
               "placement": "header"
             }
           },
-          "docs": "Get Extract Job Status"
+          "docs": "Delete profile by ID"
         }
       ]
     }

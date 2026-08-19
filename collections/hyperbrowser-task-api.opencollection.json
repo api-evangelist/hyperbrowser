@@ -1,0 +1,491 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hyperbrowser Agents Task API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Task",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Start a HyperAgent task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hyperbrowser.ai/api/task/hyper-agent",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Start a HyperAgent task"
+        },
+        {
+          "info": {
+            "name": "Get HyperAgent task status and results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hyperbrowser.ai/api/task/hyper-agent/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get HyperAgent task status and results"
+        },
+        {
+          "info": {
+            "name": "Stop a HyperAgent task",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.hyperbrowser.ai/api/task/hyper-agent/:id/stop",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Stop a HyperAgent task"
+        },
+        {
+          "info": {
+            "name": "Get HyperAgent task status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hyperbrowser.ai/api/task/hyper-agent/:id/status",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get HyperAgent task status"
+        },
+        {
+          "info": {
+            "name": "Start a browser use task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hyperbrowser.ai/api/task/browser-use",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Start a browser use task"
+        },
+        {
+          "info": {
+            "name": "Get browser use task status and results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hyperbrowser.ai/api/task/browser-use/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get browser use task status and results"
+        },
+        {
+          "info": {
+            "name": "Stop a browser use task",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.hyperbrowser.ai/api/task/browser-use/:id/stop",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Stop a browser use task"
+        },
+        {
+          "info": {
+            "name": "Get browser use task status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hyperbrowser.ai/api/task/browser-use/:id/status",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get browser use task status"
+        },
+        {
+          "info": {
+            "name": "Start a claude computer use task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hyperbrowser.ai/api/task/claude-computer-use",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Start a claude computer use task"
+        },
+        {
+          "info": {
+            "name": "Get claude computer use task status and results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hyperbrowser.ai/api/task/claude-computer-use/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get claude computer use task status and results"
+        },
+        {
+          "info": {
+            "name": "Stop a claude computer use task",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.hyperbrowser.ai/api/task/claude-computer-use/:id/stop",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Stop a claude computer use task"
+        },
+        {
+          "info": {
+            "name": "Get claude computer use task status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hyperbrowser.ai/api/task/claude-computer-use/:id/status",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get claude computer use task status"
+        },
+        {
+          "info": {
+            "name": "Start a gemini computer use task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hyperbrowser.ai/api/task/gemini-computer-use",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Start a gemini computer use task"
+        },
+        {
+          "info": {
+            "name": "Get gemini computer use task status and results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hyperbrowser.ai/api/task/gemini-computer-use/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get gemini computer use task status and results"
+        },
+        {
+          "info": {
+            "name": "Stop a gemini computer use task",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.hyperbrowser.ai/api/task/gemini-computer-use/:id/stop",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Stop a gemini computer use task"
+        },
+        {
+          "info": {
+            "name": "Get gemini computer use task status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hyperbrowser.ai/api/task/gemini-computer-use/:id/status",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get gemini computer use task status"
+        },
+        {
+          "info": {
+            "name": "Start a CUA task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hyperbrowser.ai/api/task/cua",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Start a CUA task"
+        },
+        {
+          "info": {
+            "name": "Get CUA task status and results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hyperbrowser.ai/api/task/cua/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get CUA task status and results"
+        },
+        {
+          "info": {
+            "name": "Stop a CUA task",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.hyperbrowser.ai/api/task/cua/:id/stop",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Stop a CUA task"
+        },
+        {
+          "info": {
+            "name": "Get CUA task status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hyperbrowser.ai/api/task/cua/:id/status",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get CUA task status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

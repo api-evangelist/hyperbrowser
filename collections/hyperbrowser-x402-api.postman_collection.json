@@ -1,0 +1,657 @@
+{
+  "item": [
+    {
+      "id": "3d8aa627-9a71-435a-81ed-8f30b4eec1dc",
+      "name": "X402",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eeccec65-846a-4b9c-ad0b-d92c29200aad",
+          "name": "Fetch a web page with X402 payment",
+          "request": {
+            "name": "Fetch a web page with X402 payment",
+            "description": {
+              "content": "X402 payment endpoint. First request returns 402 with payment requirements. Retry with PAYMENT-SIGNATURE header containing cryptographic proof to get the actual data. See https://x402.gitbook.io/x402 for protocol details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "x402",
+                "web",
+                "fetch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Base64-encoded JSON containing payment proof (x402Version, resource, accepted payment method, and cryptographic payload with signature and payer address)",
+                "key": "PAYMENT-SIGNATURE",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "be3d98c3-2011-4f8d-803e-5cd9e935f85f",
+              "name": "Page fetched successfully (after valid payment)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "x402",
+                    "web",
+                    "fetch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Base64-encoded JSON containing payment proof (x402Version, resource, accepted payment method, and cryptographic payload with signature and payer address)",
+                    "key": "PAYMENT-SIGNATURE",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Base64-encoded JSON with settlement information",
+                  "key": "PAYMENT-RESPONSE",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobId\": \"string\",\n  \"status\": \"pending\",\n  \"error\": \"string\",\n  \"data\": {\n    \"metadata\": {\n      \"key_0\": \"string\"\n    },\n    \"html\": \"string\",\n    \"markdown\": \"string\",\n    \"links\": [\n      \"string\",\n      \"string\"\n    ],\n    \"screenshot\": \"string\",\n    \"json\": {},\n    \"branding\": {\n      \"colorScheme\": \"string\",\n      \"colors\": {},\n      \"fonts\": [\n        {\n          \"family\": \"string\",\n          \"role\": \"string\"\n        },\n        {\n          \"family\": \"string\",\n          \"role\": \"string\"\n        }\n      ],\n      \"typography\": {},\n      \"spacing\": {},\n      \"components\": {},\n      \"images\": {},\n      \"personality\": {},\n      \"designSystem\": {},\n      \"confidence\": {}\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc1f3873-43be-4820-8eb6-8ac83b43b9b8",
+              "name": "Invalid request parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "x402",
+                    "web",
+                    "fetch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Base64-encoded JSON containing payment proof (x402Version, resource, accepted payment method, and cryptographic payload with signature and payer address)",
+                    "key": "PAYMENT-SIGNATURE",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b894e372-e3c9-4cde-8ecf-d850d3910ee1",
+              "name": "Payment Required - returned on first request without PAYMENT-SIGNATURE header",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "x402",
+                    "web",
+                    "fetch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Base64-encoded JSON containing payment proof (x402Version, resource, accepted payment method, and cryptographic payload with signature and payer address)",
+                    "key": "PAYMENT-SIGNATURE",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Base64-encoded JSON containing X402 payment requirements (x402Version, resource info, and array of accepted payment methods with network, asset, amount, payTo address, and timeout)",
+                  "key": "PAYMENT-REQUIRED",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5107d944-6bef-4465-bb48-3bc3f7e11225",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "x402",
+                    "web",
+                    "fetch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Base64-encoded JSON containing payment proof (x402Version, resource, accepted payment method, and cryptographic payload with signature and payer address)",
+                    "key": "PAYMENT-SIGNATURE",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dfe80923-4078-406a-84f5-8c364a47ba5e",
+          "name": "Search the web with X402 payment",
+          "request": {
+            "name": "Search the web with X402 payment",
+            "description": {
+              "content": "X402 payment endpoint. First request returns 402 with payment requirements. Retry with PAYMENT-SIGNATURE header containing cryptographic proof to get search results. See https://x402.gitbook.io/x402 for protocol details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "x402",
+                "web",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Base64-encoded JSON containing payment proof (x402Version, resource, accepted payment method, and cryptographic payload with signature and payer address)",
+                "key": "PAYMENT-SIGNATURE",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"maxAgeSeconds\": \"<integer>\",\n  \"location\": {\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\"\n  },\n  \"filters\": {\n    \"exactPhrase\": \"<boolean>\",\n    \"semanticPhrase\": \"<boolean>\",\n    \"excludeTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"boostTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filetype\": \"<string>\",\n    \"site\": \"<string>\",\n    \"excludeSite\": \"<string>\",\n    \"intitle\": \"<string>\",\n    \"inurl\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0fa8b1a0-11cd-4bc0-971b-553700f579c5",
+              "name": "Search completed successfully (after valid payment)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "x402",
+                    "web",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Base64-encoded JSON containing payment proof (x402Version, resource, accepted payment method, and cryptographic payload with signature and payer address)",
+                    "key": "PAYMENT-SIGNATURE",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"maxAgeSeconds\": \"<integer>\",\n  \"location\": {\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\"\n  },\n  \"filters\": {\n    \"exactPhrase\": \"<boolean>\",\n    \"semanticPhrase\": \"<boolean>\",\n    \"excludeTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"boostTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filetype\": \"<string>\",\n    \"site\": \"<string>\",\n    \"excludeSite\": \"<string>\",\n    \"intitle\": \"<string>\",\n    \"inurl\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Base64-encoded JSON with settlement information",
+                  "key": "PAYMENT-RESPONSE",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobId\": \"string\",\n  \"status\": \"running\",\n  \"error\": \"string\",\n  \"data\": {\n    \"query\": \"string\",\n    \"results\": [\n      {\n        \"title\": \"string\",\n        \"url\": \"string\",\n        \"description\": \"string\"\n      },\n      {\n        \"title\": \"string\",\n        \"url\": \"string\",\n        \"description\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95731bdc-280c-440c-9ba9-f7a9ff49b7e1",
+              "name": "Invalid search parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "x402",
+                    "web",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Base64-encoded JSON containing payment proof (x402Version, resource, accepted payment method, and cryptographic payload with signature and payer address)",
+                    "key": "PAYMENT-SIGNATURE",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"maxAgeSeconds\": \"<integer>\",\n  \"location\": {\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\"\n  },\n  \"filters\": {\n    \"exactPhrase\": \"<boolean>\",\n    \"semanticPhrase\": \"<boolean>\",\n    \"excludeTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"boostTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filetype\": \"<string>\",\n    \"site\": \"<string>\",\n    \"excludeSite\": \"<string>\",\n    \"intitle\": \"<string>\",\n    \"inurl\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1a0d47ee-0080-4fc3-9081-ecb3f9b7cab3",
+              "name": "Payment Required - returned on first request without PAYMENT-SIGNATURE header",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "x402",
+                    "web",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Base64-encoded JSON containing payment proof (x402Version, resource, accepted payment method, and cryptographic payload with signature and payer address)",
+                    "key": "PAYMENT-SIGNATURE",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"maxAgeSeconds\": \"<integer>\",\n  \"location\": {\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\"\n  },\n  \"filters\": {\n    \"exactPhrase\": \"<boolean>\",\n    \"semanticPhrase\": \"<boolean>\",\n    \"excludeTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"boostTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filetype\": \"<string>\",\n    \"site\": \"<string>\",\n    \"excludeSite\": \"<string>\",\n    \"intitle\": \"<string>\",\n    \"inurl\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Base64-encoded JSON containing X402 payment requirements (x402Version, resource info, and array of accepted payment methods with network, asset, amount, payTo address, and timeout)",
+                  "key": "PAYMENT-REQUIRED",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e1231af-f129-494f-8a39-0f41e4f4ef6a",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "x402",
+                    "web",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Base64-encoded JSON containing payment proof (x402Version, resource, accepted payment method, and cryptographic payload with signature and payer address)",
+                    "key": "PAYMENT-SIGNATURE",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"maxAgeSeconds\": \"<integer>\",\n  \"location\": {\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\"\n  },\n  \"filters\": {\n    \"exactPhrase\": \"<boolean>\",\n    \"semanticPhrase\": \"<boolean>\",\n    \"excludeTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"boostTerms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"filetype\": \"<string>\",\n    \"site\": \"<string>\",\n    \"excludeSite\": \"<string>\",\n    \"intitle\": \"<string>\",\n    \"inurl\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hyperbrowser.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "51549d8c-c98b-45e8-a0ff-94324796287a",
+    "name": "Hyperbrowser Agents X402 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Start, stop, and monitor agentic browser tasks across HyperAgent, Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI CUA.\n\nContact Support:\n Name: Hyperbrowser",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,18 +1,18 @@
 {
   "item": [
     {
-      "id": "2558f3ea-18e7-4f72-924d-7a2f5e16648d",
-      "name": "Agents",
+      "id": "903903ca-4958-4245-813b-399fcebc576c",
+      "name": "Task",
       "description": {
         "content": "",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "1e7dd02e-71d5-40cb-aa15-c167b017b8fc",
-          "name": "Start a HyperAgent Task",
+          "id": "1226a037-230f-4642-a137-c29e09b8b57a",
+          "name": "Start a HyperAgent task",
           "request": {
-            "name": "Start a HyperAgent Task",
+            "name": "Start a HyperAgent task",
             "description": {},
             "url": {
               "path": [
@@ -66,7 +66,7 @@
           },
           "response": [
             {
-              "id": "7ba175dd-16ef-437e-8065-85c8e89c49d0",
+              "id": "7026a9a4-a990-4b2f-9602-b182d17aa0bb",
               "name": "HyperAgent task started successfully",
               "originalRequest": {
                 "url": {
@@ -119,7 +119,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "31ae93e7-1cd8-47f1-8d24-67dd0c2dbf6f",
+              "id": "724c79ae-bfeb-47ad-badb-e72d985d3c38",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -178,10 +178,10 @@
           }
         },
         {
-          "id": "7938ebe5-3e02-4215-b47c-5590762fbd5b",
-          "name": "Get HyperAgent Task Status and Results",
+          "id": "e8f58bb4-65f9-4843-a589-6354e035b967",
+          "name": "Get HyperAgent task status and results",
           "request": {
-            "name": "Get HyperAgent Task Status and Results",
+            "name": "Get HyperAgent task status and results",
             "description": {},
             "url": {
               "path": [
@@ -231,7 +231,7 @@
           },
           "response": [
             {
-              "id": "4d46c1d7-3f65-49a5-8114-5b683d05b51b",
+              "id": "57614c89-0af9-4489-8ce5-d1858d2af738",
               "name": "HyperAgent task details",
               "originalRequest": {
                 "url": {
@@ -285,7 +285,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "aae1a4ca-a252-4ebf-b98f-a1fbeb44b350",
+              "id": "7c34fef0-8dc6-40cd-82f8-6e9775e5cec4",
               "name": "HyperAgent task not found",
               "originalRequest": {
                 "url": {
@@ -339,7 +339,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "4c33fb23-a130-4d43-8e46-c0212e9a139d",
+              "id": "52a8a149-7fed-4a73-8847-0e0f9a9c5d2e",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -399,10 +399,10 @@
           }
         },
         {
-          "id": "42da86d4-9a55-425b-bf73-aa780adec80b",
-          "name": "Stop a HyperAgent Task",
+          "id": "8644e80f-d752-447f-8679-114634b50340",
+          "name": "Stop a HyperAgent task",
           "request": {
-            "name": "Stop a HyperAgent Task",
+            "name": "Stop a HyperAgent task",
             "description": {},
             "url": {
               "path": [
@@ -453,7 +453,7 @@
           },
           "response": [
             {
-              "id": "b1ecf21d-7d52-4f46-8df5-382bf31899ed",
+              "id": "c7493088-4019-4431-bd4c-43e34e56a7fc",
               "name": "HyperAgent task stopped successfully",
               "originalRequest": {
                 "url": {
@@ -514,10 +514,10 @@
           }
         },
         {
-          "id": "bb4ee7ff-ec03-44de-8135-1f5eb5df4f03",
-          "name": "Get HyperAgent Task Status",
+          "id": "dbea4001-f396-4432-9171-c6e02070c9bb",
+          "name": "Get HyperAgent task status",
           "request": {
-            "name": "Get HyperAgent Task Status",
+            "name": "Get HyperAgent task status",
             "description": {},
             "url": {
               "path": [
@@ -568,7 +568,7 @@
           },
           "response": [
             {
-              "id": "be3a3bed-4584-41b1-af22-6b4769fbf4fb",
+              "id": "3ec210a8-6406-4c41-90d0-8190f075ccb5",
               "name": "HyperAgent task status",
               "originalRequest": {
                 "url": {
@@ -623,7 +623,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "36cd4032-fd6f-43d4-bb28-6d40c7a429a9",
+              "id": "894e0fc8-3a46-4968-90ae-50e82f6a3dbe",
               "name": "HyperAgent task not found",
               "originalRequest": {
                 "url": {
@@ -678,7 +678,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "9559e5b4-8660-4a93-a9c7-92c05cb1cf39",
+              "id": "96c73b1c-9788-401d-b9b4-f85fc5e48166",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -739,10 +739,10 @@
           }
         },
         {
-          "id": "3d6c023a-f0ff-401a-b995-59e2b17ddcd6",
-          "name": "Start a Browser Use Task",
+          "id": "eb392c78-db73-466c-9e49-5a2a62e07f62",
+          "name": "Start a browser use task",
           "request": {
-            "name": "Start a Browser Use Task",
+            "name": "Start a browser use task",
             "description": {},
             "url": {
               "path": [
@@ -796,7 +796,7 @@
           },
           "response": [
             {
-              "id": "f7afc6e9-acf5-44eb-83b2-518e5144db06",
+              "id": "dd6e7be0-5ae6-4150-a464-cf97a5169795",
               "name": "Browser use task started successfully",
               "originalRequest": {
                 "url": {
@@ -849,7 +849,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "6afa4551-f33a-411e-b0b7-23297fc43332",
+              "id": "4835f719-945a-45da-b972-a22d40309683",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -908,10 +908,10 @@
           }
         },
         {
-          "id": "4214cc2a-f3d1-46d1-9c9e-3f385fc00d20",
-          "name": "Get Browser Use Task Status and Results",
+          "id": "9fe8e172-975c-4cb5-bcbc-0fef6b538eec",
+          "name": "Get browser use task status and results",
           "request": {
-            "name": "Get Browser Use Task Status and Results",
+            "name": "Get browser use task status and results",
             "description": {},
             "url": {
               "path": [
@@ -961,7 +961,7 @@
           },
           "response": [
             {
-              "id": "c84cafb9-64dc-40fc-a82a-210e7b95e624",
+              "id": "76773447-8fbe-4886-878f-38659e32aca5",
               "name": "Browser use task details",
               "originalRequest": {
                 "url": {
@@ -1015,7 +1015,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "e05bf9d2-6c98-458d-92e0-ef5d91894eda",
+              "id": "d556f7ec-0d02-4774-81e7-c83d87e9fe9c",
               "name": "Browser use task not found",
               "originalRequest": {
                 "url": {
@@ -1069,7 +1069,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "1a3a9731-6b05-440d-992e-148303f2ef24",
+              "id": "463838ed-a251-4e8f-a0ca-1cadf410ff0f",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -1129,10 +1129,10 @@
           }
         },
         {
-          "id": "77773fb6-19e9-488d-aa8c-e5f6100b4de3",
-          "name": "Stop a Browser Use Task",
+          "id": "a839773d-51c4-49c0-9970-186ab8d8b028",
+          "name": "Stop a browser use task",
           "request": {
-            "name": "Stop a Browser Use Task",
+            "name": "Stop a browser use task",
             "description": {},
             "url": {
               "path": [
@@ -1183,7 +1183,7 @@
           },
           "response": [
             {
-              "id": "c8249eac-ced3-42ee-b19e-5519f18a6556",
+              "id": "4fc8aa8d-199f-4797-b31e-324f71e79da4",
               "name": "Browser use task stopped successfully",
               "originalRequest": {
                 "url": {
@@ -1244,10 +1244,10 @@
           }
         },
         {
-          "id": "e3f6e5e9-d4e6-4641-a9df-c64eaa22e689",
-          "name": "Get Browser Use Task Status",
+          "id": "4cc66ccf-cc21-4294-878b-28ceeb804962",
+          "name": "Get browser use task status",
           "request": {
-            "name": "Get Browser Use Task Status",
+            "name": "Get browser use task status",
             "description": {},
             "url": {
               "path": [
@@ -1298,7 +1298,7 @@
           },
           "response": [
             {
-              "id": "c9ca5e1c-b8d2-4b1d-9763-501263714220",
+              "id": "dadabcbe-488d-4094-8175-1ae8fc72db7b",
               "name": "Browser use task status",
               "originalRequest": {
                 "url": {
@@ -1353,7 +1353,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "c76dff0f-b414-42f5-815d-4b25b0ed4ab2",
+              "id": "2b422434-fc36-4b0e-ab26-fa4cde87f647",
               "name": "Browser use task not found",
               "originalRequest": {
                 "url": {
@@ -1408,7 +1408,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "f5e1ddaa-c53d-471b-9b0d-b8887667453a",
+              "id": "acbd9009-aa94-4496-b877-539a29cf8fad",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -1469,10 +1469,10 @@
           }
         },
         {
-          "id": "ce6f6321-8a77-4a06-8ba7-3034f084d273",
-          "name": "Start a Claude Computer Use Task",
+          "id": "e5d6f6e8-1855-4888-b772-d264ee69c5fe",
+          "name": "Start a claude computer use task",
           "request": {
-            "name": "Start a Claude Computer Use Task",
+            "name": "Start a claude computer use task",
             "description": {},
             "url": {
               "path": [
@@ -1526,7 +1526,7 @@
           },
           "response": [
             {
-              "id": "dcfccd5f-7226-47ed-a6c1-54b0b8482d46",
+              "id": "7dcd6499-0af6-44ea-bcf2-553368105893",
               "name": "Claude computer use task started successfully",
               "originalRequest": {
                 "url": {
@@ -1579,7 +1579,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "1aa8105c-ec65-4975-a698-c5ea1f36d05f",
+              "id": "ae180a94-d523-4a1e-adf6-74fd97e783fe",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -1638,10 +1638,10 @@
           }
         },
         {
-          "id": "ec006554-a6ac-4dc1-9f4c-801bcf6a71b6",
-          "name": "Get Claude Computer Use Task Status and Results",
+          "id": "53fc5dfa-1d0b-4a90-8f21-6649314dbf0b",
+          "name": "Get claude computer use task status and results",
           "request": {
-            "name": "Get Claude Computer Use Task Status and Results",
+            "name": "Get claude computer use task status and results",
             "description": {},
             "url": {
               "path": [
@@ -1691,7 +1691,7 @@
           },
           "response": [
             {
-              "id": "f007e2b9-5d09-442a-9c93-eee7cbfbeb44",
+              "id": "d0eb804b-e3ff-410a-977c-07b5b502b1d9",
               "name": "Claude computer use task details",
               "originalRequest": {
                 "url": {
@@ -1745,7 +1745,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "6f52f955-5650-444f-a4a8-c35b493bd3e1",
+              "id": "a2a27eec-8423-403d-a78d-0a2c44be7d0d",
               "name": "Claude computer use task not found",
               "originalRequest": {
                 "url": {
@@ -1799,7 +1799,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "d87a22de-9522-44bc-b530-e7666b13b762",
+              "id": "4c87a836-27a7-448a-8437-f73e708eb254",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -1859,10 +1859,10 @@
           }
         },
         {
-          "id": "c9928e24-71df-4070-bc08-2d7765b20222",
-          "name": "Stop a Claude Computer Use Task",
+          "id": "5f85b4e5-0de9-4660-9dcf-4382b2f9f950",
+          "name": "Stop a claude computer use task",
           "request": {
-            "name": "Stop a Claude Computer Use Task",
+            "name": "Stop a claude computer use task",
             "description": {},
             "url": {
               "path": [
@@ -1913,7 +1913,7 @@
           },
           "response": [
             {
-              "id": "3add95d8-afed-4b7e-b912-d46abae230b0",
+              "id": "a60fb019-6a11-4e8c-a101-987e60a7929c",
               "name": "Claude computer use task stopped successfully",
               "originalRequest": {
                 "url": {
@@ -1974,10 +1974,10 @@
           }
         },
         {
-          "id": "f7858743-2e82-4c8b-80c6-466317c1b1e6",
-          "name": "Get Claude Computer Use Task Status",
+          "id": "4511ecf2-1ea0-453c-a5f7-a828e4d3abc7",
+          "name": "Get claude computer use task status",
           "request": {
-            "name": "Get Claude Computer Use Task Status",
+            "name": "Get claude computer use task status",
             "description": {},
             "url": {
               "path": [
@@ -2028,7 +2028,7 @@
           },
           "response": [
             {
-              "id": "3ff4ddf0-eb78-4325-bf49-35316ab4a377",
+              "id": "0359adf1-d033-40c6-a3b7-44ad1078e965",
               "name": "Claude computer use task status",
               "originalRequest": {
                 "url": {
@@ -2083,7 +2083,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "28eb357e-e556-475c-a469-973211e87cf9",
+              "id": "809e93b6-f7a7-472a-9f1d-de2aa3e9fa33",
               "name": "Claude computer use task not found",
               "originalRequest": {
                 "url": {
@@ -2138,7 +2138,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "1557d6f8-36d3-4005-9986-758d5b5c19f1",
+              "id": "bccc9a4a-c9c4-47f4-a565-00644fd105f1",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -2199,10 +2199,10 @@
           }
         },
         {
-          "id": "5e7c7adb-02cf-48d1-9929-4e365fd07c2c",
-          "name": "Start a Gemini Computer Use Task",
+          "id": "b91c2f33-b046-47e8-94fb-5a140e11a70f",
+          "name": "Start a gemini computer use task",
           "request": {
-            "name": "Start a Gemini Computer Use Task",
+            "name": "Start a gemini computer use task",
             "description": {},
             "url": {
               "path": [
@@ -2256,7 +2256,7 @@
           },
           "response": [
             {
-              "id": "5271f40b-7bdc-4289-a87e-9c6b92b5cfaf",
+              "id": "9ba3d86c-bc47-49b3-b0f4-f271a38af67d",
               "name": "Gemini computer use task started successfully",
               "originalRequest": {
                 "url": {
@@ -2309,7 +2309,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "56a94b34-4ef9-4828-bb3d-5be905c2a1f7",
+              "id": "1c5780f4-b619-447a-b045-08a7c8dd5294",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -2368,10 +2368,10 @@
           }
         },
         {
-          "id": "c0c4d900-44d6-40a9-908a-5275ab4f6cb2",
-          "name": "Get Gemini Computer Use Task Status and Results",
+          "id": "da5154d4-6b8f-433c-a725-39e9aeab6846",
+          "name": "Get gemini computer use task status and results",
           "request": {
-            "name": "Get Gemini Computer Use Task Status and Results",
+            "name": "Get gemini computer use task status and results",
             "description": {},
             "url": {
               "path": [
@@ -2421,7 +2421,7 @@
           },
           "response": [
             {
-              "id": "8972220e-a92f-4ea5-ba47-94e511176338",
+              "id": "4d62e7b8-6209-4f04-97a2-fe5161543d5d",
               "name": "Gemini computer use task details",
               "originalRequest": {
                 "url": {
@@ -2475,7 +2475,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "134eb08f-5c13-4b44-98d0-33aa6fbbaa57",
+              "id": "f0b98206-0881-425e-a397-c91e892380c8",
               "name": "Gemini computer use task not found",
               "originalRequest": {
                 "url": {
@@ -2529,7 +2529,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "74a9bc5d-7ffe-4e31-a6ff-824772237a49",
+              "id": "c2ccd150-9611-4449-a7fd-ea51c57f058b",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -2589,10 +2589,10 @@
           }
         },
         {
-          "id": "70ab794a-83d0-4f77-92e5-c2dc4ab3ff82",
-          "name": "Stop a Gemini Computer Use Task",
+          "id": "60b47fea-8db1-464f-bb74-aa1646fe03ae",
+          "name": "Stop a gemini computer use task",
           "request": {
-            "name": "Stop a Gemini Computer Use Task",
+            "name": "Stop a gemini computer use task",
             "description": {},
             "url": {
               "path": [
@@ -2643,7 +2643,7 @@
           },
           "response": [
             {
-              "id": "a097ec8b-5087-4dde-aa7f-1736e26d7ab3",
+              "id": "c6776d4b-578e-4674-abc6-ffdc453e7f5f",
               "name": "Gemini computer use task stopped successfully",
               "originalRequest": {
                 "url": {
@@ -2704,10 +2704,10 @@
           }
         },
         {
-          "id": "6781973c-a87d-4866-a540-0f53d939dce5",
-          "name": "Get Gemini Computer Use Task Status",
+          "id": "42c32361-6bf2-4378-82b4-9734b98d3ec1",
+          "name": "Get gemini computer use task status",
           "request": {
-            "name": "Get Gemini Computer Use Task Status",
+            "name": "Get gemini computer use task status",
             "description": {},
             "url": {
               "path": [
@@ -2758,7 +2758,7 @@
           },
           "response": [
             {
-              "id": "4af7c23b-784f-4be2-a737-8706965799f6",
+              "id": "acaf37a7-5831-4194-a466-1329b7107f32",
               "name": "Gemini computer use task status",
               "originalRequest": {
                 "url": {
@@ -2813,7 +2813,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "4db89bf3-afa4-45b3-8984-79c69a650030",
+              "id": "e81ff660-01f0-4eaf-8515-99267e202c46",
               "name": "Gemini computer use task not found",
               "originalRequest": {
                 "url": {
@@ -2868,7 +2868,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "f4ebd90d-152f-4a3c-bd12-1a1b7aea2e95",
+              "id": "f57e1832-251a-4904-a3b9-7063b4d2a65a",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -2929,10 +2929,10 @@
           }
         },
         {
-          "id": "6d7e6a36-b9a6-4e71-a6f7-0f8525650055",
-          "name": "Start a CUA Task",
+          "id": "ae8d1232-22fe-43bb-b56d-9e5a0ab3acd5",
+          "name": "Start a CUA task",
           "request": {
-            "name": "Start a CUA Task",
+            "name": "Start a CUA task",
             "description": {},
             "url": {
               "path": [
@@ -2986,7 +2986,7 @@
           },
           "response": [
             {
-              "id": "5a8672e8-c32b-4549-988b-504e22bf69e9",
+              "id": "e9a11d92-463e-49e5-b91c-2b58319826f1",
               "name": "CUA task started successfully",
               "originalRequest": {
                 "url": {
@@ -3039,7 +3039,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "c9dd0e29-d29b-4e11-b325-142d1f8bf6b0",
+              "id": "6b246e47-98d4-4145-a32d-279564fc12d6",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -3098,10 +3098,10 @@
           }
         },
         {
-          "id": "d7fd2c38-1e8e-4004-be58-be9cbe1386f5",
-          "name": "Get CUA Task Status and Results",
+          "id": "e756120c-3798-4545-905a-a6f587cab006",
+          "name": "Get CUA task status and results",
           "request": {
-            "name": "Get CUA Task Status and Results",
+            "name": "Get CUA task status and results",
             "description": {},
             "url": {
               "path": [
@@ -3151,7 +3151,7 @@
           },
           "response": [
             {
-              "id": "78581a55-b42a-4479-9382-ba61a8365e85",
+              "id": "6fc996d3-30e3-4387-a58e-eba41ad374da",
               "name": "CUA task details",
               "originalRequest": {
                 "url": {
@@ -3205,7 +3205,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "6e32f404-13c5-49ef-99cd-b24668474d43",
+              "id": "0f7990c9-51b7-4026-b05c-761714e0ea55",
               "name": "CUA task not found",
               "originalRequest": {
                 "url": {
@@ -3259,7 +3259,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "b5b46daf-6ef0-41f6-87f2-ba6471b692a9",
+              "id": "bfbfb18e-5603-46ee-a609-4db15de0ad75",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -3319,10 +3319,10 @@
           }
         },
         {
-          "id": "56f0f3f0-0a57-483e-accb-6ce99382ce12",
-          "name": "Stop a CUA Task",
+          "id": "d46391da-1157-4ba7-8842-dd5ae76f7853",
+          "name": "Stop a CUA task",
           "request": {
-            "name": "Stop a CUA Task",
+            "name": "Stop a CUA task",
             "description": {},
             "url": {
               "path": [
@@ -3373,7 +3373,7 @@
           },
           "response": [
             {
-              "id": "cce5357a-851d-47f0-8f82-409b389c1391",
+              "id": "08f49380-7b71-453d-b724-8c1012e4e43b",
               "name": "CUA task stopped successfully",
               "originalRequest": {
                 "url": {
@@ -3434,10 +3434,10 @@
           }
         },
         {
-          "id": "84ca054a-9524-4d27-8aa7-3ad0e0ca2904",
-          "name": "Get CUA Task Status",
+          "id": "7727ec17-515f-4c20-88a0-f39ded03e1e8",
+          "name": "Get CUA task status",
           "request": {
-            "name": "Get CUA Task Status",
+            "name": "Get CUA task status",
             "description": {},
             "url": {
               "path": [
@@ -3488,7 +3488,7 @@
           },
           "response": [
             {
-              "id": "28603166-c543-4b12-9744-00ac85811f42",
+              "id": "efb11a1a-59ea-45b5-8bc7-9d0a911d55bd",
               "name": "CUA task status",
               "originalRequest": {
                 "url": {
@@ -3543,7 +3543,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "ef1651b7-7974-41d9-a308-bd8ebacfd555",
+              "id": "e6cb4e85-e5f1-4f86-bfd4-0c4566273c0c",
               "name": "CUA task not found",
               "originalRequest": {
                 "url": {
@@ -3598,7 +3598,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "626fdd07-40c9-4963-81d9-af4e23b8cf9d",
+              "id": "59d06389-d27c-4881-9508-86536b60ba14",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -3688,8 +3688,8 @@
     ]
   },
   "info": {
-    "_postman_id": "1aa30de2-e45a-4191-b22f-933a2bd2f133",
-    "name": "Hyperbrowser Agents API",
+    "_postman_id": "7fe3537e-94b6-46f3-bbf8-542c3fec4f35",
+    "name": "Hyperbrowser Agents Task API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "Start, stop, and monitor agentic browser tasks across HyperAgent, Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI CUA.\n\nContact Support:\n Name: Hyperbrowser",

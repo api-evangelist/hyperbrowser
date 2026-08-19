@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Hyperbrowser Profiles API",
+    "name": "Hyperbrowser Agents Profiles API",
     "version": "1.0.0"
   },
   "request": {
@@ -19,6 +19,40 @@
         "type": "folder"
       },
       "items": [
+        {
+          "info": {
+            "name": "Get list of profiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hyperbrowser.ai/api/profiles",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get list of profiles"
+        },
         {
           "info": {
             "name": "Creates a New Profile",
@@ -87,40 +121,6 @@
             }
           },
           "docs": "Delete Profile by ID"
-        },
-        {
-          "info": {
-            "name": "Get List of Profiles",
-            "type": "http"
-          },
-          "http": {
-            "method": "GET",
-            "url": "https://api.hyperbrowser.ai/api/profiles",
-            "params": [
-              {
-                "name": "page",
-                "value": "",
-                "type": "query"
-              },
-              {
-                "name": "limit",
-                "value": "",
-                "type": "query"
-              },
-              {
-                "name": "name",
-                "value": "",
-                "type": "query"
-              }
-            ],
-            "auth": {
-              "type": "apikey",
-              "key": "x-api-key",
-              "value": "{{x-api-key}}",
-              "placement": "header"
-            }
-          },
-          "docs": "Get List of Profiles"
         }
       ]
     }

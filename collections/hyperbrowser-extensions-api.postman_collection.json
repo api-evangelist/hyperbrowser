@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "840d46e9-2825-49b1-a264-f3dbc3fee925",
+      "id": "b9f52d6f-e664-4e14-95ef-b45366c1602d",
       "name": "Extensions",
       "description": {
         "content": "",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "aae519a4-95a7-4917-8bd3-5383e1839547",
+          "id": "68bcf6d9-e566-416f-b9f0-b45b90e2ebbd",
           "name": "Add a New Extension",
           "request": {
             "name": "Add a New Extension",
@@ -73,7 +73,7 @@
           },
           "response": [
             {
-              "id": "6fe77a96-8e4f-4966-a18e-e9c666016cda",
+              "id": "051c97e7-5b8f-4799-9980-bd4a1f886a71",
               "name": "Extension added successfully",
               "originalRequest": {
                 "url": {
@@ -146,7 +146,7 @@
           }
         },
         {
-          "id": "0998a6d3-cf1f-4f33-90bb-f2018c57d687",
+          "id": "ccb0b105-cfb4-4884-951c-51da6b1c5118",
           "name": "List All Extensions",
           "request": {
             "name": "List All Extensions",
@@ -190,7 +190,7 @@
           },
           "response": [
             {
-              "id": "7f405629-6d45-4c69-82b8-284025d7ce56",
+              "id": "f96c3e21-56bf-408d-bc05-395d612eab90",
               "name": "Extension added successfully",
               "originalRequest": {
                 "url": {
@@ -270,11 +270,11 @@
     ]
   },
   "info": {
-    "_postman_id": "e77aad1d-841a-4b74-ab5a-b44cf8bf7a16",
-    "name": "Hyperbrowser Extensions API",
+    "_postman_id": "63f36bb4-784d-4520-9df3-7d114af92c97",
+    "name": "Hyperbrowser Agents Extensions API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "Upload and list custom Chrome extensions that can be attached to browser sessions.\n\nContact Support:\n Name: Hyperbrowser",
+      "content": "Start, stop, and monitor agentic browser tasks across HyperAgent, Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI CUA.\n\nContact Support:\n Name: Hyperbrowser",
       "type": "text/plain"
     }
   }

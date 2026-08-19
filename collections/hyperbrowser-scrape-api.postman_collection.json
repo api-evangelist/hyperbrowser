@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "af070d23-8a4b-44d3-a474-b6e237a9310d",
+      "id": "fb8689b6-1774-4102-8af4-bb9087fdfe39",
       "name": "Scrape",
       "description": {
         "content": "",
@@ -9,10 +9,10 @@
       },
       "item": [
         {
-          "id": "7e526fd3-a6f0-4558-8487-30cbb5d17b7f",
-          "name": "Create New Scrape Job",
+          "id": "763108ef-a0c5-4307-abef-ed206a592853",
+          "name": "Create new scrape job",
           "request": {
-            "name": "Create New Scrape Job",
+            "name": "Create new scrape job",
             "description": {},
             "url": {
               "path": [
@@ -55,7 +55,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"url\": \"<string>\",\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  }\n}",
+              "raw": "{\n  \"url\": \"<string>\",\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  }\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -65,7 +65,7 @@
           },
           "response": [
             {
-              "id": "87ac17aa-b6aa-4f97-a26a-21d5eee74817",
+              "id": "7d91fd9e-1904-441a-9954-321d683b2442",
               "name": "Scrape job created",
               "originalRequest": {
                 "url": {
@@ -96,7 +96,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"url\": \"<string>\",\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -117,7 +117,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "8d204e66-48cc-4dac-b250-e64b37755f34",
+              "id": "dbd4336b-6925-492c-9cba-bd86b7ad1f04",
               "name": "Invalid request parameters",
               "originalRequest": {
                 "url": {
@@ -148,7 +148,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"url\": \"<string>\",\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -169,7 +169,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "2cdaafe4-810c-4639-beba-e05c311728e0",
+              "id": "4863c487-7b62-4755-b925-a6c0e67ef1a6",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -200,7 +200,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"url\": \"<string>\",\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -227,10 +227,10 @@
           }
         },
         {
-          "id": "bcc50244-0233-4dc8-8f68-4677dcbfd5c1",
-          "name": "Get Scrape Job Status and Result",
+          "id": "9bbf961d-3f8c-4ea6-9820-2c57ff895d3b",
+          "name": "Get scrape job status and result",
           "request": {
-            "name": "Get Scrape Job Status and Result",
+            "name": "Get scrape job status and result",
             "description": {},
             "url": {
               "path": [
@@ -279,7 +279,7 @@
           },
           "response": [
             {
-              "id": "6046b0ba-ba2c-44f1-b6b0-19909cbeacb8",
+              "id": "b366d33e-7d4f-456a-8190-f3173873a109",
               "name": "Scrape job details",
               "originalRequest": {
                 "url": {
@@ -327,12 +327,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"jobId\": \"string\",\n  \"status\": \"completed\",\n  \"data\": {\n    \"metadata\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    },\n    \"markdown\": \"string\",\n    \"html\": \"string\",\n    \"links\": [\n      \"string\",\n      \"string\"\n    ],\n    \"screenshot\": \"string\"\n  },\n  \"error\": \"string\"\n}",
+              "body": "{\n  \"jobId\": \"string\",\n  \"status\": \"pending\",\n  \"data\": {\n    \"metadata\": {\n      \"key_0\": \"string\"\n    },\n    \"markdown\": \"string\",\n    \"html\": \"string\",\n    \"links\": [\n      \"string\",\n      \"string\"\n    ],\n    \"screenshot\": \"string\"\n  },\n  \"error\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "f20c01a8-b19d-4d35-aecf-5ca1a35860ff",
+              "id": "f90e0fd5-bcf3-4542-871d-decdd8b82a1b",
               "name": "Job not found",
               "originalRequest": {
                 "url": {
@@ -385,7 +385,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "381b2147-4596-4d10-a1b2-366c04914711",
+              "id": "d68ed9a5-2a17-4fd4-9ffb-bb26ca8a15e5",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -444,10 +444,10 @@
           }
         },
         {
-          "id": "ca3e230f-402b-46d9-bc92-46bc0d8a75c4",
-          "name": "Get Scrape Job Status",
+          "id": "ac9d1064-ed90-4c65-a7e2-e73d3677b066",
+          "name": "Get scrape job status",
           "request": {
-            "name": "Get Scrape Job Status",
+            "name": "Get scrape job status",
             "description": {},
             "url": {
               "path": [
@@ -497,7 +497,7 @@
           },
           "response": [
             {
-              "id": "8d1a2cc7-46e7-4e4e-b6bf-34b4b1a1aaa5",
+              "id": "e32b6d4b-aa04-484f-a434-9447f3f15da2",
               "name": "Scrape job status",
               "originalRequest": {
                 "url": {
@@ -546,12 +546,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"completed\"\n}",
+              "body": "{\n  \"status\": \"failed\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "063b69b8-a7e6-46d9-888a-a18c4f0cd6d6",
+              "id": "3e519db8-84c3-4234-8f77-35e28c7efa13",
               "name": "Job not found",
               "originalRequest": {
                 "url": {
@@ -605,7 +605,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "b61f00f1-9cef-48ec-ad6a-ed27fe9beea5",
+              "id": "ea774ced-3ffb-49a1-97cc-83221c57781d",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -665,10 +665,10 @@
           }
         },
         {
-          "id": "78a8fb5a-5ded-4bd6-9fa6-34b5d393a663",
-          "name": "Start a Batch Scrape Job",
+          "id": "308a83d0-2579-4c91-b9c6-ad9fa18522db",
+          "name": "Start a batch scrape job",
           "request": {
-            "name": "Start a Batch Scrape Job",
+            "name": "Start a batch scrape job",
             "description": {},
             "url": {
               "path": [
@@ -722,7 +722,7 @@
           },
           "response": [
             {
-              "id": "c97242fd-39c4-4f7f-9224-bf326c78ce46",
+              "id": "8118c15b-5348-4e7c-9726-b2bee0cde893",
               "name": "Batch scrape job started successfully",
               "originalRequest": {
                 "url": {
@@ -754,7 +754,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -775,7 +775,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "19834f68-4edc-4522-bfd7-64a44b0a2f01",
+              "id": "21b3d195-cb80-40b8-8e0b-0970ff2dcb4d",
               "name": "Invalid request parameters",
               "originalRequest": {
                 "url": {
@@ -807,7 +807,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -828,7 +828,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "b6703eb8-6728-496d-b6e5-5709bac75fc1",
+              "id": "096174d6-0e90-424a-bfc2-d32e2314d183",
               "name": "Insufficient plan",
               "originalRequest": {
                 "url": {
@@ -860,7 +860,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -881,7 +881,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "a8ebd910-7a24-4a43-93c8-d131062f7997",
+              "id": "037eca61-ce76-4a8e-993c-7de33cdeef23",
               "name": "Too many concurrent batch scrape jobs",
               "originalRequest": {
                 "url": {
@@ -913,7 +913,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -934,7 +934,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "2adb20f7-6151-4048-8fb5-16e493c10ae4",
+              "id": "0cf8cb47-be1b-49d0-81cc-250cef7f4bd1",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -966,7 +966,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -993,10 +993,10 @@
           }
         },
         {
-          "id": "b12f6bed-b482-4dc6-891e-8014e5fbc8f0",
-          "name": "Get Batch Scrape Job Status and Results",
+          "id": "811da269-f6bc-4b08-9f7e-daedeb637acc",
+          "name": "Get batch scrape job status and results",
           "request": {
-            "name": "Get Batch Scrape Job Status and Results",
+            "name": "Get batch scrape job status and results",
             "description": {},
             "url": {
               "path": [
@@ -1046,7 +1046,7 @@
           },
           "response": [
             {
-              "id": "0fce05d0-5c5f-40c7-a4ab-efb77455c23f",
+              "id": "dc075b61-d648-4f78-8f5a-bfd67997f35f",
               "name": "Batch scrape job details",
               "originalRequest": {
                 "url": {
@@ -1095,12 +1095,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"jobId\": \"string\",\n  \"status\": \"failed\",\n  \"data\": [\n    {\n      \"url\": \"string\",\n      \"status\": \"stopped\",\n      \"error\": \"string\",\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"markdown\": \"string\",\n      \"html\": \"string\",\n      \"links\": [\n        \"string\",\n        \"string\"\n      ],\n      \"screenshot\": \"string\"\n    },\n    {\n      \"url\": \"string\",\n      \"status\": \"failed\",\n      \"error\": \"string\",\n      \"metadata\": {\n        \"key_0\": \"string\"\n      },\n      \"markdown\": \"string\",\n      \"html\": \"string\",\n      \"links\": [\n        \"string\",\n        \"string\"\n      ],\n      \"screenshot\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"totalScrapedPages\": 5295.98249593792,\n  \"totalPageBatches\": 4487.190972190579,\n  \"currentPageBatch\": 5899.236100835118,\n  \"batchSize\": 2446.9111932013866\n}",
+              "body": "{\n  \"jobId\": \"string\",\n  \"status\": \"completed\",\n  \"data\": [\n    {\n      \"url\": \"string\",\n      \"status\": \"stopped\",\n      \"error\": \"string\",\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"markdown\": \"string\",\n      \"html\": \"string\",\n      \"links\": [\n        \"string\",\n        \"string\"\n      ],\n      \"screenshot\": \"string\"\n    },\n    {\n      \"url\": \"string\",\n      \"status\": \"running\",\n      \"error\": \"string\",\n      \"metadata\": {\n        \"key_0\": \"string\"\n      },\n      \"markdown\": \"string\",\n      \"html\": \"string\",\n      \"links\": [\n        \"string\",\n        \"string\"\n      ],\n      \"screenshot\": \"string\"\n    }\n  ],\n  \"error\": \"string\",\n  \"totalScrapedPages\": 7429.433151152783,\n  \"totalPageBatches\": 5129.344177191029,\n  \"currentPageBatch\": 8368.24196299831,\n  \"batchSize\": 1815.376347057548\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "60ac3c0e-c2aa-4ec6-a4a5-5188c1b58e1a",
+              "id": "2c8eac1c-fe42-4204-a5a7-eafd9f36e7cf",
               "name": "Invalid request parameters",
               "originalRequest": {
                 "url": {
@@ -1154,7 +1154,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "de12214f-070d-4d47-b58d-b4acf259dd20",
+              "id": "a483a8a6-d5c6-4cef-9a80-2cf719dbb488",
               "name": "Batch scrape job not found",
               "originalRequest": {
                 "url": {
@@ -1208,7 +1208,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "71bb7903-621f-44f1-84da-de761e74101c",
+              "id": "85a62ca6-2527-4862-959e-d4d064178f7b",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -1268,10 +1268,10 @@
           }
         },
         {
-          "id": "0e64260d-43e5-4c62-932d-dac6b5f0366a",
-          "name": "Get Batch Scrape Job Status",
+          "id": "3b628546-4a8f-472a-924b-f886750af59e",
+          "name": "Get batch scrape job status",
           "request": {
-            "name": "Get Batch Scrape Job Status",
+            "name": "Get batch scrape job status",
             "description": {},
             "url": {
               "path": [
@@ -1322,7 +1322,7 @@
           },
           "response": [
             {
-              "id": "358ae453-18dd-4186-abf6-fdd5c23245e1",
+              "id": "90a6fbf2-a589-4568-89db-c368c6847fb3",
               "name": "Batch scrape job status",
               "originalRequest": {
                 "url": {
@@ -1372,12 +1372,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"completed\"\n}",
+              "body": "{\n  \"status\": \"failed\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "5198fad4-30e9-4dff-8f02-c021dceabdf0",
+              "id": "f0f2677b-bc96-4479-b313-7311360331cb",
               "name": "Batch scrape job not found",
               "originalRequest": {
                 "url": {
@@ -1432,7 +1432,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "63bb2f22-c540-4d25-b97b-034ac0a20e7a",
+              "id": "9673f6c6-e9d6-4a3d-9052-57f1fe818672",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -1522,11 +1522,11 @@
     ]
   },
   "info": {
-    "_postman_id": "2e9e29a5-2729-4822-9258-c424886cf1a8",
-    "name": "Hyperbrowser Scrape API",
+    "_postman_id": "075831f5-5b6a-4533-948d-1a58cf5564ce",
+    "name": "Hyperbrowser Agents Scrape API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "Single-page and batch scrape jobs returning HTML, Markdown, links, and screenshots with status polling.\n\nContact Support:\n Name: Hyperbrowser",
+      "content": "Start, stop, and monitor agentic browser tasks across HyperAgent, Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI CUA.\n\nContact Support:\n Name: Hyperbrowser",
       "type": "text/plain"
     }
   }

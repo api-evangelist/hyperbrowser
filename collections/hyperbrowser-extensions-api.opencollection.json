@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Hyperbrowser Extensions API",
+    "name": "Hyperbrowser Agents Extensions API",
     "version": "1.0.0"
   },
   "request": {

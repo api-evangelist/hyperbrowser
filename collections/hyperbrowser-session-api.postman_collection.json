@@ -1,237 +1,18 @@
 {
   "item": [
     {
-      "id": "0415874b-1d1f-4a3c-b0b4-25da313288a4",
-      "name": "Sessions",
+      "id": "f8002298-2b6e-47d5-a3a5-87ccc4316417",
+      "name": "Session",
       "description": {
         "content": "",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "1bb6974c-c5f2-4aeb-be0d-eaff9815ca5e",
-          "name": "Get list of sessions",
+          "id": "e59f3bf0-96f4-42e9-976a-d12a78c8e65d",
+          "name": "Create new session",
           "request": {
-            "name": "Get list of sessions",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "sessions"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "page",
-                  "value": "1"
-                },
-                {
-                  "disabled": false,
-                  "key": "status",
-                  "value": "<string>"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "x-api-key"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "3bd0473a-dbb7-4279-bab8-483efdb8ed06",
-              "name": "List of sessions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "sessions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "page",
-                      "value": "1"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"sessions\": [\n    {\n      \"id\": \"03cf0405-b046-0b8f-c9b4-e886135d529e\",\n      \"teamId\": \"aef6b52e-178a-a7f5-0f86-b52364949201\",\n      \"status\": \"active\",\n      \"startTime\": \"string\",\n      \"endTime\": \"string\",\n      \"createdAt\": \"string\",\n      \"updatedAt\": \"string\",\n      \"launchState\": {\n        \"useUltraStealth\": false,\n        \"useStealth\": true,\n        \"useProxy\": false,\n        \"solveCaptchas\": true,\n        \"solverType\": \"visual\",\n        \"adblock\": false,\n        \"trackers\": true,\n        \"annoyances\": true,\n        \"screen\": {\n          \"width\": 1280,\n          \"height\": 720\n        },\n        \"enableWebRecording\": true,\n        \"enableVideoWebRecording\": false,\n        \"enableLogCapture\": true,\n        \"acceptCookies\": false,\n        \"profile\": {\n          \"id\": \"string\",\n          \"persistChanges\": true,\n          \"persistNetworkCache\": false\n        },\n        \"staticIpId\": \"string\",\n        \"saveDownloads\": false,\n        \"enableWindowManager\": true,\n        \"enableWindowManagerTaskbar\": true,\n        \"viewOnlyLiveView\": true,\n        \"disablePasswordManager\": false,\n        \"enableAlwaysOpenPdfExternally\": false,\n        \"disablePostQuantumKeyAgreement\": true\n      },\n      \"creditsUsed\": 2735.0023019747473\n    },\n    {\n      \"id\": \"b21f9600-9c27-e434-71b8-9b25be3d5afe\",\n      \"teamId\": \"30cff300-f15e-63b2-8cda-787b5ffff9bb\",\n      \"status\": \"active\",\n      \"startTime\": \"string\",\n      \"endTime\": \"string\",\n      \"createdAt\": \"string\",\n      \"updatedAt\": \"string\",\n      \"launchState\": {\n        \"useUltraStealth\": true,\n        \"useStealth\": false,\n        \"useProxy\": true,\n        \"solveCaptchas\": false,\n        \"solverType\": \"visual\",\n        \"adblock\": true,\n        \"trackers\": false,\n        \"annoyances\": true,\n        \"screen\": {\n          \"width\": 1280,\n          \"height\": 720\n        },\n        \"enableWebRecording\": false,\n        \"enableVideoWebRecording\": false,\n        \"enableLogCapture\": false,\n        \"acceptCookies\": false,\n        \"profile\": {\n          \"id\": \"string\",\n          \"persistChanges\": true,\n          \"persistNetworkCache\": false\n        },\n        \"staticIpId\": \"string\",\n        \"saveDownloads\": true,\n        \"enableWindowManager\": true,\n        \"enableWindowManagerTaskbar\": true,\n        \"viewOnlyLiveView\": false,\n        \"disablePasswordManager\": true,\n        \"enableAlwaysOpenPdfExternally\": true,\n        \"disablePostQuantumKeyAgreement\": false\n      },\n      \"creditsUsed\": 8041.041236749626\n    }\n  ],\n  \"totalCount\": 100,\n  \"page\": 1,\n  \"pageSize\": 10\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "6be011b0-ab56-429e-b8a0-9d03354a3d6c",
-              "name": "Invalid query parameters",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "sessions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "page",
-                      "value": "1"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "11e709b0-0cce-457b-b9ce-8553c5dae5b0",
-              "name": "Server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "sessions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "page",
-                      "value": "1"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "2938271b-7126-4f8f-9b9f-7f10ae4c6547",
-          "name": "Create New Session",
-          "request": {
-            "name": "Create New Session",
+            "name": "Create new session",
             "description": {},
             "url": {
               "path": [
@@ -284,7 +65,7 @@
           },
           "response": [
             {
-              "id": "7eb61995-f077-47c0-a539-3d9f6999e5a3",
+              "id": "c0a6a0ce-66ca-49ad-868b-50b4093a43b5",
               "name": "Session created",
               "originalRequest": {
                 "url": {
@@ -331,7 +112,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"8a0a97c8-51c6-772e-8201-ff18f7f1b48d\",\n  \"teamId\": \"5149753d-cb91-b609-ced7-f2cccbd9fb7e\",\n  \"status\": \"active\",\n  \"startTime\": \"string\",\n  \"endTime\": \"string\",\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"launchState\": {\n    \"useUltraStealth\": false,\n    \"useStealth\": true,\n    \"useProxy\": true,\n    \"solveCaptchas\": false,\n    \"solverType\": \"visual\",\n    \"adblock\": false,\n    \"trackers\": true,\n    \"annoyances\": false,\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"enableWebRecording\": false,\n    \"enableVideoWebRecording\": false,\n    \"enableLogCapture\": true,\n    \"acceptCookies\": true,\n    \"profile\": {\n      \"id\": \"<string>\",\n      \"persistChanges\": \"<boolean>\",\n      \"persistNetworkCache\": \"<boolean>\"\n    },\n    \"staticIpId\": \"string\",\n    \"saveDownloads\": true,\n    \"enableWindowManager\": false,\n    \"enableWindowManagerTaskbar\": true,\n    \"viewOnlyLiveView\": false,\n    \"disablePasswordManager\": false,\n    \"enableAlwaysOpenPdfExternally\": true,\n    \"disablePostQuantumKeyAgreement\": false\n  },\n  \"creditsUsed\": 2252.1999257455736,\n  \"sessionUrl\": \"string\",\n  \"liveUrl\": \"string\",\n  \"token\": \"string\",\n  \"wsEndpoint\": \"string\",\n  \"webdriverEndpoint\": \"string\",\n  \"computerActionEndpoint\": \"string\"\n}",
+              "body": "{\n  \"id\": \"aca08cda-d928-b8e4-9a6c-e4a40afe18e4\",\n  \"teamId\": \"064594bc-b386-d033-c0a4-1e823793a831\",\n  \"status\": \"active\",\n  \"startTime\": \"string\",\n  \"endTime\": \"string\",\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"launchState\": {\n    \"useUltraStealth\": false,\n    \"useStealth\": true,\n    \"useProxy\": true,\n    \"solveCaptchas\": true,\n    \"solverType\": \"visual\",\n    \"adblock\": false,\n    \"trackers\": true,\n    \"annoyances\": false,\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"enableWebRecording\": true,\n    \"enableVideoWebRecording\": true,\n    \"enableLogCapture\": true,\n    \"acceptCookies\": true,\n    \"profile\": {\n      \"id\": \"<string>\",\n      \"persistChanges\": \"<boolean>\",\n      \"persistNetworkCache\": \"<boolean>\"\n    },\n    \"staticIpId\": \"string\",\n    \"saveDownloads\": false,\n    \"enableWindowManager\": false,\n    \"enableWindowManagerTaskbar\": false,\n    \"viewOnlyLiveView\": false,\n    \"disablePasswordManager\": true,\n    \"enableAlwaysOpenPdfExternally\": false,\n    \"disablePostQuantumKeyAgreement\": true\n  },\n  \"creditsUsed\": 8025.190101710216,\n  \"sessionUrl\": \"string\",\n  \"liveUrl\": \"string\",\n  \"token\": \"string\",\n  \"wsEndpoint\": \"string\",\n  \"webdriverEndpoint\": \"string\",\n  \"computerActionEndpoint\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -342,10 +123,10 @@
           }
         },
         {
-          "id": "ab597175-1f8f-44e9-89ed-3cafaa9de941",
-          "name": "Get Session by ID",
+          "id": "588077aa-958f-4bd9-9aec-8b998d057149",
+          "name": "Get session by ID",
           "request": {
-            "name": "Get Session by ID",
+            "name": "Get session by ID",
             "description": {},
             "url": {
               "path": [
@@ -394,7 +175,7 @@
           },
           "response": [
             {
-              "id": "593aad67-4926-4e51-aa7c-1ca2acc8eee0",
+              "id": "e38deea7-0dc4-4f1a-a784-212cb512b086",
               "name": "Session details",
               "originalRequest": {
                 "url": {
@@ -442,12 +223,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"8a0a97c8-51c6-772e-8201-ff18f7f1b48d\",\n  \"teamId\": \"5149753d-cb91-b609-ced7-f2cccbd9fb7e\",\n  \"status\": \"active\",\n  \"startTime\": \"string\",\n  \"endTime\": \"string\",\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"launchState\": {\n    \"useUltraStealth\": false,\n    \"useStealth\": true,\n    \"useProxy\": true,\n    \"solveCaptchas\": false,\n    \"solverType\": \"visual\",\n    \"adblock\": false,\n    \"trackers\": true,\n    \"annoyances\": false,\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"enableWebRecording\": false,\n    \"enableVideoWebRecording\": false,\n    \"enableLogCapture\": true,\n    \"acceptCookies\": true,\n    \"profile\": {\n      \"id\": \"<string>\",\n      \"persistChanges\": \"<boolean>\",\n      \"persistNetworkCache\": \"<boolean>\"\n    },\n    \"staticIpId\": \"string\",\n    \"saveDownloads\": true,\n    \"enableWindowManager\": false,\n    \"enableWindowManagerTaskbar\": true,\n    \"viewOnlyLiveView\": false,\n    \"disablePasswordManager\": false,\n    \"enableAlwaysOpenPdfExternally\": true,\n    \"disablePostQuantumKeyAgreement\": false\n  },\n  \"creditsUsed\": 2252.1999257455736,\n  \"sessionUrl\": \"string\",\n  \"liveUrl\": \"string\",\n  \"token\": \"string\",\n  \"wsEndpoint\": \"string\",\n  \"webdriverEndpoint\": \"string\",\n  \"computerActionEndpoint\": \"string\"\n}",
+              "body": "{\n  \"id\": \"aca08cda-d928-b8e4-9a6c-e4a40afe18e4\",\n  \"teamId\": \"064594bc-b386-d033-c0a4-1e823793a831\",\n  \"status\": \"active\",\n  \"startTime\": \"string\",\n  \"endTime\": \"string\",\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"launchState\": {\n    \"useUltraStealth\": false,\n    \"useStealth\": true,\n    \"useProxy\": true,\n    \"solveCaptchas\": true,\n    \"solverType\": \"visual\",\n    \"adblock\": false,\n    \"trackers\": true,\n    \"annoyances\": false,\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"enableWebRecording\": true,\n    \"enableVideoWebRecording\": true,\n    \"enableLogCapture\": true,\n    \"acceptCookies\": true,\n    \"profile\": {\n      \"id\": \"<string>\",\n      \"persistChanges\": \"<boolean>\",\n      \"persistNetworkCache\": \"<boolean>\"\n    },\n    \"staticIpId\": \"string\",\n    \"saveDownloads\": false,\n    \"enableWindowManager\": false,\n    \"enableWindowManagerTaskbar\": false,\n    \"viewOnlyLiveView\": false,\n    \"disablePasswordManager\": true,\n    \"enableAlwaysOpenPdfExternally\": false,\n    \"disablePostQuantumKeyAgreement\": true\n  },\n  \"creditsUsed\": 8025.190101710216,\n  \"sessionUrl\": \"string\",\n  \"liveUrl\": \"string\",\n  \"token\": \"string\",\n  \"wsEndpoint\": \"string\",\n  \"webdriverEndpoint\": \"string\",\n  \"computerActionEndpoint\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "4668783f-8eb1-45ae-9245-a05f65e5fdac",
+              "id": "35161062-480a-4307-8cd4-606abbd3e86f",
               "name": "Session not found",
               "originalRequest": {
                 "url": {
@@ -506,10 +287,10 @@
           }
         },
         {
-          "id": "41eb767f-119d-4cc5-8acd-d4fbdaa3ff9d",
-          "name": "Stop a Session",
+          "id": "52f2f886-16b9-4b20-a53c-c3e0f433a059",
+          "name": "Stop a session",
           "request": {
-            "name": "Stop a Session",
+            "name": "Stop a session",
             "description": {},
             "url": {
               "path": [
@@ -559,7 +340,7 @@
           },
           "response": [
             {
-              "id": "86b21c0d-d74c-45fa-88cb-3163af9421f7",
+              "id": "a167185b-063f-4c92-ab9f-96367243111b",
               "name": "Session stopped successfully",
               "originalRequest": {
                 "url": {
@@ -608,12 +389,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true\n}",
+              "body": "{\n  \"success\": false\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "b62c8ca2-bb6d-40d9-b232-52e0e2df1b57",
+              "id": "bb7edce9-5ef4-4801-92d7-c079b7420bcf",
               "name": "Session not found",
               "originalRequest": {
                 "url": {
@@ -667,7 +448,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "e7e5f2c9-3d27-481f-b86f-a59cca946e39",
+              "id": "58292b8b-2d7e-4734-8232-6851ee0ca0ac",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -727,10 +508,10 @@
           }
         },
         {
-          "id": "865ce7a3-0182-4a69-b78a-9621af57f605",
-          "name": "Update a Running Session",
+          "id": "de5e00f6-5220-4bac-a644-fd7f056998b3",
+          "name": "Update a running session",
           "request": {
-            "name": "Update a Running Session",
+            "name": "Update a running session",
             "description": {
               "content": "Update supported settings on an active browser session. Supported update types are profile, proxy, screen, and solveCaptchas.",
               "type": "text/plain"
@@ -796,7 +577,7 @@
           },
           "response": [
             {
-              "id": "2f8693a6-72b4-4315-b630-fed40d986844",
+              "id": "1872b920-e023-4a7e-839a-0b042e3643b9",
               "name": "Session updated successfully",
               "originalRequest": {
                 "url": {
@@ -853,12 +634,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": false,\n  \"solveCaptchas\": true,\n  \"sessionId\": \"string\",\n  \"telemetryReady\": true\n}",
+              "body": "{\n  \"success\": true,\n  \"solveCaptchas\": true,\n  \"sessionId\": \"string\",\n  \"telemetryReady\": false\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "025ffa93-03e1-4ae2-aa7e-9438ec0de301",
+              "id": "110f52cd-8551-43da-9db2-cdbc9fa9dc81",
               "name": "Invalid update request",
               "originalRequest": {
                 "url": {
@@ -920,7 +701,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "a330514b-b010-4efb-88b0-cbc9a8b87ad8",
+              "id": "d41a539e-1891-43f0-bf71-ea2992edcfd8",
               "name": "Session not found",
               "originalRequest": {
                 "url": {
@@ -982,7 +763,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "edfe3d94-de0e-4313-86b6-2e8adb03d129",
+              "id": "bcd29ac6-0122-427b-9877-e0a21bdeb6a5",
               "name": "CAPTCHA evaluation is already running",
               "originalRequest": {
                 "url": {
@@ -1044,7 +825,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "9f4721a3-b041-48c9-b751-0458aab33f5c",
+              "id": "3d8c9730-922f-434d-986b-9d5a5af41d1c",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -1112,10 +893,10 @@
           }
         },
         {
-          "id": "1724c685-63b0-49dd-895e-4c2ca17cb4c8",
-          "name": "Run Manual CAPTCHA Evaluation",
+          "id": "b9e17728-8c67-4c7f-bbc5-e4a24ccae30d",
+          "name": "Run manual CAPTCHA evaluation",
           "request": {
-            "name": "Run Manual CAPTCHA Evaluation",
+            "name": "Run manual CAPTCHA evaluation",
             "description": {
               "content": "Trigger a bounded CAPTCHA evaluation on an active browser session. Supported CAPTCHA targets are turnstile, cloudflare-challenge, aliexpress, recaptcha, and amazon.",
               "type": "text/plain"
@@ -1182,7 +963,7 @@
           },
           "response": [
             {
-              "id": "758c5f21-ea55-446d-b800-bc57d43483a5",
+              "id": "97df7121-0bea-439b-9fe9-7086852ce87d",
               "name": "CAPTCHA evaluation completed",
               "originalRequest": {
                 "url": {
@@ -1240,12 +1021,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": false,\n  \"captcha\": \"<string>\",\n  \"iterationsRequested\": 3031,\n  \"iterationsRun\": 1337,\n  \"solved\": true,\n  \"solvedCaptchas\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"pages\": [\n    {\n      \"url\": \"string\",\n      \"targetId\": \"string\",\n      \"iterationsRun\": 7730,\n      \"solved\": false,\n      \"solvedCaptchas\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"checkedCaptchas\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"captchaSolvedCounts\": {\n        \"key_0\": 4248.200661701548,\n        \"key_1\": 9366.993816740473,\n        \"key_2\": 3515.352302954684,\n        \"key_3\": 3217.857624768451\n      },\n      \"lastSolveTime\": {\n        \"key_0\": 9570.078694118585\n      }\n    },\n    {\n      \"url\": \"string\",\n      \"targetId\": \"string\",\n      \"iterationsRun\": 3717,\n      \"solved\": false,\n      \"solvedCaptchas\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"checkedCaptchas\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"captchaSolvedCounts\": {\n        \"key_0\": 5751.909142639117,\n        \"key_1\": 4316.411235983357\n      },\n      \"lastSolveTime\": {\n        \"key_0\": 5754.2374995684395\n      }\n    }\n  ]\n}",
+              "body": "{\n  \"success\": false,\n  \"captcha\": \"<string>\",\n  \"iterationsRequested\": 3206,\n  \"iterationsRun\": 1404,\n  \"solved\": false,\n  \"solvedCaptchas\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"pages\": [\n    {\n      \"url\": \"string\",\n      \"targetId\": \"string\",\n      \"iterationsRun\": 4869,\n      \"solved\": true,\n      \"solvedCaptchas\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"checkedCaptchas\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"captchaSolvedCounts\": {\n        \"key_0\": 8516.233501098304,\n        \"key_1\": 8778.560800629637,\n        \"key_2\": 1188.3875956275613\n      },\n      \"lastSolveTime\": {\n        \"key_0\": 4976.654544790548,\n        \"key_1\": 8597.583955130578\n      }\n    },\n    {\n      \"url\": \"string\",\n      \"targetId\": \"string\",\n      \"iterationsRun\": 6630,\n      \"solved\": false,\n      \"solvedCaptchas\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"checkedCaptchas\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"captchaSolvedCounts\": {\n        \"key_0\": 1454.6643918175982,\n        \"key_1\": 6307.3571585755335\n      },\n      \"lastSolveTime\": {\n        \"key_0\": 4184.391796727077,\n        \"key_1\": 6352.523212086118\n      }\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "fd066aa2-3c3f-4b45-8d1d-b2a490f82050",
+              "id": "d0d4fa70-f91e-4dcd-8312-601b454a80ff",
               "name": "Invalid evaluation request",
               "originalRequest": {
                 "url": {
@@ -1308,7 +1089,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "eec1644f-2994-451b-b314-fbe1a42d8673",
+              "id": "c6ff33c5-2d21-4e91-86fe-7a9d07af5a3b",
               "name": "Session not found",
               "originalRequest": {
                 "url": {
@@ -1371,7 +1152,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "7a132315-c917-40e7-a060-6e4821c65934",
+              "id": "452b01bf-eb48-4302-ada0-6cd6be72296d",
               "name": "CAPTCHA evaluation is already running",
               "originalRequest": {
                 "url": {
@@ -1434,7 +1215,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "01723170-9805-462c-948e-61bfd69cd04b",
+              "id": "133f3243-615b-4631-98fc-535ae17e4f27",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -1503,10 +1284,10 @@
           }
         },
         {
-          "id": "119961c0-2467-4a37-abe2-2d9a77624501",
-          "name": "Get Session Recording URL",
+          "id": "1398597e-7416-4a12-9742-914517b7be5e",
+          "name": "Get session recording URL",
           "request": {
-            "name": "Get Session Recording URL",
+            "name": "Get session recording URL",
             "description": {},
             "url": {
               "path": [
@@ -1556,7 +1337,7 @@
           },
           "response": [
             {
-              "id": "f421f5fa-1c2b-40d3-8b27-551b206a3fb6",
+              "id": "3ab7fa31-9067-4c96-b013-1dfae2a71387",
               "name": "Session recording URL",
               "originalRequest": {
                 "url": {
@@ -1605,12 +1386,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"completed\",\n  \"recordingUrl\": \"string\",\n  \"error\": \"string\"\n}",
+              "body": "{\n  \"status\": \"failed\",\n  \"recordingUrl\": \"string\",\n  \"error\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "7421b8fc-5106-44b0-a689-72982077eb5f",
+              "id": "59c5cda1-bbed-407f-83cd-23ae075d021b",
               "name": "Session not found",
               "originalRequest": {
                 "url": {
@@ -1664,7 +1445,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "75f85b9f-e371-4c62-a6b3-b5d025f67157",
+              "id": "3e56b520-1ac0-45b2-b30b-c636e720cfde",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -1724,10 +1505,10 @@
           }
         },
         {
-          "id": "5e8486a7-784b-4bbe-a604-f4e0e15757e7",
-          "name": "Get Session Video Recording URL",
+          "id": "f6ee8e9c-7570-4938-8137-93f08f8a40a5",
+          "name": "Get session video recording URL",
           "request": {
-            "name": "Get Session Video Recording URL",
+            "name": "Get session video recording URL",
             "description": {},
             "url": {
               "path": [
@@ -1777,7 +1558,7 @@
           },
           "response": [
             {
-              "id": "e521d687-3313-4e69-a4c8-7ac2e32f497f",
+              "id": "09440b01-c0dc-4fe7-95d2-af2dfb16ecf4",
               "name": "Session video recording URL",
               "originalRequest": {
                 "url": {
@@ -1826,12 +1607,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"completed\",\n  \"recordingUrl\": \"string\",\n  \"error\": \"string\"\n}",
+              "body": "{\n  \"status\": \"failed\",\n  \"recordingUrl\": \"string\",\n  \"error\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "23b62f2d-5ab5-4f89-a447-349b6e0708fd",
+              "id": "46aa7782-83d8-4776-873b-316b2e54f8f0",
               "name": "Session not found",
               "originalRequest": {
                 "url": {
@@ -1885,7 +1666,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "a46c38ba-3d82-416e-b98f-eef955a9236f",
+              "id": "8550e7e3-6c8b-4729-9ba5-38d8e621f610",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -1945,10 +1726,10 @@
           }
         },
         {
-          "id": "cc4fd8d3-d058-40fa-8495-726792d0c6cf",
-          "name": "Get Session Downloads URL",
+          "id": "f455092a-aabd-493f-84e0-c69e8368ec8c",
+          "name": "Get session downloads URL",
           "request": {
-            "name": "Get Session Downloads URL",
+            "name": "Get session downloads URL",
             "description": {},
             "url": {
               "path": [
@@ -1998,7 +1779,7 @@
           },
           "response": [
             {
-              "id": "944df9f5-b8f0-4bbc-a939-d03b5e8cfb02",
+              "id": "c2de0194-1cfd-4a0e-91b2-5c28abd10207",
               "name": "Session downloads URL",
               "originalRequest": {
                 "url": {
@@ -2052,7 +1833,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "8e6ea66e-63bb-4eea-a9ee-1916ae29429c",
+              "id": "87deaecb-fdb7-4d51-8e99-23894262b3ab",
               "name": "Session not found",
               "originalRequest": {
                 "url": {
@@ -2106,7 +1887,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "5d203247-e2eb-4e65-a5de-d06a73300e2e",
+              "id": "553ec788-4534-4c23-8e3c-3be92d08120b",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -2195,8 +1976,8 @@
     ]
   },
   "info": {
-    "_postman_id": "2fae9e30-0f0f-45c9-9bb8-2d7979fa8451",
-    "name": "Hyperbrowser Agents Sessions API",
+    "_postman_id": "ccea46ec-212d-497f-91a6-f387b58b24d4",
+    "name": "Hyperbrowser Agents Session API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "Start, stop, and monitor agentic browser tasks across HyperAgent, Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI CUA.\n\nContact Support:\n Name: Hyperbrowser",

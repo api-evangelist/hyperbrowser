@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "36f3abb0-ce52-4502-a416-023ed7971b78",
+      "id": "68a0ae3d-d67f-42df-b26f-a024094933df",
       "name": "Crawl",
       "description": {
         "content": "",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "9df1d810-b540-48d8-891a-00da1d0ca7d5",
+          "id": "56244c85-983c-4ed7-a0c4-7104993e5bbb",
           "name": "Start a Crawl Job",
           "request": {
             "name": "Start a Crawl Job",
@@ -55,7 +55,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"url\": \"<string>\",\n  \"maxPages\": \"<integer>\",\n  \"followLinks\": true,\n  \"ignoreSitemap\": false,\n  \"excludePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"includePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  }\n}",
+              "raw": "{\n  \"url\": \"<string>\",\n  \"maxPages\": \"<integer>\",\n  \"followLinks\": true,\n  \"ignoreSitemap\": false,\n  \"excludePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"includePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\",\n        \"key_4\": \"<string>\"\n      }\n    }\n  }\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -65,7 +65,7 @@
           },
           "response": [
             {
-              "id": "4cbf1efe-6f57-48c8-88ab-625d47dd0d89",
+              "id": "1f9efdc3-e04e-434c-b56b-4aa0ecb6a049",
               "name": "Crawl job started successfully",
               "originalRequest": {
                 "url": {
@@ -96,7 +96,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"url\": \"<string>\",\n  \"maxPages\": \"<integer>\",\n  \"followLinks\": true,\n  \"ignoreSitemap\": false,\n  \"excludePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"includePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"maxPages\": \"<integer>\",\n  \"followLinks\": true,\n  \"ignoreSitemap\": false,\n  \"excludePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"includePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      }\n    }\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -117,7 +117,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "3a8443ff-66b7-4af0-8d9b-e783cc4ddd43",
+              "id": "6f899f3a-1044-4c8d-a935-6759dd2a247f",
               "name": "Invalid request parameters",
               "originalRequest": {
                 "url": {
@@ -148,7 +148,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"url\": \"<string>\",\n  \"maxPages\": \"<integer>\",\n  \"followLinks\": true,\n  \"ignoreSitemap\": false,\n  \"excludePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"includePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"maxPages\": \"<integer>\",\n  \"followLinks\": true,\n  \"ignoreSitemap\": false,\n  \"excludePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"includePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      }\n    }\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -169,7 +169,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "04de0608-15a1-41a2-bb19-9f41e0813d37",
+              "id": "c80e23fe-d9fb-4971-bd0f-193e022fb75c",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -200,7 +200,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"url\": \"<string>\",\n  \"maxPages\": \"<integer>\",\n  \"followLinks\": true,\n  \"ignoreSitemap\": false,\n  \"excludePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"includePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"maxPages\": \"<integer>\",\n  \"followLinks\": true,\n  \"ignoreSitemap\": false,\n  \"excludePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"includePatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionOptions\": {\n    \"useStealth\": false,\n    \"useProxy\": false,\n    \"acceptCookies\": false\n  },\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"includeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onlyMainContent\": true,\n    \"waitFor\": 0,\n    \"timeout\": 30000,\n    \"waitUntil\": \"load\",\n    \"screenshotOptions\": {\n      \"fullPage\": false,\n      \"format\": \"webp\",\n      \"cropToContent\": false,\n      \"cropToContentMaxHeight\": \"<number>\",\n      \"cropToContentMinHeight\": \"<number>\"\n    },\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      }\n    }\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -227,7 +227,7 @@
           }
         },
         {
-          "id": "320ff3d4-cf37-4a2c-8bae-6ad9d960361d",
+          "id": "828e566d-3df0-4539-9f00-777563bf10d1",
           "name": "Get Crawl Job Status and Results",
           "request": {
             "name": "Get Crawl Job Status and Results",
@@ -290,7 +290,7 @@
           },
           "response": [
             {
-              "id": "d60d85d7-04e4-4628-93cd-9338f149e87f",
+              "id": "d31812a7-6196-4213-8f45-2a9ab963a660",
               "name": "Crawl job details retrieved successfully",
               "originalRequest": {
                 "url": {
@@ -347,12 +347,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"pending\",\n  \"jobId\": \"39a62ee3-4b6c-82a8-7116-5b5580ca235e\",\n  \"error\": \"string\",\n  \"totalCrawledPages\": 3271,\n  \"totalPageBatches\": 6075,\n  \"currentPageBatch\": 3667,\n  \"batchSize\": 2041,\n  \"data\": [\n    {\n      \"url\": \"string\",\n      \"status\": \"completed\",\n      \"error\": \"string\",\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"markdown\": \"string\",\n      \"html\": \"string\",\n      \"links\": [\n        \"string\",\n        \"string\"\n      ],\n      \"screenshot\": \"string\"\n    },\n    {\n      \"url\": \"string\",\n      \"status\": \"completed\",\n      \"error\": \"string\",\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"markdown\": \"string\",\n      \"html\": \"string\",\n      \"links\": [\n        \"string\",\n        \"string\"\n      ],\n      \"screenshot\": \"string\"\n    }\n  ]\n}",
+              "body": "{\n  \"status\": \"running\",\n  \"jobId\": \"3984e8b5-c07f-e637-a9ca-41da094831dd\",\n  \"error\": \"string\",\n  \"totalCrawledPages\": 4027,\n  \"totalPageBatches\": 187,\n  \"currentPageBatch\": 980,\n  \"batchSize\": 1265,\n  \"data\": [\n    {\n      \"url\": \"string\",\n      \"status\": \"failed\",\n      \"error\": \"string\",\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"markdown\": \"string\",\n      \"html\": \"string\",\n      \"links\": [\n        \"string\",\n        \"string\"\n      ],\n      \"screenshot\": \"string\"\n    },\n    {\n      \"url\": \"string\",\n      \"status\": \"failed\",\n      \"error\": \"string\",\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"markdown\": \"string\",\n      \"html\": \"string\",\n      \"links\": [\n        \"string\",\n        \"string\"\n      ],\n      \"screenshot\": \"string\"\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "2a35d3ff-fc30-4981-920c-5228180979a4",
+              "id": "5b30e00b-303d-44ca-a31d-64c400050b5f",
               "name": "Crawl job not found",
               "originalRequest": {
                 "url": {
@@ -414,7 +414,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "bf1f3cf8-ddd5-4752-89ad-1cfd2f68e328",
+              "id": "ec046867-de1f-48d3-abd3-e3486669e14d",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -482,7 +482,7 @@
           }
         },
         {
-          "id": "9d8f46a4-56c8-482c-92a6-7803550398f5",
+          "id": "222c3315-06ca-4eb8-abb7-18c3622387e4",
           "name": "Get Crawl Job Status",
           "request": {
             "name": "Get Crawl Job Status",
@@ -535,7 +535,7 @@
           },
           "response": [
             {
-              "id": "47ca3730-7c75-4fe9-92eb-53919d505d2f",
+              "id": "2a895d9a-a5fd-4a07-a13f-03ecab83a578",
               "name": "Crawl job status",
               "originalRequest": {
                 "url": {
@@ -584,12 +584,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"pending\"\n}",
+              "body": "{\n  \"status\": \"running\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "434ed87b-7c8d-465c-b3bc-71b675f13030",
+              "id": "631fb659-186b-4c2f-871e-bd2222e8be4d",
               "name": "Crawl job not found",
               "originalRequest": {
                 "url": {
@@ -643,7 +643,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "1122ea8a-c1cd-4c7c-beca-08a2d8f73e3b",
+              "id": "d8f880cf-ff1e-4896-88de-a296bd428647",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -732,11 +732,11 @@
     ]
   },
   "info": {
-    "_postman_id": "bfd8fc82-2621-48a9-8ec1-75482350f8f2",
-    "name": "Hyperbrowser Crawl API",
+    "_postman_id": "b9d6b800-fe4d-4484-b156-749d9518b87e",
+    "name": "Hyperbrowser Agents Crawl API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "Recursive crawl jobs across many pages with structured page-by-page results and status polling.\n\nContact Support:\n Name: Hyperbrowser",
+      "content": "Start, stop, and monitor agentic browser tasks across HyperAgent, Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI CUA.\n\nContact Support:\n Name: Hyperbrowser",
       "type": "text/plain"
     }
   }

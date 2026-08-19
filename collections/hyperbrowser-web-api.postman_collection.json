@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "2fbdfb07-12c0-47d3-b26b-e8339a7260b3",
+      "id": "a5888950-e227-48b3-903c-4f27b6ef57e7",
       "name": "Web",
       "description": {
         "content": "",
@@ -9,10 +9,10 @@
       },
       "item": [
         {
-          "id": "1c3fffe7-ffc9-4bd6-8cb1-194eb0b5b8e2",
-          "name": "Fetch a Web Page",
+          "id": "d11cc26c-dbea-4482-89a1-88095d5be9be",
+          "name": "Fetch a web page",
           "request": {
-            "name": "Fetch a Web Page",
+            "name": "Fetch a web page",
             "description": {
               "content": "Fetches a web page and returns the content in various formats (HTML, Markdown, JSON, screenshot, etc.)",
               "type": "text/plain"
@@ -69,7 +69,7 @@
           },
           "response": [
             {
-              "id": "2cc7c133-920f-42f3-ae60-16c0cad41bb4",
+              "id": "ab93334a-266a-4064-8466-db2f99ddd22e",
               "name": "Page fetched successfully",
               "originalRequest": {
                 "url": {
@@ -101,7 +101,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -117,12 +117,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"jobId\": \"string\",\n  \"status\": \"running\",\n  \"error\": \"string\",\n  \"data\": {\n    \"metadata\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"html\": \"string\",\n    \"markdown\": \"string\",\n    \"links\": [\n      \"string\",\n      \"string\"\n    ],\n    \"screenshot\": \"string\",\n    \"json\": {},\n    \"branding\": {\n      \"colorScheme\": \"string\",\n      \"colors\": {},\n      \"fonts\": [\n        {\n          \"family\": \"string\",\n          \"role\": \"string\"\n        },\n        {\n          \"family\": \"string\",\n          \"role\": \"string\"\n        }\n      ],\n      \"typography\": {},\n      \"spacing\": {},\n      \"components\": {},\n      \"images\": {},\n      \"personality\": {},\n      \"designSystem\": {},\n      \"confidence\": {}\n    }\n  }\n}",
+              "body": "{\n  \"jobId\": \"string\",\n  \"status\": \"running\",\n  \"error\": \"string\",\n  \"data\": {\n    \"metadata\": {\n      \"key_0\": \"string\"\n    },\n    \"html\": \"string\",\n    \"markdown\": \"string\",\n    \"links\": [\n      \"string\",\n      \"string\"\n    ],\n    \"screenshot\": \"string\",\n    \"json\": {},\n    \"branding\": {\n      \"colorScheme\": \"string\",\n      \"colors\": {},\n      \"fonts\": [\n        {\n          \"family\": \"string\",\n          \"role\": \"string\"\n        },\n        {\n          \"family\": \"string\",\n          \"role\": \"string\"\n        }\n      ],\n      \"typography\": {},\n      \"spacing\": {},\n      \"components\": {},\n      \"images\": {},\n      \"personality\": {},\n      \"designSystem\": {},\n      \"confidence\": {}\n    }\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "8515feab-e443-4769-87f7-6f0dc81a79ea",
+              "id": "60294678-ecda-4785-9c35-21c3216f2d87",
               "name": "Invalid request parameters",
               "originalRequest": {
                 "url": {
@@ -154,7 +154,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -175,7 +175,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "6cc92152-3401-46ad-b960-d05a4fcd8bba",
+              "id": "97f28dce-b723-4a3d-9aa6-efeb5b431d2a",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -207,7 +207,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -234,10 +234,10 @@
           }
         },
         {
-          "id": "52847e62-9ac0-472b-9ed4-d97b9f4b7987",
-          "name": "Search the Web",
+          "id": "47e2d0fe-36cd-47a8-87ce-89d62f97e156",
+          "name": "Search the web",
           "request": {
-            "name": "Search the Web",
+            "name": "Search the web",
             "description": {
               "content": "Performs a web search and returns search results with titles, URLs, and descriptions",
               "type": "text/plain"
@@ -294,7 +294,7 @@
           },
           "response": [
             {
-              "id": "56318b5c-397c-4065-819a-eb179468f1b4",
+              "id": "7c6269bf-f00b-44f8-9063-90006fd01104",
               "name": "Search completed successfully",
               "originalRequest": {
                 "url": {
@@ -342,12 +342,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"jobId\": \"string\",\n  \"status\": \"pending\",\n  \"error\": \"string\",\n  \"data\": {\n    \"query\": \"string\",\n    \"results\": [\n      {\n        \"title\": \"string\",\n        \"url\": \"string\",\n        \"description\": \"string\"\n      },\n      {\n        \"title\": \"string\",\n        \"url\": \"string\",\n        \"description\": \"string\"\n      }\n    ]\n  }\n}",
+              "body": "{\n  \"jobId\": \"string\",\n  \"status\": \"failed\",\n  \"error\": \"string\",\n  \"data\": {\n    \"query\": \"string\",\n    \"results\": [\n      {\n        \"title\": \"string\",\n        \"url\": \"string\",\n        \"description\": \"string\"\n      },\n      {\n        \"title\": \"string\",\n        \"url\": \"string\",\n        \"description\": \"string\"\n      }\n    ]\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "a4185e34-bc85-48db-a2b5-36594daeb0e6",
+              "id": "6671e09b-4ded-447a-9b2d-da1202f290b5",
               "name": "Invalid search parameters",
               "originalRequest": {
                 "url": {
@@ -400,7 +400,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "6271a542-8b55-466a-8213-ebf0be14b190",
+              "id": "f0ce3079-b44d-4a71-9807-aa36226859c7",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -459,10 +459,10 @@
           }
         },
         {
-          "id": "eb83682a-7a1d-4628-9a27-a5a18e576256",
-          "name": "Start a Web Crawl Job",
+          "id": "18b83b9b-8657-42f0-b57f-941aa5df09ae",
+          "name": "Start a web crawl job",
           "request": {
-            "name": "Start a Web Crawl Job",
+            "name": "Start a web crawl job",
             "description": {
               "content": "Starts an asynchronous crawl job that follows links from a starting URL and returns content from each page in the specified formats.",
               "type": "text/plain"
@@ -509,7 +509,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  },\n  \"crawlOptions\": {\n    \"maxPages\": 10,\n    \"followLinks\": true,\n    \"ignoreSitemap\": false,\n    \"excludePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"includePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  },\n  \"crawlOptions\": {\n    \"maxPages\": 10,\n    \"followLinks\": true,\n    \"ignoreSitemap\": false,\n    \"excludePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"includePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -519,7 +519,7 @@
           },
           "response": [
             {
-              "id": "f8f1b0da-1419-4a94-8662-96db84bf2e35",
+              "id": "6f048510-324e-490c-8c0f-aa28b13b6c35",
               "name": "Crawl job started successfully",
               "originalRequest": {
                 "url": {
@@ -551,7 +551,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  },\n  \"crawlOptions\": {\n    \"maxPages\": 10,\n    \"followLinks\": true,\n    \"ignoreSitemap\": false,\n    \"excludePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"includePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  },\n  \"crawlOptions\": {\n    \"maxPages\": 10,\n    \"followLinks\": true,\n    \"ignoreSitemap\": false,\n    \"excludePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"includePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -572,7 +572,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "0fe39a95-1e25-47fb-9cff-a192d29284e9",
+              "id": "448769cc-065d-422e-a4a7-97af3beb8136",
               "name": "Invalid request parameters",
               "originalRequest": {
                 "url": {
@@ -604,7 +604,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  },\n  \"crawlOptions\": {\n    \"maxPages\": 10,\n    \"followLinks\": true,\n    \"ignoreSitemap\": false,\n    \"excludePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"includePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  },\n  \"crawlOptions\": {\n    \"maxPages\": 10,\n    \"followLinks\": true,\n    \"ignoreSitemap\": false,\n    \"excludePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"includePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -625,7 +625,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "6c3cfdb1-4538-471f-9ed0-8e4b1219c587",
+              "id": "af00da94-5ee5-48b7-be37-e313d2a989ff",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -657,7 +657,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  },\n  \"crawlOptions\": {\n    \"maxPages\": 10,\n    \"followLinks\": true,\n    \"ignoreSitemap\": false,\n    \"excludePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"includePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  },\n  \"crawlOptions\": {\n    \"maxPages\": 10,\n    \"followLinks\": true,\n    \"ignoreSitemap\": false,\n    \"excludePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"includePatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -684,10 +684,10 @@
           }
         },
         {
-          "id": "858eefba-d158-4c1e-a7f8-2b3400437a8e",
-          "name": "Get Web Crawl Job Results",
+          "id": "727ed2ca-f450-4e91-9ad4-3a773e48d206",
+          "name": "Get web crawl job results",
           "request": {
-            "name": "Get Web Crawl Job Results",
+            "name": "Get web crawl job results",
             "description": {
               "content": "Retrieves the status and results of a web crawl job. Results are paginated.",
               "type": "text/plain"
@@ -751,7 +751,7 @@
           },
           "response": [
             {
-              "id": "0ae2d2b6-05e2-4b61-96b6-1454700c579c",
+              "id": "c0fa5685-71a9-487c-8b99-c1d3a4c1c956",
               "name": "Web crawl job details retrieved successfully",
               "originalRequest": {
                 "url": {
@@ -809,12 +809,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"completed\",\n  \"jobId\": \"097f4f9c-9873-18cf-8421-a8d5d603b180\",\n  \"error\": \"string\",\n  \"totalPages\": 7603,\n  \"totalPageBatches\": 7561,\n  \"currentPageBatch\": 326,\n  \"batchSize\": 2957,\n  \"data\": [\n    {\n      \"url\": \"string\",\n      \"status\": \"failed\",\n      \"error\": \"string\",\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"markdown\": \"string\",\n      \"html\": \"string\",\n      \"links\": [\n        \"string\",\n        \"string\"\n      ],\n      \"screenshot\": \"string\",\n      \"json\": {},\n      \"branding\": {\n        \"colorScheme\": \"string\",\n        \"colors\": {},\n        \"fonts\": [\n          {\n            \"family\": \"string\",\n            \"role\": \"string\"\n          },\n          {\n            \"family\": \"string\",\n            \"role\": \"string\"\n          }\n        ],\n        \"typography\": {},\n        \"spacing\": {},\n        \"components\": {},\n        \"images\": {},\n        \"personality\": {},\n        \"designSystem\": {},\n        \"confidence\": {}\n      }\n    },\n    {\n      \"url\": \"string\",\n      \"status\": \"completed\",\n      \"error\": \"string\",\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"markdown\": \"string\",\n      \"html\": \"string\",\n      \"links\": [\n        \"string\",\n        \"string\"\n      ],\n      \"screenshot\": \"string\",\n      \"json\": {},\n      \"branding\": {\n        \"colorScheme\": \"string\",\n        \"colors\": {},\n        \"fonts\": [\n          {\n            \"family\": \"string\",\n            \"role\": \"string\"\n          },\n          {\n            \"family\": \"string\",\n            \"role\": \"string\"\n          }\n        ],\n        \"typography\": {},\n        \"spacing\": {},\n        \"components\": {},\n        \"images\": {},\n        \"personality\": {},\n        \"designSystem\": {},\n        \"confidence\": {}\n      }\n    }\n  ]\n}",
+              "body": "{\n  \"status\": \"stopped\",\n  \"jobId\": \"a31f1cda-ab96-43b2-7963-27a249860638\",\n  \"error\": \"string\",\n  \"totalPages\": 5623,\n  \"totalPageBatches\": 5296,\n  \"currentPageBatch\": 3925,\n  \"batchSize\": 5230,\n  \"data\": [\n    {\n      \"url\": \"string\",\n      \"status\": \"completed\",\n      \"error\": \"string\",\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      },\n      \"markdown\": \"string\",\n      \"html\": \"string\",\n      \"links\": [\n        \"string\",\n        \"string\"\n      ],\n      \"screenshot\": \"string\",\n      \"json\": {},\n      \"branding\": {\n        \"colorScheme\": \"string\",\n        \"colors\": {},\n        \"fonts\": [\n          {\n            \"family\": \"string\",\n            \"role\": \"string\"\n          },\n          {\n            \"family\": \"string\",\n            \"role\": \"string\"\n          }\n        ],\n        \"typography\": {},\n        \"spacing\": {},\n        \"components\": {},\n        \"images\": {},\n        \"personality\": {},\n        \"designSystem\": {},\n        \"confidence\": {}\n      }\n    },\n    {\n      \"url\": \"string\",\n      \"status\": \"completed\",\n      \"error\": \"string\",\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"markdown\": \"string\",\n      \"html\": \"string\",\n      \"links\": [\n        \"string\",\n        \"string\"\n      ],\n      \"screenshot\": \"string\",\n      \"json\": {},\n      \"branding\": {\n        \"colorScheme\": \"string\",\n        \"colors\": {},\n        \"fonts\": [\n          {\n            \"family\": \"string\",\n            \"role\": \"string\"\n          },\n          {\n            \"family\": \"string\",\n            \"role\": \"string\"\n          }\n        ],\n        \"typography\": {},\n        \"spacing\": {},\n        \"components\": {},\n        \"images\": {},\n        \"personality\": {},\n        \"designSystem\": {},\n        \"confidence\": {}\n      }\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "148d2a41-4b2b-4253-991c-e0856ab7c552",
+              "id": "5920bed8-d5f0-4a78-89a7-f44d28a14096",
               "name": "Crawl job not found",
               "originalRequest": {
                 "url": {
@@ -877,7 +877,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "6ed7995d-bc16-4c65-b07c-fdb337109b48",
+              "id": "39ca4bf2-fd53-4a05-a662-1bb149e36148",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -946,10 +946,10 @@
           }
         },
         {
-          "id": "f32863e9-5943-4e02-8364-f1b0cbaf9326",
-          "name": "Get Web Crawl Job Status",
+          "id": "18ea7ad5-27d0-4aaa-9877-9112fe4d8283",
+          "name": "Get web crawl job status",
           "request": {
-            "name": "Get Web Crawl Job Status",
+            "name": "Get web crawl job status",
             "description": {
               "content": "Retrieves just the status of a web crawl job without the full results.",
               "type": "text/plain"
@@ -1003,7 +1003,7 @@
           },
           "response": [
             {
-              "id": "d8ec28dc-26ae-44ee-8ed7-dbcef6a423ba",
+              "id": "f5373e33-1885-4e04-9bf8-e5e40580aed2",
               "name": "Web crawl job status",
               "originalRequest": {
                 "url": {
@@ -1053,12 +1053,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"failed\"\n}",
+              "body": "{\n  \"status\": \"pending\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "50f17966-175d-4a47-b240-b1a9765ea2e7",
+              "id": "5e2cf3fa-a5d5-4768-b3a9-0bece679f6c0",
               "name": "Crawl job not found",
               "originalRequest": {
                 "url": {
@@ -1113,7 +1113,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "38c2f756-063f-4009-910b-8a9eec928c4b",
+              "id": "6972ee82-5071-4f5f-9165-38e1320e3fbc",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -1174,7 +1174,7 @@
           }
         },
         {
-          "id": "748ab21d-5ad9-457e-9742-efe30591f3f0",
+          "id": "e85f4f1b-4d40-4956-bd28-e97ceaf404be",
           "name": "Fetch a Web Page with X402 Payment",
           "request": {
             "name": "Fetch a Web Page with X402 Payment",
@@ -1214,7 +1214,7 @@
             "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
+              "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1224,7 +1224,7 @@
           },
           "response": [
             {
-              "id": "5f7154db-ae57-4816-92bc-26ea632ebc20",
+              "id": "b3554ef1-b262-42ba-9dd2-e429a7762648",
               "name": "Page fetched successfully (after valid payment)",
               "originalRequest": {
                 "url": {
@@ -1262,7 +1262,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1284,12 +1284,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"jobId\": \"string\",\n  \"status\": \"pending\",\n  \"error\": \"string\",\n  \"data\": {\n    \"metadata\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"html\": \"string\",\n    \"markdown\": \"string\",\n    \"links\": [\n      \"string\",\n      \"string\"\n    ],\n    \"screenshot\": \"string\",\n    \"json\": {},\n    \"branding\": {\n      \"colorScheme\": \"string\",\n      \"colors\": {},\n      \"fonts\": [\n        {\n          \"family\": \"string\",\n          \"role\": \"string\"\n        },\n        {\n          \"family\": \"string\",\n          \"role\": \"string\"\n        }\n      ],\n      \"typography\": {},\n      \"spacing\": {},\n      \"components\": {},\n      \"images\": {},\n      \"personality\": {},\n      \"designSystem\": {},\n      \"confidence\": {}\n    }\n  }\n}",
+              "body": "{\n  \"jobId\": \"string\",\n  \"status\": \"failed\",\n  \"error\": \"string\",\n  \"data\": {\n    \"metadata\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"html\": \"string\",\n    \"markdown\": \"string\",\n    \"links\": [\n      \"string\",\n      \"string\"\n    ],\n    \"screenshot\": \"string\",\n    \"json\": {},\n    \"branding\": {\n      \"colorScheme\": \"string\",\n      \"colors\": {},\n      \"fonts\": [\n        {\n          \"family\": \"string\",\n          \"role\": \"string\"\n        },\n        {\n          \"family\": \"string\",\n          \"role\": \"string\"\n        }\n      ],\n      \"typography\": {},\n      \"spacing\": {},\n      \"components\": {},\n      \"images\": {},\n      \"personality\": {},\n      \"designSystem\": {},\n      \"confidence\": {}\n    }\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "344af6de-258f-44da-a2f6-f9af07a4dd71",
+              "id": "8b032ca0-f1a4-4073-af52-4fdb56fec939",
               "name": "Invalid request parameters",
               "originalRequest": {
                 "url": {
@@ -1327,7 +1327,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1348,7 +1348,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "dff3b281-e06a-46d9-897d-c984308bef46",
+              "id": "6ffa9fe9-740d-4108-9745-f55edcf24913",
               "name": "Payment Required - returned on first request without PAYMENT-SIGNATURE header",
               "originalRequest": {
                 "url": {
@@ -1386,7 +1386,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1413,7 +1413,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "b0ef8c7d-9b4e-4c17-b777-1c77c59a7275",
+              "id": "cb0f44a9-9945-4eb7-9270-ca97a0ec574c",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -1451,7 +1451,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"stealth\": \"<string>\",\n  \"outputs\": {\n    \"formats\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"sanitize\": \"<string>\",\n    \"includeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"excludeSelectors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"storageState\": {\n      \"localStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"sessionStorage\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  },\n  \"browser\": {\n    \"screen\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"profileId\": \"<string>\",\n    \"solveCaptchas\": \"<string>\",\n    \"location\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\"\n    }\n  },\n  \"navigation\": {\n    \"waitUntil\": \"<string>\",\n    \"timeoutMs\": \"<integer>\",\n    \"waitFor\": \"<integer>\"\n  },\n  \"cache\": {\n    \"maxAgeSeconds\": \"<integer>\"\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1478,7 +1478,7 @@
           }
         },
         {
-          "id": "48fd7073-cdd1-4e4e-9e87-e41fd271631d",
+          "id": "260126fb-2634-46c4-a8bf-9e199d8f2bfe",
           "name": "Search the Web with X402 Payment",
           "request": {
             "name": "Search the Web with X402 Payment",
@@ -1528,7 +1528,7 @@
           },
           "response": [
             {
-              "id": "a4367391-86b4-48da-bd08-042ce2f933a1",
+              "id": "c5b5783c-c1d9-404b-9f67-ef67935f236d",
               "name": "Search completed successfully (after valid payment)",
               "originalRequest": {
                 "url": {
@@ -1588,12 +1588,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"jobId\": \"string\",\n  \"status\": \"stopped\",\n  \"error\": \"string\",\n  \"data\": {\n    \"query\": \"string\",\n    \"results\": [\n      {\n        \"title\": \"string\",\n        \"url\": \"string\",\n        \"description\": \"string\"\n      },\n      {\n        \"title\": \"string\",\n        \"url\": \"string\",\n        \"description\": \"string\"\n      }\n    ]\n  }\n}",
+              "body": "{\n  \"jobId\": \"string\",\n  \"status\": \"running\",\n  \"error\": \"string\",\n  \"data\": {\n    \"query\": \"string\",\n    \"results\": [\n      {\n        \"title\": \"string\",\n        \"url\": \"string\",\n        \"description\": \"string\"\n      },\n      {\n        \"title\": \"string\",\n        \"url\": \"string\",\n        \"description\": \"string\"\n      }\n    ]\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "23c259de-38e6-404c-9fbe-2ad13129213f",
+              "id": "2a5b557f-3a3a-49ba-990f-14bd4064018f",
               "name": "Invalid search parameters",
               "originalRequest": {
                 "url": {
@@ -1652,7 +1652,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "b76e670a-168a-4d03-a38a-bb1b8d60c359",
+              "id": "546971c9-cdfc-402a-aa78-239a86698674",
               "name": "Payment Required - returned on first request without PAYMENT-SIGNATURE header",
               "originalRequest": {
                 "url": {
@@ -1717,7 +1717,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "9bdd4f0b-ace8-43fa-8dfc-3eefc19c118f",
+              "id": "95f832b8-ed15-4838-991e-9f878e62ac1a",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -1811,11 +1811,11 @@
     ]
   },
   "info": {
-    "_postman_id": "7b2640c7-6130-462e-94e7-c49e0148ca31",
-    "name": "Hyperbrowser Web API",
+    "_postman_id": "a82cbe78-a7ba-4326-9d60-e769a7a8a831",
+    "name": "Hyperbrowser Agents Web API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "Stateless web utilities: fetch a page, run a web search, or start a web-wide crawl job. Includes x402 payment-gated variants.\n\nContact Support:\n Name: Hyperbrowser",
+      "content": "Start, stop, and monitor agentic browser tasks across HyperAgent, Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI CUA.\n\nContact Support:\n Name: Hyperbrowser",
       "type": "text/plain"
     }
   }

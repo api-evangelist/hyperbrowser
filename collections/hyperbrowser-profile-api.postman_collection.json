@@ -1,254 +1,18 @@
 {
   "item": [
     {
-      "id": "48262e77-37af-4a0c-9b4b-18a54ba25846",
-      "name": "Profiles",
+      "id": "85c4687b-a8cd-4dd7-aba6-ef25e08994fe",
+      "name": "Profile",
       "description": {
         "content": "",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "05bc1d9d-716f-4b6b-9342-678bd4ab8da1",
-          "name": "Get list of profiles",
+          "id": "60421bcc-eebf-447e-b336-8b468dc5569d",
+          "name": "Creates a new profile",
           "request": {
-            "name": "Get list of profiles",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "profiles"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "page",
-                  "value": "1"
-                },
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "10"
-                },
-                {
-                  "disabled": false,
-                  "key": "name",
-                  "value": "<string>"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "x-api-key"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "b4f53848-0a6e-49dd-8652-9cb722d7dce0",
-              "name": "List of profiles",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "profiles"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "page",
-                      "value": "1"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "name",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"profiles\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"teamId\": \"string\",\n      \"createdAt\": \"string\",\n      \"updatedAt\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"teamId\": \"string\",\n      \"createdAt\": \"string\",\n      \"updatedAt\": \"string\"\n    }\n  ],\n  \"totalCount\": 2510.4669416706315,\n  \"page\": 202.17491601954185,\n  \"perPage\": 9741.696540708124\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "2a69e6c1-c997-4383-a94e-3b3b9bbdbd1d",
-              "name": "Invalid query parameters",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "profiles"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "page",
-                      "value": "1"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "name",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c3697657-5116-4906-ac9e-1e07d5d9fd91",
-              "name": "Server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "profiles"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "page",
-                      "value": "1"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "name",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "fecee485-ecd5-42d8-846f-ca49095dcfdb",
-          "name": "Creates a New Profile",
-          "request": {
-            "name": "Creates a New Profile",
+            "name": "Creates a new profile",
             "description": {},
             "url": {
               "path": [
@@ -301,7 +65,7 @@
           },
           "response": [
             {
-              "id": "bd903a5e-a561-4fbe-a94c-ca132bccf910",
+              "id": "3dfbcd15-1007-49a7-83dd-c6884088911a",
               "name": "Profile created",
               "originalRequest": {
                 "url": {
@@ -359,10 +123,10 @@
           }
         },
         {
-          "id": "093d9877-9633-4b4e-a6a5-12b615fda003",
-          "name": "Get Profile by ID",
+          "id": "fc71460e-b137-4245-b898-0d3ccac176e9",
+          "name": "Get profile by ID",
           "request": {
-            "name": "Get Profile by ID",
+            "name": "Get profile by ID",
             "description": {},
             "url": {
               "path": [
@@ -411,7 +175,7 @@
           },
           "response": [
             {
-              "id": "4894db8b-d71b-4f9b-b6bf-6f2a5d03077d",
+              "id": "34c3002a-55d9-4383-9b42-16094fb99d68",
               "name": "Profile details",
               "originalRequest": {
                 "url": {
@@ -464,7 +228,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "1efb50ed-76ff-4b6b-9a01-0825cf20e26c",
+              "id": "4602b6c5-79f1-43f1-8705-a10786fb5632",
               "name": "Profile not found",
               "originalRequest": {
                 "url": {
@@ -523,10 +287,10 @@
           }
         },
         {
-          "id": "bad5fad8-90a9-4f51-91a7-1c83041b815a",
-          "name": "Delete Profile by ID",
+          "id": "be569f4d-0305-4269-9525-ce5d30c8b301",
+          "name": "Delete profile by ID",
           "request": {
-            "name": "Delete Profile by ID",
+            "name": "Delete profile by ID",
             "description": {},
             "url": {
               "path": [
@@ -575,7 +339,7 @@
           },
           "response": [
             {
-              "id": "c72320a1-21fb-4d88-8ea8-bfbdf06e8f89",
+              "id": "82034480-15f1-4efd-947b-e3ae9fa88d7f",
               "name": "Profile deleted",
               "originalRequest": {
                 "url": {
@@ -663,8 +427,8 @@
     ]
   },
   "info": {
-    "_postman_id": "1107509d-91b3-4702-af58-bb1dfc8bc21a",
-    "name": "Hyperbrowser Agents Profiles API",
+    "_postman_id": "a48d6da4-cd34-445a-9b63-ed332ccb0064",
+    "name": "Hyperbrowser Agents Profile API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "Start, stop, and monitor agentic browser tasks across HyperAgent, Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI CUA.\n\nContact Support:\n Name: Hyperbrowser",

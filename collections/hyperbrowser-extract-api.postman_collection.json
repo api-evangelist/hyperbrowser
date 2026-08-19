@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "c31ea398-561a-44f7-986c-eec3ac010d82",
+      "id": "a1029da0-7e1b-4000-a9dc-d83c5182be35",
       "name": "Extract",
       "description": {
         "content": "",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "14c8b422-f1e0-458e-ad69-30bfe9f89cfa",
+          "id": "eb06401d-96d9-4375-b4b0-a84c4ac0e2fd",
           "name": "Start an Extract Job",
           "request": {
             "name": "Start an Extract Job",
@@ -65,7 +65,7 @@
           },
           "response": [
             {
-              "id": "76145ae7-8200-4707-a98d-21266a696add",
+              "id": "af26bba7-0120-4c97-bd7a-dc317d69b798",
               "name": "Extract job started successfully",
               "originalRequest": {
                 "url": {
@@ -117,7 +117,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "779062bc-7099-4614-9afa-2589362ba79a",
+              "id": "8b877502-85e1-467c-8cc5-9e86a8114113",
               "name": "Invalid request parameters",
               "originalRequest": {
                 "url": {
@@ -169,7 +169,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "185147e1-07ac-44a7-b08f-a38af2fcfa44",
+              "id": "4a4533fe-7430-4a8c-adfd-989c65b28b5c",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -227,7 +227,7 @@
           }
         },
         {
-          "id": "984f8f6b-90ae-4534-a65b-94ae67360d60",
+          "id": "9b7dd37a-aaf8-43e3-a1e5-a171e1499687",
           "name": "Get Extract Job Status and Results",
           "request": {
             "name": "Get Extract Job Status and Results",
@@ -279,7 +279,7 @@
           },
           "response": [
             {
-              "id": "e14b64d2-4177-4cbf-8b8d-b69890a51eef",
+              "id": "fa3d8e1b-53f2-4567-b0a8-a0cc7d1ea969",
               "name": "Extract job details",
               "originalRequest": {
                 "url": {
@@ -327,12 +327,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"jobId\": \"string\",\n  \"status\": \"pending\",\n  \"data\": {},\n  \"error\": \"string\"\n}",
+              "body": "{\n  \"jobId\": \"string\",\n  \"status\": \"failed\",\n  \"data\": {},\n  \"error\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "ca5fbd15-a265-488b-b01c-6ae1c9bf83f6",
+              "id": "2e0628e9-095b-4636-a2f0-a9f365c783eb",
               "name": "Extract job not found",
               "originalRequest": {
                 "url": {
@@ -385,7 +385,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "f4e310c9-9d83-4d46-b5c8-efab0dda7b96",
+              "id": "c6388878-aa0b-46f2-a192-e870e43e3abc",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -444,7 +444,7 @@
           }
         },
         {
-          "id": "7e7b25d0-be69-4985-9faa-6aef178933ba",
+          "id": "eccb2a50-cee6-4c25-b7c8-fc647e997a2a",
           "name": "Get Extract Job Status",
           "request": {
             "name": "Get Extract Job Status",
@@ -497,7 +497,7 @@
           },
           "response": [
             {
-              "id": "c6246d04-ecf4-4640-963a-da799d12125f",
+              "id": "5f9db371-e084-40dc-b09a-0d258284be31",
               "name": "Extract job status",
               "originalRequest": {
                 "url": {
@@ -546,12 +546,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"pending\"\n}",
+              "body": "{\n  \"status\": \"failed\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "ad5b5e4a-70d0-4edf-8466-2722b6c12d20",
+              "id": "7ecdb7f8-a3d3-44f0-a49d-98e43642592d",
               "name": "Extract job not found",
               "originalRequest": {
                 "url": {
@@ -605,7 +605,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "9234ab24-edde-40b5-8e66-9f699a57c92f",
+              "id": "1281490a-98d3-4c61-ad05-b516cdbcef96",
               "name": "Server error",
               "originalRequest": {
                 "url": {
@@ -694,11 +694,11 @@
     ]
   },
   "info": {
-    "_postman_id": "f0f9dd69-70f0-4b54-92a1-e9cc4ba9800a",
-    "name": "Hyperbrowser Extract API",
+    "_postman_id": "8571e401-0d32-4155-8541-53525a386906",
+    "name": "Hyperbrowser Agents Extract API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "Structured data extraction jobs that pull typed records from one or more pages using prompts and JSON schemas.\n\nContact Support:\n Name: Hyperbrowser",
+      "content": "Start, stop, and monitor agentic browser tasks across HyperAgent, Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI CUA.\n\nContact Support:\n Name: Hyperbrowser",
       "type": "text/plain"
     }
   }

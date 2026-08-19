@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Hyperbrowser Web API",
+    "name": "Hyperbrowser Agents Web API",
     "version": "1.0.0"
   },
   "request": {
@@ -21,7 +21,7 @@
       "items": [
         {
           "info": {
-            "name": "Fetch a Web Page",
+            "name": "Fetch a web page",
             "type": "http"
           },
           "http": {
@@ -42,7 +42,7 @@
         },
         {
           "info": {
-            "name": "Search the Web",
+            "name": "Search the web",
             "type": "http"
           },
           "http": {
@@ -63,7 +63,7 @@
         },
         {
           "info": {
-            "name": "Start a Web Crawl Job",
+            "name": "Start a web crawl job",
             "type": "http"
           },
           "http": {
@@ -84,7 +84,7 @@
         },
         {
           "info": {
-            "name": "Get Web Crawl Job Results",
+            "name": "Get web crawl job results",
             "type": "http"
           },
           "http": {
@@ -118,7 +118,7 @@
         },
         {
           "info": {
-            "name": "Get Web Crawl Job Status",
+            "name": "Get web crawl job status",
             "type": "http"
           },
           "http": {

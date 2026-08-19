@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Hyperbrowser Crawl API",
+    "name": "Hyperbrowser Agents Crawl API",
     "version": "1.0.0"
   },
   "request": {
