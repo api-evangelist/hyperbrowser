@@ -40,6 +40,21 @@ tags:
   - CAPTCHA Solving
   - MCP
   - HyperAgent
+  - x402
+tags_raw:
+  - Headless Browser
+  - Browser Infrastructure
+  - Web Scraping
+  - Web Crawling
+  - Data Extraction
+  - AI Agents
+  - Browser Automation
+  - Computer Use
+  - Stealth
+  - Proxies
+  - CAPTCHA Solving
+  - MCP
+  - HyperAgent
   - X402
 url: https://raw.githubusercontent.com/api-evangelist/hyperbrowser/refs/heads/main/apis.yml
 created: '2026-05-23'
@@ -217,6 +232,11 @@ apis:
   - Web
   - Fetch
   - Search
+  - x402
+  tags_raw:
+  - Web
+  - Fetch
+  - Search
   - X402
   properties:
   - type: Documentation
@@ -264,6 +284,8 @@ apis:
   humanURL: https://docs.hyperbrowser.ai/sessions/overview
   baseURL: https://api.hyperbrowser.ai
   tags:
+  - x402
+  tags_raw:
   - X402
   properties:
   - type: OpenAPI
