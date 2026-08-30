@@ -52,7 +52,7 @@ tags:
   - CAPTCHA Solving
   - MCP
   - HyperAgent
-  - x402
+  - X402
 tags_raw:
   - Headless Browser
   - Browser Infrastructure
@@ -244,7 +244,7 @@ apis:
   - Web
   - Fetch
   - Search
-  - x402
+  - X402
   tags_raw:
   - Web
   - Fetch
@@ -296,7 +296,7 @@ apis:
   humanURL: https://docs.hyperbrowser.ai/sessions/overview
   baseURL: https://api.hyperbrowser.ai
   tags:
-  - x402
+  - X402
   tags_raw:
   - X402
   properties:
