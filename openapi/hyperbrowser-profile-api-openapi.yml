@@ -1,19 +1,10 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Hyperbrowser Agents Profile API
+  title: Hyperbrowser Profile API
   version: 1.0.0
-  description: Start, stop, and monitor agentic browser tasks across HyperAgent, Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI CUA.
-  contact:
-    name: Hyperbrowser
-    url: https://hyperbrowser.ai
-  license:
-    name: Hyperbrowser Terms
-    url: https://hyperbrowser.ai/terms
 servers:
 - url: https://api.hyperbrowser.ai
   description: Production server
-security:
-- ApiKeyAuth: []
 tags:
 - name: Profile
 paths:
@@ -43,6 +34,8 @@ paths:
                 $ref: '#/components/schemas/CreateProfileResponse'
       tags:
       - Profile
+      operationId: postApiProfile
+      x-operation-id-source: derived
   /api/profile/{id}:
     get:
       summary: Get profile by ID
@@ -88,6 +81,8 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
       tags:
       - Profile
+      operationId: getApiProfileById
+      x-operation-id-source: derived
     delete:
       summary: Delete profile by ID
       security:
@@ -126,26 +121,10 @@ paths:
                 $ref: '#/components/schemas/BasicResponse'
       tags:
       - Profile
+      operationId: deleteApiProfileById
+      x-operation-id-source: derived
 components:
   schemas:
-    CreateProfileParams:
-      type: object
-      properties:
-        name:
-          type: string
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-    CreateProfileResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-          nullable: true
     BasicResponse:
       type: object
       properties:
@@ -157,8 +136,9 @@ components:
         id:
           type: string
         name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         teamId:
           type: string
         createdAt:
@@ -167,9 +147,27 @@ components:
         updatedAt:
           type: string
           format: iso8601
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    CreateProfileResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type:
+          - string
+          - 'null'
+    CreateProfileParams:
+      type: object
+      properties:
+        name:
+          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
       in: header
       name: x-api-key
-      description: Account API key from app.hyperbrowser.ai

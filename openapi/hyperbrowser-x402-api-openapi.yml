@@ -1,19 +1,10 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Hyperbrowser Agents X402 API
+  title: Hyperbrowser X402 API
   version: 1.0.0
-  description: Start, stop, and monitor agentic browser tasks across HyperAgent, Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI CUA.
-  contact:
-    name: Hyperbrowser
-    url: https://hyperbrowser.ai
-  license:
-    name: Hyperbrowser Terms
-    url: https://hyperbrowser.ai/terms
 servers:
 - url: https://api.hyperbrowser.ai
   description: Production server
-security:
-- ApiKeyAuth: []
 tags:
 - name: X402
 paths:
@@ -71,6 +62,8 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
       tags:
       - X402
+      operationId: postX402WebFetch
+      x-operation-id-source: derived
   /x402/web/search:
     post:
       summary: Search the web with X402 payment
@@ -125,20 +118,16 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
       tags:
       - X402
+      operationId: postX402WebSearch
+      x-operation-id-source: derived
 components:
   schemas:
-    WebSearchResponseData:
-      type: object
-      properties:
-        query:
-          type: string
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/WebSearchResultItem'
-      required:
-      - query
-      - results
+    FetchStealthMode:
+      type: string
+      enum:
+      - none
+      - auto
+      - ultra
     WebSearchParams:
       type: object
       properties:
@@ -154,6 +143,70 @@ components:
           $ref: '#/components/schemas/WebSearchFilters'
       required:
       - query
+    FetchResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          $ref: '#/components/schemas/FetchStatus'
+        error:
+          type:
+          - string
+          - 'null'
+        data:
+          $ref: '#/components/schemas/FetchResponseData'
+      required:
+      - jobId
+      - status
+    FetchSanitizeMode:
+      type: string
+      enum:
+      - none
+      - basic
+      - advanced
+    FetchCacheOptions:
+      type: object
+      properties:
+        maxAgeSeconds:
+          type: integer
+    FetchOutputJson:
+      allOf:
+      - $ref: '#/components/schemas/FetchOutputJsonOptions'
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - json
+        required:
+        - type
+    FetchOutputScreenshotOptions:
+      type: object
+      properties:
+        fullPage:
+          type: boolean
+        format:
+          $ref: '#/components/schemas/FetchScreenshotFormat'
+        cropToContent:
+          type: boolean
+        cropToContentMaxHeight:
+          type: integer
+        cropToContentMinHeight:
+          type: integer
+    WebSearchResultItem:
+      type: object
+      properties:
+        title:
+          type: string
+        url:
+          type: string
+        description:
+          type: string
+      required:
+      - title
+      - url
+      - description
     FetchParams:
       type: object
       properties:
@@ -171,201 +224,17 @@ components:
           $ref: '#/components/schemas/FetchCacheOptions'
       required:
       - url
-    FetchOutputScreenshotOptions:
+    FetchStorageStateOptions:
       type: object
       properties:
-        fullPage:
-          type: boolean
-        format:
-          $ref: '#/components/schemas/FetchScreenshotFormat'
-        cropToContent:
-          type: boolean
-        cropToContentMaxHeight:
-          type: integer
-        cropToContentMinHeight:
-          type: integer
-    FetchSanitizeMode:
-      type: string
-      enum:
-      - none
-      - basic
-      - advanced
-    WebSearchResponse:
-      type: object
-      properties:
-        jobId:
-          type: string
-        status:
-          $ref: '#/components/schemas/WebSearchStatus'
-        error:
-          type: string
-          nullable: true
-        data:
-          $ref: '#/components/schemas/WebSearchResponseData'
-      required:
-      - jobId
-      - status
-    FetchScreenshotFormat:
-      type: string
-      enum:
-      - jpeg
-      - png
-      - webp
-    WebSearchFilters:
-      type: object
-      properties:
-        exactPhrase:
-          type: boolean
-        semanticPhrase:
-          type: boolean
-        excludeTerms:
-          type: array
-          items:
+        localStorage:
+          type: object
+          additionalProperties:
             type: string
-        boostTerms:
-          type: array
-          items:
+        sessionStorage:
+          type: object
+          additionalProperties:
             type: string
-        filetype:
-          $ref: '#/components/schemas/WebSearchFiletype'
-        site:
-          type: string
-        excludeSite:
-          type: string
-        intitle:
-          type: string
-        inurl:
-          type: string
-    FetchStealthMode:
-      type: string
-      enum:
-      - none
-      - auto
-      - ultra
-    FetchOutputMarkdown:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - markdown
-      required:
-      - type
-    FetchBrowserLocationOptions:
-      type: object
-      properties:
-        country:
-          type: string
-        state:
-          type: string
-        city:
-          type: string
-    FetchResponse:
-      type: object
-      properties:
-        jobId:
-          type: string
-        status:
-          $ref: '#/components/schemas/FetchStatus'
-        error:
-          type: string
-          nullable: true
-        data:
-          $ref: '#/components/schemas/FetchResponseData'
-      required:
-      - jobId
-      - status
-    FetchOutputJson:
-      allOf:
-      - $ref: '#/components/schemas/FetchOutputJsonOptions'
-      - type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - json
-        required:
-        - type
-    WebSearchResultItem:
-      type: object
-      properties:
-        title:
-          type: string
-        url:
-          type: string
-        description:
-          type: string
-      required:
-      - title
-      - url
-      - description
-    FetchNavigationOptions:
-      type: object
-      properties:
-        waitUntil:
-          $ref: '#/components/schemas/FetchWaitUntil'
-        timeoutMs:
-          type: integer
-        waitFor:
-          type: integer
-    ScreenConfig:
-      type: object
-      properties:
-        width:
-          type: number
-          default: 1280
-        height:
-          type: number
-          default: 720
-    FetchOutputScreenshot:
-      allOf:
-      - $ref: '#/components/schemas/FetchOutputScreenshotOptions'
-      - type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - screenshot
-        required:
-        - type
-    FetchStatus:
-      type: string
-      enum:
-      - completed
-      - failed
-      - pending
-      - running
-    WebSearchFiletype:
-      type: string
-      enum:
-      - pdf
-      - doc
-      - docx
-      - xls
-      - xlsx
-      - ppt
-      - pptx
-      - html
-    FetchOutputBranding:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - branding
-      required:
-      - type
-    FetchCacheOptions:
-      type: object
-      properties:
-        maxAgeSeconds:
-          type: integer
-    FetchWaitUntil:
-      type: string
-      enum:
-      - load
-      - domcontentloaded
-      - networkidle
     BrandingProfile:
       type: object
       description: Visual brand profile extracted via DOM analysis + LLM enhancement. All fields optional; the server may return a partial profile when the LLM refuses or fails.
@@ -407,6 +276,133 @@ components:
         confidence:
           type: object
           description: 'Confidence scores (0-1). Common keys: buttons, colors, overall.'
+    FetchNavigationOptions:
+      type: object
+      properties:
+        waitUntil:
+          $ref: '#/components/schemas/FetchWaitUntil'
+        timeoutMs:
+          type: integer
+        waitFor:
+          type: integer
+    FetchBrowserOptions:
+      type: object
+      properties:
+        screen:
+          $ref: '#/components/schemas/ScreenConfig'
+        profileId:
+          type: string
+        solveCaptchas:
+          type: string
+        location:
+          $ref: '#/components/schemas/FetchBrowserLocationOptions'
+    WebSearchResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          $ref: '#/components/schemas/WebSearchStatus'
+        error:
+          type:
+          - string
+          - 'null'
+        data:
+          $ref: '#/components/schemas/WebSearchResponseData'
+      required:
+      - jobId
+      - status
+    FetchWaitUntil:
+      type: string
+      enum:
+      - load
+      - domcontentloaded
+      - networkidle
+    FetchOutputHtml:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - html
+      required:
+      - type
+    ScreenConfig:
+      type: object
+      properties:
+        width:
+          type: number
+          default: 1280
+        height:
+          type: number
+          default: 720
+    FetchOutputJsonOptions:
+      type: object
+      properties:
+        schema:
+          type: object
+        prompt:
+          type: string
+          description: Natural language prompt describing what data to extract. If only prompt is provided, a schema is auto-generated from it. If both prompt and schema are provided, the schema defines the output structure while the prompt provides additional guidance for the extraction.
+    FetchOutputBranding:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - branding
+      required:
+      - type
+    WebSearchStatus:
+      type: string
+      enum:
+      - completed
+      - failed
+      - pending
+      - running
+      - stopped
+    WebSearchFiletype:
+      type: string
+      enum:
+      - pdf
+      - doc
+      - docx
+      - xls
+      - xlsx
+      - ppt
+      - pptx
+      - html
+    WebSearchFilters:
+      type: object
+      properties:
+        exactPhrase:
+          type: boolean
+        semanticPhrase:
+          type: boolean
+        excludeTerms:
+          type: array
+          items:
+            type: string
+        boostTerms:
+          type: array
+          items:
+            type: string
+        filetype:
+          $ref: '#/components/schemas/WebSearchFiletype'
+        site:
+          type: string
+        excludeSite:
+          type: string
+        intitle:
+          type: string
+        inurl:
+          type: string
+    FetchScreenshotFormat:
+      type: string
+      enum:
+      - jpeg
+      - png
+      - webp
     FetchOutputOptions:
       type: object
       properties:
@@ -439,67 +435,38 @@ components:
             type: string
         storageState:
           $ref: '#/components/schemas/FetchStorageStateOptions'
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-    FetchOutputHtml:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - html
-      required:
-      - type
-    FetchStorageStateOptions:
-      type: object
-      properties:
-        localStorage:
-          type: object
-          additionalProperties:
+    FetchOutputScreenshot:
+      allOf:
+      - $ref: '#/components/schemas/FetchOutputScreenshotOptions'
+      - type: object
+        properties:
+          type:
             type: string
-        sessionStorage:
-          type: object
-          additionalProperties:
-            type: string
-    FetchOutputLinks:
+            enum:
+            - screenshot
+        required:
+        - type
+    WebSearchResponseData:
       type: object
       properties:
-        type:
+        query:
           type: string
-          enum:
-          - links
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebSearchResultItem'
       required:
-      - type
-    FetchOutputJsonOptions:
+      - query
+      - results
+    FetchBrowserLocationOptions:
       type: object
       properties:
-        schema:
-          type: object
-        prompt:
+        country:
           type: string
-          description: Natural language prompt describing what data to extract. If only prompt is provided, a schema is auto-generated from it. If both prompt and schema are provided, the schema defines the output structure while the prompt provides additional guidance for the extraction.
-    FetchBrowserOptions:
-      type: object
-      properties:
-        screen:
-          $ref: '#/components/schemas/ScreenConfig'
-        profileId:
+        state:
           type: string
-        solveCaptchas:
+        city:
           type: string
-        location:
-          $ref: '#/components/schemas/FetchBrowserLocationOptions'
-    WebSearchStatus:
-      type: string
-      enum:
-      - completed
-      - failed
-      - pending
-      - running
-      - stopped
     WebSearchLocation:
       type: object
       properties:
@@ -511,6 +478,13 @@ components:
           type: string
       required:
       - country
+    FetchStatus:
+      type: string
+      enum:
+      - completed
+      - failed
+      - pending
+      - running
     FetchResponseData:
       type: object
       properties:
@@ -536,9 +510,31 @@ components:
           type: object
         branding:
           $ref: '#/components/schemas/BrandingProfile'
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    FetchOutputMarkdown:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - markdown
+      required:
+      - type
+    FetchOutputLinks:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - links
+      required:
+      - type
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
       in: header
       name: x-api-key
-      description: Account API key from app.hyperbrowser.ai

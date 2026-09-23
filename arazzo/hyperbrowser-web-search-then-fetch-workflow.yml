@@ -37,7 +37,7 @@ workflows:
     description: >-
       Run a web search for the query and capture the URL of the top result to
       fetch next.
-    operationId: post-api-web-search
+    operationId: post-x402-web-search
     parameters:
     - name: x-api-key
       in: header
@@ -66,7 +66,7 @@ workflows:
     description: >-
       Fetch the top search result's page and return its rendered markdown,
       links, and metadata.
-    operationId: post-api-web-fetch
+    operationId: post-x402-web-fetch
     parameters:
     - name: x-api-key
       in: header

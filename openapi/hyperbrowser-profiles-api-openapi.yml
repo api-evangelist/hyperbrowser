@@ -1,19 +1,10 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Hyperbrowser Agents Profiles API
+  title: Hyperbrowser Profiles API
   version: 1.0.0
-  description: Start, stop, and monitor agentic browser tasks across HyperAgent, Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI CUA.
-  contact:
-    name: Hyperbrowser
-    url: https://hyperbrowser.ai
-  license:
-    name: Hyperbrowser Terms
-    url: https://hyperbrowser.ai/terms
 servers:
 - url: https://api.hyperbrowser.ai
   description: Production server
-security:
-- ApiKeyAuth: []
 tags:
 - name: Profiles
 paths:
@@ -65,93 +56,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
       tags:
       - Profiles
-  /api/profile:
-    post:
-      operationId: post-api-profile
-      summary: Creates a New Profile
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateProfileParams'
-      responses:
-        '200':
-          description: Profile created
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateProfileResponse'
-      security:
-      - ApiKeyAuth: []
-      tags:
-      - Profiles
-  /api/profile/{id}:
-    get:
-      operationId: get-api-profile-id
-      summary: Get Profile by ID
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        '200':
-          description: Profile details
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProfileResponse'
-        '404':
-          description: Profile not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
-      tags:
-      - Profiles
-    delete:
-      operationId: delete-api-profile-id
-      summary: Delete Profile by ID
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        '200':
-          description: Profile deleted
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BasicResponse'
-      security:
-      - ApiKeyAuth: []
-      tags:
-      - Profiles
+      operationId: getApiProfiles
+      x-operation-id-source: derived
 components:
   schemas:
-    CreateProfileParams:
-      type: object
-      properties:
-        name:
-          type: string
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-    CreateProfileResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-          nullable: true
     ProfileListResponse:
       type: object
       properties:
@@ -165,19 +73,15 @@ components:
           type: number
         perPage:
           type: number
-    BasicResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
     ProfileResponse:
       type: object
       properties:
         id:
           type: string
         name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         teamId:
           type: string
         createdAt:
@@ -186,9 +90,13 @@ components:
         updatedAt:
           type: string
           format: iso8601
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
       in: header
       name: x-api-key
-      description: Account API key from app.hyperbrowser.ai

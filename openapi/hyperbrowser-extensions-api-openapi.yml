@@ -1,26 +1,25 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Hyperbrowser Agents Extensions API
+  title: Hyperbrowser Extensions API
   version: 1.0.0
-  description: Start, stop, and monitor agentic browser tasks across HyperAgent, Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI CUA.
-  contact:
-    name: Hyperbrowser
-    url: https://hyperbrowser.ai
-  license:
-    name: Hyperbrowser Terms
-    url: https://hyperbrowser.ai/terms
 servers:
 - url: https://api.hyperbrowser.ai
   description: Production server
-security:
-- ApiKeyAuth: []
 tags:
 - name: Extensions
 paths:
   /api/extensions/add:
     post:
-      operationId: post-api-extensions-add
-      summary: Add a New Extension
+      summary: Add a new extension
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: Add an extension
+        source: "import { Hyperbrowser } from '@hyperbrowser/sdk';\n\nconst client = new Hyperbrowser({ apiKey: 'your-api-key' });\n\nawait client.extensions.create({\n  filePath: '/path/to/extension.zip',\n  name: 'My Extension'\n});"
+      - lang: python
+        label: Add an extension
+        source: "from hyperbrowser import Hyperbrowser\nfrom hyperbrowser.models import CreateExtensionParams\n\nclient = Hyperbrowser(api_key='your-api-key')\n\nclient.extensions.create(CreateExtensionParams(\n  file_path='/path/to/extension.zip',\n  name='My Extension'\n))"
       requestBody:
         required: true
         content:
@@ -34,14 +33,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExtensionResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
       - Extensions
+      operationId: postApiExtensionsAdd
+      x-operation-id-source: derived
   /api/extensions/list:
     get:
-      operationId: get-api-extensions-list
-      summary: List All Extensions
+      summary: List all extensions
+      security:
+      - ApiKeyAuth: []
+      x-codeSamples:
+      - lang: javascript
+        label: List extensions
+        source: 'import { Hyperbrowser } from ''@hyperbrowser/sdk'';
+
+
+          const client = new Hyperbrowser({ apiKey: ''your-api-key'' });
+
+
+          await client.extensions.list();'
+      - lang: python
+        label: List extensions
+        source: 'from hyperbrowser import Hyperbrowser
+
+
+          client = Hyperbrowser(api_key=''your-api-key'')
+
+
+          client.extensions.list()'
       responses:
         '200':
           description: Extension added successfully
@@ -51,10 +70,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ExtensionResponse'
-      security:
-      - ApiKeyAuth: []
       tags:
       - Extensions
+      operationId: getApiExtensionsList
+      x-operation-id-source: derived
 components:
   schemas:
     CreateExtensionParams:
@@ -85,4 +104,3 @@ components:
       type: apiKey
       in: header
       name: x-api-key
-      description: Account API key from app.hyperbrowser.ai

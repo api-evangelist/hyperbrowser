@@ -12,7 +12,7 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: webApi
-  url: ../openapi/hyperbrowser-web-api-openapi.yml
+  url: ../openapi/hyperbrowser-crawl-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: web-crawl-and-retrieve
@@ -37,7 +37,7 @@ workflows:
     description: >-
       Submit a Web API crawl job for the starting URL and capture the returned
       jobId used to track and retrieve results.
-    operationId: post-api-web-crawl
+    operationId: post-api-crawl
     parameters:
     - name: x-api-key
       in: header
@@ -55,7 +55,7 @@ workflows:
       Poll the web crawl job status. The status moves through pending and
       running before reaching completed, failed, or stopped; loop back while
       still in progress and branch out on a terminal state.
-    operationId: get-api-web-crawl-id-status
+    operationId: get-api-crawl-id-status
     parameters:
     - name: x-api-key
       in: header
@@ -86,7 +86,7 @@ workflows:
     description: >-
       Fetch the first batch of crawled pages from the completed web crawl job
       along with the total page count and batch counters.
-    operationId: get-api-web-crawl-id
+    operationId: get-api-crawl-id
     parameters:
     - name: x-api-key
       in: header
