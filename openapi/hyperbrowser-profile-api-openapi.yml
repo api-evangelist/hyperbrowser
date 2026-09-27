@@ -130,23 +130,6 @@ components:
       properties:
         success:
           type: boolean
-    ProfileResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type:
-          - string
-          - 'null'
-        teamId:
-          type: string
-        createdAt:
-          type: string
-          format: iso8601
-        updatedAt:
-          type: string
-          format: iso8601
     ErrorResponse:
       type: object
       properties:
@@ -166,6 +149,23 @@ components:
       properties:
         name:
           type: string
+    ProfileResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type:
+          - string
+          - 'null'
+        teamId:
+          type: string
+        createdAt:
+          type: string
+          format: iso8601
+        updatedAt:
+          type: string
+          format: iso8601
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -920,6 +920,661 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    CuaLlm:
+      type: string
+      enum:
+      - computer-use-preview
+      - gpt-5.4
+      - gpt-5.4-mini
+      default: computer-use-preview
+    SessionRegion:
+      type: string
+      enum:
+      - us-central
+      - us-west
+      - us-east
+      - asia-south
+      - europe-west
+    CuaTaskResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        data:
+          type: object
+          properties:
+            steps:
+              type: array
+              items:
+                type: object
+            finalResult:
+              type:
+              - string
+              - 'null'
+        error:
+          type:
+          - string
+          - 'null'
+        liveUrl:
+          type:
+          - string
+          - 'null'
+      required:
+      - jobId
+      - status
+    StartCuaTaskResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        liveUrl:
+          type:
+          - string
+          - 'null'
+      required:
+      - jobId
+    JobStatusResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/JobStatus'
+      required:
+      - status
+    StartClaudeComputerUseTaskResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        liveUrl:
+          type:
+          - string
+          - 'null'
+      required:
+      - jobId
+    ClaudeComputerUseTaskResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        data:
+          type: object
+          properties:
+            steps:
+              type: array
+              items:
+                type: object
+            finalResult:
+              type:
+              - string
+              - 'null'
+        error:
+          type:
+          - string
+          - 'null'
+        liveUrl:
+          type:
+          - string
+          - 'null'
+      required:
+      - jobId
+      - status
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    StartBrowserUseTaskResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        liveUrl:
+          type:
+          - string
+          - 'null'
+      required:
+      - jobId
+    StartClaudeComputerUseTaskParams:
+      type: object
+      properties:
+        task:
+          type: string
+        llm:
+          $ref: '#/components/schemas/ClaudeComputerUseLlm'
+        sessionId:
+          type: string
+        maxFailures:
+          type: number
+          default: 3
+        maxSteps:
+          type: number
+          default: 20
+        keepBrowserOpen:
+          type: boolean
+          default: false
+        sessionOptions:
+          $ref: '#/components/schemas/CreateSessionParams'
+        useCustomApiKeys:
+          type: boolean
+          default: false
+        apiKeys:
+          type: object
+          properties:
+            anthropic:
+              type: string
+        useComputerAction:
+          type: boolean
+          default: false
+      required:
+      - task
+      default:
+        task: go to example.com
+    ISO639_1:
+      type: string
+      enum:
+      - aa
+      - ab
+      - ae
+      - af
+      - ak
+      - am
+      - an
+      - ar
+      - as
+      - av
+      - ay
+      - az
+      - ba
+      - be
+      - bg
+      - bh
+      - bi
+      - bm
+      - bn
+      - bo
+      - br
+      - bs
+      - ca
+      - ce
+      - ch
+      - co
+      - cr
+      - cs
+      - cu
+      - cv
+      - cy
+      - da
+      - de
+      - dv
+      - dz
+      - ee
+      - el
+      - en
+      - eo
+      - es
+      - et
+      - eu
+      - fa
+      - ff
+      - fi
+      - fj
+      - fo
+      - fr
+      - fy
+      - ga
+      - gd
+      - gl
+      - gn
+      - gu
+      - gv
+      - ha
+      - he
+      - hi
+      - ho
+      - hr
+      - ht
+      - hu
+      - hy
+      - hz
+      - ia
+      - id
+      - ie
+      - ig
+      - ii
+      - ik
+      - io
+      - is
+      - it
+      - iu
+      - ja
+      - jv
+      - ka
+      - kg
+      - ki
+      - kj
+      - kk
+      - kl
+      - km
+      - kn
+      - ko
+      - kr
+      - ks
+      - ku
+      - kv
+      - kw
+      - ky
+      - la
+      - lb
+      - lg
+      - li
+      - ln
+      - lo
+      - lt
+      - lu
+      - lv
+      - mg
+      - mh
+      - mi
+      - mk
+      - ml
+      - mn
+      - mo
+      - mr
+      - ms
+      - mt
+      - my
+      - na
+      - nb
+      - nd
+      - ne
+      - ng
+      - nl
+      - nn
+      - 'no'
+      - nr
+      - nv
+      - ny
+      - oc
+      - oj
+      - om
+      - or
+      - os
+      - pa
+      - pi
+      - pl
+      - ps
+      - pt
+      - qu
+      - rm
+      - rn
+      - ro
+      - ru
+      - rw
+      - sa
+      - sc
+      - sd
+      - se
+      - sg
+      - si
+      - sk
+      - sl
+      - sm
+      - sn
+      - so
+      - sq
+      - sr
+      - ss
+      - st
+      - su
+      - sv
+      - sw
+      - ta
+      - te
+      - tg
+      - th
+      - ti
+      - tk
+      - tl
+      - tn
+      - to
+      - tr
+      - ts
+      - tt
+      - tw
+      - ty
+      - ug
+      - uk
+      - ur
+      - uz
+      - ve
+      - vi
+      - vo
+      - wa
+      - wo
+      - xh
+      - yi
+      - yo
+      - za
+      - zh
+      - zu
+    Device:
+      type: string
+      enum:
+      - desktop
+      - mobile
+    StartHyperAgentTaskParams:
+      type: object
+      properties:
+        task:
+          type: string
+        version:
+          $ref: '#/components/schemas/HyperAgentVersion'
+        llm:
+          $ref: '#/components/schemas/HyperAgentLlm'
+        sessionId:
+          type: string
+        maxSteps:
+          type: number
+          default: 20
+        keepBrowserOpen:
+          type: boolean
+          default: false
+        sessionOptions:
+          $ref: '#/components/schemas/CreateSessionParams'
+        useCustomApiKeys:
+          type: boolean
+          default: false
+        apiKeys:
+          type: object
+          properties:
+            openai:
+              type: string
+            anthropic:
+              type: string
+            google:
+              type: string
+      required:
+      - task
+      default:
+        task: go to example.com
+    BrowserUseLlm:
+      type: string
+      enum:
+      - gpt-4o
+      - gpt-4o-mini
+      - gpt-4.1
+      - gpt-4.1-mini
+      - claude-sonnet-4-6
+      - claude-sonnet-4-5
+      - claude-sonnet-4-20250514
+      - gemini-2.0-flash
+      - gemini-2.5-flash
+      default: gemini-2.0-flash
+    BasicResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+    StartGeminiComputerUseTaskResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        liveUrl:
+          type:
+          - string
+          - 'null'
+      required:
+      - jobId
+    OperatingSystem:
+      type: string
+      enum:
+      - windows
+      - android
+      - macos
+      - linux
+      - ios
+    StartBrowserUseTaskParams:
+      type: object
+      properties:
+        task:
+          type: string
+        version:
+          $ref: '#/components/schemas/BrowserUseVersion'
+        llm:
+          $ref: '#/components/schemas/BrowserUseLlm'
+        sessionId:
+          type: string
+        validateOutput:
+          type: boolean
+          default: false
+        useVision:
+          type: boolean
+          default: true
+        useVisionForPlanner:
+          type: boolean
+          default: false
+        maxActionsPerStep:
+          type: number
+          default: 10
+        maxInputTokens:
+          type: number
+          default: 128000
+        plannerLlm:
+          $ref: '#/components/schemas/BrowserUseLlm'
+        pageExtractionLlm:
+          $ref: '#/components/schemas/BrowserUseLlm'
+        plannerInterval:
+          type: number
+          default: 10
+        maxSteps:
+          type: number
+          default: 20
+        maxFailures:
+          type: number
+          default: 3
+        initialActions:
+          type: array
+          items:
+            type: object
+            additionalProperties:
+              type: object
+              additionalProperties: true
+        sensitiveData:
+          type: object
+          additionalProperties:
+            type: string
+        messageContext:
+          type: string
+        keepBrowserOpen:
+          type: boolean
+          default: false
+        sessionOptions:
+          $ref: '#/components/schemas/CreateSessionParams'
+        useCustomApiKeys:
+          type: boolean
+          default: false
+        apiKeys:
+          type: object
+          properties:
+            openai:
+              type: string
+            anthropic:
+              type: string
+            google:
+              type: string
+      required:
+      - task
+      default:
+        task: go to example.com
+    GeminiComputerUseLlm:
+      type: string
+      enum:
+      - gemini-3-flash-preview
+      - gemini-2.5-computer-use-preview-10-2025
+      default: gemini-3-flash-preview
+    HyperAgentLlm:
+      type: string
+      enum:
+      - gpt-5.2
+      - gpt-5.1
+      - gpt-5
+      - gpt-5-mini
+      - gpt-4o
+      - gpt-4o-mini
+      - gpt-4.1
+      - gpt-4.1-mini
+      - claude-sonnet-4-6
+      - claude-sonnet-4-5
+      - gemini-2.5-flash
+      - gemini-3-flash-preview
+      default: gpt-4o
+    ProxyState:
+      type:
+      - string
+      - 'null'
+      enum:
+      - AL
+      - AK
+      - AZ
+      - AR
+      - CA
+      - CO
+      - CT
+      - DE
+      - FL
+      - GA
+      - HI
+      - ID
+      - IL
+      - IN
+      - IA
+      - KS
+      - KY
+      - LA
+      - ME
+      - MD
+      - MA
+      - MI
+      - MN
+      - MS
+      - MO
+      - MT
+      - NE
+      - NV
+      - NH
+      - NJ
+      - NM
+      - NY
+      - NC
+      - ND
+      - OH
+      - OK
+      - OR
+      - PA
+      - RI
+      - SC
+      - SD
+      - TN
+      - TX
+      - UT
+      - VT
+      - VA
+      - WA
+      - WV
+      - WI
+      - WY
+      - al
+      - ak
+      - az
+      - ar
+      - ca
+      - co
+      - ct
+      - de
+      - fl
+      - ga
+      - hi
+      - id
+      - il
+      - in
+      - ia
+      - ks
+      - ky
+      - la
+      - me
+      - md
+      - ma
+      - mi
+      - mn
+      - ms
+      - mo
+      - mt
+      - ne
+      - nv
+      - nh
+      - nj
+      - nm
+      - ny
+      - nc
+      - nd
+      - oh
+      - ok
+      - or
+      - pa
+      - ri
+      - sc
+      - sd
+      - tn
+      - tx
+      - ut
+      - vt
+      - va
+      - wa
+      - wv
+      - wi
+      - wy
+      description: Optional state code for proxies to US states. Is mutually exclusive with proxyCity. Takes in two letter state code.
+    GeminiComputerUseTaskResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        data:
+          type: object
+          properties:
+            steps:
+              type: array
+              items:
+                type: object
+            finalResult:
+              type:
+              - string
+              - 'null'
+        error:
+          type:
+          - string
+          - 'null'
+        liveUrl:
+          type:
+          - string
+          - 'null'
+      required:
+      - jobId
+      - status
+    BrowserUseVersion:
+      type: string
+      enum:
+      - 0.1.40
+      - 0.7.10
+      - latest
+      default: 0.1.40
     ProxyCountry:
       type: string
       enum:
@@ -1208,396 +1863,6 @@ components:
       - za
       - zm
       - zw
-    CuaLlm:
-      type: string
-      enum:
-      - computer-use-preview
-      - gpt-5.4
-      - gpt-5.4-mini
-      default: computer-use-preview
-    BasicResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-    HyperAgentVersion:
-      type: string
-      enum:
-      - 0.8.0
-      - 1.1.0
-      default: 0.8.0
-    StartCuaTaskResponse:
-      type: object
-      properties:
-        jobId:
-          type: string
-        liveUrl:
-          type:
-          - string
-          - 'null'
-      required:
-      - jobId
-    StartGeminiComputerUseTaskResponse:
-      type: object
-      properties:
-        jobId:
-          type: string
-        liveUrl:
-          type:
-          - string
-          - 'null'
-      required:
-      - jobId
-    StartHyperAgentTaskParams:
-      type: object
-      properties:
-        task:
-          type: string
-        version:
-          $ref: '#/components/schemas/HyperAgentVersion'
-        llm:
-          $ref: '#/components/schemas/HyperAgentLlm'
-        sessionId:
-          type: string
-        maxSteps:
-          type: number
-          default: 20
-        keepBrowserOpen:
-          type: boolean
-          default: false
-        sessionOptions:
-          $ref: '#/components/schemas/CreateSessionParams'
-        useCustomApiKeys:
-          type: boolean
-          default: false
-        apiKeys:
-          type: object
-          properties:
-            openai:
-              type: string
-            anthropic:
-              type: string
-            google:
-              type: string
-      required:
-      - task
-      default:
-        task: go to example.com
-    StartBrowserUseTaskResponse:
-      type: object
-      properties:
-        jobId:
-          type: string
-        liveUrl:
-          type:
-          - string
-          - 'null'
-      required:
-      - jobId
-    ClaudeComputerUseLlm:
-      type: string
-      enum:
-      - claude-opus-4-5
-      - claude-opus-4-6
-      - claude-haiku-4-5-20251001
-      - claude-sonnet-4-6
-      - claude-sonnet-4-5
-      - claude-sonnet-4-20250514
-      default: claude-sonnet-4-5
-    JobStatusResponse:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/JobStatus'
-      required:
-      - status
-    ClaudeComputerUseTaskResponse:
-      type: object
-      properties:
-        jobId:
-          type: string
-        status:
-          $ref: '#/components/schemas/JobStatus'
-        data:
-          type: object
-          properties:
-            steps:
-              type: array
-              items:
-                type: object
-            finalResult:
-              type:
-              - string
-              - 'null'
-        error:
-          type:
-          - string
-          - 'null'
-        liveUrl:
-          type:
-          - string
-          - 'null'
-      required:
-      - jobId
-      - status
-    StartClaudeComputerUseTaskResponse:
-      type: object
-      properties:
-        jobId:
-          type: string
-        liveUrl:
-          type:
-          - string
-          - 'null'
-      required:
-      - jobId
-    ISO639_1:
-      type: string
-      enum:
-      - aa
-      - ab
-      - ae
-      - af
-      - ak
-      - am
-      - an
-      - ar
-      - as
-      - av
-      - ay
-      - az
-      - ba
-      - be
-      - bg
-      - bh
-      - bi
-      - bm
-      - bn
-      - bo
-      - br
-      - bs
-      - ca
-      - ce
-      - ch
-      - co
-      - cr
-      - cs
-      - cu
-      - cv
-      - cy
-      - da
-      - de
-      - dv
-      - dz
-      - ee
-      - el
-      - en
-      - eo
-      - es
-      - et
-      - eu
-      - fa
-      - ff
-      - fi
-      - fj
-      - fo
-      - fr
-      - fy
-      - ga
-      - gd
-      - gl
-      - gn
-      - gu
-      - gv
-      - ha
-      - he
-      - hi
-      - ho
-      - hr
-      - ht
-      - hu
-      - hy
-      - hz
-      - ia
-      - id
-      - ie
-      - ig
-      - ii
-      - ik
-      - io
-      - is
-      - it
-      - iu
-      - ja
-      - jv
-      - ka
-      - kg
-      - ki
-      - kj
-      - kk
-      - kl
-      - km
-      - kn
-      - ko
-      - kr
-      - ks
-      - ku
-      - kv
-      - kw
-      - ky
-      - la
-      - lb
-      - lg
-      - li
-      - ln
-      - lo
-      - lt
-      - lu
-      - lv
-      - mg
-      - mh
-      - mi
-      - mk
-      - ml
-      - mn
-      - mo
-      - mr
-      - ms
-      - mt
-      - my
-      - na
-      - nb
-      - nd
-      - ne
-      - ng
-      - nl
-      - nn
-      - 'no'
-      - nr
-      - nv
-      - ny
-      - oc
-      - oj
-      - om
-      - or
-      - os
-      - pa
-      - pi
-      - pl
-      - ps
-      - pt
-      - qu
-      - rm
-      - rn
-      - ro
-      - ru
-      - rw
-      - sa
-      - sc
-      - sd
-      - se
-      - sg
-      - si
-      - sk
-      - sl
-      - sm
-      - sn
-      - so
-      - sq
-      - sr
-      - ss
-      - st
-      - su
-      - sv
-      - sw
-      - ta
-      - te
-      - tg
-      - th
-      - ti
-      - tk
-      - tl
-      - tn
-      - to
-      - tr
-      - ts
-      - tt
-      - tw
-      - ty
-      - ug
-      - uk
-      - ur
-      - uz
-      - ve
-      - vi
-      - vo
-      - wa
-      - wo
-      - xh
-      - yi
-      - yo
-      - za
-      - zh
-      - zu
-    ScreenConfig:
-      type: object
-      properties:
-        width:
-          type: number
-          default: 1280
-        height:
-          type: number
-          default: 720
-    CreateSessionProfile:
-      type: object
-      properties:
-        id:
-          type: string
-        persistChanges:
-          type: boolean
-        persistNetworkCache:
-          type: boolean
-          description: When persisting profile changes, also persist the browser's network cache (HTTP cache).
-    StartGeminiComputerUseTaskParams:
-      type: object
-      properties:
-        task:
-          type: string
-        llm:
-          $ref: '#/components/schemas/GeminiComputerUseLlm'
-        sessionId:
-          type: string
-        maxFailures:
-          type: number
-          default: 3
-        maxSteps:
-          type: number
-          default: 20
-        keepBrowserOpen:
-          type: boolean
-          default: false
-        sessionOptions:
-          $ref: '#/components/schemas/CreateSessionParams'
-        useCustomApiKeys:
-          type: boolean
-          default: false
-        apiKeys:
-          type: object
-          properties:
-            google:
-              type: string
-        useComputerAction:
-          type: boolean
-          default: false
-      required:
-      - task
-      default:
-        task: go to example.com
-    Device:
-      type: string
-      enum:
-      - desktop
-      - mobile
     BrowserUseTaskResponse:
       type: object
       properties:
@@ -1627,420 +1892,6 @@ components:
       required:
       - jobId
       - status
-    ProxyState:
-      type:
-      - string
-      - 'null'
-      enum:
-      - AL
-      - AK
-      - AZ
-      - AR
-      - CA
-      - CO
-      - CT
-      - DE
-      - FL
-      - GA
-      - HI
-      - ID
-      - IL
-      - IN
-      - IA
-      - KS
-      - KY
-      - LA
-      - ME
-      - MD
-      - MA
-      - MI
-      - MN
-      - MS
-      - MO
-      - MT
-      - NE
-      - NV
-      - NH
-      - NJ
-      - NM
-      - NY
-      - NC
-      - ND
-      - OH
-      - OK
-      - OR
-      - PA
-      - RI
-      - SC
-      - SD
-      - TN
-      - TX
-      - UT
-      - VT
-      - VA
-      - WA
-      - WV
-      - WI
-      - WY
-      - al
-      - ak
-      - az
-      - ar
-      - ca
-      - co
-      - ct
-      - de
-      - fl
-      - ga
-      - hi
-      - id
-      - il
-      - in
-      - ia
-      - ks
-      - ky
-      - la
-      - me
-      - md
-      - ma
-      - mi
-      - mn
-      - ms
-      - mo
-      - mt
-      - ne
-      - nv
-      - nh
-      - nj
-      - nm
-      - ny
-      - nc
-      - nd
-      - oh
-      - ok
-      - or
-      - pa
-      - ri
-      - sc
-      - sd
-      - tn
-      - tx
-      - ut
-      - vt
-      - va
-      - wa
-      - wv
-      - wi
-      - wy
-      description: Optional state code for proxies to US states. Is mutually exclusive with proxyCity. Takes in two letter state code.
-    GeminiComputerUseLlm:
-      type: string
-      enum:
-      - gemini-3-flash-preview
-      - gemini-2.5-computer-use-preview-10-2025
-      default: gemini-3-flash-preview
-    BrowserUseVersion:
-      type: string
-      enum:
-      - 0.1.40
-      - 0.7.10
-      - latest
-      default: 0.1.40
-    SessionRegion:
-      type: string
-      enum:
-      - us-central
-      - us-west
-      - us-east
-      - asia-south
-      - europe-west
-    StartBrowserUseTaskParams:
-      type: object
-      properties:
-        task:
-          type: string
-        version:
-          $ref: '#/components/schemas/BrowserUseVersion'
-        llm:
-          $ref: '#/components/schemas/BrowserUseLlm'
-        sessionId:
-          type: string
-        validateOutput:
-          type: boolean
-          default: false
-        useVision:
-          type: boolean
-          default: true
-        useVisionForPlanner:
-          type: boolean
-          default: false
-        maxActionsPerStep:
-          type: number
-          default: 10
-        maxInputTokens:
-          type: number
-          default: 128000
-        plannerLlm:
-          $ref: '#/components/schemas/BrowserUseLlm'
-        pageExtractionLlm:
-          $ref: '#/components/schemas/BrowserUseLlm'
-        plannerInterval:
-          type: number
-          default: 10
-        maxSteps:
-          type: number
-          default: 20
-        maxFailures:
-          type: number
-          default: 3
-        initialActions:
-          type: array
-          items:
-            type: object
-            additionalProperties:
-              type: object
-              additionalProperties: true
-        sensitiveData:
-          type: object
-          additionalProperties:
-            type: string
-        messageContext:
-          type: string
-        keepBrowserOpen:
-          type: boolean
-          default: false
-        sessionOptions:
-          $ref: '#/components/schemas/CreateSessionParams'
-        useCustomApiKeys:
-          type: boolean
-          default: false
-        apiKeys:
-          type: object
-          properties:
-            openai:
-              type: string
-            anthropic:
-              type: string
-            google:
-              type: string
-      required:
-      - task
-      default:
-        task: go to example.com
-    HyperAgentTaskResponse:
-      type: object
-      properties:
-        jobId:
-          type: string
-        status:
-          $ref: '#/components/schemas/JobStatus'
-        data:
-          type: object
-          properties:
-            steps:
-              type: array
-              items:
-                type: object
-            finalResult:
-              type:
-              - string
-              - 'null'
-        error:
-          type:
-          - string
-          - 'null'
-        liveUrl:
-          type:
-          - string
-          - 'null'
-      required:
-      - jobId
-      - status
-    Platform:
-      type: string
-      enum:
-      - chrome
-      - firefox
-      - safari
-      - edge
-    StartClaudeComputerUseTaskParams:
-      type: object
-      properties:
-        task:
-          type: string
-        llm:
-          $ref: '#/components/schemas/ClaudeComputerUseLlm'
-        sessionId:
-          type: string
-        maxFailures:
-          type: number
-          default: 3
-        maxSteps:
-          type: number
-          default: 20
-        keepBrowserOpen:
-          type: boolean
-          default: false
-        sessionOptions:
-          $ref: '#/components/schemas/CreateSessionParams'
-        useCustomApiKeys:
-          type: boolean
-          default: false
-        apiKeys:
-          type: object
-          properties:
-            anthropic:
-              type: string
-        useComputerAction:
-          type: boolean
-          default: false
-      required:
-      - task
-      default:
-        task: go to example.com
-    BrowserUseLlm:
-      type: string
-      enum:
-      - gpt-4o
-      - gpt-4o-mini
-      - gpt-4.1
-      - gpt-4.1-mini
-      - claude-sonnet-4-6
-      - claude-sonnet-4-5
-      - claude-sonnet-4-20250514
-      - gemini-2.0-flash
-      - gemini-2.5-flash
-      default: gemini-2.0-flash
-    GeminiComputerUseTaskResponse:
-      type: object
-      properties:
-        jobId:
-          type: string
-        status:
-          $ref: '#/components/schemas/JobStatus'
-        data:
-          type: object
-          properties:
-            steps:
-              type: array
-              items:
-                type: object
-            finalResult:
-              type:
-              - string
-              - 'null'
-        error:
-          type:
-          - string
-          - 'null'
-        liveUrl:
-          type:
-          - string
-          - 'null'
-      required:
-      - jobId
-      - status
-    OperatingSystem:
-      type: string
-      enum:
-      - windows
-      - android
-      - macos
-      - linux
-      - ios
-    StartCuaTaskParams:
-      type: object
-      properties:
-        task:
-          type: string
-        llm:
-          $ref: '#/components/schemas/CuaLlm'
-        sessionId:
-          type: string
-        maxFailures:
-          type: number
-          default: 3
-        maxSteps:
-          type: number
-          default: 20
-        keepBrowserOpen:
-          type: boolean
-          default: false
-        sessionOptions:
-          $ref: '#/components/schemas/CreateSessionParams'
-        useCustomApiKeys:
-          type: boolean
-          default: false
-        apiKeys:
-          type: object
-          properties:
-            openai:
-              type: string
-        useComputerAction:
-          type: boolean
-          default: false
-      required:
-      - task
-      default:
-        task: go to example.com
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-    CuaTaskResponse:
-      type: object
-      properties:
-        jobId:
-          type: string
-        status:
-          $ref: '#/components/schemas/JobStatus'
-        data:
-          type: object
-          properties:
-            steps:
-              type: array
-              items:
-                type: object
-            finalResult:
-              type:
-              - string
-              - 'null'
-        error:
-          type:
-          - string
-          - 'null'
-        liveUrl:
-          type:
-          - string
-          - 'null'
-      required:
-      - jobId
-      - status
-    HyperAgentLlm:
-      type: string
-      enum:
-      - gpt-5.2
-      - gpt-5.1
-      - gpt-5
-      - gpt-5-mini
-      - gpt-4o
-      - gpt-4o-mini
-      - gpt-4.1
-      - gpt-4.1-mini
-      - claude-sonnet-4-6
-      - claude-sonnet-4-5
-      - gemini-2.5-flash
-      - gemini-3-flash-preview
-      default: gpt-4o
-    JobStatus:
-      type: string
-      enum:
-      - pending
-      - running
-      - completed
-      - failed
-      - stopped
     StartHyperAgentTaskResponse:
       type: object
       properties:
@@ -2052,6 +1903,15 @@ components:
           - 'null'
       required:
       - jobId
+    ScreenConfig:
+      type: object
+      properties:
+        width:
+          type: number
+          default: 1280
+        height:
+          type: number
+          default: 720
     CreateSessionParams:
       type: object
       properties:
@@ -2188,6 +2048,146 @@ components:
         useStealth: false
         useProxy: false
         acceptCookies: false
+    JobStatus:
+      type: string
+      enum:
+      - pending
+      - running
+      - completed
+      - failed
+      - stopped
+    StartCuaTaskParams:
+      type: object
+      properties:
+        task:
+          type: string
+        llm:
+          $ref: '#/components/schemas/CuaLlm'
+        sessionId:
+          type: string
+        maxFailures:
+          type: number
+          default: 3
+        maxSteps:
+          type: number
+          default: 20
+        keepBrowserOpen:
+          type: boolean
+          default: false
+        sessionOptions:
+          $ref: '#/components/schemas/CreateSessionParams'
+        useCustomApiKeys:
+          type: boolean
+          default: false
+        apiKeys:
+          type: object
+          properties:
+            openai:
+              type: string
+        useComputerAction:
+          type: boolean
+          default: false
+      required:
+      - task
+      default:
+        task: go to example.com
+    ClaudeComputerUseLlm:
+      type: string
+      enum:
+      - claude-opus-4-5
+      - claude-opus-4-6
+      - claude-haiku-4-5-20251001
+      - claude-sonnet-4-6
+      - claude-sonnet-4-5
+      - claude-sonnet-4-20250514
+      default: claude-sonnet-4-5
+    HyperAgentVersion:
+      type: string
+      enum:
+      - 0.8.0
+      - 1.1.0
+      default: 0.8.0
+    HyperAgentTaskResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        data:
+          type: object
+          properties:
+            steps:
+              type: array
+              items:
+                type: object
+            finalResult:
+              type:
+              - string
+              - 'null'
+        error:
+          type:
+          - string
+          - 'null'
+        liveUrl:
+          type:
+          - string
+          - 'null'
+      required:
+      - jobId
+      - status
+    CreateSessionProfile:
+      type: object
+      properties:
+        id:
+          type: string
+        persistChanges:
+          type: boolean
+        persistNetworkCache:
+          type: boolean
+          description: When persisting profile changes, also persist the browser's network cache (HTTP cache).
+    Platform:
+      type: string
+      enum:
+      - chrome
+      - firefox
+      - safari
+      - edge
+    StartGeminiComputerUseTaskParams:
+      type: object
+      properties:
+        task:
+          type: string
+        llm:
+          $ref: '#/components/schemas/GeminiComputerUseLlm'
+        sessionId:
+          type: string
+        maxFailures:
+          type: number
+          default: 3
+        maxSteps:
+          type: number
+          default: 20
+        keepBrowserOpen:
+          type: boolean
+          default: false
+        sessionOptions:
+          $ref: '#/components/schemas/CreateSessionParams'
+        useCustomApiKeys:
+          type: boolean
+          default: false
+        apiKeys:
+          type: object
+          properties:
+            google:
+              type: string
+        useComputerAction:
+          type: boolean
+          default: false
+      required:
+      - task
+      default:
+        task: go to example.com
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

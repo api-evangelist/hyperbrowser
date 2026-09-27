@@ -158,6 +158,222 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    ScreenConfig:
+      type: object
+      properties:
+        width:
+          type: number
+          default: 1280
+        height:
+          type: number
+          default: 720
+    CreateSessionParams:
+      type: object
+      properties:
+        useUltraStealth:
+          type: boolean
+          default: false
+        useStealth:
+          type: boolean
+          default: false
+        useProxy:
+          type: boolean
+          default: false
+        proxyServer:
+          type: string
+        proxyServerPassword:
+          type: string
+        proxyServerUsername:
+          type: string
+        proxyCountry:
+          $ref: '#/components/schemas/ProxyCountry'
+        proxyState:
+          $ref: '#/components/schemas/ProxyState'
+        proxyCity:
+          type:
+          - string
+          - 'null'
+          example: new york
+          description: Desired Country. Is mutually exclusive with proxyState. Some cities might not be supported, so before using a new city, we recommend trying it out
+        region:
+          $ref: '#/components/schemas/SessionRegion'
+        operatingSystems:
+          type: array
+          items:
+            $ref: '#/components/schemas/OperatingSystem'
+        device:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device'
+        platform:
+          type: array
+          items:
+            $ref: '#/components/schemas/Platform'
+        locales:
+          type: array
+          items:
+            $ref: '#/components/schemas/ISO639_1'
+          default:
+          - en
+        screen:
+          $ref: '#/components/schemas/ScreenConfig'
+        solveCaptchas:
+          type: boolean
+          default: false
+        solverType:
+          type: string
+          enum:
+          - visual
+          description: Optional CAPTCHA solver mode. Set to visual to use the visual reCAPTCHA solver.
+        adblock:
+          type: boolean
+          default: false
+        trackers:
+          type: boolean
+          default: false
+        annoyances:
+          type: boolean
+          default: false
+        enableWebRecording:
+          type: boolean
+        enableVideoWebRecording:
+          type: boolean
+          default: false
+          description: enableWebRecording must also be true for this to work
+        profile:
+          $ref: '#/components/schemas/CreateSessionProfile'
+        acceptCookies:
+          type: boolean
+        staticIpId:
+          type: string
+          format: uuid
+        saveDownloads:
+          type: boolean
+          default: false
+        extensionIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+          default: []
+        urlBlocklist:
+          type: array
+          items:
+            type: string
+          default: []
+        browserArgs:
+          type: array
+          items:
+            type: string
+          default: []
+        imageCaptchaParams:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+            properties:
+              imageSelector:
+                type: string
+              inputSelector:
+                type: string
+        timeoutMinutes:
+          type: number
+          minimum: 1
+          maximum: 720
+        enableWindowManager:
+          type: boolean
+          default: false
+        enableWindowManagerTaskbar:
+          type: boolean
+          default: false
+        viewOnlyLiveView:
+          type: boolean
+          default: false
+        disablePasswordManager:
+          type: boolean
+          default: false
+        enableAlwaysOpenPdfExternally:
+          type: boolean
+          default: false
+        disablePostQuantumKeyAgreement:
+          type: boolean
+          default: false
+      default:
+        useStealth: false
+        useProxy: false
+        acceptCookies: false
+    SessionRegion:
+      type: string
+      enum:
+      - us-central
+      - us-west
+      - us-east
+      - asia-south
+      - europe-west
+    JobStatusResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/JobStatus'
+      required:
+      - status
+    JobStatus:
+      type: string
+      enum:
+      - pending
+      - running
+      - completed
+      - failed
+      - stopped
+    StartExtractJobResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+      required:
+      - jobId
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    OperatingSystem:
+      type: string
+      enum:
+      - windows
+      - android
+      - macos
+      - linux
+      - ios
+    Device:
+      type: string
+      enum:
+      - desktop
+      - mobile
+    StartExtractJobParams:
+      type: object
+      properties:
+        urls:
+          type: array
+          items:
+            type: string
+        systemPrompt:
+          type: string
+        maxLinks:
+          type: number
+        prompt:
+          type: string
+        schema:
+          type: object
+        sessionOptions:
+          $ref: '#/components/schemas/CreateSessionParams'
+        waitFor:
+          default: 0
+          type: number
+      additionalProperties: false
+      required:
+      - urls
     ProxyCountry:
       type: string
       enum:
@@ -552,36 +768,21 @@ components:
       - wi
       - wy
       description: Optional state code for proxies to US states. Is mutually exclusive with proxyCity. Takes in two letter state code.
-    StartExtractJobParams:
+    ExtractJobResponse:
       type: object
       properties:
-        urls:
-          type: array
-          items:
-            type: string
-        systemPrompt:
+        jobId:
           type: string
-        maxLinks:
-          type: number
-        prompt:
-          type: string
-        schema:
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        data:
           type: object
-        sessionOptions:
-          $ref: '#/components/schemas/CreateSessionParams'
-        waitFor:
-          default: 0
-          type: number
+        error:
+          type: string
       additionalProperties: false
       required:
-      - urls
-    Platform:
-      type: string
-      enum:
-      - chrome
-      - firefox
-      - safari
-      - edge
+      - jobId
+      - status
     ISO639_1:
       type: string
       enum:
@@ -770,28 +971,6 @@ components:
       - za
       - zh
       - zu
-    OperatingSystem:
-      type: string
-      enum:
-      - windows
-      - android
-      - macos
-      - linux
-      - ios
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-    ScreenConfig:
-      type: object
-      properties:
-        width:
-          type: number
-          default: 1280
-        height:
-          type: number
-          default: 720
     CreateSessionProfile:
       type: object
       properties:
@@ -802,192 +981,13 @@ components:
         persistNetworkCache:
           type: boolean
           description: When persisting profile changes, also persist the browser's network cache (HTTP cache).
-    SessionRegion:
+    Platform:
       type: string
       enum:
-      - us-central
-      - us-west
-      - us-east
-      - asia-south
-      - europe-west
-    ExtractJobResponse:
-      type: object
-      properties:
-        jobId:
-          type: string
-        status:
-          $ref: '#/components/schemas/JobStatus'
-        data:
-          type: object
-        error:
-          type: string
-      additionalProperties: false
-      required:
-      - jobId
-      - status
-    JobStatus:
-      type: string
-      enum:
-      - pending
-      - running
-      - completed
-      - failed
-      - stopped
-    CreateSessionParams:
-      type: object
-      properties:
-        useUltraStealth:
-          type: boolean
-          default: false
-        useStealth:
-          type: boolean
-          default: false
-        useProxy:
-          type: boolean
-          default: false
-        proxyServer:
-          type: string
-        proxyServerPassword:
-          type: string
-        proxyServerUsername:
-          type: string
-        proxyCountry:
-          $ref: '#/components/schemas/ProxyCountry'
-        proxyState:
-          $ref: '#/components/schemas/ProxyState'
-        proxyCity:
-          type:
-          - string
-          - 'null'
-          example: new york
-          description: Desired Country. Is mutually exclusive with proxyState. Some cities might not be supported, so before using a new city, we recommend trying it out
-        region:
-          $ref: '#/components/schemas/SessionRegion'
-        operatingSystems:
-          type: array
-          items:
-            $ref: '#/components/schemas/OperatingSystem'
-        device:
-          type: array
-          items:
-            $ref: '#/components/schemas/Device'
-        platform:
-          type: array
-          items:
-            $ref: '#/components/schemas/Platform'
-        locales:
-          type: array
-          items:
-            $ref: '#/components/schemas/ISO639_1'
-          default:
-          - en
-        screen:
-          $ref: '#/components/schemas/ScreenConfig'
-        solveCaptchas:
-          type: boolean
-          default: false
-        solverType:
-          type: string
-          enum:
-          - visual
-          description: Optional CAPTCHA solver mode. Set to visual to use the visual reCAPTCHA solver.
-        adblock:
-          type: boolean
-          default: false
-        trackers:
-          type: boolean
-          default: false
-        annoyances:
-          type: boolean
-          default: false
-        enableWebRecording:
-          type: boolean
-        enableVideoWebRecording:
-          type: boolean
-          default: false
-          description: enableWebRecording must also be true for this to work
-        profile:
-          $ref: '#/components/schemas/CreateSessionProfile'
-        acceptCookies:
-          type: boolean
-        staticIpId:
-          type: string
-          format: uuid
-        saveDownloads:
-          type: boolean
-          default: false
-        extensionIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-          default: []
-        urlBlocklist:
-          type: array
-          items:
-            type: string
-          default: []
-        browserArgs:
-          type: array
-          items:
-            type: string
-          default: []
-        imageCaptchaParams:
-          type:
-          - array
-          - 'null'
-          items:
-            type: object
-            properties:
-              imageSelector:
-                type: string
-              inputSelector:
-                type: string
-        timeoutMinutes:
-          type: number
-          minimum: 1
-          maximum: 720
-        enableWindowManager:
-          type: boolean
-          default: false
-        enableWindowManagerTaskbar:
-          type: boolean
-          default: false
-        viewOnlyLiveView:
-          type: boolean
-          default: false
-        disablePasswordManager:
-          type: boolean
-          default: false
-        enableAlwaysOpenPdfExternally:
-          type: boolean
-          default: false
-        disablePostQuantumKeyAgreement:
-          type: boolean
-          default: false
-      default:
-        useStealth: false
-        useProxy: false
-        acceptCookies: false
-    Device:
-      type: string
-      enum:
-      - desktop
-      - mobile
-    StartExtractJobResponse:
-      type: object
-      properties:
-        jobId:
-          type: string
-      required:
-      - jobId
-    JobStatusResponse:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/JobStatus'
-      required:
-      - status
+      - chrome
+      - firefox
+      - safari
+      - edge
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

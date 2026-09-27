@@ -77,43 +77,15 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Session:
+    ScreenConfig:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-        teamId:
-          type: string
-          format: uuid
-        status:
-          type: string
-          enum:
-          - active
-          - closed
-          - error
-        startTime:
-          type:
-          - string
-          - 'null'
-          format: timestamp-milliseconds
-        endTime:
-          type:
-          - string
-          - 'null'
-          format: timestamp-milliseconds
-        createdAt:
-          type: string
-          format: iso8601
-        updatedAt:
-          type: string
-          format: iso8601
-        launchState:
-          $ref: '#/components/schemas/SessionLaunchState'
-        creditsUsed:
-          type:
-          - number
-          - 'null'
+        width:
+          type: number
+          default: 1280
+        height:
+          type: number
+          default: 720
     SessionLaunchState:
       type:
       - object
@@ -171,15 +143,43 @@ components:
       properties:
         message:
           type: string
-    ScreenConfig:
+    Session:
       type: object
       properties:
-        width:
-          type: number
-          default: 1280
-        height:
-          type: number
-          default: 720
+        id:
+          type: string
+          format: uuid
+        teamId:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - active
+          - closed
+          - error
+        startTime:
+          type:
+          - string
+          - 'null'
+          format: timestamp-milliseconds
+        endTime:
+          type:
+          - string
+          - 'null'
+          format: timestamp-milliseconds
+        createdAt:
+          type: string
+          format: iso8601
+        updatedAt:
+          type: string
+          format: iso8601
+        launchState:
+          $ref: '#/components/schemas/SessionLaunchState'
+        creditsUsed:
+          type:
+          - number
+          - 'null'
     CreateSessionProfile:
       type: object
       properties:

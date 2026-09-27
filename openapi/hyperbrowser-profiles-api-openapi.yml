@@ -73,6 +73,11 @@ components:
           type: number
         perPage:
           type: number
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
     ProfileResponse:
       type: object
       properties:
@@ -90,11 +95,6 @@ components:
         updatedAt:
           type: string
           format: iso8601
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

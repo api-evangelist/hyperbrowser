@@ -76,16 +76,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    CreateExtensionParams:
-      type: object
-      properties:
-        file:
-          type: string
-          format: binary
-        name:
-          type: string
-      required:
-      - file
     ExtensionResponse:
       type: object
       properties:
@@ -99,6 +89,16 @@ components:
         updatedAt:
           type: string
           format: iso8601
+    CreateExtensionParams:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+        name:
+          type: string
+      required:
+      - file
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
