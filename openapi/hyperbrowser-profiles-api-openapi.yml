@@ -60,24 +60,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ProfileListResponse:
-      type: object
-      properties:
-        profiles:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProfileResponse'
-        totalCount:
-          type: number
-        page:
-          type: number
-        perPage:
-          type: number
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
     ProfileResponse:
       type: object
       properties:
@@ -95,6 +77,24 @@ components:
         updatedAt:
           type: string
           format: iso8601
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    ProfileListResponse:
+      type: object
+      properties:
+        profiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProfileResponse'
+        totalCount:
+          type: number
+        page:
+          type: number
+        perPage:
+          type: number
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
