@@ -77,25 +77,11 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ScreenConfig:
+    ErrorResponse:
       type: object
       properties:
-        width:
-          type: number
-          default: 1280
-        height:
-          type: number
-          default: 720
-    CreateSessionProfile:
-      type: object
-      properties:
-        id:
+        message:
           type: string
-        persistChanges:
-          type: boolean
-        persistNetworkCache:
-          type: boolean
-          description: When persisting profile changes, also persist the browser's network cache (HTTP cache).
     Session:
       type: object
       properties:
@@ -133,6 +119,25 @@ components:
           type:
           - number
           - 'null'
+    ScreenConfig:
+      type: object
+      properties:
+        width:
+          type: number
+          default: 1280
+        height:
+          type: number
+          default: 720
+    CreateSessionProfile:
+      type: object
+      properties:
+        id:
+          type: string
+        persistChanges:
+          type: boolean
+        persistNetworkCache:
+          type: boolean
+          description: When persisting profile changes, also persist the browser's network cache (HTTP cache).
     SessionLaunchState:
       type:
       - object
@@ -185,11 +190,6 @@ components:
           type: boolean
         disablePostQuantumKeyAgreement:
           type: boolean
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -313,6 +313,283 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    ScrapedPage:
+      type: object
+      properties:
+        url:
+          type: string
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        error:
+          type:
+          - string
+          - 'null'
+        metadata:
+          type: object
+          additionalProperties:
+            oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+        markdown:
+          type: string
+        html:
+          type: string
+        links:
+          type: array
+          items:
+            type: string
+        screenshot:
+          type: string
+      required:
+      - url
+      - status
+    JobStatus:
+      type: string
+      enum:
+      - pending
+      - running
+      - completed
+      - failed
+      - stopped
+    OperatingSystem:
+      type: string
+      enum:
+      - windows
+      - android
+      - macos
+      - linux
+      - ios
+    CreateSessionParams:
+      type: object
+      properties:
+        useUltraStealth:
+          type: boolean
+          default: false
+        useStealth:
+          type: boolean
+          default: false
+        useProxy:
+          type: boolean
+          default: false
+        proxyServer:
+          type: string
+        proxyServerPassword:
+          type: string
+        proxyServerUsername:
+          type: string
+        proxyCountry:
+          $ref: '#/components/schemas/ProxyCountry'
+        proxyState:
+          $ref: '#/components/schemas/ProxyState'
+        proxyCity:
+          type:
+          - string
+          - 'null'
+          example: new york
+          description: Desired Country. Is mutually exclusive with proxyState. Some cities might not be supported, so before using a new city, we recommend trying it out
+        region:
+          $ref: '#/components/schemas/SessionRegion'
+        operatingSystems:
+          type: array
+          items:
+            $ref: '#/components/schemas/OperatingSystem'
+        device:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device'
+        platform:
+          type: array
+          items:
+            $ref: '#/components/schemas/Platform'
+        locales:
+          type: array
+          items:
+            $ref: '#/components/schemas/ISO639_1'
+          default:
+          - en
+        screen:
+          $ref: '#/components/schemas/ScreenConfig'
+        solveCaptchas:
+          type: boolean
+          default: false
+        solverType:
+          type: string
+          enum:
+          - visual
+          description: Optional CAPTCHA solver mode. Set to visual to use the visual reCAPTCHA solver.
+        adblock:
+          type: boolean
+          default: false
+        trackers:
+          type: boolean
+          default: false
+        annoyances:
+          type: boolean
+          default: false
+        enableWebRecording:
+          type: boolean
+        enableVideoWebRecording:
+          type: boolean
+          default: false
+          description: enableWebRecording must also be true for this to work
+        profile:
+          $ref: '#/components/schemas/CreateSessionProfile'
+        acceptCookies:
+          type: boolean
+        staticIpId:
+          type: string
+          format: uuid
+        saveDownloads:
+          type: boolean
+          default: false
+        extensionIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+          default: []
+        urlBlocklist:
+          type: array
+          items:
+            type: string
+          default: []
+        browserArgs:
+          type: array
+          items:
+            type: string
+          default: []
+        imageCaptchaParams:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+            properties:
+              imageSelector:
+                type: string
+              inputSelector:
+                type: string
+        timeoutMinutes:
+          type: number
+          minimum: 1
+          maximum: 720
+        enableWindowManager:
+          type: boolean
+          default: false
+        enableWindowManagerTaskbar:
+          type: boolean
+          default: false
+        viewOnlyLiveView:
+          type: boolean
+          default: false
+        disablePasswordManager:
+          type: boolean
+          default: false
+        enableAlwaysOpenPdfExternally:
+          type: boolean
+          default: false
+        disablePostQuantumKeyAgreement:
+          type: boolean
+          default: false
+      default:
+        useStealth: false
+        useProxy: false
+        acceptCookies: false
+    StartScrapeJobParams:
+      type: object
+      required:
+      - url
+      properties:
+        url:
+          type: string
+          minLength: 1
+        sessionOptions:
+          $ref: '#/components/schemas/CreateSessionParams'
+        scrapeOptions:
+          $ref: '#/components/schemas/ScrapeOptions'
+    SessionRegion:
+      type: string
+      enum:
+      - us-central
+      - us-west
+      - us-east
+      - asia-south
+      - europe-west
+    ScrapeOptions:
+      type: object
+      properties:
+        formats:
+          type: array
+          items:
+            type: string
+            enum:
+            - html
+            - links
+            - markdown
+            - screenshot
+          default:
+          - markdown
+        includeTags:
+          type: array
+          items:
+            type: string
+        excludeTags:
+          type: array
+          items:
+            type: string
+        onlyMainContent:
+          type: boolean
+          default: true
+        waitFor:
+          type: number
+          default: 0
+        timeout:
+          type: number
+          default: 30000
+        waitUntil:
+          type: string
+          enum:
+          - load
+          - domcontentloaded
+          - networkidle
+          default: load
+        screenshotOptions:
+          type: object
+          description: Options for the screenshot. Both `fullPage` and `cropToContent` cannot be true at the same time.
+          properties:
+            fullPage:
+              type: boolean
+              default: false
+            format:
+              type: string
+              enum:
+              - jpeg
+              - png
+              - webp
+              default: webp
+            cropToContent:
+              type: boolean
+              default: false
+              description: Automatically adjusts the screenshot height to match the page's actual content. If the page is shorter than the viewport, the screenshot is trimmed to remove any empty space below the content. If the page is taller than the viewport, the screenshot is cropped to the height of the viewport.
+            cropToContentMaxHeight:
+              type: number
+              description: The maximum height of the screenshot when `cropToContent` is true. Overrides the height set in the `screen` configuration.
+            cropToContentMinHeight:
+              type: number
+              description: The minimum height of the screenshot when `cropToContent` is true. Overrides the height set in the `screen` configuration.
+        storageState:
+          type: object
+          properties:
+            localStorage:
+              type: object
+              additionalProperties:
+                type: string
+            sessionStorage:
+              type: object
+              additionalProperties:
+                type: string
     ProxyCountry:
       type: string
       enum:
@@ -601,156 +878,11 @@ components:
       - za
       - zm
       - zw
-    SessionRegion:
+    Device:
       type: string
       enum:
-      - us-central
-      - us-west
-      - us-east
-      - asia-south
-      - europe-west
-    BatchScrapeJobResponse:
-      type: object
-      properties:
-        jobId:
-          type: string
-        status:
-          $ref: '#/components/schemas/JobStatus'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ScrapedPage'
-        error:
-          type: string
-        totalScrapedPages:
-          type: number
-        totalPageBatches:
-          type: number
-        currentPageBatch:
-          type: number
-        batchSize:
-          type: number
-    ScrapeOptions:
-      type: object
-      properties:
-        formats:
-          type: array
-          items:
-            type: string
-            enum:
-            - html
-            - links
-            - markdown
-            - screenshot
-          default:
-          - markdown
-        includeTags:
-          type: array
-          items:
-            type: string
-        excludeTags:
-          type: array
-          items:
-            type: string
-        onlyMainContent:
-          type: boolean
-          default: true
-        waitFor:
-          type: number
-          default: 0
-        timeout:
-          type: number
-          default: 30000
-        waitUntil:
-          type: string
-          enum:
-          - load
-          - domcontentloaded
-          - networkidle
-          default: load
-        screenshotOptions:
-          type: object
-          description: Options for the screenshot. Both `fullPage` and `cropToContent` cannot be true at the same time.
-          properties:
-            fullPage:
-              type: boolean
-              default: false
-            format:
-              type: string
-              enum:
-              - jpeg
-              - png
-              - webp
-              default: webp
-            cropToContent:
-              type: boolean
-              default: false
-              description: Automatically adjusts the screenshot height to match the page's actual content. If the page is shorter than the viewport, the screenshot is trimmed to remove any empty space below the content. If the page is taller than the viewport, the screenshot is cropped to the height of the viewport.
-            cropToContentMaxHeight:
-              type: number
-              description: The maximum height of the screenshot when `cropToContent` is true. Overrides the height set in the `screen` configuration.
-            cropToContentMinHeight:
-              type: number
-              description: The minimum height of the screenshot when `cropToContent` is true. Overrides the height set in the `screen` configuration.
-        storageState:
-          type: object
-          properties:
-            localStorage:
-              type: object
-              additionalProperties:
-                type: string
-            sessionStorage:
-              type: object
-              additionalProperties:
-                type: string
-    StartBatchScrapeJobResponse:
-      type: object
-      properties:
-        jobId:
-          type: string
-      required:
-      - jobId
-    StartScrapeJobParams:
-      type: object
-      required:
-      - url
-      properties:
-        url:
-          type: string
-          minLength: 1
-        sessionOptions:
-          $ref: '#/components/schemas/CreateSessionParams'
-        scrapeOptions:
-          $ref: '#/components/schemas/ScrapeOptions'
-    JobStatusResponse:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/JobStatus'
-      required:
-      - status
-    ScreenConfig:
-      type: object
-      properties:
-        width:
-          type: number
-          default: 1280
-        height:
-          type: number
-          default: 720
-    StartScrapeJobResponse:
-      type: object
-      properties:
-        jobId:
-          type: string
-    JobStatus:
-      type: string
-      enum:
-      - pending
-      - running
-      - completed
-      - failed
-      - stopped
+      - desktop
+      - mobile
     StartBatchScrapeJobParams:
       type: object
       properties:
@@ -764,142 +896,6 @@ components:
           $ref: '#/components/schemas/ScrapeOptions'
       required:
       - urls
-    CreateSessionParams:
-      type: object
-      properties:
-        useUltraStealth:
-          type: boolean
-          default: false
-        useStealth:
-          type: boolean
-          default: false
-        useProxy:
-          type: boolean
-          default: false
-        proxyServer:
-          type: string
-        proxyServerPassword:
-          type: string
-        proxyServerUsername:
-          type: string
-        proxyCountry:
-          $ref: '#/components/schemas/ProxyCountry'
-        proxyState:
-          $ref: '#/components/schemas/ProxyState'
-        proxyCity:
-          type:
-          - string
-          - 'null'
-          example: new york
-          description: Desired Country. Is mutually exclusive with proxyState. Some cities might not be supported, so before using a new city, we recommend trying it out
-        region:
-          $ref: '#/components/schemas/SessionRegion'
-        operatingSystems:
-          type: array
-          items:
-            $ref: '#/components/schemas/OperatingSystem'
-        device:
-          type: array
-          items:
-            $ref: '#/components/schemas/Device'
-        platform:
-          type: array
-          items:
-            $ref: '#/components/schemas/Platform'
-        locales:
-          type: array
-          items:
-            $ref: '#/components/schemas/ISO639_1'
-          default:
-          - en
-        screen:
-          $ref: '#/components/schemas/ScreenConfig'
-        solveCaptchas:
-          type: boolean
-          default: false
-        solverType:
-          type: string
-          enum:
-          - visual
-          description: Optional CAPTCHA solver mode. Set to visual to use the visual reCAPTCHA solver.
-        adblock:
-          type: boolean
-          default: false
-        trackers:
-          type: boolean
-          default: false
-        annoyances:
-          type: boolean
-          default: false
-        enableWebRecording:
-          type: boolean
-        enableVideoWebRecording:
-          type: boolean
-          default: false
-          description: enableWebRecording must also be true for this to work
-        profile:
-          $ref: '#/components/schemas/CreateSessionProfile'
-        acceptCookies:
-          type: boolean
-        staticIpId:
-          type: string
-          format: uuid
-        saveDownloads:
-          type: boolean
-          default: false
-        extensionIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-          default: []
-        urlBlocklist:
-          type: array
-          items:
-            type: string
-          default: []
-        browserArgs:
-          type: array
-          items:
-            type: string
-          default: []
-        imageCaptchaParams:
-          type:
-          - array
-          - 'null'
-          items:
-            type: object
-            properties:
-              imageSelector:
-                type: string
-              inputSelector:
-                type: string
-        timeoutMinutes:
-          type: number
-          minimum: 1
-          maximum: 720
-        enableWindowManager:
-          type: boolean
-          default: false
-        enableWindowManagerTaskbar:
-          type: boolean
-          default: false
-        viewOnlyLiveView:
-          type: boolean
-          default: false
-        disablePasswordManager:
-          type: boolean
-          default: false
-        enableAlwaysOpenPdfExternally:
-          type: boolean
-          default: false
-        disablePostQuantumKeyAgreement:
-          type: boolean
-          default: false
-      default:
-        useStealth: false
-        useProxy: false
-        acceptCookies: false
     ProxyState:
       type:
       - string
@@ -1006,24 +1002,25 @@ components:
       - wi
       - wy
       description: Optional state code for proxies to US states. Is mutually exclusive with proxyCity. Takes in two letter state code.
-    Device:
-      type: string
-      enum:
-      - desktop
-      - mobile
-    ErrorResponse:
+    StartScrapeJobResponse:
       type: object
       properties:
-        message:
+        jobId:
           type: string
-    OperatingSystem:
-      type: string
-      enum:
-      - windows
-      - android
-      - macos
-      - linux
-      - ios
+    ScrapeJobResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        data:
+          $ref: '#/components/schemas/ScrapeJobData'
+        error:
+          type: string
+      required:
+      - jobId
+      - status
     CreateSessionProfile:
       type: object
       properties:
@@ -1034,6 +1031,34 @@ components:
         persistNetworkCache:
           type: boolean
           description: When persisting profile changes, also persist the browser's network cache (HTTP cache).
+    BatchScrapeJobResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScrapedPage'
+        error:
+          type: string
+        totalScrapedPages:
+          type: number
+        totalPageBatches:
+          type: number
+        currentPageBatch:
+          type: number
+        batchSize:
+          type: number
+    StartBatchScrapeJobResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+      required:
+      - jobId
     Platform:
       type: string
       enum:
@@ -1041,6 +1066,39 @@ components:
       - firefox
       - safari
       - edge
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    JobStatusResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/JobStatus'
+      required:
+      - status
+    ScrapeJobData:
+      type: object
+      properties:
+        metadata:
+          type: object
+          additionalProperties:
+            oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+        markdown:
+          type: string
+        html:
+          type: string
+        links:
+          type: array
+          items:
+            type: string
+        screenshot:
+          type: string
     ISO639_1:
       type: string
       enum:
@@ -1229,73 +1287,15 @@ components:
       - za
       - zh
       - zu
-    ScrapedPage:
+    ScreenConfig:
       type: object
       properties:
-        url:
-          type: string
-        status:
-          $ref: '#/components/schemas/JobStatus'
-        error:
-          type:
-          - string
-          - 'null'
-        metadata:
-          type: object
-          additionalProperties:
-            oneOf:
-            - type: string
-            - type: array
-              items:
-                type: string
-        markdown:
-          type: string
-        html:
-          type: string
-        links:
-          type: array
-          items:
-            type: string
-        screenshot:
-          type: string
-      required:
-      - url
-      - status
-    ScrapeJobData:
-      type: object
-      properties:
-        metadata:
-          type: object
-          additionalProperties:
-            oneOf:
-            - type: string
-            - type: array
-              items:
-                type: string
-        markdown:
-          type: string
-        html:
-          type: string
-        links:
-          type: array
-          items:
-            type: string
-        screenshot:
-          type: string
-    ScrapeJobResponse:
-      type: object
-      properties:
-        jobId:
-          type: string
-        status:
-          $ref: '#/components/schemas/JobStatus'
-        data:
-          $ref: '#/components/schemas/ScrapeJobData'
-        error:
-          type: string
-      required:
-      - jobId
-      - status
+        width:
+          type: number
+          default: 1280
+        height:
+          type: number
+          default: 720
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
