@@ -218,61 +218,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-    JobStatus:
-      type: string
-      enum:
-      - pending
-      - running
-      - completed
-      - failed
-      - stopped
-    CrawledPage:
-      type: object
-      properties:
-        url:
-          type: string
-        status:
-          type: string
-          enum:
-          - completed
-          - failed
-        error:
-          type:
-          - string
-          - 'null'
-        metadata:
-          type: object
-          additionalProperties:
-            oneOf:
-            - type: string
-            - type: array
-              items:
-                type: string
-        markdown:
-          type: string
-        html:
-          type: string
-        links:
-          type: array
-          items:
-            type: string
-        screenshot:
-          type: string
-      required:
-      - url
-      - status
-    JobStatusResponse:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/JobStatus'
-      required:
-      - status
     ProxyState:
       type:
       - string
@@ -379,150 +324,130 @@ components:
       - wi
       - wy
       description: Optional state code for proxies to US states. Is mutually exclusive with proxyCity. Takes in two letter state code.
-    OperatingSystem:
-      type: string
-      enum:
-      - windows
-      - android
-      - macos
-      - linux
-      - ios
-    CreateSessionParams:
+    ErrorResponse:
       type: object
       properties:
-        useUltraStealth:
-          type: boolean
-          default: false
-        useStealth:
-          type: boolean
-          default: false
-        useProxy:
-          type: boolean
-          default: false
-        proxyServer:
+        message:
           type: string
-        proxyServerPassword:
-          type: string
-        proxyServerUsername:
-          type: string
-        proxyCountry:
-          $ref: '#/components/schemas/ProxyCountry'
-        proxyState:
-          $ref: '#/components/schemas/ProxyState'
-        proxyCity:
-          type:
-          - string
-          - 'null'
-          example: new york
-          description: Desired Country. Is mutually exclusive with proxyState. Some cities might not be supported, so before using a new city, we recommend trying it out
-        region:
-          $ref: '#/components/schemas/SessionRegion'
-        operatingSystems:
+    Platform:
+      type: string
+      enum:
+      - chrome
+      - firefox
+      - safari
+      - edge
+    Device:
+      type: string
+      enum:
+      - desktop
+      - mobile
+    JobStatus:
+      type: string
+      enum:
+      - pending
+      - running
+      - completed
+      - failed
+      - stopped
+    JobStatusResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/JobStatus'
+      required:
+      - status
+    ScrapeOptions:
+      type: object
+      properties:
+        formats:
           type: array
           items:
-            $ref: '#/components/schemas/OperatingSystem'
-        device:
-          type: array
-          items:
-            $ref: '#/components/schemas/Device'
-        platform:
-          type: array
-          items:
-            $ref: '#/components/schemas/Platform'
-        locales:
-          type: array
-          items:
-            $ref: '#/components/schemas/ISO639_1'
+            type: string
+            enum:
+            - html
+            - links
+            - markdown
+            - screenshot
           default:
-          - en
-        screen:
-          $ref: '#/components/schemas/ScreenConfig'
-        solveCaptchas:
+          - markdown
+        includeTags:
+          type: array
+          items:
+            type: string
+        excludeTags:
+          type: array
+          items:
+            type: string
+        onlyMainContent:
           type: boolean
-          default: false
-        solverType:
+          default: true
+        waitFor:
+          type: number
+          default: 0
+        timeout:
+          type: number
+          default: 30000
+        waitUntil:
           type: string
           enum:
-          - visual
-          description: Optional CAPTCHA solver mode. Set to visual to use the visual reCAPTCHA solver.
-        adblock:
-          type: boolean
-          default: false
-        trackers:
-          type: boolean
-          default: false
-        annoyances:
-          type: boolean
-          default: false
-        enableWebRecording:
-          type: boolean
-        enableVideoWebRecording:
-          type: boolean
-          default: false
-          description: enableWebRecording must also be true for this to work
-        profile:
-          $ref: '#/components/schemas/CreateSessionProfile'
-        acceptCookies:
-          type: boolean
-        staticIpId:
-          type: string
-          format: uuid
-        saveDownloads:
-          type: boolean
-          default: false
-        extensionIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-          default: []
-        urlBlocklist:
-          type: array
-          items:
-            type: string
-          default: []
-        browserArgs:
-          type: array
-          items:
-            type: string
-          default: []
-        imageCaptchaParams:
-          type:
-          - array
-          - 'null'
-          items:
-            type: object
-            properties:
-              imageSelector:
+          - load
+          - domcontentloaded
+          - networkidle
+          default: load
+        screenshotOptions:
+          type: object
+          description: Options for the screenshot. Both `fullPage` and `cropToContent` cannot be true at the same time.
+          properties:
+            fullPage:
+              type: boolean
+              default: false
+            format:
+              type: string
+              enum:
+              - jpeg
+              - png
+              - webp
+              default: webp
+            cropToContent:
+              type: boolean
+              default: false
+              description: Automatically adjusts the screenshot height to match the page's actual content. If the page is shorter than the viewport, the screenshot is trimmed to remove any empty space below the content. If the page is taller than the viewport, the screenshot is cropped to the height of the viewport.
+            cropToContentMaxHeight:
+              type: number
+              description: The maximum height of the screenshot when `cropToContent` is true. Overrides the height set in the `screen` configuration.
+            cropToContentMinHeight:
+              type: number
+              description: The minimum height of the screenshot when `cropToContent` is true. Overrides the height set in the `screen` configuration.
+        storageState:
+          type: object
+          properties:
+            localStorage:
+              type: object
+              additionalProperties:
                 type: string
-              inputSelector:
+            sessionStorage:
+              type: object
+              additionalProperties:
                 type: string
-        timeoutMinutes:
+    ScreenConfig:
+      type: object
+      properties:
+        width:
           type: number
-          minimum: 1
-          maximum: 720
-        enableWindowManager:
+          default: 1280
+        height:
+          type: number
+          default: 720
+    CreateSessionProfile:
+      type: object
+      properties:
+        id:
+          type: string
+        persistChanges:
           type: boolean
-          default: false
-        enableWindowManagerTaskbar:
+        persistNetworkCache:
           type: boolean
-          default: false
-        viewOnlyLiveView:
-          type: boolean
-          default: false
-        disablePasswordManager:
-          type: boolean
-          default: false
-        enableAlwaysOpenPdfExternally:
-          type: boolean
-          default: false
-        disablePostQuantumKeyAgreement:
-          type: boolean
-          default: false
-      default:
-        useStealth: false
-        useProxy: false
-        acceptCookies: false
+          description: When persisting profile changes, also persist the browser's network cache (HTTP cache).
     ISO639_1:
       type: string
       enum:
@@ -719,98 +644,6 @@ components:
       - us-east
       - asia-south
       - europe-west
-    ScreenConfig:
-      type: object
-      properties:
-        width:
-          type: number
-          default: 1280
-        height:
-          type: number
-          default: 720
-    CreateSessionProfile:
-      type: object
-      properties:
-        id:
-          type: string
-        persistChanges:
-          type: boolean
-        persistNetworkCache:
-          type: boolean
-          description: When persisting profile changes, also persist the browser's network cache (HTTP cache).
-    ScrapeOptions:
-      type: object
-      properties:
-        formats:
-          type: array
-          items:
-            type: string
-            enum:
-            - html
-            - links
-            - markdown
-            - screenshot
-          default:
-          - markdown
-        includeTags:
-          type: array
-          items:
-            type: string
-        excludeTags:
-          type: array
-          items:
-            type: string
-        onlyMainContent:
-          type: boolean
-          default: true
-        waitFor:
-          type: number
-          default: 0
-        timeout:
-          type: number
-          default: 30000
-        waitUntil:
-          type: string
-          enum:
-          - load
-          - domcontentloaded
-          - networkidle
-          default: load
-        screenshotOptions:
-          type: object
-          description: Options for the screenshot. Both `fullPage` and `cropToContent` cannot be true at the same time.
-          properties:
-            fullPage:
-              type: boolean
-              default: false
-            format:
-              type: string
-              enum:
-              - jpeg
-              - png
-              - webp
-              default: webp
-            cropToContent:
-              type: boolean
-              default: false
-              description: Automatically adjusts the screenshot height to match the page's actual content. If the page is shorter than the viewport, the screenshot is trimmed to remove any empty space below the content. If the page is taller than the viewport, the screenshot is cropped to the height of the viewport.
-            cropToContentMaxHeight:
-              type: number
-              description: The maximum height of the screenshot when `cropToContent` is true. Overrides the height set in the `screen` configuration.
-            cropToContentMinHeight:
-              type: number
-              description: The minimum height of the screenshot when `cropToContent` is true. Overrides the height set in the `screen` configuration.
-        storageState:
-          type: object
-          properties:
-            localStorage:
-              type: object
-              additionalProperties:
-                type: string
-            sessionStorage:
-              type: object
-              additionalProperties:
-                type: string
     ProxyCountry:
       type: string
       enum:
@@ -1099,18 +932,185 @@ components:
       - za
       - zm
       - zw
-    Device:
+    CrawledPage:
+      type: object
+      properties:
+        url:
+          type: string
+        status:
+          type: string
+          enum:
+          - completed
+          - failed
+        error:
+          type:
+          - string
+          - 'null'
+        metadata:
+          type: object
+          additionalProperties:
+            oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+        markdown:
+          type: string
+        html:
+          type: string
+        links:
+          type: array
+          items:
+            type: string
+        screenshot:
+          type: string
+      required:
+      - url
+      - status
+    CreateSessionParams:
+      type: object
+      properties:
+        useUltraStealth:
+          type: boolean
+          default: false
+        useStealth:
+          type: boolean
+          default: false
+        useProxy:
+          type: boolean
+          default: false
+        proxyServer:
+          type: string
+        proxyServerPassword:
+          type: string
+        proxyServerUsername:
+          type: string
+        proxyCountry:
+          $ref: '#/components/schemas/ProxyCountry'
+        proxyState:
+          $ref: '#/components/schemas/ProxyState'
+        proxyCity:
+          type:
+          - string
+          - 'null'
+          example: new york
+          description: Desired Country. Is mutually exclusive with proxyState. Some cities might not be supported, so before using a new city, we recommend trying it out
+        region:
+          $ref: '#/components/schemas/SessionRegion'
+        operatingSystems:
+          type: array
+          items:
+            $ref: '#/components/schemas/OperatingSystem'
+        device:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device'
+        platform:
+          type: array
+          items:
+            $ref: '#/components/schemas/Platform'
+        locales:
+          type: array
+          items:
+            $ref: '#/components/schemas/ISO639_1'
+          default:
+          - en
+        screen:
+          $ref: '#/components/schemas/ScreenConfig'
+        solveCaptchas:
+          type: boolean
+          default: false
+        solverType:
+          type: string
+          enum:
+          - visual
+          description: Optional CAPTCHA solver mode. Set to visual to use the visual reCAPTCHA solver.
+        adblock:
+          type: boolean
+          default: false
+        trackers:
+          type: boolean
+          default: false
+        annoyances:
+          type: boolean
+          default: false
+        enableWebRecording:
+          type: boolean
+        enableVideoWebRecording:
+          type: boolean
+          default: false
+          description: enableWebRecording must also be true for this to work
+        profile:
+          $ref: '#/components/schemas/CreateSessionProfile'
+        acceptCookies:
+          type: boolean
+        staticIpId:
+          type: string
+          format: uuid
+        saveDownloads:
+          type: boolean
+          default: false
+        extensionIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+          default: []
+        urlBlocklist:
+          type: array
+          items:
+            type: string
+          default: []
+        browserArgs:
+          type: array
+          items:
+            type: string
+          default: []
+        imageCaptchaParams:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+            properties:
+              imageSelector:
+                type: string
+              inputSelector:
+                type: string
+        timeoutMinutes:
+          type: number
+          minimum: 1
+          maximum: 720
+        enableWindowManager:
+          type: boolean
+          default: false
+        enableWindowManagerTaskbar:
+          type: boolean
+          default: false
+        viewOnlyLiveView:
+          type: boolean
+          default: false
+        disablePasswordManager:
+          type: boolean
+          default: false
+        enableAlwaysOpenPdfExternally:
+          type: boolean
+          default: false
+        disablePostQuantumKeyAgreement:
+          type: boolean
+          default: false
+      default:
+        useStealth: false
+        useProxy: false
+        acceptCookies: false
+    OperatingSystem:
       type: string
       enum:
-      - desktop
-      - mobile
-    Platform:
-      type: string
-      enum:
-      - chrome
-      - firefox
-      - safari
-      - edge
+      - windows
+      - android
+      - macos
+      - linux
+      - ios
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

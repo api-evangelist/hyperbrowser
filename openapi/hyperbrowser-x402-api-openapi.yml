@@ -122,210 +122,22 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    FetchOutputBranding:
+    ErrorResponse:
       type: object
       properties:
-        type:
+        message:
           type: string
-          enum:
-          - branding
-      required:
-      - type
-    FetchOutputHtml:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - html
-      required:
-      - type
-    FetchScreenshotFormat:
+    WebSearchFiletype:
       type: string
       enum:
-      - jpeg
-      - png
-      - webp
-    FetchOutputJson:
-      allOf:
-      - $ref: '#/components/schemas/FetchOutputJsonOptions'
-      - type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - json
-        required:
-        - type
-    FetchSanitizeMode:
-      type: string
-      enum:
-      - none
-      - basic
-      - advanced
-    FetchParams:
-      type: object
-      properties:
-        url:
-          type: string
-        stealth:
-          $ref: '#/components/schemas/FetchStealthMode'
-        outputs:
-          $ref: '#/components/schemas/FetchOutputOptions'
-        browser:
-          $ref: '#/components/schemas/FetchBrowserOptions'
-        navigation:
-          $ref: '#/components/schemas/FetchNavigationOptions'
-        cache:
-          $ref: '#/components/schemas/FetchCacheOptions'
-      required:
-      - url
-    WebSearchResponseData:
-      type: object
-      properties:
-        query:
-          type: string
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/WebSearchResultItem'
-      required:
-      - query
-      - results
-    WebSearchResultItem:
-      type: object
-      properties:
-        title:
-          type: string
-        url:
-          type: string
-        description:
-          type: string
-      required:
-      - title
-      - url
-      - description
-    FetchResponse:
-      type: object
-      properties:
-        jobId:
-          type: string
-        status:
-          $ref: '#/components/schemas/FetchStatus'
-        error:
-          type:
-          - string
-          - 'null'
-        data:
-          $ref: '#/components/schemas/FetchResponseData'
-      required:
-      - jobId
-      - status
-    FetchCacheOptions:
-      type: object
-      properties:
-        maxAgeSeconds:
-          type: integer
-    FetchResponseData:
-      type: object
-      properties:
-        metadata:
-          type: object
-          additionalProperties:
-            oneOf:
-            - type: string
-            - type: array
-              items:
-                type: string
-        html:
-          type: string
-        markdown:
-          type: string
-        links:
-          type: array
-          items:
-            type: string
-        screenshot:
-          type: string
-        json:
-          type: object
-        branding:
-          $ref: '#/components/schemas/BrandingProfile'
-    ScreenConfig:
-      type: object
-      properties:
-        width:
-          type: number
-          default: 1280
-        height:
-          type: number
-          default: 720
-    FetchOutputScreenshotOptions:
-      type: object
-      properties:
-        fullPage:
-          type: boolean
-        format:
-          $ref: '#/components/schemas/FetchScreenshotFormat'
-        cropToContent:
-          type: boolean
-        cropToContentMaxHeight:
-          type: integer
-        cropToContentMinHeight:
-          type: integer
-    FetchBrowserLocationOptions:
-      type: object
-      properties:
-        country:
-          type: string
-        state:
-          type: string
-        city:
-          type: string
-    FetchBrowserOptions:
-      type: object
-      properties:
-        screen:
-          $ref: '#/components/schemas/ScreenConfig'
-        profileId:
-          type: string
-        solveCaptchas:
-          type: string
-        location:
-          $ref: '#/components/schemas/FetchBrowserLocationOptions'
-    FetchStatus:
-      type: string
-      enum:
-      - completed
-      - failed
-      - pending
-      - running
-    FetchStealthMode:
-      type: string
-      enum:
-      - none
-      - auto
-      - ultra
-    FetchStorageStateOptions:
-      type: object
-      properties:
-        localStorage:
-          type: object
-          additionalProperties:
-            type: string
-        sessionStorage:
-          type: object
-          additionalProperties:
-            type: string
-    FetchOutputMarkdown:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - markdown
-      required:
-      - type
+      - pdf
+      - doc
+      - docx
+      - xls
+      - xlsx
+      - ppt
+      - pptx
+      - html
     FetchOutputOptions:
       type: object
       properties:
@@ -366,33 +178,116 @@ components:
       - pending
       - running
       - stopped
-    WebSearchLocation:
+    WebSearchFilters:
       type: object
       properties:
-        country:
+        exactPhrase:
+          type: boolean
+        semanticPhrase:
+          type: boolean
+        excludeTerms:
+          type: array
+          items:
+            type: string
+        boostTerms:
+          type: array
+          items:
+            type: string
+        filetype:
+          $ref: '#/components/schemas/WebSearchFiletype'
+        site:
           type: string
-        state:
+        excludeSite:
           type: string
-        city:
+        intitle:
           type: string
+        inurl:
+          type: string
+    ScreenConfig:
+      type: object
+      properties:
+        width:
+          type: number
+          default: 1280
+        height:
+          type: number
+          default: 720
+    FetchOutputBranding:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - branding
       required:
-      - country
-    ErrorResponse:
+      - type
+    FetchCacheOptions:
       type: object
       properties:
-        message:
-          type: string
-    WebSearchFiletype:
+        maxAgeSeconds:
+          type: integer
+    FetchWaitUntil:
       type: string
       enum:
-      - pdf
-      - doc
-      - docx
-      - xls
-      - xlsx
-      - ppt
-      - pptx
-      - html
+      - load
+      - domcontentloaded
+      - networkidle
+    FetchOutputScreenshotOptions:
+      type: object
+      properties:
+        fullPage:
+          type: boolean
+        format:
+          $ref: '#/components/schemas/FetchScreenshotFormat'
+        cropToContent:
+          type: boolean
+        cropToContentMaxHeight:
+          type: integer
+        cropToContentMinHeight:
+          type: integer
+    FetchOutputHtml:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - html
+      required:
+      - type
+    FetchOutputLinks:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - links
+      required:
+      - type
+    FetchResponseData:
+      type: object
+      properties:
+        metadata:
+          type: object
+          additionalProperties:
+            oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+        html:
+          type: string
+        markdown:
+          type: string
+        links:
+          type: array
+          items:
+            type: string
+        screenshot:
+          type: string
+        json:
+          type: object
+        branding:
+          $ref: '#/components/schemas/BrandingProfile'
     WebSearchParams:
       type: object
       properties:
@@ -408,6 +303,95 @@ components:
           $ref: '#/components/schemas/WebSearchFilters'
       required:
       - query
+    FetchStealthMode:
+      type: string
+      enum:
+      - none
+      - auto
+      - ultra
+    FetchScreenshotFormat:
+      type: string
+      enum:
+      - jpeg
+      - png
+      - webp
+    FetchOutputScreenshot:
+      allOf:
+      - $ref: '#/components/schemas/FetchOutputScreenshotOptions'
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - screenshot
+        required:
+        - type
+    FetchStorageStateOptions:
+      type: object
+      properties:
+        localStorage:
+          type: object
+          additionalProperties:
+            type: string
+        sessionStorage:
+          type: object
+          additionalProperties:
+            type: string
+    FetchOutputJsonOptions:
+      type: object
+      properties:
+        schema:
+          type: object
+        prompt:
+          type: string
+          description: Natural language prompt describing what data to extract. If only prompt is provided, a schema is auto-generated from it. If both prompt and schema are provided, the schema defines the output structure while the prompt provides additional guidance for the extraction.
+    WebSearchResponseData:
+      type: object
+      properties:
+        query:
+          type: string
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebSearchResultItem'
+      required:
+      - query
+      - results
+    WebSearchLocation:
+      type: object
+      properties:
+        country:
+          type: string
+        state:
+          type: string
+        city:
+          type: string
+      required:
+      - country
+    FetchBrowserOptions:
+      type: object
+      properties:
+        screen:
+          $ref: '#/components/schemas/ScreenConfig'
+        profileId:
+          type: string
+        solveCaptchas:
+          type: string
+        location:
+          $ref: '#/components/schemas/FetchBrowserLocationOptions'
+    WebSearchResultItem:
+      type: object
+      properties:
+        title:
+          type: string
+        url:
+          type: string
+        description:
+          type: string
+      required:
+      - title
+      - url
+      - description
     BrandingProfile:
       type: object
       description: Visual brand profile extracted via DOM analysis + LLM enhancement. All fields optional; the server may return a partial profile when the LLM refuses or fails.
@@ -449,29 +433,81 @@ components:
         confidence:
           type: object
           description: 'Confidence scores (0-1). Common keys: buttons, colors, overall.'
-    FetchWaitUntil:
-      type: string
-      enum:
-      - load
-      - domcontentloaded
-      - networkidle
-    FetchOutputJsonOptions:
-      type: object
-      properties:
-        schema:
-          type: object
-        prompt:
-          type: string
-          description: Natural language prompt describing what data to extract. If only prompt is provided, a schema is auto-generated from it. If both prompt and schema are provided, the schema defines the output structure while the prompt provides additional guidance for the extraction.
-    FetchOutputLinks:
+    FetchOutputMarkdown:
       type: object
       properties:
         type:
           type: string
           enum:
-          - links
+          - markdown
       required:
       - type
+    FetchNavigationOptions:
+      type: object
+      properties:
+        waitUntil:
+          $ref: '#/components/schemas/FetchWaitUntil'
+        timeoutMs:
+          type: integer
+        waitFor:
+          type: integer
+    FetchResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          $ref: '#/components/schemas/FetchStatus'
+        error:
+          type:
+          - string
+          - 'null'
+        data:
+          $ref: '#/components/schemas/FetchResponseData'
+      required:
+      - jobId
+      - status
+    FetchSanitizeMode:
+      type: string
+      enum:
+      - none
+      - basic
+      - advanced
+    FetchStatus:
+      type: string
+      enum:
+      - completed
+      - failed
+      - pending
+      - running
+    FetchParams:
+      type: object
+      properties:
+        url:
+          type: string
+        stealth:
+          $ref: '#/components/schemas/FetchStealthMode'
+        outputs:
+          $ref: '#/components/schemas/FetchOutputOptions'
+        browser:
+          $ref: '#/components/schemas/FetchBrowserOptions'
+        navigation:
+          $ref: '#/components/schemas/FetchNavigationOptions'
+        cache:
+          $ref: '#/components/schemas/FetchCacheOptions'
+      required:
+      - url
+    FetchOutputJson:
+      allOf:
+      - $ref: '#/components/schemas/FetchOutputJsonOptions'
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - json
+        required:
+        - type
     WebSearchResponse:
       type: object
       properties:
@@ -488,50 +524,14 @@ components:
       required:
       - jobId
       - status
-    FetchNavigationOptions:
+    FetchBrowserLocationOptions:
       type: object
       properties:
-        waitUntil:
-          $ref: '#/components/schemas/FetchWaitUntil'
-        timeoutMs:
-          type: integer
-        waitFor:
-          type: integer
-    FetchOutputScreenshot:
-      allOf:
-      - $ref: '#/components/schemas/FetchOutputScreenshotOptions'
-      - type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - screenshot
-        required:
-        - type
-    WebSearchFilters:
-      type: object
-      properties:
-        exactPhrase:
-          type: boolean
-        semanticPhrase:
-          type: boolean
-        excludeTerms:
-          type: array
-          items:
-            type: string
-        boostTerms:
-          type: array
-          items:
-            type: string
-        filetype:
-          $ref: '#/components/schemas/WebSearchFiletype'
-        site:
+        country:
           type: string
-        excludeSite:
+        state:
           type: string
-        intitle:
-          type: string
-        inurl:
+        city:
           type: string
   securitySchemes:
     ApiKeyAuth:

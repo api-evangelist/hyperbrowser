@@ -77,11 +77,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
     Session:
       type: object
       properties:
@@ -119,6 +114,11 @@ components:
           type:
           - number
           - 'null'
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
     ScreenConfig:
       type: object
       properties:

@@ -470,6 +470,439 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    ProxyState:
+      type:
+      - string
+      - 'null'
+      enum:
+      - AL
+      - AK
+      - AZ
+      - AR
+      - CA
+      - CO
+      - CT
+      - DE
+      - FL
+      - GA
+      - HI
+      - ID
+      - IL
+      - IN
+      - IA
+      - KS
+      - KY
+      - LA
+      - ME
+      - MD
+      - MA
+      - MI
+      - MN
+      - MS
+      - MO
+      - MT
+      - NE
+      - NV
+      - NH
+      - NJ
+      - NM
+      - NY
+      - NC
+      - ND
+      - OH
+      - OK
+      - OR
+      - PA
+      - RI
+      - SC
+      - SD
+      - TN
+      - TX
+      - UT
+      - VT
+      - VA
+      - WA
+      - WV
+      - WI
+      - WY
+      - al
+      - ak
+      - az
+      - ar
+      - ca
+      - co
+      - ct
+      - de
+      - fl
+      - ga
+      - hi
+      - id
+      - il
+      - in
+      - ia
+      - ks
+      - ky
+      - la
+      - me
+      - md
+      - ma
+      - mi
+      - mn
+      - ms
+      - mo
+      - mt
+      - ne
+      - nv
+      - nh
+      - nj
+      - nm
+      - ny
+      - nc
+      - nd
+      - oh
+      - ok
+      - or
+      - pa
+      - ri
+      - sc
+      - sd
+      - tn
+      - tx
+      - ut
+      - vt
+      - va
+      - wa
+      - wv
+      - wi
+      - wy
+      description: Optional state code for proxies to US states. Is mutually exclusive with proxyCity. Takes in two letter state code.
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    SessionDetail:
+      allOf:
+      - $ref: '#/components/schemas/Session'
+      - type: object
+        properties:
+          sessionUrl:
+            type: string
+          liveUrl:
+            type: string
+          token:
+            type: string
+          wsEndpoint:
+            type: string
+          webdriverEndpoint:
+            type: string
+          computerActionEndpoint:
+            type: string
+    ImageCaptchaParam:
+      type: object
+      properties:
+        imageSelector:
+          type: string
+        inputSelector:
+          type: string
+    UpdateSessionProxyLocationParams:
+      type: object
+      properties:
+        country:
+          $ref: '#/components/schemas/ProxyCountry'
+        state:
+          $ref: '#/components/schemas/ProxyState'
+        city:
+          type: string
+          description: City for managed proxy geolocation.
+    RecordingStatus:
+      type: string
+      enum:
+      - not_enabled
+      - pending
+      - in_progress
+      - completed
+      - failed
+    Device:
+      type: string
+      enum:
+      - desktop
+      - mobile
+    UpdateSessionSolveCaptchasParams:
+      type: object
+      required:
+      - enabled
+      properties:
+        enabled:
+          type: boolean
+          description: Whether automatic CAPTCHA solving should be enabled for this running session.
+        solverType:
+          type: string
+          enum:
+          - visual
+          description: Optional CAPTCHA solver mode. Set to visual to use the visual reCAPTCHA solver.
+    ScreenConfig:
+      type: object
+      properties:
+        width:
+          type: number
+          default: 1280
+        height:
+          type: number
+          default: 720
+    ISO639_1:
+      type: string
+      enum:
+      - aa
+      - ab
+      - ae
+      - af
+      - ak
+      - am
+      - an
+      - ar
+      - as
+      - av
+      - ay
+      - az
+      - ba
+      - be
+      - bg
+      - bh
+      - bi
+      - bm
+      - bn
+      - bo
+      - br
+      - bs
+      - ca
+      - ce
+      - ch
+      - co
+      - cr
+      - cs
+      - cu
+      - cv
+      - cy
+      - da
+      - de
+      - dv
+      - dz
+      - ee
+      - el
+      - en
+      - eo
+      - es
+      - et
+      - eu
+      - fa
+      - ff
+      - fi
+      - fj
+      - fo
+      - fr
+      - fy
+      - ga
+      - gd
+      - gl
+      - gn
+      - gu
+      - gv
+      - ha
+      - he
+      - hi
+      - ho
+      - hr
+      - ht
+      - hu
+      - hy
+      - hz
+      - ia
+      - id
+      - ie
+      - ig
+      - ii
+      - ik
+      - io
+      - is
+      - it
+      - iu
+      - ja
+      - jv
+      - ka
+      - kg
+      - ki
+      - kj
+      - kk
+      - kl
+      - km
+      - kn
+      - ko
+      - kr
+      - ks
+      - ku
+      - kv
+      - kw
+      - ky
+      - la
+      - lb
+      - lg
+      - li
+      - ln
+      - lo
+      - lt
+      - lu
+      - lv
+      - mg
+      - mh
+      - mi
+      - mk
+      - ml
+      - mn
+      - mo
+      - mr
+      - ms
+      - mt
+      - my
+      - na
+      - nb
+      - nd
+      - ne
+      - ng
+      - nl
+      - nn
+      - 'no'
+      - nr
+      - nv
+      - ny
+      - oc
+      - oj
+      - om
+      - or
+      - os
+      - pa
+      - pi
+      - pl
+      - ps
+      - pt
+      - qu
+      - rm
+      - rn
+      - ro
+      - ru
+      - rw
+      - sa
+      - sc
+      - sd
+      - se
+      - sg
+      - si
+      - sk
+      - sl
+      - sm
+      - sn
+      - so
+      - sq
+      - sr
+      - ss
+      - st
+      - su
+      - sv
+      - sw
+      - ta
+      - te
+      - tg
+      - th
+      - ti
+      - tk
+      - tl
+      - tn
+      - to
+      - tr
+      - ts
+      - tt
+      - tw
+      - ty
+      - ug
+      - uk
+      - ur
+      - uz
+      - ve
+      - vi
+      - vo
+      - wa
+      - wo
+      - xh
+      - yi
+      - yo
+      - za
+      - zh
+      - zu
+    UpdateSessionProxyParams:
+      type: object
+      required:
+      - enabled
+      properties:
+        enabled:
+          type: boolean
+          description: Whether proxying should be active for the running session.
+        staticIpId:
+          type: string
+          format: uuid
+          description: Static IP allocation to use when enabling a static IP proxy.
+        location:
+          $ref: '#/components/schemas/UpdateSessionProxyLocationParams'
+    UpdateSessionResponse:
+      allOf:
+      - $ref: '#/components/schemas/BasicResponse'
+      - type: object
+        properties:
+          solveCaptchas:
+            type: boolean
+            description: Returned for solveCaptchas updates.
+          sessionId:
+            type: string
+            description: Returned for solveCaptchas updates.
+          telemetryReady:
+            type: boolean
+            description: Returned for solveCaptchas updates.
+    Session:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        teamId:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - active
+          - closed
+          - error
+        startTime:
+          type:
+          - string
+          - 'null'
+          format: timestamp-milliseconds
+        endTime:
+          type:
+          - string
+          - 'null'
+          format: timestamp-milliseconds
+        createdAt:
+          type: string
+          format: iso8601
+        updatedAt:
+          type: string
+          format: iso8601
+        launchState:
+          $ref: '#/components/schemas/SessionLaunchState'
+        creditsUsed:
+          type:
+          - number
+          - 'null'
     GetSessionDownloadsUrlResponse:
       type: object
       properties:
@@ -485,7 +918,36 @@ components:
           - 'null'
       required:
       - status
-    UpdateSessionProfileRequest:
+    CaptchaEvaluationPageResult:
+      type: object
+      properties:
+        url:
+          type: string
+        targetId:
+          type:
+          - string
+          - 'null'
+        iterationsRun:
+          type: integer
+        solved:
+          type: boolean
+        solvedCaptchas:
+          type: array
+          items:
+            $ref: '#/components/schemas/CaptchaEvaluationType'
+        checkedCaptchas:
+          type: array
+          items:
+            $ref: '#/components/schemas/CaptchaEvaluationType'
+        captchaSolvedCounts:
+          type: object
+          additionalProperties:
+            type: number
+        lastSolveTime:
+          type: object
+          additionalProperties:
+            type: number
+    UpdateSessionSolveCaptchasRequest:
       type: object
       required:
       - type
@@ -494,22 +956,52 @@ components:
         type:
           type: string
           enum:
-          - profile
+          - solveCaptchas
         params:
-          $ref: '#/components/schemas/UpdateSessionProfileParams'
-    BasicResponse:
+          $ref: '#/components/schemas/UpdateSessionSolveCaptchasParams'
+    CaptchaEvaluationResponse:
       type: object
       properties:
         success:
           type: boolean
-    OperatingSystem:
+        captcha:
+          allOf:
+          - $ref: '#/components/schemas/CaptchaEvaluationType'
+        iterationsRequested:
+          type: integer
+        iterationsRun:
+          type: integer
+        solved:
+          type: boolean
+        solvedCaptchas:
+          type: array
+          items:
+            $ref: '#/components/schemas/CaptchaEvaluationType'
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/CaptchaEvaluationPageResult'
+    SessionRegion:
       type: string
       enum:
-      - windows
-      - android
-      - macos
-      - linux
-      - ios
+      - us-central
+      - us-west
+      - us-east
+      - asia-south
+      - europe-west
+    UpdateSessionRequest:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateSessionProfileRequest'
+      - $ref: '#/components/schemas/UpdateSessionProxyRequest'
+      - $ref: '#/components/schemas/UpdateSessionScreenRequest'
+      - $ref: '#/components/schemas/UpdateSessionSolveCaptchasRequest'
+      discriminator:
+        propertyName: type
+        mapping:
+          profile: '#/components/schemas/UpdateSessionProfileRequest'
+          proxy: '#/components/schemas/UpdateSessionProxyRequest'
+          screen: '#/components/schemas/UpdateSessionScreenRequest'
+          solveCaptchas: '#/components/schemas/UpdateSessionSolveCaptchasRequest'
     CreateSessionParams:
       type: object
       properties:
@@ -646,15 +1138,73 @@ components:
         useStealth: false
         useProxy: false
         acceptCookies: false
-    UpdateSessionProfileParams:
+    DownloadsStatus:
+      type: string
+      enum:
+      - not_enabled
+      - pending
+      - in_progress
+      - completed
+      - failed
+    CaptchaEvaluationParams:
       type: object
       properties:
-        persistChanges:
+        captcha:
+          $ref: '#/components/schemas/CaptchaEvaluationType'
+        captchaType:
+          $ref: '#/components/schemas/CaptchaEvaluationType'
+        text:
+          $ref: '#/components/schemas/CaptchaEvaluationType'
+        iterations:
+          type: integer
+          minimum: 1
+          maximum: 20
+        maxIterations:
+          type: integer
+          minimum: 1
+          maximum: 20
+        solverType:
+          type: string
+          enum:
+          - visual
+          description: Optional CAPTCHA solver mode. Set to visual to use the visual reCAPTCHA solver.
+        imageCaptchaParams:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImageCaptchaParam'
+        useUltraStealth:
           type: boolean
-          description: Whether profile changes should be persisted after the session ends.
-        persistNetworkCache:
-          type: boolean
-          description: Whether network cache should be persisted into the profile.
+    UpdateSessionProxyRequest:
+      type: object
+      required:
+      - type
+      - params
+      properties:
+        type:
+          type: string
+          enum:
+          - proxy
+        params:
+          $ref: '#/components/schemas/UpdateSessionProxyParams'
+    Platform:
+      type: string
+      enum:
+      - chrome
+      - firefox
+      - safari
+      - edge
+    UpdateSessionScreenRequest:
+      type: object
+      required:
+      - type
+      - params
+      properties:
+        type:
+          type: string
+          enum:
+          - screen
+        params:
+          $ref: '#/components/schemas/UpdateSessionScreenParams'
     SessionLaunchState:
       type:
       - object
@@ -707,177 +1257,38 @@ components:
           type: boolean
         disablePostQuantumKeyAgreement:
           type: boolean
-    UpdateSessionSolveCaptchasRequest:
-      type: object
-      required:
-      - type
-      - params
-      properties:
-        type:
-          type: string
-          enum:
-          - solveCaptchas
-        params:
-          $ref: '#/components/schemas/UpdateSessionSolveCaptchasParams'
-    DownloadsStatus:
+    OperatingSystem:
       type: string
       enum:
-      - not_enabled
-      - pending
-      - in_progress
-      - completed
-      - failed
-    CaptchaEvaluationPageResult:
+      - windows
+      - android
+      - macos
+      - linux
+      - ios
+    GetSessionRecordingUrlResponse:
       type: object
       properties:
-        url:
-          type: string
-        targetId:
-          type:
-          - string
-          - 'null'
-        iterationsRun:
-          type: integer
-        solved:
-          type: boolean
-        solvedCaptchas:
-          type: array
-          items:
-            $ref: '#/components/schemas/CaptchaEvaluationType'
-        checkedCaptchas:
-          type: array
-          items:
-            $ref: '#/components/schemas/CaptchaEvaluationType'
-        captchaSolvedCounts:
-          type: object
-          additionalProperties:
-            type: number
-        lastSolveTime:
-          type: object
-          additionalProperties:
-            type: number
-    UpdateSessionProxyParams:
-      type: object
-      required:
-      - enabled
-      properties:
-        enabled:
-          type: boolean
-          description: Whether proxying should be active for the running session.
-        staticIpId:
-          type: string
-          format: uuid
-          description: Static IP allocation to use when enabling a static IP proxy.
-        location:
-          $ref: '#/components/schemas/UpdateSessionProxyLocationParams'
-    CaptchaEvaluationParams:
-      type: object
-      properties:
-        captcha:
-          $ref: '#/components/schemas/CaptchaEvaluationType'
-        captchaType:
-          $ref: '#/components/schemas/CaptchaEvaluationType'
-        text:
-          $ref: '#/components/schemas/CaptchaEvaluationType'
-        iterations:
-          type: integer
-          minimum: 1
-          maximum: 20
-        maxIterations:
-          type: integer
-          minimum: 1
-          maximum: 20
-        solverType:
-          type: string
-          enum:
-          - visual
-          description: Optional CAPTCHA solver mode. Set to visual to use the visual reCAPTCHA solver.
-        imageCaptchaParams:
-          type: array
-          items:
-            $ref: '#/components/schemas/ImageCaptchaParam'
-        useUltraStealth:
-          type: boolean
-    CaptchaEvaluationResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        captcha:
-          allOf:
-          - $ref: '#/components/schemas/CaptchaEvaluationType'
-        iterationsRequested:
-          type: integer
-        iterationsRun:
-          type: integer
-        solved:
-          type: boolean
-        solvedCaptchas:
-          type: array
-          items:
-            $ref: '#/components/schemas/CaptchaEvaluationType'
-        pages:
-          type: array
-          items:
-            $ref: '#/components/schemas/CaptchaEvaluationPageResult'
-    SessionRegion:
-      type: string
-      enum:
-      - us-central
-      - us-west
-      - us-east
-      - asia-south
-      - europe-west
-    Session:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        teamId:
-          type: string
-          format: uuid
         status:
-          type: string
-          enum:
-          - active
-          - closed
-          - error
-        startTime:
+          $ref: '#/components/schemas/RecordingStatus'
+        recordingUrl:
           type:
           - string
           - 'null'
-          format: timestamp-milliseconds
-        endTime:
+        error:
           type:
           - string
           - 'null'
-          format: timestamp-milliseconds
-        createdAt:
-          type: string
-          format: iso8601
-        updatedAt:
-          type: string
-          format: iso8601
-        launchState:
-          $ref: '#/components/schemas/SessionLaunchState'
-        creditsUsed:
-          type:
-          - number
-          - 'null'
-    UpdateSessionRequest:
-      oneOf:
-      - $ref: '#/components/schemas/UpdateSessionProfileRequest'
-      - $ref: '#/components/schemas/UpdateSessionProxyRequest'
-      - $ref: '#/components/schemas/UpdateSessionScreenRequest'
-      - $ref: '#/components/schemas/UpdateSessionSolveCaptchasRequest'
-      discriminator:
-        propertyName: type
-        mapping:
-          profile: '#/components/schemas/UpdateSessionProfileRequest'
-          proxy: '#/components/schemas/UpdateSessionProxyRequest'
-          screen: '#/components/schemas/UpdateSessionScreenRequest'
-          solveCaptchas: '#/components/schemas/UpdateSessionSolveCaptchasRequest'
+      required:
+      - status
+    CaptchaEvaluationType:
+      type: string
+      enum:
+      - turnstile
+      - cloudflare-challenge
+      - aliexpress
+      - recaptcha
+      - amazon
+      description: CAPTCHA target to evaluate manually.
     UpdateSessionScreenParams:
       type: object
       required:
@@ -892,6 +1303,32 @@ components:
           type: integer
           minimum: 360
           maximum: 2160
+    UpdateSessionProfileParams:
+      type: object
+      properties:
+        persistChanges:
+          type: boolean
+          description: Whether profile changes should be persisted after the session ends.
+        persistNetworkCache:
+          type: boolean
+          description: Whether network cache should be persisted into the profile.
+    BasicResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+    UpdateSessionProfileRequest:
+      type: object
+      required:
+      - type
+      - params
+      properties:
+        type:
+          type: string
+          enum:
+          - profile
+        params:
+          $ref: '#/components/schemas/UpdateSessionProfileParams'
     ProxyCountry:
       type: string
       enum:
@@ -1180,150 +1617,6 @@ components:
       - za
       - zm
       - zw
-    Device:
-      type: string
-      enum:
-      - desktop
-      - mobile
-    UpdateSessionProxyLocationParams:
-      type: object
-      properties:
-        country:
-          $ref: '#/components/schemas/ProxyCountry'
-        state:
-          $ref: '#/components/schemas/ProxyState'
-        city:
-          type: string
-          description: City for managed proxy geolocation.
-    RecordingStatus:
-      type: string
-      enum:
-      - not_enabled
-      - pending
-      - in_progress
-      - completed
-      - failed
-    ProxyState:
-      type:
-      - string
-      - 'null'
-      enum:
-      - AL
-      - AK
-      - AZ
-      - AR
-      - CA
-      - CO
-      - CT
-      - DE
-      - FL
-      - GA
-      - HI
-      - ID
-      - IL
-      - IN
-      - IA
-      - KS
-      - KY
-      - LA
-      - ME
-      - MD
-      - MA
-      - MI
-      - MN
-      - MS
-      - MO
-      - MT
-      - NE
-      - NV
-      - NH
-      - NJ
-      - NM
-      - NY
-      - NC
-      - ND
-      - OH
-      - OK
-      - OR
-      - PA
-      - RI
-      - SC
-      - SD
-      - TN
-      - TX
-      - UT
-      - VT
-      - VA
-      - WA
-      - WV
-      - WI
-      - WY
-      - al
-      - ak
-      - az
-      - ar
-      - ca
-      - co
-      - ct
-      - de
-      - fl
-      - ga
-      - hi
-      - id
-      - il
-      - in
-      - ia
-      - ks
-      - ky
-      - la
-      - me
-      - md
-      - ma
-      - mi
-      - mn
-      - ms
-      - mo
-      - mt
-      - ne
-      - nv
-      - nh
-      - nj
-      - nm
-      - ny
-      - nc
-      - nd
-      - oh
-      - ok
-      - or
-      - pa
-      - ri
-      - sc
-      - sd
-      - tn
-      - tx
-      - ut
-      - vt
-      - va
-      - wa
-      - wv
-      - wi
-      - wy
-      description: Optional state code for proxies to US states. Is mutually exclusive with proxyCity. Takes in two letter state code.
-    GetSessionRecordingUrlResponse:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/RecordingStatus'
-        recordingUrl:
-          type:
-          - string
-          - 'null'
-        error:
-          type:
-          - string
-          - 'null'
-      required:
-      - status
     CreateSessionProfile:
       type: object
       properties:
@@ -1334,30 +1627,6 @@ components:
         persistNetworkCache:
           type: boolean
           description: When persisting profile changes, also persist the browser's network cache (HTTP cache).
-    Platform:
-      type: string
-      enum:
-      - chrome
-      - firefox
-      - safari
-      - edge
-    UpdateSessionScreenRequest:
-      type: object
-      required:
-      - type
-      - params
-      properties:
-        type:
-          type: string
-          enum:
-          - screen
-        params:
-          $ref: '#/components/schemas/UpdateSessionScreenParams'
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
     GetSessionVideoRecordingUrlResponse:
       type: object
       properties:
@@ -1373,275 +1642,6 @@ components:
           - 'null'
       required:
       - status
-    UpdateSessionProxyRequest:
-      type: object
-      required:
-      - type
-      - params
-      properties:
-        type:
-          type: string
-          enum:
-          - proxy
-        params:
-          $ref: '#/components/schemas/UpdateSessionProxyParams'
-    SessionDetail:
-      allOf:
-      - $ref: '#/components/schemas/Session'
-      - type: object
-        properties:
-          sessionUrl:
-            type: string
-          liveUrl:
-            type: string
-          token:
-            type: string
-          wsEndpoint:
-            type: string
-          webdriverEndpoint:
-            type: string
-          computerActionEndpoint:
-            type: string
-    ISO639_1:
-      type: string
-      enum:
-      - aa
-      - ab
-      - ae
-      - af
-      - ak
-      - am
-      - an
-      - ar
-      - as
-      - av
-      - ay
-      - az
-      - ba
-      - be
-      - bg
-      - bh
-      - bi
-      - bm
-      - bn
-      - bo
-      - br
-      - bs
-      - ca
-      - ce
-      - ch
-      - co
-      - cr
-      - cs
-      - cu
-      - cv
-      - cy
-      - da
-      - de
-      - dv
-      - dz
-      - ee
-      - el
-      - en
-      - eo
-      - es
-      - et
-      - eu
-      - fa
-      - ff
-      - fi
-      - fj
-      - fo
-      - fr
-      - fy
-      - ga
-      - gd
-      - gl
-      - gn
-      - gu
-      - gv
-      - ha
-      - he
-      - hi
-      - ho
-      - hr
-      - ht
-      - hu
-      - hy
-      - hz
-      - ia
-      - id
-      - ie
-      - ig
-      - ii
-      - ik
-      - io
-      - is
-      - it
-      - iu
-      - ja
-      - jv
-      - ka
-      - kg
-      - ki
-      - kj
-      - kk
-      - kl
-      - km
-      - kn
-      - ko
-      - kr
-      - ks
-      - ku
-      - kv
-      - kw
-      - ky
-      - la
-      - lb
-      - lg
-      - li
-      - ln
-      - lo
-      - lt
-      - lu
-      - lv
-      - mg
-      - mh
-      - mi
-      - mk
-      - ml
-      - mn
-      - mo
-      - mr
-      - ms
-      - mt
-      - my
-      - na
-      - nb
-      - nd
-      - ne
-      - ng
-      - nl
-      - nn
-      - 'no'
-      - nr
-      - nv
-      - ny
-      - oc
-      - oj
-      - om
-      - or
-      - os
-      - pa
-      - pi
-      - pl
-      - ps
-      - pt
-      - qu
-      - rm
-      - rn
-      - ro
-      - ru
-      - rw
-      - sa
-      - sc
-      - sd
-      - se
-      - sg
-      - si
-      - sk
-      - sl
-      - sm
-      - sn
-      - so
-      - sq
-      - sr
-      - ss
-      - st
-      - su
-      - sv
-      - sw
-      - ta
-      - te
-      - tg
-      - th
-      - ti
-      - tk
-      - tl
-      - tn
-      - to
-      - tr
-      - ts
-      - tt
-      - tw
-      - ty
-      - ug
-      - uk
-      - ur
-      - uz
-      - ve
-      - vi
-      - vo
-      - wa
-      - wo
-      - xh
-      - yi
-      - yo
-      - za
-      - zh
-      - zu
-    ImageCaptchaParam:
-      type: object
-      properties:
-        imageSelector:
-          type: string
-        inputSelector:
-          type: string
-    CaptchaEvaluationType:
-      type: string
-      enum:
-      - turnstile
-      - cloudflare-challenge
-      - aliexpress
-      - recaptcha
-      - amazon
-      description: CAPTCHA target to evaluate manually.
-    ScreenConfig:
-      type: object
-      properties:
-        width:
-          type: number
-          default: 1280
-        height:
-          type: number
-          default: 720
-    UpdateSessionSolveCaptchasParams:
-      type: object
-      required:
-      - enabled
-      properties:
-        enabled:
-          type: boolean
-          description: Whether automatic CAPTCHA solving should be enabled for this running session.
-        solverType:
-          type: string
-          enum:
-          - visual
-          description: Optional CAPTCHA solver mode. Set to visual to use the visual reCAPTCHA solver.
-    UpdateSessionResponse:
-      allOf:
-      - $ref: '#/components/schemas/BasicResponse'
-      - type: object
-        properties:
-          solveCaptchas:
-            type: boolean
-            description: Returned for solveCaptchas updates.
-          sessionId:
-            type: string
-            description: Returned for solveCaptchas updates.
-          telemetryReady:
-            type: boolean
-            description: Returned for solveCaptchas updates.
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

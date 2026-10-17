@@ -130,11 +130,6 @@ components:
       properties:
         message:
           type: string
-    CreateProfileParams:
-      type: object
-      properties:
-        name:
-          type: string
     CreateProfileResponse:
       type: object
       properties:
@@ -149,6 +144,11 @@ components:
       properties:
         success:
           type: boolean
+    CreateProfileParams:
+      type: object
+      properties:
+        name:
+          type: string
     ProfileResponse:
       type: object
       properties:

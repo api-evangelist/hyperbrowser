@@ -60,6 +60,11 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
     ProfileListResponse:
       type: object
       properties:
@@ -73,11 +78,6 @@ components:
           type: number
         perPage:
           type: number
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
     ProfileResponse:
       type: object
       properties:
