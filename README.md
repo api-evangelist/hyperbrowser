@@ -1,4 +1,4 @@
-# Hyperbrowser (hyperbrowser)
+# Hyperbrowser
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,245 +66,213 @@
 
 Hyperbrowser provides cloud browser infrastructure tailored for AI agents, bundling managed Chromium sessions with web scraping, crawling, and data-extraction APIs. The platform ships the open-source HyperAgent framework and first-class integrations for Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI's CUA, so teams can deploy general-purpose web agents quickly. Customers include AI startups, data teams, and enterprises that need stealthy, multi-region browsers with CAPTCHA solving, proxies, and session profiles. Python and Node SDKs cover sessions, scrape/crawl/extract jobs, agent task management, and an MCP server lets any Model Context Protocol client (Claude Desktop, Cursor, Windsurf, etc.) drive Hyperbrowser tools. Pricing is usage-based via the hyperbrowser.ai pricing page.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/hyperbrowser/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/hyperbrowser/refs/heads/main/apis.yml)
+**Areas:** Browser Automation · Browser Infrastructure · Web Scraping · Web Crawling · Data Extraction · AI Agents · Computer Use · Stealth · Proxies · CAPTCHA Solving · MCP · HyperAgent
 
-## Scope
+## Hyperbrowser on APIs.io
 
-- **Type:** Index
-- **Position:** Provider
-- **Access:** 3rd-Party
+Everything profiled for Hyperbrowser is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/hyperbrowser/](https://apis.io/providers/hyperbrowser/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (11)
 
-- Headless Browser
-- Browser Infrastructure
-- Web Scraping
-- Web Crawling
-- Data Extraction
-- AI Agents
-- Browser Automation
-- Computer Use
-- Stealth
-- Proxies
-- CAPTCHA Solving
-- MCP
-- HyperAgent
-- X402
+- [Hyperbrowser Sessions API](https://apis.io/apis/hyperbrowser/sessions-api/) — Manage cloud Chromium browser sessions: create, list, inspect, update, and stop sessions; retrieve recording, video, and downloads URLs; and run manual…
+- [Hyperbrowser Profiles API](https://apis.io/apis/hyperbrowser/profiles-api/) — Create, list, fetch, and delete persistent browser profiles that retain cookies, local storage, and authenticated state across sessions.
+- [Hyperbrowser Scrape API](https://apis.io/apis/hyperbrowser/scrape-api/) — Single-page and batch scrape jobs returning HTML, Markdown, links, and screenshots with asynchronous status polling.
+- [Hyperbrowser Crawl API](https://apis.io/apis/hyperbrowser/crawl-api/) — Recursive crawl jobs across many pages with structured page-by-page results and status polling.
+- [Hyperbrowser Extract API](https://apis.io/apis/hyperbrowser/extract-api/) — Structured data extraction jobs that pull typed records from one or more pages using prompts and JSON schemas.
+- [Hyperbrowser Extensions API](https://apis.io/apis/hyperbrowser/extensions-api/) — Upload and list custom Chrome extensions that can be attached to browser sessions for advanced automation, custom UI, or workflow tooling.
+- [Hyperbrowser Web API](https://apis.io/apis/hyperbrowser/web-api/) — Stateless web utilities: fetch a single page, run a web search, or start a crawl. Includes `/x402` micropayment-gated variants of fetch and search for…
+- [Hyperbrowser Profile API](https://apis.io/apis/hyperbrowser/hyperbrowser-profile-api/) — The Profile API from Hyperbrowser — 2 operation(s) for profile.
+- [Hyperbrowser Session API](https://apis.io/apis/hyperbrowser/hyperbrowser-session-api/) — The Session API from Hyperbrowser — 8 operation(s) for session.
+- [Hyperbrowser Task API](https://apis.io/apis/hyperbrowser/hyperbrowser-task-api/) — The Task API from Hyperbrowser — 20 operation(s) for task.
+- [Hyperbrowser X402 API](https://apis.io/apis/hyperbrowser/hyperbrowser-x402-api/) — The X402 API from Hyperbrowser — 2 operation(s) for x402.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-23
-- **Modified:** 2026-05-25
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Arazzo workflows (11)
 
-### Hyperbrowser Sessions API
+Multi-step workflows that chain operations into a business task.
 
-Manage cloud Chromium browser sessions: create, list, inspect, update, and stop sessions; retrieve recording, video, and downloads URLs; and run manual CAPTCHA evaluation. Sessions expose a WebSocket CDP endpoint and an optional live-view URL.
+- [Moved to /providers/hyperbrowser/](https://apis.io/arazzos/hyperbrowser/hyperbrowser-batch-scrape-and-retrieve-workflow/)
+- [Hyperbrowser Browser Use Task Run](https://apis.io/arazzos/hyperbrowser/hyperbrowser-browser-use-task-run-workflow/)
+- [Hyperbrowser Crawl Site and Retrieve](https://apis.io/arazzos/hyperbrowser/hyperbrowser-crawl-site-and-retrieve-workflow/)
+- [Hyperbrowser Extract Structured Data](https://apis.io/arazzos/hyperbrowser/hyperbrowser-extract-structured-data-workflow/)
+- [Hyperbrowser HyperAgent Task Run](https://apis.io/arazzos/hyperbrowser/hyperbrowser-hyperagent-task-run-workflow/)
+- [Hyperbrowser Persistent Profile Session](https://apis.io/arazzos/hyperbrowser/hyperbrowser-persistent-profile-session-workflow/)
+- [Moved to /providers/hyperbrowser/](https://apis.io/arazzos/hyperbrowser/hyperbrowser-scrape-and-retrieve-workflow/)
+- [Hyperbrowser Session Lifecycle](https://apis.io/arazzos/hyperbrowser/hyperbrowser-session-lifecycle-workflow/)
+- [Hyperbrowser Session Recording Retrieval](https://apis.io/arazzos/hyperbrowser/hyperbrowser-session-recording-retrieval-workflow/)
+- [Hyperbrowser Web Crawl and Retrieve](https://apis.io/arazzos/hyperbrowser/hyperbrowser-web-crawl-and-retrieve-workflow/)
+- [Hyperbrowser Web Search then Fetch](https://apis.io/arazzos/hyperbrowser/hyperbrowser-web-search-then-fetch-workflow/)
 
-- **Human URL:** [https://docs.hyperbrowser.ai/sessions/overview](https://docs.hyperbrowser.ai/sessions/overview)
-- **Base URL:** `https://api.hyperbrowser.ai`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Sessions
-- Browser Infrastructure
-- Stealth
-- Proxies
+- [Hyperbrowser Agentic Access](https://apis.io/agentic-access/hyperbrowser/hyperbrowser-agentic-access/)
 
-#### Properties
+#### JSON Schema (5)
 
-- [Documentation](https://docs.hyperbrowser.ai/sessions/overview)
-- [API Reference](https://docs.hyperbrowser.ai/api-reference/sessions)
-- [OpenAPI](openapi/hyperbrowser-sessions-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/hyperbrowser-sessions-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/hyperbrowser-sessions-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/hyperbrowser-session-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/hyperbrowser-session-structure.json)
-- [Example](examples/hyperbrowser-create-session-example.json)
+The data models the API reads and writes.
 
-### Hyperbrowser Profiles API
+- [Hyperbrowser Agent Task](https://apis.io/schemas/hyperbrowser/hyperbrowser-agent-task/)
+- [Hyperbrowser Crawl Job](https://apis.io/schemas/hyperbrowser/hyperbrowser-crawl-job/)
+- [Hyperbrowser Extract Job](https://apis.io/schemas/hyperbrowser/hyperbrowser-extract-job/)
+- [Hyperbrowser Scrape Job](https://apis.io/schemas/hyperbrowser/hyperbrowser-scrape-job/)
+- [Hyperbrowser Session](https://apis.io/schemas/hyperbrowser/hyperbrowser-session/)
 
-Create, list, fetch, and delete persistent browser profiles that retain cookies, local storage, and authenticated state across sessions.
+#### JSON Structure (1)
 
-- **Human URL:** [https://docs.hyperbrowser.ai/sessions/advanced-privacy-and-anti-detection/profiles](https://docs.hyperbrowser.ai/sessions/advanced-privacy-and-anti-detection/profiles)
-- **Base URL:** `https://api.hyperbrowser.ai`
+Data models expressed in JSON Structure.
 
-#### Tags
+- [Hyperbrowser Session Structure](https://apis.io/json-structure/hyperbrowser/hyperbrowser-session-structure/)
 
-- Profiles
-- Sessions
+#### JSON-LD (1)
 
-#### Properties
+Linked-data contexts for the provider's vocabulary.
 
-- [Documentation](https://docs.hyperbrowser.ai/sessions/advanced-privacy-and-anti-detection/profiles)
-- [OpenAPI](openapi/hyperbrowser-profiles-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/hyperbrowser-profiles-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/hyperbrowser-profiles-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Hyperbrowser Context](https://apis.io/jsonld/hyperbrowser/hyperbrowser-context/)
 
-### Hyperbrowser Scrape API
+#### Vocabulary (1)
 
-Single-page and batch scrape jobs returning HTML, Markdown, links, and screenshots with asynchronous status polling.
+The provider's domain terms, defined.
 
-- **Human URL:** [https://docs.hyperbrowser.ai/scrape/overview](https://docs.hyperbrowser.ai/scrape/overview)
-- **Base URL:** `https://api.hyperbrowser.ai`
+- [Hyperbrowser Vocabulary](https://apis.io/vocabularies/hyperbrowser/hyperbrowser-vocabulary/)
 
-#### Tags
+#### Examples (5)
 
-- Scrape
-- Web Scraping
-- Batch
+Example requests and responses.
 
-#### Properties
+- [Hyperbrowser Claude Computer Use Example](https://apis.io/examples/hyperbrowser/hyperbrowser-claude-computer-use-example/)
+- [Hyperbrowser Create Session Example](https://apis.io/examples/hyperbrowser/hyperbrowser-create-session-example/)
+- [Hyperbrowser Extract Example](https://apis.io/examples/hyperbrowser/hyperbrowser-extract-example/)
+- [Hyperbrowser Scrape Example](https://apis.io/examples/hyperbrowser/hyperbrowser-scrape-example/)
+- [Hyperbrowser Web Search Example](https://apis.io/examples/hyperbrowser/hyperbrowser-web-search-example/)
 
-- [Documentation](https://docs.hyperbrowser.ai/scrape/overview)
-- [OpenAPI](openapi/hyperbrowser-scrape-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/hyperbrowser-scrape-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/hyperbrowser-scrape-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/hyperbrowser-scrape-job-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Example](examples/hyperbrowser-scrape-example.json)
+#### Collections (21)
 
-### Hyperbrowser Crawl API
+Postman and Open Collection request collections.
 
-Recursive crawl jobs across many pages with structured page-by-page results and status polling.
+- [Hyperbrowser API](https://apis.io/collections/hyperbrowser/open-hyperbrowser/)
+- [Hyperbrowser Agents API](https://apis.io/collections/hyperbrowser/open-hyperbrowser-agents-api/)
+- [Hyperbrowser Agents Crawl API](https://apis.io/collections/hyperbrowser/open-hyperbrowser-crawl-api/)
+- [Hyperbrowser Agents Extensions API](https://apis.io/collections/hyperbrowser/open-hyperbrowser-extensions-api/)
+- [Hyperbrowser Agents Extract API](https://apis.io/collections/hyperbrowser/open-hyperbrowser-extract-api/)
+- [Hyperbrowser Agents Profile API](https://apis.io/collections/hyperbrowser/open-hyperbrowser-profile-api/)
+- [Hyperbrowser Agents Profiles API](https://apis.io/collections/hyperbrowser/open-hyperbrowser-profiles-api/)
+- [Hyperbrowser Agents Scrape API](https://apis.io/collections/hyperbrowser/open-hyperbrowser-scrape-api/)
+- [Hyperbrowser Agents Session API](https://apis.io/collections/hyperbrowser/open-hyperbrowser-session-api/)
+- [Hyperbrowser Agents Sessions API](https://apis.io/collections/hyperbrowser/open-hyperbrowser-sessions-api/)
+- [Hyperbrowser Agents Task API](https://apis.io/collections/hyperbrowser/open-hyperbrowser-task-api/)
+- [Hyperbrowser Agents Web API](https://apis.io/collections/hyperbrowser/open-hyperbrowser-web-api/)
+- [Hyperbrowser Agents X402 API](https://apis.io/collections/hyperbrowser/open-hyperbrowser-x402-api/)
+- [Hyperbrowser Agents API](https://apis.io/collections/hyperbrowser/postman-hyperbrowser-agents-api/)
+- [Hyperbrowser Crawl API](https://apis.io/collections/hyperbrowser/postman-hyperbrowser-crawl-api/)
+- [Hyperbrowser Extensions API](https://apis.io/collections/hyperbrowser/postman-hyperbrowser-extensions-api/)
+- [Hyperbrowser Extract API](https://apis.io/collections/hyperbrowser/postman-hyperbrowser-extract-api/)
+- [Hyperbrowser Profiles API](https://apis.io/collections/hyperbrowser/postman-hyperbrowser-profiles-api/)
+- [Hyperbrowser Scrape API](https://apis.io/collections/hyperbrowser/postman-hyperbrowser-scrape-api/)
+- [Hyperbrowser Sessions API](https://apis.io/collections/hyperbrowser/postman-hyperbrowser-sessions-api/)
+- [Hyperbrowser Web API](https://apis.io/collections/hyperbrowser/postman-hyperbrowser-web-api/)
 
-- **Human URL:** [https://docs.hyperbrowser.ai/crawl/overview](https://docs.hyperbrowser.ai/crawl/overview)
-- **Base URL:** `https://api.hyperbrowser.ai`
+#### Governance rules (2)
 
-#### Tags
+Spectral rulesets for the provider's contracts.
 
-- Crawl
-- Web Crawling
+- [Hyperbrowser — jsonschema rules](https://apis.io/rules/hyperbrowser/hyperbrowser-jsonschema-spectral-rules/)
+- [Hyperbrowser API Rules](https://apis.io/rules/hyperbrowser/hyperbrowser-rules/)
 
-#### Properties
+#### Security (2)
 
-- [Documentation](https://docs.hyperbrowser.ai/crawl/overview)
-- [OpenAPI](openapi/hyperbrowser-crawl-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/hyperbrowser-crawl-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/hyperbrowser-crawl-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/hyperbrowser-crawl-job-schema.json) — [JSON Schema](https://json-schema.org/specification)
+Authentication, trust centre, and vulnerability disclosure.
 
-### Hyperbrowser Extract API
+- [Hyperbrowser Authentication](https://apis.io/security/hyperbrowser/hyperbrowser-authentication/)
+- [Hyperbrowser Domain Security](https://apis.io/security/hyperbrowser/hyperbrowser-domain-security/)
 
-Structured data extraction jobs that pull typed records from one or more pages using prompts and JSON schemas.
+#### Plans and pricing (1)
 
-- **Human URL:** [https://docs.hyperbrowser.ai/extract/overview](https://docs.hyperbrowser.ai/extract/overview)
-- **Base URL:** `https://api.hyperbrowser.ai`
+Published plans, tiers and prices.
 
-#### Tags
+- [Hyperbrowser Plans Pricing](https://apis.io/plans/hyperbrowser/hyperbrowser-plans-pricing/)
 
-- Extract
-- Structured Extraction
-- Data Extraction
+#### Rate limits (1)
 
-#### Properties
+Published request limits.
 
-- [Documentation](https://docs.hyperbrowser.ai/extract/overview)
-- [OpenAPI](openapi/hyperbrowser-extract-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/hyperbrowser-extract-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/hyperbrowser-extract-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/hyperbrowser-extract-job-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Example](examples/hyperbrowser-extract-example.json)
+- [Hyperbrowser Rate Limits](https://apis.io/rate-limits/hyperbrowser/hyperbrowser-rate-limits/)
 
-### Hyperbrowser Agents API
+#### FinOps (1)
 
-Start, stop, and monitor agentic browser tasks across HyperAgent, Browser-Use, Claude Computer Use, Gemini Computer Use, and OpenAI's CUA. Each task runs inside a stealth Hyperbrowser session with live-view URL, proxy support, and CAPTCHA solving.
+What the API costs to run, by operation.
 
-- **Human URL:** [https://docs.hyperbrowser.ai/agents/overview](https://docs.hyperbrowser.ai/agents/overview)
-- **Base URL:** `https://api.hyperbrowser.ai`
+- [Hyperbrowser Finops](https://apis.io/finops/hyperbrowser/hyperbrowser-finops/)
 
-#### Tags
+## Where to find this API
 
-- Agents
-- Computer Use
-- HyperAgent
-- Browser-Use
-- Claude
-- Gemini
-- OpenAI CUA
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-#### Properties
-
-- [Documentation](https://docs.hyperbrowser.ai/agents/overview)
-- [OpenAPI](openapi/hyperbrowser-agents-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/hyperbrowser-agents-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/hyperbrowser-agents-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/hyperbrowser-agent-task-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Example](examples/hyperbrowser-claude-computer-use-example.json)
-
-### Hyperbrowser Extensions API
-
-Upload and list custom Chrome extensions that can be attached to browser sessions for advanced automation, custom UI, or workflow tooling.
-
-- **Human URL:** [https://docs.hyperbrowser.ai/sessions/advanced-privacy-and-anti-detection/uploading-extensions](https://docs.hyperbrowser.ai/sessions/advanced-privacy-and-anti-detection/uploading-extensions)
-- **Base URL:** `https://api.hyperbrowser.ai`
-
-#### Tags
-
-- Extensions
-- Sessions
-
-#### Properties
-
-- [Documentation](https://docs.hyperbrowser.ai/sessions/advanced-privacy-and-anti-detection/uploading-extensions)
-- [OpenAPI](openapi/hyperbrowser-extensions-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/hyperbrowser-extensions-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/hyperbrowser-extensions-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Hyperbrowser Web API
-
-Stateless web utilities: fetch a single page, run a web search, or start a crawl. Includes `/x402` micropayment-gated variants of fetch and search for permissionless, pay-per-call usage.
-
-- **Human URL:** [https://docs.hyperbrowser.ai/web/overview](https://docs.hyperbrowser.ai/web/overview)
-- **Base URL:** `https://api.hyperbrowser.ai`
-
-#### Tags
-
-- Web
-- Fetch
-- Search
-- X402
-
-#### Properties
-
-- [Documentation](https://docs.hyperbrowser.ai/web/overview)
-- [OpenAPI](openapi/hyperbrowser-web-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/hyperbrowser-web-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/hyperbrowser-web-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Example](examples/hyperbrowser-web-search-example.json)
-
-## Common Properties
-
-- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
 - [Website](https://hyperbrowser.ai)
 - [Documentation](https://docs.hyperbrowser.ai)
-- [API Reference](https://docs.hyperbrowser.ai/api-reference)
-- [Getting Started](https://docs.hyperbrowser.ai/quickstart)
-- [Blog](https://hyperbrowser.ai/blog)
-- [GitHub Organization](https://github.com/hyperbrowserai)
+- [Getting started](https://docs.hyperbrowser.ai/quickstart)
+- [API reference](https://docs.hyperbrowser.ai/api-reference)
 - [Pricing](https://hyperbrowser.ai/pricing)
-- [Sign Up](https://app.hyperbrowser.ai/signup)
-- [Terms of Service](https://hyperbrowser.ai/terms)
-- [Privacy Policy](https://hyperbrowser.ai/privacy)
-- [L L Ms Txt](https://hyperbrowser.ai/llms.txt)
-- [SDK](https://github.com/hyperbrowserai/python-sdk)
-- [SDK](https://github.com/hyperbrowserai/node-sdk)
-- [SDK](https://pypi.org/project/hyperbrowser/)
-- [SDK](https://www.npmjs.com/package/@hyperbrowser/sdk)
-- [Tool](https://github.com/hyperbrowserai/mcp)
-- [Tool](https://github.com/hyperbrowserai/HyperAgent)
-- [Tool](https://github.com/hyperbrowserai/n8n-node)
-- [Code Examples](https://github.com/hyperbrowserai/examples)
-- [Code Examples](https://github.com/hyperbrowserai/hyperbrowser-app-examples)
-- [Code Examples](https://github.com/hyperbrowserai/cua-as-a-tool)
-- [Plans](plans/hyperbrowser-plans-pricing.yml)
-- [Rate Limits](rate-limits/hyperbrowser-rate-limits.yml)
-- [Fin Ops](finops/hyperbrowser-finops.yml)
-- [Vocabulary](vocabulary/hyperbrowser-vocabulary.yml)
-- [JSON-LD](json-ld/hyperbrowser-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Spectral Rules](rules/hyperbrowser-rules.yml)
+- [Blog](https://hyperbrowser.ai/blog)
+- [Terms of service](https://hyperbrowser.ai/terms)
+- [Privacy policy](https://hyperbrowser.ai/privacy)
+- [GitHub](https://github.com/hyperbrowserai)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 46.3** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 57.9 |
+| Contract governance | 27.3 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 60.7 |
+| Access clarity | 39.5 |
+
+**Agent readiness 28.5** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 20.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/hyperbrowser/](https://apis.io/providers/hyperbrowser/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Hyperbrowser: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/hyperbrowser/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
